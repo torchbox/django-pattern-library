@@ -1,0 +1,4 @@
+include LICENSE *.rst *.txt
+graft pattern_library
+global-exclude __pycache__
+global-exclude *.py[co]
