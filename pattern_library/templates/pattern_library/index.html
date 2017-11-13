@@ -3,44 +3,19 @@
 {% block content %}
     <h1>List of templates</h1>
 
-    {% if templates.atoms %}
-        <h2>Atoms</h2>
+    {% for pattern_type, pattern_type_groups in templates.items %}
+        <h2>{{ pattern_type|title }}</h2>
 
-        {% for template in templates.atoms.values %}
-            <div>{{ template.origin.template_name }}</div>
+        {% for group_name, pattern_templates in pattern_type_groups.items %}
+
+            <h3>{{ group_name }}</h3>
+
+            {% for template in pattern_templates %}
+                <div>{{ template.origin.template_name }}</div>
+            {% endfor %}
+
         {% endfor %}
-    {% endif %}
 
-    {% if templates.molecules %}
-        <h2>Molecules</h2>
-
-        {% for template in templates.molecules.values %}
-            <div>{{ template.origin.template_name }}</div>
-        {% endfor %}
-    {% endif %}
-
-    {% if templates.organisms %}
-        <h2>Organisms</h2>
-
-        {% for template in templates.organisms.values %}
-            <div>{{ template.origin.template_name }}</div>
-        {% endfor %}
-    {% endif %}
-
-    {% if templates.templates %}
-        <h2>Templates</h2>
-
-        {% for template in templates.templates.values %}
-            <div>{{ template.origin.template_name }}</div>
-        {% endfor %}
-    {% endif %}
-
-    {% if templates.organisms %}
-        <h2>Organisms</h2>
-
-        {% for template in templates.organisms.values %}
-            <div>{{ template.origin.template_name }}</div>
-        {% endfor %}
-    {% endif %}
+    {% endfor %}
 
 {% endblock %}
