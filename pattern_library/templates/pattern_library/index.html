@@ -1,5 +1,46 @@
 {% extends 'pattern_library/base.html' %}
 
 {% block content %}
-    Some content
+    <h1>List of templates</h1>
+
+    {% if templates.atoms %}
+        <h2>Atoms</h2>
+
+        {% for template in templates.atoms.values %}
+            <div>{{ template.origin.template_name }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if templates.molecules %}
+        <h2>Molecules</h2>
+
+        {% for template in templates.molecules.values %}
+            <div>{{ template.origin.template_name }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if templates.organisms %}
+        <h2>Organisms</h2>
+
+        {% for template in templates.organisms.values %}
+            <div>{{ template.origin.template_name }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if templates.templates %}
+        <h2>Templates</h2>
+
+        {% for template in templates.templates.values %}
+            <div>{{ template.origin.template_name }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if templates.organisms %}
+        <h2>Organisms</h2>
+
+        {% for template in templates.organisms.values %}
+            <div>{{ template.origin.template_name }}</div>
+        {% endfor %}
+    {% endif %}
+
 {% endblock %}
