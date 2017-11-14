@@ -8,7 +8,7 @@ from django.template.loader import get_template, render_to_string
 from pattern_library import get_pattern_template_dir, get_pattern_template_prefix, get_pattern_template_suffix
 
 # TODO: Decide if we need these to be configurable
-from pattern_library.exceptions import PatternLibraryException
+from pattern_library.exceptions import TemplateIsNotPattern
 
 pattern_types = ['atoms', 'molecules', 'organisms', 'templates', 'pages']
 
@@ -63,8 +63,7 @@ def is_pattern(template):
 
 def render_pattern(request, template_name):
     if not is_pattern(template_name):
-        # TODO: Add a specific exception
-        raise PatternLibraryException
+        raise TemplateIsNotPattern
 
     # TODO: Review
     data_file = template_name.replace(get_pattern_template_suffix(), '.json')
