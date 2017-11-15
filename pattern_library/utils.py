@@ -57,7 +57,8 @@ def get_pattern_templates(pattern_types):
     return templates
 
 
-# TODO: Review
+# TODO: Review the approach
+# TODO: Implement cache
 def get_context_for_template(template_name):
     context_file = template_name.replace(get_pattern_template_suffix(), '.json')
     context_file = os.path.join(get_pattern_template_dir(), context_file)
@@ -78,4 +79,5 @@ def render_pattern(request, template_name):
         raise TemplateIsNotPattern
 
     context = get_context_for_template(template_name)
+    context['__pattern_library_view'] = True
     return render_to_string(template_name, request=request, context=context)
