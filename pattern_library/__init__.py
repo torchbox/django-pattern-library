@@ -15,3 +15,7 @@ def get_pattern_template_prefix():
 
 def get_pattern_template_suffix():
     return getattr(settings, 'PATTERN_LIBRARY_template_suffix', '.html')
+
+
+def get_pattern_types():
+    return ['atoms', 'molecules', 'organisms', 'templates', 'pages']

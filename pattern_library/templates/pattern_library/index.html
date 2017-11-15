@@ -12,7 +12,7 @@
 
             {% for template in pattern_templates %}
                 <div>
-                    <a href="{% url 'pattern_library:pattern' template.origin.template_name %}">
+                    <a href="{% url 'pattern_library:display_pattern' template.origin.template_name %}">
                         {{ template.origin.template_name }}
                     </a>
                 </div>
