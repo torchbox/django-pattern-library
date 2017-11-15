@@ -7,7 +7,7 @@ app_name = 'pattern_library'
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(
-        r'^(?P<template_name>%s[\w./-]+%s)$' % (
+        r'^(?P<template_name>%s/[\w./-]+%s)$' % (
             get_pattern_template_prefix(), get_pattern_template_suffix()
         ),
         views.PatternView.as_view(),
