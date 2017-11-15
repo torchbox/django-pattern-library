@@ -11,7 +11,11 @@
             <h3>{{ group_name }}</h3>
 
             {% for template in pattern_templates %}
-                <div>{{ template.origin.template_name }}</div>
+                <div>
+                    <a href="{% url 'pattern_library:pattern' template.origin.template_name %}">
+                        {{ template.origin.template_name }}
+                    </a>
+                </div>
             {% endfor %}
 
         {% endfor %}
