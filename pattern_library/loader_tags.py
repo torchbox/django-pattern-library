@@ -1,7 +1,8 @@
 from django.template import Library
 from django.template.loader_tags import (
     construct_relative_path,
-    IncludeNode as DjangoIncludeNode
+    IncludeNode as DjangoIncludeNode,
+    ExtendsNode as DjangoExtendsNode,
 )
 
 from django.template.base import TemplateSyntaxError, token_kwargs
@@ -10,7 +11,21 @@ from pattern_library.utils import get_context_for_template
 
 register = Library()
 
-# TODO: override {% extends %} and {% block %} tags
+# TODO: override {% block %} tags
+
+
+class ExtendsNode(DjangoExtendsNode):
+    """
+    A copy of Django's IncludeNode that injects context from a file.
+    """
+
+    def render(self, context):
+        if context.get('__pattern_library_view'):
+            context.update(
+                get_context_for_template(self.parent_name.var)
+            )
+
+        return super().render(context)
 
 
 class IncludeNode(DjangoIncludeNode):
@@ -27,11 +42,28 @@ class IncludeNode(DjangoIncludeNode):
         return super().render(context)
 
 
+@register.tag('extends')
+def do_extends(parser, token):
+    """
+    Copy if Django's built-in {% extends ... %} tag that uses the custom
+    ExtendsNode to allow us to load dump data for pattern library.
+    """
+    bits = token.split_contents()
+    if len(bits) != 2:
+        raise TemplateSyntaxError("'%s' takes one argument" % bits[0])
+    bits[1] = construct_relative_path(parser.origin.template_name, bits[1])
+    parent_name = parser.compile_filter(bits[1])
+    nodelist = parser.parse()
+    if nodelist.get_nodes_by_type(ExtendsNode):
+        raise TemplateSyntaxError("'%s' cannot appear more than once in the same template" % bits[0])
+    return ExtendsNode(nodelist, parent_name)
+
+
 @register.tag('include')
 def do_include(parser, token):
     """
     Copy if Django's built-in {% include ... %} tag that uses the custom
-    IncludeNode to allow us to
+    IncludeNode to allow us to load dump data for pattern library.
     """
     bits = token.split_contents()
     if len(bits) < 2:
