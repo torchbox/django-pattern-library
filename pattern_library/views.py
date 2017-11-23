@@ -32,7 +32,6 @@ class IndexView(TemplateView):
 
 class PatternView(View):
     def get(self, request, template_name):
-        # TODO: Decide if we need to render associated data recursively
         # TODO: Add a base template
 
         try:

@@ -1,4 +1,4 @@
-from django.template import Library
+from django.template import Library, ContextPopException
 from django.template.loader_tags import (
     construct_relative_path,
     IncludeNode as DjangoIncludeNode,
@@ -11,8 +11,6 @@ from pattern_library.utils import get_context_for_template
 
 register = Library()
 
-# TODO: override {% block %} tags
-
 
 class ExtendsNode(DjangoExtendsNode):
     """
@@ -21,9 +19,20 @@ class ExtendsNode(DjangoExtendsNode):
 
     def render(self, context):
         if context.get('__pattern_library_view'):
-            context.update(
-                get_context_for_template(self.parent_name.var)
-            )
+            parent_context = get_context_for_template(self.parent_name.var)
+            if parent_context:
+                # We want parent_context to appear later in the lookup process
+                # than context of the actual template
+                # TODO: Check multi-step inheritance
+                try:
+                    pop = context.pop()
+                except ContextPopException:
+                    pop = None
+
+                context.update(parent_context)
+
+                if pop:
+                    context.update(pop)
 
         return super().render(context)
 
@@ -35,9 +44,17 @@ class IncludeNode(DjangoIncludeNode):
 
     def render(self, context):
         if context.get('__pattern_library_view'):
-            context.update(
-                get_context_for_template(self.template.var)
-            )
+            include_context = get_context_for_template(self.template.var)
+
+            # Do not override variables from the parent context
+            include_context = {
+                key: value
+                for key, value in include_context.items()
+                if key not in context
+            }
+
+            with context.push(**include_context):
+                return super().render(context)
 
         return super().render(context)
 
