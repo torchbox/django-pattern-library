@@ -22,17 +22,20 @@ class ExtendsNode(DjangoExtendsNode):
             parent_context = get_context_for_template(self.parent_name.var)
             if parent_context:
                 # We want parent_context to appear later in the lookup process
-                # than context of the actual template
-                # TODO: Check multi-step inheritance
+                # than context of the actual template.
+                # So we push parent_context into the beginning of the context stack.
+                # See https://docs.djangoproject.com/en/1.11/ref/templates/api/#playing-with-context-objects
+                pop_dicts = []
                 try:
-                    pop = context.pop()
+                    while True:
+                        pop_dicts.append(context.pop())
                 except ContextPopException:
-                    pop = None
+                    pass
 
-                context.update(parent_context)
+                context.push(parent_context)
 
-                if pop:
-                    context.update(pop)
+                for pop_dict in reversed(pop_dicts):
+                    context.push(pop_dict)
 
         return super().render(context)
 
