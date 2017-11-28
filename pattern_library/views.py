@@ -12,18 +12,18 @@ class IndexView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         available_pattern_types = get_pattern_types()
-        pattern_types = available_pattern_types
+        pattern_types_to_display = available_pattern_types
 
         # Render only specific pattern types,
         # if `pattern_type` is supplied
         if 'pattern_type' in kwargs:
-            pattern_types = kwargs['pattern_type'].lower()
-            if pattern_types not in available_pattern_types:
+            pattern_type = kwargs['pattern_type'].lower()
+            if pattern_type not in available_pattern_types:
                 return HttpResponseBadRequest()
-            pattern_types = [pattern_types]
+            pattern_types_to_display = [pattern_type]
 
         # Get all pattern templates for a specific types
-        templates = get_pattern_templates(pattern_types)
+        templates = get_pattern_templates(pattern_types_to_display)
 
         context = self.get_context_data(**kwargs)
         context['templates'] = templates
