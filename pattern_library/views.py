@@ -1,9 +1,9 @@
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.views.generic.base import TemplateView, View
+from django.views.generic.base import TemplateView
 
 from pattern_library import get_pattern_types
 from pattern_library.exceptions import TemplateIsNotPattern
-from pattern_library.utils import get_pattern_templates, render_pattern
+from pattern_library.utils import get_pattern_templates, render_pattern, is_pattern_type
 
 
 class IndexView(TemplateView):
@@ -30,13 +30,24 @@ class IndexView(TemplateView):
         return self.render_to_response(context)
 
 
-class PatternView(View):
-    def get(self, request, template_name):
-        # TODO: Add a base template
+class PatternView(TemplateView):
+    http_method_names = ('get', )
+    # TODO: Define a settings for it (???)
+    template_name = 'patterns/base.html'
+
+    def get(self, request, *args, **kwargs):
+        pattern_template_name = kwargs['template_name']
 
         try:
-            content = render_pattern(request, template_name)
+            rendered_pattern = render_pattern(request, pattern_template_name)
         except TemplateIsNotPattern:
             return HttpResponseBadRequest()
 
-        return HttpResponse(content)
+        # Dp not render page patterns as part of the base template
+        # because it should already extend base template
+        if is_pattern_type(pattern_template_name, 'pages'):
+            return HttpResponse(rendered_pattern)
+
+        context = self.get_context_data(**kwargs)
+        context['pattern_library_rendered_pattern'] = rendered_pattern
+        return self.render_to_response(context)

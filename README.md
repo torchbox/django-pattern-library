@@ -70,4 +70,7 @@ A module for Django that helps you to build pattern libraries.
 TODO:
 
 - [ ] Describe directory structure
+- [ ] Describe the approach to the base template
+    which should that includes css and JS.
+    The base template should be very minimalistic.
 - [ ] Add notes on production usage

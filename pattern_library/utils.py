@@ -9,11 +9,19 @@ from pattern_library import get_pattern_template_dir, get_pattern_template_prefi
 from pattern_library.exceptions import TemplateIsNotPattern
 
 
-def is_pattern(template):
+def is_pattern(template_name):
     return (
-        template.startswith(get_pattern_template_prefix()) and
-        template.endswith(get_pattern_template_suffix())
+        template_name.startswith(get_pattern_template_prefix()) and
+        template_name.endswith(get_pattern_template_suffix())
     )
+
+
+def is_pattern_type(template_name, pattern_type):
+    if not is_pattern(template_name):
+        return False
+
+    substring = '/{}/'.format(pattern_type)
+    return substring in template_name
 
 
 def get_pattern_templates(pattern_types):
