@@ -23,3 +23,7 @@ def get_pattern_base_template_name():
 
 def get_pattern_types():
     return ['atoms', 'molecules', 'organisms', 'templates', 'pages']
+
+
+def get_pattern_context_var_name():
+    return '__pattern_library_view'

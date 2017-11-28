@@ -5,7 +5,12 @@ from collections import OrderedDict
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
 
-from pattern_library import get_pattern_template_dir, get_pattern_template_prefix, get_pattern_template_suffix
+from pattern_library import (
+    get_pattern_template_dir,
+    get_pattern_template_prefix,
+    get_pattern_template_suffix,
+    get_pattern_context_var_name,
+)
 from pattern_library.exceptions import TemplateIsNotPattern
 
 
@@ -22,6 +27,12 @@ def is_pattern_type(template_name, pattern_type):
 
     substring = '/{}/'.format(pattern_type)
     return substring in template_name
+
+
+def is_pattern_library_context(context):
+    context_var_name = get_pattern_context_var_name()
+
+    return bool(context.get(context_var_name))
 
 
 def get_pattern_templates(pattern_types):
@@ -87,5 +98,5 @@ def render_pattern(request, template_name):
         raise TemplateIsNotPattern
 
     context = get_context_for_template(template_name)
-    context['__pattern_library_view'] = True
+    context[get_pattern_context_var_name()] = True
     return render_to_string(template_name, request=request, context=context)

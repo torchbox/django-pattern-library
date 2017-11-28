@@ -7,7 +7,7 @@ from django.template.loader_tags import (
 
 from django.template.base import TemplateSyntaxError, token_kwargs
 
-from pattern_library.utils import get_context_for_template
+from pattern_library.utils import get_context_for_template, is_pattern_library_context
 
 register = Library()
 
@@ -18,7 +18,7 @@ class ExtendsNode(DjangoExtendsNode):
     """
 
     def render(self, context):
-        if context.get('__pattern_library_view'):
+        if is_pattern_library_context(context):
             parent_context = get_context_for_template(self.parent_name.var)
             if parent_context:
                 # We want parent_context to appear later in the lookup process
@@ -46,7 +46,7 @@ class IncludeNode(DjangoIncludeNode):
     """
 
     def render(self, context):
-        if context.get('__pattern_library_view'):
+        if is_pattern_library_context(context):
             include_context = get_context_for_template(self.template.var)
 
             # Do not override variables from the parent context
