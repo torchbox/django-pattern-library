@@ -14,7 +14,11 @@ def get_pattern_template_prefix():
 
 
 def get_pattern_template_suffix():
-    return getattr(settings, 'PATTERN_LIBRARY_template_suffix', '.html')
+    return getattr(settings, 'PATTERN_LIBRARY_TEMPLATE_SUFFIX', '.html')
+
+
+def get_pattern_base_template_name():
+    return getattr(settings, 'PATTERN_LIBRARY_BASE_TEMPLATE_NAME', 'patterns/base.html')
 
 
 def get_pattern_types():

@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.generic.base import TemplateView
 
-from pattern_library import get_pattern_types
+from pattern_library import get_pattern_types, get_pattern_base_template_name
 from pattern_library.exceptions import TemplateIsNotPattern
 from pattern_library.utils import get_pattern_templates, render_pattern, is_pattern_type
 
@@ -32,8 +32,7 @@ class IndexView(TemplateView):
 
 class PatternView(TemplateView):
     http_method_names = ('get', )
-    # TODO: Define a settings for it (???)
-    template_name = 'patterns/base.html'
+    template_name = get_pattern_base_template_name()
 
     def get(self, request, *args, **kwargs):
         pattern_template_name = kwargs['template_name']
