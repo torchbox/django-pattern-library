@@ -1,13 +1,12 @@
-from django.template import Library, ContextPopException
-from django.template.loader_tags import (
-    construct_relative_path,
-    IncludeNode as DjangoIncludeNode,
-    ExtendsNode as DjangoExtendsNode,
-)
-
+from django.template import ContextPopException, Library
 from django.template.base import TemplateSyntaxError, token_kwargs
+from django.template.loader_tags import ExtendsNode as DjangoExtendsNode
+from django.template.loader_tags import IncludeNode as DjangoIncludeNode
+from django.template.loader_tags import construct_relative_path
 
-from pattern_library.utils import get_context_for_template, is_pattern_library_context
+from pattern_library.utils import (
+    get_context_for_template, is_pattern_library_context
+)
 
 register = Library()
 

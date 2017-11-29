@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from pattern_library import __version__
+from setuptools import find_packages, setup
 
-from setuptools import setup, find_packages
+from pattern_library import __version__
 
 setup(
     name='pattern_library',

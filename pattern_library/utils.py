@@ -6,10 +6,8 @@ from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
 
 from pattern_library import (
-    get_pattern_template_dir,
-    get_pattern_template_prefix,
-    get_pattern_template_suffix,
-    get_pattern_context_var_name,
+    get_pattern_context_var_name, get_pattern_template_dir,
+    get_pattern_template_prefix, get_pattern_template_suffix
 )
 from pattern_library.exceptions import TemplateIsNotPattern
 
