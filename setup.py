@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 from pattern_library import __version__
 
 setup(
-    name='pattern_library',
+    name='django-pattern-library',
     version=__version__,
     description='A module for Django that allows to build pattern libraries for your projects.',
     author='Mikalai Radchuk',
