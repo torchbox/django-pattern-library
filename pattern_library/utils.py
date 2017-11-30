@@ -30,7 +30,7 @@ def is_pattern_type(template_name, pattern_type):
 def is_pattern_library_context(context):
     context_var_name = get_pattern_context_var_name()
 
-    return bool(context.get(context_var_name))
+    return context.get(context_var_name) == True
 
 
 def get_pattern_templates(pattern_types):

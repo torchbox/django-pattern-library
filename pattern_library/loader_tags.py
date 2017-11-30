@@ -49,6 +49,7 @@ class IncludeNode(DjangoIncludeNode):
             include_context = get_context_for_template(self.template.var)
 
             # Do not override variables from the parent context
+            # TODO: Review the logic
             include_context = {
                 key: value
                 for key, value in include_context.items()
