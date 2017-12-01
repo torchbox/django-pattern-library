@@ -1,9 +1,11 @@
-import json
 import os
+import re
 from collections import OrderedDict
 
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
+
+import yaml
 
 from pattern_library import (
     get_pattern_context_var_name, get_pattern_template_dir,
@@ -30,7 +32,7 @@ def is_pattern_type(template_name, pattern_type):
 def is_pattern_library_context(context):
     context_var_name = get_pattern_context_var_name()
 
-    return context.get(context_var_name) == True
+    return context.get(context_var_name) is True
 
 
 def get_pattern_templates(pattern_types):
@@ -74,16 +76,18 @@ def get_pattern_templates(pattern_types):
     return templates
 
 
-# TODO: Review the approach
-# TODO: Implement cache
+# TODO: Implement cache (should, probably work on per-request basis for easier development)
 def get_context_for_template(template_name):
-    context_file = template_name.replace(get_pattern_template_suffix(), '.json')
+    replace_pattern = '{}$'.format(get_pattern_template_suffix())
+    context_file = re.sub(replace_pattern, '', template_name)
+
+    context_file = context_file + '.yaml'
     context_file = os.path.join(get_pattern_template_dir(), context_file)
+
     context = {}
     try:
-        f = open(context_file)
-        context = json.load(f)
-        f.close()
+        with open(context_file, 'r') as f:
+            context = yaml.load(f)
     except IOError:
         # It's possible that pattern has no data related
         pass

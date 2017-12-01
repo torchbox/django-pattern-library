@@ -28,6 +28,7 @@ setup(
     ],
     install_requires=[
         'Django>=1.11',
+        'PyYAML>=3.11',
     ],
     zip_safe=False,
 )
