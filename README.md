@@ -69,8 +69,17 @@ A module for Django that helps you to build pattern libraries.
 
 TODO:
 
-- [ ] Describe directory structure
-- [ ] Describe the approach to the base template
+- [ ] Feature: allow to override custom tags.
+    Should be useful for tags that can write to context (similar to the `SimpleNode`-tags),
+    but do not extend `SimpleNode`.
+- [ ] Docs: Describe directory structure
+- [ ] Docs: Describe the approach to the base template
     which should that includes css and JS.
     The base template should be very minimalistic.
+- [ ] Docs: Describe yaml structure
+    (how to pass context and mock template tags)
 - [ ] Add notes on production usage
+- [ ] Tests: Add tests.
+    It's ok to not bother about tests during prototyping,
+    but it will be extremely hard to maintain
+    the project without tests.
