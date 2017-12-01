@@ -5,7 +5,7 @@ from django.template.loader_tags import IncludeNode as DjangoIncludeNode
 from django.template.loader_tags import construct_relative_path
 
 from pattern_library.utils import (
-    get_context_for_template, is_pattern_library_context
+    get_pattern_context, is_pattern_library_context
 )
 
 register = Library()
@@ -18,7 +18,7 @@ class ExtendsNode(DjangoExtendsNode):
 
     def render(self, context):
         if is_pattern_library_context(context):
-            parent_context = get_context_for_template(self.parent_name.var)
+            parent_context = get_pattern_context(self.parent_name.var)
             if parent_context:
                 # We want parent_context to appear later in the lookup process
                 # than context of the actual template.
@@ -46,7 +46,7 @@ class IncludeNode(DjangoIncludeNode):
 
     def render(self, context):
         if is_pattern_library_context(context):
-            include_context = get_context_for_template(self.template.var)
+            include_context = get_pattern_context(self.template.var)
 
             # Do not override variables from the parent context
             # TODO: Review the logic

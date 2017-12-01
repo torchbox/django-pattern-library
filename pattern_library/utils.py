@@ -77,7 +77,7 @@ def get_pattern_templates(pattern_types):
 
 
 # TODO: Implement cache (should, probably work on per-request basis for easier development)
-def get_context_for_template(template_name):
+def get_pattern_config(template_name):
     replace_pattern = '{}$'.format(get_pattern_template_suffix())
     context_file = re.sub(replace_pattern, '', template_name)
 
@@ -95,10 +95,16 @@ def get_context_for_template(template_name):
     return context
 
 
+def get_pattern_context(template_name):
+    config = get_pattern_config(template_name)
+
+    return config.get('context', {})
+
+
 def render_pattern(request, template_name):
     if not is_pattern(template_name):
         raise TemplateIsNotPattern
 
-    context = get_context_for_template(template_name)
+    context = get_pattern_context(template_name)
     context[get_pattern_context_var_name()] = True
     return render_to_string(template_name, request=request, context=context)
