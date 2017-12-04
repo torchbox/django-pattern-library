@@ -78,6 +78,7 @@ TODO:
     The base template should be very minimalistic.
 - [ ] Docs: Describe yaml structure
     (how to pass context and mock template tags)
+- [ ] Add examples of dumb data
 - [ ] Add notes on production usage
 - [ ] Tests: Add tests.
     It's ok to not bother about tests during prototyping,

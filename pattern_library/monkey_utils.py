@@ -50,11 +50,21 @@ def override_tag(register, name):
                             result = render_pattern(request, template_name)
 
                 if result:
-                    if isinstance(original_node, SimpleNode) and original_node.target_var:
-                        context[original_node.target_var] = result
-                        return ''
+                    if isinstance(original_node, SimpleNode):
+                        # If it's a SimpleNode try to use it's target_var
+                        target_var = original_node.target_var
                     else:
-                        return result
+                        # If it's a custom tag, check for the target_var in tag's config
+                        target_var = tag_config.get('target_var')
+
+                    if target_var:
+                        # If a value for the target_var is supplied,
+                        # write result into the variable
+                        context[target_var] = result
+                        return ''
+
+                    # Render result instead of the tag
+                    return result
                 else:
                     logger.warning(
                         'No stub data defined for the "%s" tag in the "%s" template',
