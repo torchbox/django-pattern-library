@@ -39,7 +39,11 @@ def override_tag(register, name):
                     # Get config for specific arguments
                     tag_config = tag_config.get(arguments, {})
 
-                    # Render a raw string, if defined
+                    # Return raw data (it can be string or a structure), if defined
+                    # TODO: Allow objects with the __str__ method
+                    # In some cases we must return an object that can
+                    # be rendered as a string `{{ result }}`
+                    # and allow users to access it's attributes `{{ result.url }}`
                     result = tag_config.get('raw')
 
                     # Render pattern, if raw string is not defined
