@@ -3,25 +3,33 @@
 {% block content %}
     <h1>List of templates</h1>
 
-    {% for pattern_type, pattern_type_groups in templates.items %}
-        <h2 class="section-group-heading">{{ pattern_type|title }}</h2>
+    <div class="content">
+        <h2>Jump to section:</h2>
 
-        {% for group_name, pattern_templates in pattern_type_groups.items %}
+        <ul>
+            {% for pattern_type, pattern_type_groups in templates.items %}
+                <li><a href="#{{ forloop.counter }}">{{ pattern_type|title }}</a></li>
+            {% endfor %}
+        </ul>
 
-            <div class="border-group">
+        {% for pattern_type, pattern_type_groups in templates.items %}
+            <h2 class="section-group-heading" id="{{ forloop.counter }}">{{ pattern_type|title }}</h2>
+
+            {% for group_name, pattern_templates in pattern_type_groups.items %}
+
                 <h3 class="pattern-group-heading">{{ group_name }}</h3>
 
                 {% for template in pattern_templates %}
-                    <div class="pattern-group">
-                        <a href="{% url 'pattern_library:display_pattern' template.origin.template_name %}">
+                    <a href="{% url 'pattern_library:display_pattern' template.origin.template_name %}" class="border-group">
+                        <div class="pattern-group">
                             {{ template.origin.template_name }}
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 {% endfor %}
-            </div>
+
+            {% endfor %}
 
         {% endfor %}
 
-    {% endfor %}
-
+    </div>
 {% endblock %}

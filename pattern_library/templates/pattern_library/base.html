@@ -19,13 +19,21 @@
             word-wrap: break-word;
         }
 
-        .section-group-heading {
-            margin-top: 50px;
+        h1 {
+            margin-bottom: 50px;
         }
+
+        ul {
+            margin-bottom: -50px;
+        }
+
+        .section-group-heading:not(:first-of-type) {
+            margin-top: 100px;
+        }     
 
         .pattern-group-heading {
             font-weight: 500;
-            margin-top: 0;
+            margin: 30px 0 10px;
         }
 
         .border-group {
@@ -33,6 +41,13 @@
             padding: 20px;
             margin-bottom: 20px;
             border: 2px solid #eee;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 300ms ease;
+        }
+
+        .border-group:hover {
+            background: #f1f1f1;
         }
 
         @media only screen and (max-width: 768px) {
