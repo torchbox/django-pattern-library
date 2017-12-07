@@ -3,8 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Django pattern library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            box-sizing: border-box;
+            padding: 30px 50px 50px;
+        }
+
+        a {
+            word-wrap: break-word;
+        }
+
+        .section-group-heading {
+            margin-top: 50px;
+        }
+
+        .pattern-group-heading {
+            font-weight: 500;
+            margin-top: 0;
+        }
+
+        .border-group {
+            box-sizing: border-box;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #eee;
+        }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .border-group {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     {% block content %}{% endblock %}
 </body>
+<script>
+    
+</script>
 </html>
