@@ -13,9 +13,8 @@ register = Library()
 
 class ExtendsNode(DjangoExtendsNode):
     """
-    A copy of Django's IncludeNode that injects context from a file.
+    A copy of Django's ExtendsNode that injects context from a file.
     """
-
     def render(self, context):
         if is_pattern_library_context(context):
             parent_context = get_pattern_context(self.parent_name.var)
@@ -39,25 +38,41 @@ class ExtendsNode(DjangoExtendsNode):
         return super().render(context)
 
 
+def merge_pattern_context(context, pattern_context):
+    # pattern_context is the included pattern's context from YAML
+    # context is the context from the template containing the include tag
+
+    # Looping over keys in pattern_context:
+    #  - If a key is present in context and both values are dicts,
+    #    update the pattern_context value with the context value
+    for key, value in pattern_context.items():
+        if key in context:
+            parent_value = context[key]
+            if isinstance(parent_value, dict) and isinstance(value, dict):
+                value.update(parent_value)
+            # TODO: Recursion? Apply similar logic to parent_value and value
+
+
 class IncludeNode(DjangoIncludeNode):
     """
     A copy of Django's IncludeNode that injects context from a file.
     """
-
     def render(self, context):
         if is_pattern_library_context(context):
-            include_context = get_pattern_context(self.template.var)
+            pattern_context = get_pattern_context(self.template.var)
+            extra_context = {name: var.resolve(context) for name, var in self.extra_context.items()}
 
-            # Do not override variables from the parent context
-            # TODO: Review the logic
-            include_context = {
-                key: value
-                for key, value in include_context.items()
-                if key not in context
-            }
+            if self.isolated_context:
+                context = context.new()
 
-            with context.push(**include_context):
-                return super().render(context)
+            with context.push(extra_context):
+                merge_pattern_context(context, pattern_context)
+
+                with context.push(pattern_context):
+                    # Force superclass to render with the exact context we've provided: FRAGILE :\
+                    self.extra_context = {}
+                    self.isolated_context = False
+                    return super().render(context)
 
         return super().render(context)
 
