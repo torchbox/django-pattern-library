@@ -65,10 +65,10 @@ class IncludeNode(DjangoIncludeNode):
             if self.isolated_context:
                 context = context.new()
 
-            with context.push(extra_context):
-                merge_pattern_context(context, pattern_context)
+            merge_pattern_context(context, pattern_context)
 
-                with context.push(pattern_context):
+            with context.push(pattern_context):
+                with context.push(extra_context):
                     # Force superclass to render with the exact context we've provided: FRAGILE :\
                     self.extra_context = {}
                     self.isolated_context = False
