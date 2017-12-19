@@ -69,10 +69,19 @@ class IncludeNode(DjangoIncludeNode):
 
             with context.push(pattern_context):
                 with context.push(extra_context):
-                    # Force superclass to render with the exact context we've provided: FRAGILE :\
+                    original_extra_context = self.extra_context
+                    original_isolated_context = self.isolated_context
+
+                    # Force superclass to render with the exact context we've provided.
                     self.extra_context = {}
                     self.isolated_context = False
-                    return super().render(context)
+                    output = super().render(context)
+
+                    # Restore original context variables (nodes are rendered repeatedly inside for loops etc.)
+                    self.extra_context = original_extra_context
+                    self.isolated_context = original_isolated_context
+
+                    return output
 
         return super().render(context)
 
