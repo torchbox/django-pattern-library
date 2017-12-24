@@ -11,7 +11,7 @@ setup(
     author='Mikalai Radchuk',
     author_email='mikalai.radchuk@torchbox.com',
     url='https://github.com/torchbox/django-pattern-library',
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests', 'tests.*']),
     include_package_data=True,
     license='BSD',
     long_description='See https://github.com/torchbox/django-pattern-library for details',
