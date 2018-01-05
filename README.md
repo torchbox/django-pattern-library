@@ -5,7 +5,7 @@ A module for Django that helps you to build pattern libraries.
 
 ## How to install
 
-1. To install the module add `pattern_library` into the `INSTALLED_APPS` list:
+1. Add `pattern_library` into your `INSTALLED_APPS`:
 
     ```python
     INSTALLED_APPS = [
@@ -17,7 +17,7 @@ A module for Django that helps you to build pattern libraries.
     ]
     ```
 
-2. Add `pattern_library.loader_tags` into the `TEMPLATES` setting. Example:
+2. Add `pattern_library.loader_tags` into the `TEMPLATES` setting. For example:
 
     ```python
     TEMPLATES = [
@@ -38,9 +38,9 @@ A module for Django that helps you to build pattern libraries.
     ]
     ```
 
-    Note that this module supports only Django template backend out of the box.
+    Note that this module only supports the Django template backend out of the box.
 
-3. Set the `PATTERN_LIBRARY_TEMPLATE_DIR` setting to point to template directory with your patterns:
+3. Set the `PATTERN_LIBRARY_TEMPLATE_DIR` setting to point to a template directory with your patterns:
 
     ```python
     PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(BASE_DIR, 'project_styleguide', 'templates')
@@ -49,7 +49,7 @@ A module for Django that helps you to build pattern libraries.
     Note that `PATTERN_LIBRARY_TEMPLATE_DIR` must be available for
     [template loaders](https://docs.djangoproject.com/en/1.11/ref/templates/api/#loader-types).
 
-4. Include `pattern_library.urls` into your `urlpatterns`. Example `urls.py`:
+4. Include `pattern_library.urls` into your `urlpatterns`. Here's an example `urls.py`:
 
     ```python
     from django.apps import apps
@@ -69,14 +69,14 @@ A module for Django that helps you to build pattern libraries.
 
 TODO:
 
-- [ ] Feature: allow to override custom tags.
+- [ ] Feature: allow custom tags to be overridden.
     Should be useful for tags that can write to context (similar to the `SimpleNode`-tags),
     but do not extend `SimpleNode`.
 - [ ] Docs: Describe directory structure
 - [ ] Docs: Describe the approach to the base template
-    which should that includes css and JS.
+    which should include CSS and JS.
     The base template should be very minimalistic.
-- [ ] Docs: Describe yaml structure
+- [ ] Docs: Describe YAML structure
     (how to pass context and mock template tags)
 - [ ] Add examples of dumb data
 - [ ] Add notes on production usage
