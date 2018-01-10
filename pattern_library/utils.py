@@ -4,6 +4,7 @@ from collections import OrderedDict
 
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
+from django.utils.text import mark_safe
 
 import yaml
 
@@ -95,10 +96,26 @@ def get_pattern_config(template_name):
     return context
 
 
+def mark_context_strings_safe(value, parent=None, subscript=None):
+    if isinstance(value, list):
+        for index, sub_value in enumerate(value):
+            mark_context_strings_safe(sub_value, parent=value, subscript=index)
+
+    elif isinstance(value, dict):
+        for key, sub_value in value.items():
+            mark_context_strings_safe(sub_value, parent=value, subscript=key)
+
+    elif isinstance(value, str):
+        parent[subscript] = mark_safe(value)
+
+
 def get_pattern_context(template_name):
     config = get_pattern_config(template_name)
+    context = config.get('context', {})
 
-    return config.get('context', {})
+    mark_context_strings_safe(context)
+
+    return context
 
 
 def render_pattern(request, template_name):
