@@ -2,12 +2,11 @@
 import os
 import sys
 
-import coverage
-
 import django
 from django.conf import settings
 from django.test.utils import get_runner
 
+import coverage
 
 if __name__ == "__main__":
     cov = coverage.Coverage()
