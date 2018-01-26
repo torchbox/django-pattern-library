@@ -1,0 +1,8 @@
+tags:
+  error_tag:
+    empty_string:
+      raw: ''
+    none:
+      raw: null
+    zero:
+      raw: 0

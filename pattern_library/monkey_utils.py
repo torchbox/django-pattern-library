@@ -25,6 +25,7 @@ def override_tag(register, name):
 
         def node_render(context):
             if is_pattern_library_context(context):
+                tag_overridden = False
                 result = ''
 
                 # Load pattern's config
@@ -42,21 +43,23 @@ def override_tag(register, name):
                     # Get config for specific arguments
                     tag_config = tag_config.get(arguments, {})
 
-                    # Return raw data (it can be string or a structure), if defined
+                    if 'raw' in tag_config:
+                        # Return raw data (it can be string or a structure), if defined
+                        result = tag_config['raw']
+                        tag_overridden = True
+                    elif 'template_name' in tag_config:
+                        # Render pattern, if raw string is not defined
+                        template_name = tag_config['template_name']
+                        request = context.get('request')
+                        result = render_pattern(request, template_name)
+                        tag_overridden = True
+
                     # TODO: Allow objects with the __str__ method
                     # In some cases we must return an object that can
                     # be rendered as a string `{{ result }}`
                     # and allow users to access it's attributes `{{ result.url }}`
-                    result = tag_config.get('raw')
 
-                    # Render pattern, if raw string is not defined
-                    if not result:
-                        template_name = tag_config.get('template_name')
-                        if template_name:
-                            request = context.get('request')
-                            result = render_pattern(request, template_name)
-
-                if result:
+                if tag_overridden:
                     if isinstance(original_node, SimpleNode):
                         # If it's a SimpleNode try to use it's target_var
                         target_var = original_node.target_var
