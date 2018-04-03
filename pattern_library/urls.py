@@ -9,7 +9,7 @@ urlpatterns = [
     # UI
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(
-        r'^pattern/(?P<template_name>%s/[\w./-]+%s)$' % (
+        r'^pattern/(?P<pattern_template_name>%s/[\w./-]+%s)$' % (
             get_pattern_template_prefix(), get_pattern_template_suffix()
         ),
         views.IndexView.as_view(),
@@ -18,7 +18,7 @@ urlpatterns = [
 
     # iframe rendering
     url(
-        r'^render-pattern/(?P<template_name>%s/[\w./-]+%s)$' % (
+        r'^render-pattern/(?P<pattern_template_name>%s/[\w./-]+%s)$' % (
             get_pattern_template_prefix(), get_pattern_template_suffix()
         ),
         views.RenderPatternView.as_view(),

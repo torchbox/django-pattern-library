@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!--<link rel="stylesheet" type="text/css" href="{% static 'pattern_library/css/main.css' %}">-->
-    <link rel="stylesheet" type="text/css" href="{% static 'pattern_library/css/syntax.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'pattern_library/css/highlight_styles/monokai.css' %}">
+    <script src="{% static 'pattern_library/js/highlight.pack.js' %}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 <body>
@@ -17,7 +19,7 @@
     <nav style="float:left;">
         <h1>Pattern list</h1>
         <ul>
-            {% for pattern_type, pattern_type_groups in templates.items %}
+            {% for pattern_type, pattern_type_groups in pattern_templates.items %}
                 <li>
                     <h2>{{ pattern_type|title }}</h2>
                     <ul>

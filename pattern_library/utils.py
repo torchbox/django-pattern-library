@@ -6,10 +6,6 @@ from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
 from django.utils.text import mark_safe
 
-from pygments import highlight
-from pygments.lexers.templates import HtmlDjangoLexer
-from pygments.formatters.html import HtmlFormatter
-
 import yaml
 
 from pattern_library import (
@@ -81,23 +77,22 @@ def get_pattern_templates(pattern_types):
     return templates
 
 
-# TODO: Implement cache (should, probably work on per-request basis for easier development)
-def get_pattern_config(template_name):
+def get_pattern_config_str(template_name):
     replace_pattern = '{}$'.format(get_pattern_template_suffix())
     context_file = re.sub(replace_pattern, '', template_name)
 
     context_file = context_file + '.yaml'
     context_file = os.path.join(get_pattern_template_dir(), context_file)
 
-    context = {}
     try:
         with open(context_file, 'r') as f:
-            context = yaml.load(f)
+            return str(f.read())
     except IOError:
-        # It's possible that pattern has no data related
-        pass
+        return ''
 
-    return context
+
+def get_pattern_config(template_name):
+    return yaml.load(get_pattern_config_str(template_name))
 
 
 def mark_context_strings_safe(value, parent=None, subscript=None):
@@ -129,13 +124,3 @@ def render_pattern(request, template_name):
     context = get_pattern_context(template_name)
     context[get_pattern_context_var_name()] = True
     return render_to_string(template_name, request=request, context=context)
-
-
-def render_pattern_listing(template_name):
-    if not is_pattern(template_name):
-        raise TemplateIsNotPattern
-
-    template = get_template(template_name)
-    pattern_listing = highlight(template.template.source, HtmlDjangoLexer(), HtmlFormatter(cssclass="code-listing"))
-
-    return mark_safe(pattern_listing)

@@ -29,7 +29,6 @@ setup(
     install_requires=[
         'Django>=1.11',
         'PyYAML>=3.11',
-        'Pygments>=2.2',
     ],
     extras_require={
         'dev': [
