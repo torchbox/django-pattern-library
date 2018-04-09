@@ -1,15 +1,24 @@
 {% extends 'pattern_library/base.html' %}
 
 {% block content %}
-<section>
-    <h1>{{ template_name }}</h1>
-    <iframe src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}"></iframe>
-    <div>
-        <h2>Template source</h2>
-        <pre><code class="django">{{ pattern_source }}</code></pre>
-    </div>
-    <div>
-        <h2>Template config</h2>
-        <pre><code class="yaml">{{ pattern_config }}</code></pre>
-    </div>
+    <section>
+        <div class="wrapper wrapper--pattern-header">
+            <h1>{{ pattern_template_name }}</h1>
+            <div class="wrapper wrapper--resize-buttons">
+                <button class="button button--resize js-resize-iframe" data-resize="320">S</button>
+                <button class="button button--resize js-resize-iframe" data-resize="768">M</button>
+                <button class="button button--resize js-resize-iframe" data-resize="1024">L</button>
+                <button class="button button--resize js-resize-iframe" data-resize="100">Full</button>
+            </div>
+        </div>
+        <iframe class="iframe js-iframe" src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}"></iframe>
+        <div>
+            <h2>Template source</h2>
+            <pre><code class="django">{{ pattern_source }}</code></pre>
+        </div>
+        <div>
+            <h2>Template config</h2>
+            <pre><code class="yaml">{{ pattern_config }}</code></pre>
+        </div>
+    </section>
 {% endblock %}
