@@ -7,15 +7,11 @@
     <meta charset="UTF-8">
     <title>Django pattern library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!--<link rel="stylesheet" type="text/css" href="{% static 'pattern_library/css/main.css' %}">-->
-    <link rel="stylesheet" type="text/css" href="{% static 'pattern_library/css/highlight_styles/monokai.css' %}">
-    <script src="{% static 'pattern_library/js/highlight.pack.js' %}"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" type="text/css" href="{% static 'pattern_library/src/css/highlight_styles/monokai.css' %}">
 </head>
 
 <body>
-    <h1>Django Pattern Library</h1>
+    <h1>Mikalab</h1>
     <nav style="float:left;">
         <h1>Pattern list</h1>
         <ul>
@@ -46,7 +42,7 @@
     <main style="float: left;">
         {% block content %}{% endblock %}
     </main>
-
+    <script type="text/javascript" src="{% static 'pattern_library/dist/bundle.js' %}"></script>
 </body>
 
 </html>
