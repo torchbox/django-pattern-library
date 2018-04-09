@@ -2,8 +2,8 @@
   "name": "webpack-sass",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
-    "build": "webpack -p"
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -14,8 +14,7 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-cli": "^2.0.14"
   },
   "dependencies": {
     "highlight.js": "^9.12.0"
