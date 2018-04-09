@@ -1,0 +1,9 @@
+.iframe {
+    width: 100%;
+    border: 1px solid $light-grey;
+    margin: 20px 0;
+    resize: horizontal;
+    overflow: auto;
+    height: 300px;
+    transition: width 0.25s ease;
+}

@@ -1,0 +1,18 @@
+.button {
+    &--resize {
+        border: 2px solid $light-grey;
+        color: $light-grey;
+        padding: 5px 10px;
+        margin: 0 5px;
+        font-weight: bold;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.is-active {
+            border: 2px solid $mid-grey;
+            color: $mid-grey;
+        }
+    }
+}
