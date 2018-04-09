@@ -2,4 +2,52 @@
     list-style: none;
     padding: 0;
     margin: 0;
+
+    &--child,
+    &--grandchild {
+        font-size: 13px;
+        color: $mid-grey;
+        display: none;
+
+        &.is-open {
+            display: block;
+        }
+    }
+
+    &--grandchild {
+        padding-left: 15px;
+    }
+
+    &__item {
+        margin-bottom: 10px;
+    }
+
+    &__item-heading {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__item-icon {
+        width: 15px;
+        height: 15px;
+
+        .is-open > & {
+            transform: rotate(90deg);
+        }
+    }
+
+    &__item-icon--small {
+        height: 10px;
+    }
+
+    &__item-link {
+        font-size: inherit;
+    }
 }
+
+
