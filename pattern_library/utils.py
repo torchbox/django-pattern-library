@@ -92,7 +92,10 @@ def get_pattern_config_str(template_name):
 
 
 def get_pattern_config(template_name):
-    return yaml.load(get_pattern_config_str(template_name))
+    config_str = get_pattern_config_str(template_name)
+    if config_str:
+        return yaml.load(config_str)
+    return {}
 
 
 def mark_context_strings_safe(value, parent=None, subscript=None):
