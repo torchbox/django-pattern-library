@@ -22,6 +22,10 @@ import hljs from 'highlight.js';
         const resizeButtons = document.querySelectorAll('.js-resize-iframe');
         const closeButton = document.querySelector('.js-close-iframe');
 
+        patternIframe.contentWindow.addEventListener('resize', function(e){
+            document.querySelector('.js-iframe-size').innerHTML = `${e.target.innerWidth} x ${e.target.innerHeight}`
+        });
+
         // Pop-out iframe
         document.querySelector('.js-resize-iframe-full').addEventListener('click', () => {
             body.classList.add('iframe-open');
@@ -51,9 +55,15 @@ import hljs from 'highlight.js';
         });
     }
 
+    function setIframeSize(){
+        const iframe = document.querySelector('.js-iframe').contentWindow;
+        document.querySelector('.js-iframe-size').innerHTML = `${iframe.innerWidth} x ${iframe.innerHeight}`
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         highlightSyntax();
         togglePatterns();
         toggleIframe();
+        setIframeSize();
     });
 }
