@@ -1,0 +1,14 @@
+.icon {
+    &--cross {
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        z-index: 2;
+        right: 5px;
+        top: 5px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

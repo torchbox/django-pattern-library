@@ -18,7 +18,8 @@ import hljs from 'highlight.js';
 
     function toggleIframe() {
         const patternIframe = document.querySelector('.js-iframe');
-        const buttons = document.querySelectorAll('.js-resize-iframe');
+        const resizeButtons = document.querySelectorAll('.js-resize-iframe');
+        const closeIframe = document.querySelector('.js-close-iframe');
 
         // Pop-out iframe
         document.querySelector('.js-resize-iframe-full').addEventListener('click', () => {
@@ -26,7 +27,7 @@ import hljs from 'highlight.js';
             patternIframe.classList.add('is-fullscreen');
         });
 
-        // Close iframe
+        // Close iframe with escape key
         document.addEventListener('keydown', e => {
             e = e || window.event;
             if (e.key === 'Escape') {
@@ -34,10 +35,14 @@ import hljs from 'highlight.js';
             }
         });
 
+        closeIframe.addEventListener('click', e => {
+            patternIframe.classList.remove('is-fullscreen');
+        })
+
         // Resize iframe
-        buttons.forEach(button => {
+        resizeButtons.forEach(button => {
             button.addEventListener('click', e => {
-                buttons.forEach(button => button.classList.remove('is-active'));
+                resizeButtons.forEach(button => button.classList.remove('is-active'));
                 e.target.classList.add('is-active');
                 patternIframe.style.width =
                     e.target.dataset.resize == 100 ? `${e.target.dataset.resize}%` : `${e.target.dataset.resize}px`;
