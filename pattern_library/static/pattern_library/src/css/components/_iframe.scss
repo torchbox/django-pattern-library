@@ -7,7 +7,7 @@
     height: 300px;
     transition: width 0.25s ease;
 
-    &.is-fullscreen {
+    .iframe-open & {
         position: absolute;
         top: 0;
         left: 0;
