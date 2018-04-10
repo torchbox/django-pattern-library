@@ -15,4 +15,11 @@
             color: $mid-grey;
         }
     }
+
+    &__icon {
+        width: 18px;
+        height: 20px;
+        fill: $light-grey;
+        vertical-align: middle;
+    }
 }
