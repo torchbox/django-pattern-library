@@ -22,7 +22,16 @@ import hljs from 'highlight.js';
         const resizeButtons = document.querySelectorAll('.js-resize-iframe');
         const closeButton = document.querySelector('.js-close-iframe');
 
-        patternIframe.contentWindow.addEventListener('resize', function(e){
+        // remove animating class to prevent delay when dragging iframe
+        patternIframe.addEventListener('mousedown', function(){
+            this.classList.remove('is-animatable');
+        });
+
+        patternIframe.addEventListener('mouseup', function(){
+            this.classList.add('is-animatable');
+        });
+
+        patternIframe.contentWindow.addEventListener('resize', (e) => {
             document.querySelector('.js-iframe-size').innerHTML = `${e.target.innerWidth} x ${e.target.innerHeight}`
         });
 

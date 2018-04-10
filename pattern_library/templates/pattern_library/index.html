@@ -15,7 +15,7 @@
                 </button>
             </div>
         </div>
-        <iframe class="iframe js-iframe" src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}"></iframe>
+        <iframe class="iframe js-iframe is-animatable" src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}"></iframe>
         <div>
             <h2>Template source</h2>
             <pre><code class="django">{{ pattern_source }}</code></pre>
