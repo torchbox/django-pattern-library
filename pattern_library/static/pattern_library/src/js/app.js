@@ -2,11 +2,11 @@ import '../css/main.scss';
 import hljs from 'highlight.js';
 
 {
-    function highlightSyntax() {
+    function addSyntaxHighlighting() {
         hljs.initHighlightingOnLoad();
     }
 
-    function togglePatterns() {
+    function togglePatternNav() {
         const headings = document.querySelectorAll('.js-toggle-pattern');
         headings.forEach(heading => {
             heading.addEventListener('click', e => {
@@ -16,7 +16,7 @@ import hljs from 'highlight.js';
         });
     }
 
-    function toggleIframe() {
+    function resizeIframe() {
         const body = document.querySelector('body');
         const patternIframe = document.querySelector('.js-iframe');
         const resizeButtons = document.querySelectorAll('.js-resize-iframe');
@@ -40,11 +40,12 @@ import hljs from 'highlight.js';
             }
         });
 
+        // Close iframe via icon
         closeButton.addEventListener('click', e => {
             body.classList.remove('iframe-open');
         })
 
-        // Resize iframe
+        // Resize iframe via buttons
         resizeButtons.forEach(button => {
             button.addEventListener('click', e => {
                 resizeButtons.forEach(button => button.classList.remove('is-active'));
@@ -61,9 +62,9 @@ import hljs from 'highlight.js';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        highlightSyntax();
-        togglePatterns();
-        toggleIframe();
+        addSyntaxHighlighting();
+        togglePatternNav();
+        resizeIframe();
         setIframeSize();
     });
 }
