@@ -6,4 +6,15 @@
     overflow: auto;
     height: 300px;
     transition: width 0.25s ease;
+
+    &.is-fullscreen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: $white;
+        margin: 0;
+        border: 0;
+        resize: none;
+    }
 }
