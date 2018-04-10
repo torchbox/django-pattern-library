@@ -17,26 +17,27 @@ import hljs from 'highlight.js';
     }
 
     function toggleIframe() {
+        const body = document.querySelector('body');
         const patternIframe = document.querySelector('.js-iframe');
         const resizeButtons = document.querySelectorAll('.js-resize-iframe');
-        const closeIframe = document.querySelector('.js-close-iframe');
+        const closeButton = document.querySelector('.js-close-iframe');
 
         // Pop-out iframe
         document.querySelector('.js-resize-iframe-full').addEventListener('click', () => {
+            body.classList.add('iframe-open');
             patternIframe.style.removeProperty('width');
-            patternIframe.classList.add('is-fullscreen');
         });
 
         // Close iframe with escape key
         document.addEventListener('keydown', e => {
             e = e || window.event;
             if (e.key === 'Escape') {
-                document.querySelector('.js-iframe').classList.remove('is-fullscreen');
+                body.classList.remove('iframe-open');
             }
         });
 
-        closeIframe.addEventListener('click', e => {
-            patternIframe.classList.remove('is-fullscreen');
+        closeButton.addEventListener('click', e => {
+            body.classList.remove('iframe-open');
         })
 
         // Resize iframe
