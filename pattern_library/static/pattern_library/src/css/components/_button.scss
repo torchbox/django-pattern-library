@@ -5,6 +5,7 @@
         padding: 5px 10px;
         margin: 0 5px;
         font-weight: bold;
+        background-color: $off-white;
 
         &:hover {
             cursor: pointer;
@@ -13,6 +14,10 @@
         &.is-active {
             border: 2px solid $mid-grey;
             color: $mid-grey;
+        }
+
+        &:last-of-type {
+            margin: 0 0 0 5px;
         }
     }
 
