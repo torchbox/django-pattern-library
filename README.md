@@ -1,7 +1,25 @@
 # Django pattern library
 
-A module for Django that helps you to build pattern libraries.
+A module for Django that helps you to build pattern libraries and follow the
+[Atomic design](http://bradfrost.com/blog/post/atomic-web-design/) methodology.
 
+## Objective
+
+At the moment, the main focus is to allow developers and designers
+use exactly the same Django templates in a design pattern library
+and in production code.
+
+There are a lot of alternative solutions for building
+pattern libraries already. Have a look at [Pattern Lab](http://patternlab.io/) and
+[Astrum](http://astrum.nodividestudio.com/), for example.
+But at [Torchbox](https://torchbox.com/) we mainly use Python and Django and
+we find it hard to maintain layout on big projects in several places:
+in a project's pattern library and in actual production code. This is our
+attempt to solve this issue and reduce the amount of copy-pasted code.
+
+## Documentation
+
+Documentation is located [here](./docs).
 
 ## How to install
 
@@ -69,17 +87,7 @@ A module for Django that helps you to build pattern libraries.
 
 TODO:
 
-- [ ] Feature: allow custom tags to be overridden.
-    Should be useful for tags that can write to context (similar to the `SimpleNode`-tags),
-    but do not extend `SimpleNode`.
-- [ ] Docs: Describe directory structure
-- [ ] Docs: Describe the approach to the base template
-    which should include CSS and JS.
-    The base template should be very minimalistic.
-- [ ] Docs: Describe YAML structure
-    (how to pass context and mock template tags)
-- [ ] Add examples of dumb data
-- [ ] Add notes on production usage
+- [ ] Add a note about production usage
 - [ ] Tests: Add tests.
     It's ok to not bother about tests during prototyping,
     but it will be extremely hard to maintain
