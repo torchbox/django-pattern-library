@@ -61,10 +61,17 @@ import hljs from 'highlight.js';
         document.querySelector('.js-iframe-size').innerHTML = `${iframe.innerWidth} x ${iframe.innerHeight}`
     }
 
+    function toggleNav() {
+        document.querySelector('.js-close-menu').addEventListener('click', function(e){
+            document.querySelector('body').classList.toggle('nav-open');
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         addSyntaxHighlighting();
         togglePatternNav();
         resizeIframe();
         setIframeSize();
+        toggleNav();
     });
 }

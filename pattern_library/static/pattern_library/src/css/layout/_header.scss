@@ -1,6 +1,8 @@
 .header {
     background-color: $aqua;
-    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    height: 45px;
 
     &__title {
         color: $white;
@@ -8,5 +10,6 @@
         text-transform: uppercase;
         letter-spacing: 5px;
         font-size: 22px;
+        margin-left: 10px;
     }
 }
