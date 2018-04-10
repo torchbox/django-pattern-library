@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
         hljs.initHighlightingOnLoad();
     }
 
-    function togglePatternNav() {
+    function toggleNavItems() {
         const headings = document.querySelectorAll('.js-toggle-pattern');
         headings.forEach(heading => {
             heading.addEventListener('click', e => {
@@ -69,7 +69,7 @@ import hljs from 'highlight.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         addSyntaxHighlighting();
-        togglePatternNav();
+        toggleNavItems();
         resizeIframe();
         setIframeSize();
         toggleNav();
