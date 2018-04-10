@@ -6,6 +6,10 @@
     overflow: auto;
     height: 300px;
 
+    &.is-animatable {
+        transition: width 0.25s ease;
+    }
+
     .iframe-open & {
         position: absolute;
         top: 0;
