@@ -26,6 +26,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 10px;
+        user-select: none;
 
         &:hover {
             cursor: pointer;
