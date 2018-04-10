@@ -5,10 +5,11 @@ $off-white: #f6f6f6;
 $light-grey: #c4c4c4;
 $mid-grey: #606060;
 
-
-html, body {
+html,
+body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     height: 100%;
 }
 
@@ -16,7 +17,12 @@ body {
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
     font-weight: 400;
 }
