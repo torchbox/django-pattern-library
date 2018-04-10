@@ -32,6 +32,10 @@
         &:hover {
             cursor: pointer;
         }
+
+        &--light {
+            font-weight: 200;
+        }
     }
 
     &__item-icon {
