@@ -3,4 +3,10 @@
     padding: 20px;
     max-width: 240px;
     width: 100%;
+    transition: margin 0.25s ease;
+    margin-left: 0;
+
+    .nav-open & {
+        margin-left: -280px;
+    }
 }

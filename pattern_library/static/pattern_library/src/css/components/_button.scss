@@ -16,6 +16,15 @@
         }
     }
 
+    &--close-menu {
+        display: flex;
+        background-color: $off-black;
+        align-self: stretch;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+    }
+
     &__icon {
         width: 18px;
         height: 20px;

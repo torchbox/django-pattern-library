@@ -16,4 +16,15 @@
             display: block;
         }
     }
+
+    &--close-menu {
+        width: 14px;
+        height: 14px;
+        fill: $white;
+        transition: transform 0.25s ease;
+
+        .nav-open & {
+            transform: rotate(-45deg);
+        }
+    }
 }
