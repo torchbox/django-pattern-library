@@ -56,7 +56,7 @@ import hljs from 'highlight.js';
         });
     }
 
-    function setIframeSize(){
+    function setIframeSize() {
         const iframe = document.querySelector('.js-iframe').contentWindow;
         document.querySelector('.js-iframe-size').innerHTML = `${iframe.innerWidth} x ${iframe.innerHeight}`
     }
