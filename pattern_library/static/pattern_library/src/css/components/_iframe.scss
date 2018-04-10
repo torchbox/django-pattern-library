@@ -5,7 +5,6 @@
     resize: horizontal;
     overflow: auto;
     height: 300px;
-    transition: width 0.25s ease;
 
     .iframe-open & {
         position: absolute;
