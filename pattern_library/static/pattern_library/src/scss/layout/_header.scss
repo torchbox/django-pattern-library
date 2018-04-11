@@ -1,5 +1,5 @@
 .header {
-    background-color: $aqua;
+    background-color: $color-primary;
     display: flex;
     align-items: center;
     height: 45px;
@@ -10,6 +10,10 @@
         text-transform: uppercase;
         letter-spacing: 5px;
         font-size: 22px;
-        margin-left: 10px;
+        margin-left: 15px;
+
+        &::after {
+            content: $site-title;
+        }
     }
 }
