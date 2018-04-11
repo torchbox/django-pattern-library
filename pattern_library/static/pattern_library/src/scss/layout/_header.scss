@@ -3,6 +3,16 @@
     display: flex;
     align-items: center;
     height: 45px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 210px;
+    transition: opacity 0.25s ease;
+
+    .nav-open & {
+        width: 45px;
+    }
+
 
     &__title {
         color: $white;
@@ -11,6 +21,10 @@
         letter-spacing: 5px;
         font-size: 22px;
         margin-left: 15px;
+
+        .nav-open & {
+            display: none;
+        }
 
         &::after {
             content: $site-title;

@@ -2,4 +2,9 @@
     flex-grow: 1;
     padding: 20px;
     background: $white;
+    transition: padding 0.25s ease;
+
+    .nav-open & {
+        padding: 20px 20px 20px 70px;
+    }
 }

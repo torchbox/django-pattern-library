@@ -3,7 +3,20 @@
     height: 100%;
 
     &--pattern-header {
-        align-items: center;
         justify-content: space-between;
+        flex-direction: column;
+
+        @media only screen and (min-width: 1080px) {
+            align-items: center;
+            flex-direction: row;
+        }
+    }
+
+    &--resize-buttons {
+        margin-top: 20px;
+
+        @media only screen and (min-width: 1080px) {
+            margin-top: 0;
+        }
     }
 }

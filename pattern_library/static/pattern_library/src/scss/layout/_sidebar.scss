@@ -1,12 +1,11 @@
 .sidebar {
     background-color: $off-white;
-    padding: 20px;
-    max-width: 240px;
-    width: 100%;
+    width: 210px;
     transition: margin 0.25s ease;
     margin-left: 0;
+    padding-top: 45px;
 
     .nav-open & {
-        margin-left: -280px;
+        margin-left: -210px;
     }
 }
