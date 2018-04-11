@@ -1,5 +1,4 @@
 .header {
-    background-color: $color-primary;
     display: flex;
     align-items: center;
     height: 45px;
@@ -13,21 +12,27 @@
         width: 45px;
     }
 
-
     &__title {
+        background-color: $color-primary;
         color: $white;
         font-weight: 200;
         text-transform: uppercase;
         letter-spacing: 5px;
         font-size: 22px;
-        margin-left: 15px;
+        opacity: 1;
+        height: 45px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        transition: opacity 0.25s ease;
 
         .nav-open & {
-            display: none;
+            opacity: 0;
         }
 
         &::after {
             content: $site-title;
+            padding-left: 15px;
         }
     }
 }
