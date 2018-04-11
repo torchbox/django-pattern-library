@@ -1,9 +1,13 @@
 import '../css/main.scss';
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/highlight';
 
 {
     function addSyntaxHighlighting() {
         hljs.initHighlightingOnLoad();
+        ['django', 'yaml'].forEach((langName) => {
+            const langModule = require(`highlight.js/lib/languages/${langName}`);
+            hljs.registerLanguage(langName, langModule);
+        });
     }
 
     function toggleNavItems() {

@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/js/app.js',
@@ -31,5 +32,11 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ContextReplacementPlugin(
+            /highlight\.js\/lib\/languages$/,
+            new RegExp(`^./(${['django', 'yaml'].join('|')})$`)
+        )
+    ]
 };
