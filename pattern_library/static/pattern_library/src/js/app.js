@@ -1,4 +1,4 @@
-import '../css/main.scss';
+import '../scss/main.scss';
 import hljs from 'highlight.js/lib/highlight';
 
 {
