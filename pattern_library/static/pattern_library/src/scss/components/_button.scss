@@ -28,6 +28,8 @@
         align-items: center;
         justify-content: center;
         padding: 15px;
+        position: relative;
+        z-index: 2;
     }
 
     &__icon {
