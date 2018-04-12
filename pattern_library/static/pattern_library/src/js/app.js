@@ -7,6 +7,7 @@ import hljs from 'highlight.js/lib/highlight';
         return Array.prototype.slice.call(document.querySelectorAll(selector));
     }
 
+    // languages for syntax highlighting
     function addSyntaxHighlighting() {
         hljs.initHighlightingOnLoad();
         ['django', 'yaml'].forEach((langName) => {
@@ -15,6 +16,7 @@ import hljs from 'highlight.js/lib/highlight';
         });
     }
 
+    // show/hide menu items
     function toggleNavItems() {
         const headings = arrayMaker('.js-toggle-pattern');
         headings.forEach(heading => {
@@ -25,7 +27,8 @@ import hljs from 'highlight.js/lib/highlight';
         });
     }
 
-    function resizeIframe() {
+    //  handles resizing the pattern window iframe
+    function handleIframe() {
         const body = document.querySelector('body');
         const resizeButtons = arrayMaker('.js-resize-iframe');
         const patternIframe = document.querySelector('.js-iframe');
@@ -40,17 +43,18 @@ import hljs from 'highlight.js/lib/highlight';
             this.classList.add('is-animatable');
         });
 
-        patternIframe.contentWindow.addEventListener('resize', (e) => {
+        // update iframe dimensions text
+        patternIframe.contentWindow.addEventListener('resize', e => {
             document.querySelector('.js-iframe-size').innerHTML = `${e.target.innerWidth} x ${e.target.innerHeight}`
         });
 
-        // Pop-out iframe
+        // pop-out iframe
         document.querySelector('.js-resize-iframe-full').addEventListener('click', () => {
-            body.classList.add('iframe-open');
             patternIframe.style.removeProperty('width');
+            body.classList.add('iframe-open');
         });
 
-        // Close iframe with escape key
+        // close iframe with escape key
         document.addEventListener('keydown', e => {
             e = e || window.event;
             if (e.key === 'Escape') {
@@ -58,38 +62,43 @@ import hljs from 'highlight.js/lib/highlight';
             }
         });
 
-        // Close iframe via icon
-        closeButton.addEventListener('click', e => {
-            body.classList.remove('iframe-open');
-        })
+        // close iframe via icon
+        closeButton.addEventListener('click', () => body.classList.remove('iframe-open'));
 
-        // Resize iframe via buttons
+        // resize iframe via buttons
         resizeButtons.forEach(button => {
             button.addEventListener('click', e => {
+                // remove active state from all buttons
                 resizeButtons.forEach(button => button.classList.remove('is-active'));
+
+                // add active state to target
                 e.target.classList.add('is-active');
+
+                // fullscreen value is a percentage, everything else is px
                 patternIframe.style.width =
                     e.target.dataset.resize == 100 ? `${e.target.dataset.resize}%` : `${e.target.dataset.resize}px`;
             });
         });
     }
 
-    function setIframeSize() {
+    // update the dimensions of the iframe on page load
+    function setIframeDimensionsText() {
         const iframe = document.querySelector('.js-iframe').contentWindow;
         document.querySelector('.js-iframe-size').innerHTML = `${iframe.innerWidth} x ${iframe.innerHeight}`
     }
 
+    // show/hide the nav
     function toggleNav() {
-        document.querySelector('.js-close-menu').addEventListener('click', e => {
+        document.querySelector('.js-close-menu').addEventListener('click', () => {
             document.querySelector('body').classList.toggle('nav-closed');
         });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        addSyntaxHighlighting();
-        toggleNavItems();
-        resizeIframe();
-        setIframeSize();
         toggleNav();
+        handleIframe();
+        toggleNavItems();
+        addSyntaxHighlighting();
+        setIframeDimensionsText();
     });
 }
