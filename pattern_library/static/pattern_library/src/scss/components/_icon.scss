@@ -23,7 +23,7 @@
         fill: $white;
         transition: transform 0.25s ease;
 
-        .nav-open & {
+        .nav-closed & {
             transform: rotate(-45deg);
         }
     }

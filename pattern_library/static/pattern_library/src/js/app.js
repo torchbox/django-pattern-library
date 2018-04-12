@@ -76,7 +76,7 @@ import hljs from 'highlight.js/lib/highlight';
 
     function toggleNav() {
         document.querySelector('.js-close-menu').addEventListener('click', (e) => {
-            document.querySelector('body').classList.toggle('nav-open');
+            document.querySelector('body').classList.toggle('nav-closed');
         });
     }
 
