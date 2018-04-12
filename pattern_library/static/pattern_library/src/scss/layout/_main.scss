@@ -4,7 +4,7 @@
     background: $white;
     transition: padding 0.25s ease;
 
-    .nav-open & {
+    .nav-closed & {
         padding: 20px 20px 20px 70px;
     }
 }

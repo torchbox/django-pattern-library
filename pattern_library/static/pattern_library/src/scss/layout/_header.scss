@@ -8,7 +8,7 @@
     width: 210px;
     transition: opacity 0.25s ease;
 
-    .nav-open & {
+    .nav-closed & {
         width: 45px;
     }
 
@@ -26,7 +26,7 @@
         align-items: center;
         transition: opacity 0.25s ease;
 
-        .nav-open & {
+        .nav-closed & {
             opacity: 0;
         }
 
