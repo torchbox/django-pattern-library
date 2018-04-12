@@ -14,23 +14,19 @@
         }
     }
 
-    &--grandchild {
-        padding-left: 15px;
-    }
-
-    &__item {
-        margin-bottom: 10px;
-    }
-
     &__item-heading {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
         user-select: none;
         font-weight: 500;
+        border-bottom: 1px solid $foggier;
+        padding: 10px;
+        background-color: transparent;
+        transition: background-color 0.25s ease;
 
         &:hover {
             cursor: pointer;
+            background-color: $foggy;
         }
 
         &--light {
@@ -41,6 +37,7 @@
     &__item-icon {
         width: 15px;
         height: 15px;
+        margin-right: 5px;
 
         .is-open > & {
             transform: rotate(90deg);
@@ -53,6 +50,17 @@
 
     &__item-link {
         font-size: inherit;
+        padding: 10px 15px 10px 30px;
+        display: block;
+        color: $mid-grey;
+        text-decoration: none;
+        border-bottom: 1px solid $foggier;
+        background: transparent;
+        transition: background-color 0.25s ease;
+
+        &:hover {
+            background-color: $foggy;
+        }
     }
 }
 
