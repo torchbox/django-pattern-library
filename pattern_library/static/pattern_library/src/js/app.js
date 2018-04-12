@@ -2,6 +2,11 @@ import '../scss/main.scss';
 import hljs from 'highlight.js/lib/highlight';
 
 {
+    // return an array from a given selector
+    function arrayMaker(selector) {
+        return Array.prototype.slice.call(document.querySelectorAll(selector));
+    }
+
     function addSyntaxHighlighting() {
         hljs.initHighlightingOnLoad();
         ['django', 'yaml'].forEach((langName) => {
@@ -11,7 +16,7 @@ import hljs from 'highlight.js/lib/highlight';
     }
 
     function toggleNavItems() {
-        const headings = document.querySelectorAll('.js-toggle-pattern');
+        const headings = arrayMaker('.js-toggle-pattern');
         headings.forEach(heading => {
             heading.addEventListener('click', e => {
                 e.target.classList.toggle('is-open');
@@ -22,8 +27,8 @@ import hljs from 'highlight.js/lib/highlight';
 
     function resizeIframe() {
         const body = document.querySelector('body');
+        const resizeButtons = arrayMaker('.js-resize-iframe');
         const patternIframe = document.querySelector('.js-iframe');
-        const resizeButtons = document.querySelectorAll('.js-resize-iframe');
         const closeButton = document.querySelector('.js-close-iframe');
 
         // remove animating class to prevent delay when dragging iframe
