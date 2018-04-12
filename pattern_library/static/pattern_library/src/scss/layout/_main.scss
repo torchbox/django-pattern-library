@@ -1,10 +1,10 @@
 .main {
     flex-grow: 1;
-    padding: 20px;
+    padding: 30px;
     background: $white;
     transition: padding 0.25s ease;
 
     .nav-closed & {
-        padding: 20px 20px 20px 70px;
+        padding: 20px 20px 20px 65px;
     }
 }

@@ -6,7 +6,6 @@
     top: 0;
     left: 0;
     width: 210px;
-    transition: opacity 0.25s ease;
 
     .nav-closed & {
         width: 45px;
@@ -19,15 +18,15 @@
         text-transform: uppercase;
         letter-spacing: 5px;
         font-size: 22px;
-        opacity: 1;
         height: 45px;
         display: flex;
         width: 100%;
         align-items: center;
-        transition: opacity 0.25s ease;
+        transform: translateX(0);
+        transition: transform .25s ease;
 
         .nav-closed & {
-            opacity: 0;
+            transform: translateX(-210px);
         }
 
         &::after {
