@@ -38,6 +38,7 @@
         width: 15px;
         height: 15px;
         margin-right: 5px;
+        fill: $light-grey;
 
         .is-open > & {
             transform: rotate(90deg);
