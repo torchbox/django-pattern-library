@@ -89,6 +89,11 @@ import hljs from 'highlight.js/lib/highlight';
 
     // show/hide the nav
     function toggleNav() {
+        // if the viewport is less than 600px then don't show the nav on page load
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            document.querySelector('body').classList.add('nav-closed');
+        }
+
         document.querySelector('.js-close-menu').addEventListener('click', () => {
             document.querySelector('body').classList.toggle('nav-closed');
         });
