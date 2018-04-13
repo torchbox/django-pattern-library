@@ -50,7 +50,7 @@ import hljs from 'highlight.js/lib/highlight';
 
         // pop-out iframe
         document.querySelector('.js-resize-iframe-full').addEventListener('click', () => {
-            patternIframe.style.removeProperty('width');
+            patternIframe.removeAttribute('style');
             body.classList.add('iframe-open');
         });
 
