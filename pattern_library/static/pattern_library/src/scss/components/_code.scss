@@ -1,9 +1,0 @@
-.code {
-    width: 600px;
-    overflow: scroll;
-
-    @media only screen and (min-width: 1200px) {
-        width: calc(100% - 10px);
-        overflow: auto;
-    }
-}

@@ -12,8 +12,14 @@
         }
     }
 
-    &--resize-buttons {
-        margin-top: 20px;
+    &--iframe-meta {
+        margin-top: 10px;
+        flex-direction: column;
+
+        @media only screen and (min-width: 500px) {
+            margin-top: 20px;
+            flex-direction: row;
+        }
 
         @media only screen and (min-width: 1080px) {
             margin-top: 0;

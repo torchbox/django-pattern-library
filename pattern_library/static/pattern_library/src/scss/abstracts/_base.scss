@@ -24,6 +24,10 @@ a {
     word-wrap: break-word;
 }
 
+pre {
+    white-space: pre-wrap;
+}
+
 .section-group-heading:not(:first-of-type) {
     margin-top: 100px;
 }

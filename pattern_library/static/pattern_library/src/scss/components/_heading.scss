@@ -1,11 +1,19 @@
 .heading {
     &--iframe-size {
         background-color: $white;
-        align-self: center;
         margin-right: 10px;
-        padding: 10px;
+        padding: 10px 0;
         width: 90px;
         text-align: center;
         color: $mid-grey;
+
+        @media only screen and (min-width: 500px) {
+            align-items: center;
+            padding: 10px;
+        }
+    }
+
+    &--pattern-title {
+        word-break: break-all; // only for when the pattern url is being used as the heading
     }
 }
