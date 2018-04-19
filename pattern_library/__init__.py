@@ -2,7 +2,7 @@ import importlib
 from functools import wraps
 
 
-__version__ = '0.1.7'
+__version__ = '0.1.8'
 
 default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
 settings = None
