@@ -85,7 +85,12 @@ Documentation is located [here](./docs).
     ```
 
 
-TODO:
+## Developer docs
+
+Developer docs can be found [here](./docs/dev_process.md).
+
+
+## TODO
 
 - [ ] Add a note about production usage
 - [ ] Tests: Add tests.
