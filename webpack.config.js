@@ -1,10 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const staticDir = path.resolve(__dirname, 'pattern_library', 'static', 'pattern_library');
+
 module.exports = {
-    entry: './src/js/app.js',
+    entry: path.join(staticDir, 'src', 'js', 'app.js'),
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.join(staticDir, 'dist'),
         filename: 'bundle.js',
         publicPath: './dist'
     },
