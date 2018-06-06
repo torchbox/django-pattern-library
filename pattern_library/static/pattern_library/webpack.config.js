@@ -34,6 +34,10 @@ module.exports = {
         ]
     },
     plugins: [
+        // Rather than import the entire contents of the
+        // highlight lib (which includes languages we’re not using)
+        // you can just import the languages you want to highlight,
+        // therefore drastically reducing the bundle size
         new webpack.ContextReplacementPlugin(
             /highlight\.js\/lib\/languages$/,
             new RegExp(`^./(${['django', 'yaml'].join('|')})$`)
