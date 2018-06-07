@@ -1,12 +1,15 @@
 .sidebar {
     background-color: $off-white;
     padding: 20px;
-    max-width: 240px;
-    width: 100%;
+    width: 230px;
     transition: margin 0.25s ease;
     margin-left: 0;
 
+    @media only screen and (min-width: 1200px) {
+        overflow: hidden;
+    }
+
     .nav-closed & {
-        margin-left: -280px;
+        margin-left: -230px;
     }
 }
