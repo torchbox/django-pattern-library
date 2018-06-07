@@ -54,11 +54,6 @@ import hljs from 'highlight.js/lib/highlight';
             }
         });
 
-        // Close iframe via icon
-        closeButton.addEventListener('click', e => {
-            body.classList.remove('iframe-open');
-        })
-
         // Resize iframe via buttons
         resizeButtons.forEach(button => {
             button.addEventListener('click', e => {

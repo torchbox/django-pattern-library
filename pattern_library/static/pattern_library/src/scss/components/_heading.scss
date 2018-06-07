@@ -4,4 +4,32 @@
         align-self: center;
         margin-right: 10px;
     }
+
+    &--iframe-hint {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.78);
+        padding: 20px;
+        border-radius: 10px;
+        font-weight: bold;
+        color: $white;
+        opacity: 0;
+
+        .iframe-open & {
+            animation-delay: .2s;
+            animation-name: fadeInOut;
+            animation-iteration-count: 1;
+            animation-timing-function: ease-in;
+            animation-duration: 1.75s;
+        }
+
+        span {
+            border: 1px solid $white;
+            padding: 10px 5px;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+    }
 }
