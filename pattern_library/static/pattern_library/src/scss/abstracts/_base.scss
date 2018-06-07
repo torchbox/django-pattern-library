@@ -1,12 +1,14 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html,
 body {
     margin: 0;
     font-family: $family-primary;
     height: 100%;
-}
-
-body {
-    box-sizing: border-box;
 }
 
 p,
