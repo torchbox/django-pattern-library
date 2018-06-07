@@ -43,6 +43,7 @@ import hljs from 'highlight.js/lib/highlight';
         document.querySelector('.js-resize-iframe-full').addEventListener('click', () => {
             body.classList.add('iframe-open');
             patternIframe.style.removeProperty('width');
+            patternIframe.style.removeProperty('height');
         });
 
         // Close iframe with escape key
