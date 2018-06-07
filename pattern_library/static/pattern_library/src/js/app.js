@@ -14,8 +14,8 @@ import hljs from 'highlight.js/lib/highlight';
         const headings = document.querySelectorAll('.js-toggle-pattern');
         headings.forEach(heading => {
             heading.addEventListener('click', e => {
-                event.target.classList.toggle('is-open');
-                event.target.nextElementSibling.classList.toggle('is-open');
+                e.target.classList.toggle('is-open');
+                e.target.nextElementSibling.classList.toggle('is-open');
             });
         });
     }
