@@ -4,16 +4,30 @@ from django.utils.html import escape
 from django.views.generic.base import TemplateView
 
 from pattern_library import get_pattern_base_template_name, get_pattern_types
-from pattern_library.exceptions import TemplateIsNotPattern
+from pattern_library.exceptions import TemplateIsNotPattern, PatternLibraryEmpty
 from pattern_library.utils import (
-    get_pattern_config_str, get_pattern_templates, is_pattern_type,
-    render_pattern
+    get_pattern_config_str, get_pattern_template_dir, get_pattern_templates,
+    is_pattern_type, render_pattern
 )
 
 
 class IndexView(TemplateView):
     http_method_names = ('get', )
     template_name = 'pattern_library/index.html'
+
+    def get_first_template(self, templates):
+        for pattern_type in templates:
+            pattern_groups = templates[pattern_type]
+            for pattern_group in pattern_groups:
+                pattern_templates = pattern_groups[pattern_group]
+                for pattern_template in pattern_templates:
+                    return pattern_template.origin.template_name
+        else:
+            raise PatternLibraryEmpty(
+                "No templates found in the pattern library at '%s'"
+                % get_pattern_template_dir()
+            )
+
 
     def get(self, request, pattern_template_name=None):
         # Get all pattern templates
@@ -22,15 +36,7 @@ class IndexView(TemplateView):
 
         if pattern_template_name is None:
             # Just display the first pattern if a specific one isn't requested
-            for pattern_type in templates:
-                pattern_groups = templates[pattern_type]
-                for pattern_group in pattern_groups:
-                    pattern_templates = pattern_groups[pattern_group]
-                    for pattern_template in pattern_templates:
-                        pattern_template_name = pattern_template.origin.template_name
-                        break
-                    break
-                break
+            pattern_template_name = self.get_first_template(templates)
 
         template = get_template(pattern_template_name)
 
