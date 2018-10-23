@@ -16,8 +16,6 @@ The initial structure of your pattern library should look like this:
 ```
 .
 ├── apps.py
-├── static
-|   └── static_src
 ├── templates
 |   └── patterns
 |       |── atoms
@@ -29,8 +27,6 @@ The initial structure of your pattern library should look like this:
 ```
 
 - an `apps.py` file declaring the pattern library as an installable app
-- a `static/static_src` directory for holding unprocessed scripts, styles and
-  images
 - a `templates/patterns` directory with subfolders for the different levels of
   pattern, following standard atomic design naming conventions
 - a `templatetags` directory for holding template tag overrides (see below)
