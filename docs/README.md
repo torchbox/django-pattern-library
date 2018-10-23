@@ -26,7 +26,9 @@ The initial structure of your pattern library should look like this:
 ```
 
 - a `templates/patterns` directory with subfolders for the different levels of
-  pattern, following standard atomic design naming conventions
+  pattern, following standard atomic design naming conventions.
+  - Your `PATTERN_LIBRARY_TEMPLATE_DIR` setting should point to the library's
+    root `templates` directory
 - a `templatetags` directory for holding template tag overrides (see below)
 
 
