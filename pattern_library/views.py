@@ -22,11 +22,11 @@ class IndexView(TemplateView):
                 pattern_templates = pattern_groups[pattern_group]
                 for pattern_template in pattern_templates:
                     return pattern_template.origin.template_name
-        else:
-            raise PatternLibraryEmpty(
-                "No templates found in the pattern library at '%s'"
-                % get_pattern_template_dir()
-            )
+
+        raise PatternLibraryEmpty(
+            "No templates found in the pattern library at '%s'"
+            % get_pattern_template_dir()
+        )
 
 
     def get(self, request, pattern_template_name=None):

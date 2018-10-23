@@ -9,5 +9,4 @@ class TemplateIsNotPattern(PatternLibraryException):
 
 
 class PatternLibraryEmpty(PatternLibraryException):
-    def __init__(self, message):
-        self.message = message
+    pass
