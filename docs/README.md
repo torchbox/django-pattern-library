@@ -9,6 +9,29 @@ To achieve this the package must to provide a way to:
 * Define a fake context for templates
 * Override template tags (default and custom ones)
 
+## Directory structure
+
+The initial structure of your pattern library should look like this:
+
+```
+.
+├── templates
+|   └── patterns
+|       |── atoms
+|       |── molecules
+|       |── organisms
+|       |── templates
+|       └── pages
+└── templatetags
+```
+
+- a `templates/patterns` directory with subfolders for the different levels of
+  pattern, following standard atomic design naming conventions.
+  - Your `PATTERN_LIBRARY_TEMPLATE_DIR` setting should point to the library's
+    root `templates` directory
+- a `templatetags` directory for holding template tag overrides (see below)
+
+
 ## Defining fake context for templates
 
 To define fake context you need to create a `yaml` file alongside your
@@ -319,7 +342,6 @@ Note the `target_var` field.
 **TODO:**
 
 - [ ] Check all examples;
-- [ ] Describe recommended directory structure;
 - [ ] Describe the approach to the base template
     which should include CSS and JS;
   * The base template should be very minimalistic;
