@@ -6,3 +6,7 @@ class PatternLibraryException(Exception):
 
 class TemplateIsNotPattern(PatternLibraryException):
     pass
+
+
+class PatternLibraryEmpty(PatternLibraryException):
+    pass
