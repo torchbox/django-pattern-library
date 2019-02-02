@@ -1,4 +1,5 @@
 test:
+  image: python:3.6-alpine
   before_script:
     - pip install tox
   script:
