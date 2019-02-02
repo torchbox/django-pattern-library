@@ -3,8 +3,11 @@
     padding: 20px;
     width: 230px;
     height: 100vh;
-    transition: margin 0.25s ease;
     margin-left: 0;
+
+    @media only screen and (min-width: 600px) {
+        transition: margin 0.25s ease;
+    }
 
     @media only screen and (min-width: 1200px) {
         overflow: hidden;
@@ -12,5 +15,26 @@
 
     .nav-closed & {
         margin-left: -230px;
+    }
+
+    &__search {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+        margin: 0 0 15px;
+    }
+
+    &__search-results {
+        > a {
+            margin-bottom: 7px;
+            display: block;
+            font-size: 13px;
+        }
+    }
+
+    &__nav {
+        &--inactive {
+            display: none;
+        }
     }
 }
