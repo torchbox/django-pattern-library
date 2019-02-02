@@ -116,8 +116,8 @@ import hljs from 'highlight.js/lib/highlight';
                 patternListContainer.classList.remove('sidebar__nav--inactive');
             }
 
-            // On enter
-            if (e.keyCode == 13) {
+            // On enter key
+            if (e.keyCode == 13 && searchValue != '') {
 
                 // Clear results list and hide pattern list
                 searchResultsContainer.innerHTML = '';
@@ -129,9 +129,13 @@ import hljs from 'highlight.js/lib/highlight';
                 });
 
                 // Populate search results
-                matchedValues.forEach(item => {
-                    searchResultsContainer.innerHTML += '<a href="' + item.getAttribute("href") +'">' + item.textContent + '</a>';
-                });
+                if (matchedValues.length) {
+                    matchedValues.forEach(item => {
+                        searchResultsContainer.innerHTML += '<a href="' + item.getAttribute("href") +'">' + item.textContent + '</a>';
+                    });
+                } else {
+                    searchResultsContainer.innerHTML = 'No results found.';
+                }
             }
         });
     }
