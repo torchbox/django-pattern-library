@@ -21,6 +21,14 @@
         margin: 0 0 15px;
     }
 
+    &__search-results {
+        > a {
+            margin-bottom: 5px;
+            display: inline-block;
+            font-size: 13px;
+        }
+    }
+
     &__nav {
         &--inactive {
             display: none;

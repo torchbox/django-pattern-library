@@ -103,7 +103,7 @@ import hljs from 'highlight.js/lib/highlight';
 
     function patternSearch() {
         const searchBox = document.getElementById('js-pattern-search-input');
-        const patternList = document.querySelectorAll('.list__item-link');
+        const patternList = [...document.querySelectorAll('.list__item-link')];
         const patternListContainer = document.getElementById('sidebar-nav');
         const searchResultsContainer = document.getElementById('js-pattern-search-results-container')
 
@@ -123,12 +123,15 @@ import hljs from 'highlight.js/lib/highlight';
                 searchResultsContainer.innerHTML = '';
                 patternListContainer.classList.add('sidebar__nav--inactive');
 
-                // Populate results list
-                for (var i = 0; i < patternList.length; i++) {
-                    if (patternList[i].textContent.includes(searchValue)) {
-                        searchResultsContainer.innerHTML += '<a href="' + patternList[i].getAttribute("href") +'">' + patternList[i].textContent + '</a>';
-                    }
-                }
+                // Match search query
+                let matchedValues = patternList.filter(function (item) {
+                    return item.textContent.includes(searchValue);
+                });
+
+                // Populate search results
+                matchedValues.forEach(item => {
+                    searchResultsContainer.innerHTML += '<a href="' + item.getAttribute("href") +'">' + item.textContent + '</a>';
+                });
             }
         });
     }
