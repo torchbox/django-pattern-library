@@ -1,5 +1,6 @@
-from django.core.urlresolvers import reverse
 from django.test import SimpleTestCase
+
+from .utils import reverse
 
 
 class TagsTesCase(SimpleTestCase):
