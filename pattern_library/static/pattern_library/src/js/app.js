@@ -21,10 +21,8 @@ import hljs from 'highlight.js/lib/highlight';
     }
 
     function resizeIframe() {
-        const body = document.querySelector('body');
         const patternIframe = document.querySelector('.js-iframe');
         const resizeButtons = document.querySelectorAll('.js-resize-iframe');
-        const closeButton = document.querySelector('.js-close-iframe');
 
         // remove animating class to prevent delay when dragging iframe
         patternIframe.addEventListener('mousedown', function(){
@@ -37,14 +35,6 @@ import hljs from 'highlight.js/lib/highlight';
 
         patternIframe.contentWindow.addEventListener('resize', (e) => {
             document.querySelector('.js-iframe-size').innerHTML = `${e.target.innerWidth} x ${e.target.innerHeight}`
-        });
-
-        // Close iframe with escape key
-        document.addEventListener('keydown', e => {
-            e = e || window.event;
-            if (e.key === 'Escape') {
-                body.classList.remove('iframe-open');
-            }
         });
 
         // Resize iframe via buttons
@@ -159,6 +149,13 @@ import hljs from 'highlight.js/lib/highlight';
         grandParentCategoryHeading.classList.add('is-open');
     }
 
+    function hideMenuOnMobile() {
+        // hide the sidebar if coming from a mobile device
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            document.querySelector('body').classList.add('nav-closed')
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         addSyntaxHighlighting();
         toggleNavItems();
@@ -168,5 +165,6 @@ import hljs from 'highlight.js/lib/highlight';
         tabbedContent();
         patternSearch();
         persistMenu();
+        hideMenuOnMobile();
     });
 }
