@@ -32,13 +32,14 @@ class ViewsTestCase(SimpleTestCase):
         self.assertEqual(render_link.text.strip(), "Pretty name for test molecule")
 
     def test_pretty_names_from_filename(self):
+        pattern_path = 'patterns/molecules/test_molecule/test_molecule_no_context.html'
         test_molecule_display_url = reverse(
             'pattern_library:display_pattern',
-            kwargs={'pattern_template_name': 'patterns/molecules/test_molecule/test_molecule_no_context.html'},
+            kwargs={'pattern_template_name': pattern_path},
         )
         test_molecule_render_url = reverse(
             'pattern_library:render_pattern',
-            kwargs={'pattern_template_name': 'patterns/molecules/test_molecule/test_molecule_no_context.html'},
+            kwargs={'pattern_template_name': pattern_path},
         )
 
         response = self.client.get(test_molecule_display_url)
@@ -46,8 +47,8 @@ class ViewsTestCase(SimpleTestCase):
 
         soup = BeautifulSoup(response.content)
 
-        display_link = soup.select_one(f'a[href="{test_molecule_display_url}"]')
+        display_link = soup.select_one(f'.list__item>a[href="{test_molecule_display_url}"]')
         render_link = soup.select_one(f'a[href="{test_molecule_render_url}"]')
 
         self.assertEqual(display_link.text.strip(), "test_molecule_no_context.html")
-        self.assertEqual(render_link.text.strip(), "test_molecule_no_context.html")
+        self.assertEqual(render_link.text.strip(), pattern_path)
