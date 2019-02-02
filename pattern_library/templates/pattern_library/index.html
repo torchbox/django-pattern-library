@@ -16,14 +16,29 @@
                 </button>
             </div>
         </div>
+
         <iframe class="iframe js-iframe is-animatable" src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}" title="Iframe pattern"></iframe>
-        <div>
-            <h2>Template source</h2>
-            <pre><code class="code django">{{ pattern_source }}</code></pre>
+
+        <div class="tabbed-content">
+            <ul class="tabbed-content__list">
+                <li class="tabbed-content__heading tabbed-content__heading--active">
+                    <a href="#tab-1">Template source</a>
+                </li>
+                <li class="tabbed-content__heading">
+                    <a href="#tab-2">Template config</a>
+                </li>
+            </ul>
+
+            <div class="tabbed-content__tabs">
+                <div id="tab-1" class="tabbed-content__item tabbed-content__item--active">
+                    <pre><code class="code django">{{ pattern_source }}</code></pre>
+                </div>
+
+                <div id="tab-2" class="tabbed-content__item">
+                    <pre><code class="code yaml">{{ pattern_config }}</code></pre>
+                </div>
+            </div>
         </div>
-        <div>
-            <h2>Template config</h2>
-            <pre><code class="code yaml">{{ pattern_config }}</code></pre>
-        </div>
+
     </section>
 {% endblock %}
