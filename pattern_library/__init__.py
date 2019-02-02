@@ -18,7 +18,6 @@ def uses_settings(func):
 PATTERN_LIBRARY_SETTINGS = {
     'BASE_TEMPLATE_NAME': 'patterns/base.html',
     'TEMPLATE_SUFFIX': '.html',
-    'TEMPLATE_DIR': 'to/remove/',
     'SECTIONS': tuple(),
 }
 
@@ -27,11 +26,6 @@ PATTERN_LIBRARY_SETTINGS = {
 def get_from_settings(attr):
     library_settings = getattr(settings, 'PATTERN_LIBRARY', PATTERN_LIBRARY_SETTINGS)
     return library_settings.get(attr, PATTERN_LIBRARY_SETTINGS[attr])
-
-
-@uses_settings
-def get_pattern_template_dir():
-    return get_from_settings('TEMPLATE_DIR')
 
 
 def get_pattern_template_suffix():

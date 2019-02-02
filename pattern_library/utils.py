@@ -2,7 +2,7 @@ import os
 import re
 import operator
 
-from django.apps import apps
+from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
 from django.template.loaders.app_directories import get_app_template_dirs
 from django.utils.safestring import mark_safe
@@ -11,8 +11,9 @@ import markdown
 import yaml
 
 from pattern_library import (
-    get_pattern_context_var_name, get_pattern_template_dir,
-    get_pattern_template_suffix, get_sections,
+    get_pattern_context_var_name,
+    get_pattern_template_suffix,
+    get_sections,
 )
 from pattern_library.exceptions import TemplateIsNotPattern
 
@@ -128,7 +129,11 @@ def get_pattern_config_str(template_name):
     context_path = re.sub(replace_pattern, '', template_name)
 
     context_name = context_path + '.yaml'
-    context_file = get_template(context_name)
+    try:
+        context_file = get_template(context_name)
+    except TemplateDoesNotExist:
+        return ''
+
     return context_file.render()
 
 
