@@ -27,21 +27,21 @@
                 <ul class="list">
                     {% for pattern_type, pattern_type_groups in pattern_templates.items %}
                     <li class="list__item">
-                        <h3 class="list__item-heading js-toggle-pattern">
+                        <h2 class="list__item-heading js-toggle-pattern">
                             <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
                                 <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
                             </svg>
                             {{ pattern_type|title }}
-                        </h3>
+                        </h2>
                         <ul class="list list--child">
                             {% for group_name, pattern_templates in pattern_type_groups.items %}
                             <li class="list__item">
-                                <h4 class="list__item-heading list__item-heading--light js-toggle-pattern">
+                                <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
                                     <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
                                         <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
                                     </svg>
                                     {{ group_name }}
-                                </h4>
+                                </h3>
                                 <ul class="list list--grandchild">
                                     {% for template in pattern_templates %}
                                     <li class="list__item">

@@ -28,6 +28,7 @@
         margin-bottom: 10px;
         user-select: none;
         font-weight: 500;
+        font-size: 19px;
 
         &:hover {
             cursor: pointer;
@@ -35,6 +36,10 @@
 
         &--light {
             font-weight: 200;
+        }
+
+        &--small{
+            font-size: 13px;
         }
     }
 
