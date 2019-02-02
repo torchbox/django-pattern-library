@@ -159,6 +159,13 @@ import hljs from 'highlight.js/lib/highlight';
         grandParentCategoryHeading.classList.add('is-open');
     }
 
+    function hideMenuOnMobile() {
+        // hide the sidebar if coming from a mobile device
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            document.querySelector('body').classList.add('nav-closed')
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         addSyntaxHighlighting();
         toggleNavItems();
@@ -168,5 +175,6 @@ import hljs from 'highlight.js/lib/highlight';
         tabbedContent();
         patternSearch();
         persistMenu();
+        hideMenuOnMobile();
     });
 }
