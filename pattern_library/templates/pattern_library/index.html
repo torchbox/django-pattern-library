@@ -16,8 +16,7 @@
                 </button>
             </div>
         </div>
-        <iframe class="iframe js-iframe is-animatable" src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}"></iframe>
-        <h4 class="js-help-text heading heading--iframe-hint">Press <span>esc</span> to exit full screen</h4>
+        <iframe class="iframe js-iframe is-animatable" src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}" title="Iframe pattern"></iframe>
         <div>
             <h2>Template source</h2>
             <pre><code class="code django">{{ pattern_source }}</code></pre>

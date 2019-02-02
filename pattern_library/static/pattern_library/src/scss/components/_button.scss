@@ -1,7 +1,7 @@
 .button {
     &--resize {
         border: 2px solid $light-grey;
-        color: $light-grey;
+        color: $mid-grey;
         padding: 5px 10px;
         margin: 0 5px;
         font-weight: bold;
@@ -13,7 +13,6 @@
 
         &.is-active {
             border: 2px solid $mid-grey;
-            color: $mid-grey;
         }
 
         &:last-of-type {
