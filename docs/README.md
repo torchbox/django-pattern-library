@@ -77,6 +77,8 @@ Let's assume you have the following template:
 You might define a `yaml` file similar to this to provide fake data:
 
 ```yaml
+name: My example pattern
+
 context:
     items_title: Related pages
     my_objects:
