@@ -35,8 +35,7 @@ class IndexView(TemplateView):
 
     def get(self, request, pattern_template_name=None):
         # Get all pattern templates
-        available_pattern_types = get_pattern_types()
-        templates = get_pattern_templates(available_pattern_types)
+        templates = get_pattern_templates()
 
         if pattern_template_name is None:
             # Just display the first pattern if a specific one isn't requested

@@ -8,6 +8,7 @@
         font-size: 13px;
         color: $mid-grey;
         display: none;
+        padding-left: 10px;
 
         &.is-open {
             display: block;
@@ -68,5 +69,3 @@
         }
     }
 }
-
-

@@ -2,8 +2,10 @@ import os
 import re
 from collections import OrderedDict
 
+from django.apps import apps
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
+from django.template.loaders.app_directories import get_app_template_dirs
 from django.utils.safestring import mark_safe
 
 import markdown
@@ -17,10 +19,7 @@ from pattern_library.exceptions import TemplateIsNotPattern
 
 
 def is_pattern(template_name):
-    return (
-        template_name.startswith(get_pattern_template_prefix())
-        and template_name.endswith(get_pattern_template_suffix())
-    )
+    return template_name.endswith(get_pattern_template_suffix())
 
 
 def is_pattern_type(template_name, pattern_type):
@@ -37,50 +36,50 @@ def is_pattern_library_context(context):
     return context.get(context_var_name) is True
 
 
-def get_pattern_templates(pattern_types):
-    templates = OrderedDict()
+def base_dict():
+    return {'templates_stored': [], 'template_groups': {}}
 
-    base_lookup_dir = get_pattern_template_dir()
-    lookup_dir = os.path.join(base_lookup_dir, get_pattern_template_prefix())
 
-    for pattern_type in pattern_types:
-        # We can't use defaultdict here, because Django templates
-        # can't handle it properly: Django will try to resolve `templates.items`
-        # as `templates['items']` not as `templates.items()`
-        templates.setdefault(pattern_type, {})
-        pattern_type_path = os.path.join(lookup_dir, pattern_type)
+def get_pattern_templates():
+    templates = base_dict()
+    template_dirs = get_app_template_dirs('templates')
 
-        for root, dirs, files in os.walk(pattern_type_path):
-            # Do not allow patterns to sit directly underneath the pattern_type_path dir
-            if root == pattern_type_path:
-                continue
+    for lookup_dir in template_dirs:
+        app_folder = lookup_dir.split(os.sep)[-2]
+        try:
+            app_name = apps.get_app_config(app_folder).verbose_name
+        except LookupError:
+            app_name = app_folder.title()
 
+        for root, dirs, files in os.walk(lookup_dir, topdown=True):
             # Ignore folders without files
             if not files:
                 continue
 
-            pattern_subtype = os.path.relpath(root, pattern_type_path)
-            templates[pattern_type].setdefault(pattern_subtype, [])
-
+            found_templates = []
             for current_file in files:
                 pattern_path = os.path.join(root, current_file)
-                pattern_path = os.path.relpath(pattern_path, base_lookup_dir)
+                pattern_path = os.path.relpath(pattern_path, lookup_dir)
 
-                # Include only pattern templates
                 if is_pattern(pattern_path):
-                    try:
-                        template = get_template(pattern_path)
-                        templates[pattern_type][pattern_subtype].append(template)
-                    except TemplateDoesNotExist:
-                        pass
-                    else:
-                        pattern_config = get_pattern_config(template.origin.template_name)
-                        pattern_name = pattern_config.get('name')
-                        if pattern_name:
-                            template.pattern_name = pattern_name
-                        else:
-                            template.pattern_name = os.path.basename(pattern_path)
+                    template = get_template(pattern_path)
+                    pattern_config = get_pattern_config(pattern_path)
+                    pattern_name = pattern_config.get('name')
+                    if pattern_name:
+                        template.pattern_name = pattern_name
+                    found_templates.append(template)
 
+            sub_folders = os.path.relpath(root, lookup_dir)
+            if found_templates:
+                templates_to_store = templates
+                for folder in [app_name, *sub_folders.split(os.sep)]:
+                    try:
+                        templates_to_store = templates_to_store['template_groups'][folder]
+                    except KeyError:
+                        templates_to_store['template_groups'][folder] = base_dict()
+                        templates_to_store = templates_to_store['template_groups'][folder]
+
+                templates_to_store['templates_stored'].extend(found_templates)
     return templates
 
 

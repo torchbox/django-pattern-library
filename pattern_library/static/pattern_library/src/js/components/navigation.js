@@ -3,7 +3,11 @@ export function toggleNavItems() {
     headings.forEach(heading => {
         heading.addEventListener('click', e => {
             e.target.classList.toggle('is-open');
-            e.target.nextElementSibling.classList.toggle('is-open');
+            for ( const element of e.target.parentNode.childNodes ) {
+                if ( element.nodeName === "UL" ){
+                    element.classList.toggle('is-open');
+                }
+            }
         });
     });
 }
