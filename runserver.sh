@@ -1,2 +1,2 @@
 #!/bin/bash
-django-admin runserver --settings=tests.test_settings --pythonpath=.
+django-admin runserver --settings=tests.settings --pythonpath=.

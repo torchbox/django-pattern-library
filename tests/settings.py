@@ -35,6 +35,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': ['pattern_library.loader_tags'],
         },
     },
 ]
