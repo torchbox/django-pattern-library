@@ -48,7 +48,7 @@
                                     {% for template in pattern_templates %}
                                     <li class="list__item">
                                         <a class="list__item-link" href="{% url 'pattern_library:display_pattern' template.origin.template_name %}" id="{{ template.origin.template_name }}">
-                                            {{ template.origin.template_name }}
+                                            {{ template.pattern_name|default:template.origin.template_name }}
                                         </a>
                                     </li>
                                     {% endfor %}

@@ -1,2 +1,4 @@
+name: Pretty name for test molecule
+
 context:
   atom_var: 'atom_var value from test_molecule.yaml'
