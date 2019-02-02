@@ -5,7 +5,7 @@ from django.utils.html import escape
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.generic.base import TemplateView
 
-from pattern_library import get_pattern_base_template_name, get_pattern_types
+from pattern_library import get_pattern_base_template_name
 from pattern_library.exceptions import (
     PatternLibraryEmpty, TemplateIsNotPattern
 )

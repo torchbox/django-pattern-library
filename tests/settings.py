@@ -19,7 +19,9 @@ STATIC_URL = '/static/'
 
 ROOT_URLCONF = 'tests.urls'
 
-PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+PATTERN_LIBRARY = {
+    'TEMPLATE_DIR': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+}
 
 TEMPLATES = [
     {
