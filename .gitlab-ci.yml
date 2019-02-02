@@ -1,6 +1,18 @@
-test:
+stages:
+  - test
+
+test_python36:
+  stage: test
   image: python:3.6-alpine
   before_script:
     - pip install tox
   script:
-    - tox
+    - tox -e py36-dj111,py36-dj20,py36-dj21
+
+test_python37:
+  stage: test
+  image: python:3.7-alpine
+  before_script:
+    - pip install tox
+  script:
+    - tox -e py37-dj111,py37-dj20,py37-dj21
