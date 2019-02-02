@@ -3,8 +3,11 @@
     padding: 20px;
     width: 230px;
     height: 100vh;
-    transition: margin 0.25s ease;
     margin-left: 0;
+
+    @media only screen and (min-width: 600px) {
+        transition: margin 0.25s ease;
+    }
 
     @media only screen and (min-width: 1200px) {
         overflow: hidden;
