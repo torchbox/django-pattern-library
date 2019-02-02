@@ -52,3 +52,7 @@ a {
 .is-hidden {
     display: none;
 }
+
+.sr-only {
+    @include hidden();
+}

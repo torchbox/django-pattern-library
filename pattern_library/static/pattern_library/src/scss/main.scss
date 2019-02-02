@@ -4,6 +4,7 @@
 @import 'config';
 
 // Abstracts
+@import 'abstracts/mixins';
 @import 'abstracts/animations';
 @import 'abstracts/base';
 @import 'abstracts/variables';
@@ -22,5 +23,5 @@
 @import 'layout/main';
 @import 'layout/sidebar';
 
-// Vendor
-@import '~highlight.js/styles/atom-one-light.css';
+// hljs theme
+@import 'hljs/a11y-dark';
