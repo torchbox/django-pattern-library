@@ -125,17 +125,11 @@ def get_pattern_templates():
 
 def get_pattern_config_str(template_name):
     replace_pattern = '{}$'.format(get_pattern_template_suffix())
-    context_file = re.sub(replace_pattern, '', template_name)
+    context_path = re.sub(replace_pattern, '', template_name)
 
-    context_file = context_file + '.yaml'
-    context_file = os.path.join(get_pattern_template_dir(), context_file)
-
-    try:
-        # Default encoding is platform-dependant, so we explicitly open it as utf-8.
-        with open(context_file, 'r', encoding='utf-8') as f:
-            return str(f.read())
-    except IOError:
-        return ''
+    context_name = context_path + '.yaml'
+    context_file = get_template(context_name)
+    return context_file.render()
 
 
 def get_pattern_config(template_name):
