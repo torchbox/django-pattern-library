@@ -101,6 +101,38 @@ import hljs from 'highlight.js/lib/highlight';
         }
     }
 
+    function patternSearch() {
+        const searchBox = document.getElementById('js-pattern-search-input');
+        const patternList = document.querySelectorAll('.list__item-link');
+        const patternListContainer = document.getElementById('sidebar-nav');
+        const searchResultsContainer = document.getElementById('js-pattern-search-results-container')
+
+        searchBox.addEventListener('keyup', e => {
+            let searchValue = e.target.value;
+
+            // Clear if input value is empty
+            if (searchValue === '') {
+                searchResultsContainer.innerHTML = '';
+                patternListContainer.classList.remove('sidebar__nav--inactive');
+            }
+
+            // On enter
+            if (e.keyCode == 13) {
+
+                // Clear results list and hide pattern list
+                searchResultsContainer.innerHTML = '';
+                patternListContainer.classList.add('sidebar__nav--inactive');
+
+                // Populate results list
+                for (var i = 0; i < patternList.length; i++) {
+                    if (patternList[i].textContent.includes(searchValue)) {
+                        searchResultsContainer.innerHTML += '<a href="' + patternList[i].getAttribute("href") +'">' + patternList[i].textContent + '</a>';
+                    }
+                }
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         addSyntaxHighlighting();
         toggleNavItems();
@@ -108,5 +140,6 @@ import hljs from 'highlight.js/lib/highlight';
         setIframeSize();
         toggleNav();
         tabbedContent();
+        patternSearch();
     });
 }
