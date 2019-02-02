@@ -9,4 +9,12 @@
             transform: rotate(-45deg);
         }
     }
+
+    &--external {
+        width: 18px;
+        height: 20px;
+        fill: $link-color;
+        vertical-align: -4px;
+        margin-left: 3px;
+    }
 }
