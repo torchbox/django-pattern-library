@@ -1,0 +1,5 @@
+test:
+  before_script:
+    - pip install tox
+  script:
+    - tox
