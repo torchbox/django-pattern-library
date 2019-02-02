@@ -1,9 +1,8 @@
 import os
 import re
-from collections import OrderedDict
+import operator
 
 from django.apps import apps
-from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
 from django.template.loaders.app_directories import get_app_template_dirs
 from django.utils.safestring import mark_safe
@@ -13,9 +12,18 @@ import yaml
 
 from pattern_library import (
     get_pattern_context_var_name, get_pattern_template_dir,
-    get_pattern_template_prefix, get_pattern_template_suffix
+    get_pattern_template_suffix, get_sections,
 )
 from pattern_library.exceptions import TemplateIsNotPattern
+
+
+def path_to_section():
+    section_config = get_sections()
+    sections = {}
+    for section, paths in section_config:
+        for path in paths:
+            sections[path] = section
+    return sections
 
 
 def is_pattern(template_name):
@@ -36,8 +44,26 @@ def is_pattern_library_context(context):
     return context.get(context_var_name) is True
 
 
+def section_for(template_folder):
+    paths = path_to_section()
+    for path in paths:
+        if template_folder.startswith(path):
+            return paths[path], path
+    return None, None
+
+
 def base_dict():
     return {'templates_stored': [], 'template_groups': {}}
+
+
+def order_dict(dictionary, key_sort=None):
+    # Order a dictionary by the keys
+    values = list(dictionary.items())
+    if not key_sort:
+        values.sort(key=operator.itemgetter(0))
+    else:
+        values.sort(key=lambda key: key_sort(key[0]))
+    return dict(values)
 
 
 def get_pattern_templates():
@@ -45,15 +71,16 @@ def get_pattern_templates():
     template_dirs = get_app_template_dirs('templates')
 
     for lookup_dir in template_dirs:
-        app_folder = lookup_dir.split(os.sep)[-2]
-        try:
-            app_name = apps.get_app_config(app_folder).verbose_name
-        except LookupError:
-            app_name = app_folder.title()
-
         for root, dirs, files in os.walk(lookup_dir, topdown=True):
             # Ignore folders without files
             if not files:
+                continue
+
+            base_path = os.path.relpath(root, lookup_dir)
+            section, path = section_for(base_path)
+
+            # It has no section, ignore it
+            if not section:
                 continue
 
             found_templates = []
@@ -69,10 +96,11 @@ def get_pattern_templates():
                         template.pattern_name = pattern_name
                     found_templates.append(template)
 
-            sub_folders = os.path.relpath(root, lookup_dir)
             if found_templates:
+                sub_folders = os.path.relpath(root, lookup_dir)
+                sub_folders = sub_folders.replace(path, '')
                 templates_to_store = templates
-                for folder in [app_name, *sub_folders.split(os.sep)]:
+                for folder in [section, *sub_folders.split(os.sep)]:
                     try:
                         templates_to_store = templates_to_store['template_groups'][folder]
                     except KeyError:
@@ -80,6 +108,18 @@ def get_pattern_templates():
                         templates_to_store = templates_to_store['template_groups'][folder]
 
                 templates_to_store['templates_stored'].extend(found_templates)
+
+    # Order the templates alphabetically
+    for templates_objs in templates['template_groups'].values():
+        templates_objs['template_groups'] = order_dict(templates_objs['template_groups'])
+
+    # Order the top level by the sections
+    section_order = [section for section, _ in get_sections()]
+    templates['template_groups'] = order_dict(
+        templates['template_groups'],
+        key_sort=lambda key: section_order.index(key)
+    )
+
     return templates
 
 

@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from django.utils.html import escape
 from django.views.generic.base import TemplateView
 
-from pattern_library import get_pattern_base_template_name, get_pattern_types
+from pattern_library import get_pattern_base_template_name
 from pattern_library.exceptions import (
     PatternLibraryEmpty, TemplateIsNotPattern
 )
