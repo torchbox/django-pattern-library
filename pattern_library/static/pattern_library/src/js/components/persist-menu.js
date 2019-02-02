@@ -5,6 +5,8 @@ export default function() {
     // find the matching pattern
     const currentPattern = document.getElementById(id);
 
+    currentPattern.classList.add('is-active');
+
     // grab the parent lists and headings
     const parentCategory = currentPattern.closest('ul');
     const parentCategoryHeading = parentCategory.previousElementSibling;
