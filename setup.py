@@ -30,5 +30,13 @@ setup(
         'Django>=1.11',
         'PyYAML>=3.11',
     ],
+    extras_require={
+        'dev': [
+            'beautifulsoup4',
+            'coverage',
+            'flake8',
+            'isort',
+        ],
+    },
     zip_safe=False,
 )

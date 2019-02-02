@@ -68,11 +68,15 @@ def get_pattern_templates(pattern_types):
                 # Include only pattern templates
                 if is_pattern(pattern_path):
                     try:
-                        templates[pattern_type][pattern_subtype].append(
-                            get_template(pattern_path)
-                        )
+                        template = get_template(pattern_path)
+                        templates[pattern_type][pattern_subtype].append(template)
                     except TemplateDoesNotExist:
                         pass
+                    else:
+                        pattern_config = get_pattern_config(template.origin.template_name)
+                        pattern_name = pattern_config.get('name')
+                        if pattern_name:
+                            template.pattern_name = pattern_name
 
     return templates
 
