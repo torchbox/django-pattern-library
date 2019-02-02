@@ -1,6 +1,7 @@
-from django.core.urlresolvers import reverse
 from django.test import SimpleTestCase
 from django.utils.safestring import SafeText
+
+from .utils import reverse
 
 
 class ContextTestCase(SimpleTestCase):

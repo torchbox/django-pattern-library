@@ -30,10 +30,5 @@ setup(
         'Django>=1.11',
         'PyYAML>=3.11',
     ],
-    extras_require={
-        'dev': [
-            'coverage',
-        ],
-    },
     zip_safe=False,
 )

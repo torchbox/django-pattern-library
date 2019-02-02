@@ -4,7 +4,9 @@ from django.utils.html import escape
 from django.views.generic.base import TemplateView
 
 from pattern_library import get_pattern_base_template_name, get_pattern_types
-from pattern_library.exceptions import TemplateIsNotPattern, PatternLibraryEmpty
+from pattern_library.exceptions import (
+    PatternLibraryEmpty, TemplateIsNotPattern
+)
 from pattern_library.utils import (
     get_pattern_config_str, get_pattern_template_dir, get_pattern_templates,
     is_pattern_type, render_pattern
@@ -27,7 +29,6 @@ class IndexView(TemplateView):
             "No templates found in the pattern library at '%s'"
             % get_pattern_template_dir()
         )
-
 
     def get(self, request, pattern_template_name=None):
         # Get all pattern templates
