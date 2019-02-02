@@ -4,13 +4,10 @@
     width: 230px;
     height: 100vh;
     margin-left: 0;
+    overflow: auto;
 
     @media only screen and (min-width: 600px) {
         transition: margin 0.25s ease;
-    }
-
-    @media only screen and (min-width: 1200px) {
-        overflow: hidden;
     }
 
     .nav-closed & {
