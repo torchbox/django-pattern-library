@@ -1,6 +1,7 @@
 .main {
-    flex-grow: 1;
+    flex: 1;
     padding: 20px;
     background: $white;
     overflow: scroll;
+    width: 100%;
 }
