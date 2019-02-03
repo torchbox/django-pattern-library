@@ -77,6 +77,8 @@ def get_pattern_templates(pattern_types):
                         pattern_name = pattern_config.get('name')
                         if pattern_name:
                             template.pattern_name = pattern_name
+                        else:
+                            template.pattern_name = os.path.basename(pattern_path)
 
     return templates
 
