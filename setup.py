@@ -4,17 +4,20 @@ from setuptools import find_packages, setup
 
 from pattern_library import __version__
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name='django-pattern-library',
     version=__version__,
     description='A module for Django that allows to build pattern libraries for your projects.',
     author='Mikalai Radchuk',
     author_email='mikalai.radchuk@torchbox.com',
-    url='https://github.com/torchbox/django-pattern-library',
     packages=find_packages(exclude=['tests', 'tests.*']),
     include_package_data=True,
     license='BSD',
-    long_description='See https://github.com/torchbox/django-pattern-library for details',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
