@@ -91,7 +91,8 @@ def get_pattern_config_str(template_name):
     context_file = os.path.join(get_pattern_template_dir(), context_file)
 
     try:
-        with open(context_file, 'r') as f:
+        # Default encoding is platform-dependant, so we explicitly open it as utf-8.
+        with open(context_file, 'r', encoding='utf-8') as f:
             return str(f.read())
     except IOError:
         return ''
