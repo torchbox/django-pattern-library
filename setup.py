@@ -37,8 +37,8 @@ setup(
         'dev': [
             'beautifulsoup4',
             'coverage',
-            'flake8==3.7.5',
-            'isort==4.3.4',
+            'flake8==3.7.7',
+            'isort==4.3.15',
         ],
     },
     zip_safe=False,

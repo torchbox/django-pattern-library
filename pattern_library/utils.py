@@ -17,8 +17,8 @@ from pattern_library.exceptions import TemplateIsNotPattern
 
 def is_pattern(template_name):
     return (
-        template_name.startswith(get_pattern_template_prefix()) and
-        template_name.endswith(get_pattern_template_suffix())
+        template_name.startswith(get_pattern_template_prefix())
+        and template_name.endswith(get_pattern_template_suffix())
     )
 
 
