@@ -23,7 +23,7 @@ class ViewsTestCase(SimpleTestCase):
         response = self.client.get(test_molecule_display_url)
         self.assertEqual(response.status_code, 200)
 
-        soup = BeautifulSoup(response.content)
+        soup = BeautifulSoup(response.content, features="html.parser")
 
         display_link = soup.select_one(f'a[href="{test_molecule_display_url}"]')
         render_link = soup.select_one(f'a[href="{test_molecule_render_url}"]')
@@ -45,7 +45,7 @@ class ViewsTestCase(SimpleTestCase):
         response = self.client.get(test_molecule_display_url)
         self.assertEqual(response.status_code, 200)
 
-        soup = BeautifulSoup(response.content)
+        soup = BeautifulSoup(response.content, features="html.parser")
 
         display_link = soup.select_one(f'.list__item>a[href="{test_molecule_display_url}"]')
         render_link = soup.select_one(f'a[href="{test_molecule_render_url}"]')

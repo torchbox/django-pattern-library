@@ -100,7 +100,7 @@ def get_pattern_config_str(template_name):
 def get_pattern_config(template_name):
     config_str = get_pattern_config_str(template_name)
     if config_str:
-        return yaml.load(config_str)
+        return yaml.load(config_str, Loader=yaml.FullLoader)
     return {}
 
 
