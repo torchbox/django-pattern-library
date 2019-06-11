@@ -7,7 +7,7 @@ test_python36:
   before_script:
     - pip install tox
   script:
-    - tox -e py36-dj111,py36-dj20,py36-dj21
+    - tox -e py36-dj111,py36-dj20,py36-dj21,py36-dj22,py36-djmaster
 
 test_python37:
   stage: test
@@ -15,4 +15,4 @@ test_python37:
   before_script:
     - pip install tox
   script:
-    - tox -e py37-dj111,py37-dj20,py37-dj21
+    - tox -e py37-dj111,py37-dj20,py37-dj21,py37-dj22,py37-djmaster
