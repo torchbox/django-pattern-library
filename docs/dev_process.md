@@ -2,20 +2,33 @@
 
 This document contains information for project developers.
 
+## Local development
+
+The repo includes a simple test application that can be run locally to develop the pattern library itself.
+To do this, run the following commands in the top level of the repo in a virtualenv:
+
+```sh
+pip install -e .  # installs the library and its dependencies in editable mode
+./runserver.sh    # runs the test app using the Django development server
+```
+
+Once the server is started, the pattern library will be available at `http://localhost:8000/pattern-library/`.
+
+
 ## How to build the package
 
 To build the package you need to Python 3 and Nodejs 8.
 
 Install FE dependencies and build static:
 
-```
+```sh
 npm install
 npm run build
 ```
 
 Build the python package:
 
-```
+```sh
 virtualenv -p python3.6 venv
 source venv/bin/activate
 python ./setup.py bdist_wheel
