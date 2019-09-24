@@ -32,6 +32,7 @@ setup(
     install_requires=[
         'Django>=1.11',
         'PyYAML>=5.1',
+        'Markdown>=3.1.1',
     ],
     extras_require={
         'dev': [
