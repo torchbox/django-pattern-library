@@ -36,6 +36,19 @@ pip install -e .  # installs the library and its dependencies in editable mode
 
 Once the server is started, the pattern library will be available at `http://localhost:8000/pattern-library/`.
 
+## Making changes
+
+To make changes you need to edit the files under the `pattern_library` folder. You'll be able to see your changes reflected on the localhost.
+
+If you want to make changes to the front-end assets (located in the `pattern_library/static/pattern_library/src` folder), you'll need to set up the tooling in order to build the assets. Node version 8 is required for this.
+
+```sh
+npm install
+npm run build
+```
+
+If you want to run the tooling in watch mode while making updates, you can use `npm run start`
+
 ## Writing tests
 TODO
 
@@ -44,14 +57,7 @@ Create a pull request with your changes so that it can be code reviewed by a cor
 
 ## How to build the package
 
-To build the package you need to Python 3 and Nodejs 8.
-
-Install FE dependencies and build static:
-
-```sh
-npm install
-npm run build
-```
+To build the package you need to use Python 3.
 
 Build the python package:
 
