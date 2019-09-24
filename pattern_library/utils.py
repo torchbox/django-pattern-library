@@ -1,12 +1,12 @@
 import os
 import re
-import markdown
 from collections import OrderedDict
 
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
 from django.utils.safestring import mark_safe
 
+import markdown
 import yaml
 
 from pattern_library import (
