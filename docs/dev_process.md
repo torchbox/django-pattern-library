@@ -4,11 +4,11 @@ This document contains information for anyone wishing to contribute to the proje
 
 If you would like to contribute, you will follow these steps:
 
-- Set up a local build - see [here](#how-to-set-up-a-local-build)
-- Make your changes - see [here](#making-changes)
-- Submit your changes for code review - see [here](#code-review)
-- Build the package ready for release - see [here](#how-to-build-the-package)
-- Release a new version - see [here](#releasing-a-new-version)
+- [Set up a local build](#how-to-set-up-a-local-build)
+- [Make your changes](#making-changes)
+- [Submit your changes for code review](#code-review)
+- [Build the package ready for release](#how-to-build-the-package)
+- [Release a new version](#releasing-a-new-version)
 
 ## How to set up a local build
 
