@@ -10,6 +10,10 @@ If you would like to contribute, you will follow these steps:
 - [Build the package ready for release](#how-to-build-the-package)
 - [Release a new version](#releasing-a-new-version)
 
+## Dependencies
+
+To work on the package, you need Python 3.6 or later and Node 8.
+
 ## How to set up a local build
 
 The repo includes a simple test application that can be run locally to develop the pattern library itself.
@@ -20,14 +24,14 @@ git clone [repo url]
 cd django-pattern-library
 ```
 
-You'll need to set up a virtual environment to run the code in. If you've not used `virtualenv` before, see https://packaging.python.org/guides/installing-using-pip-and-virtual-environments
+You'll need to set up a virtual environment to run the code in.
 
 ```sh
-virtualenv -p python3.6 venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-Next, install the dependencies and run a test app
+Next, install the dependencies and run the test app
 
 ```sh
 pip install -e .  # installs the library and its dependencies in editable mode
@@ -40,7 +44,11 @@ Once the server is started, the pattern library will be available at `http://loc
 
 To make changes you need to edit the files under the `pattern_library` folder. You'll be able to see your changes reflected on the localhost.
 
-If you want to make changes to the front-end assets (located in the `pattern_library/static/pattern_library/src` folder), you'll need to set up the tooling in order to build the assets. Node version 8 is required for this.
+If you want to make changes to the front-end assets (located in the `pattern_library/static/pattern_library/src` folder), you'll need to set
+up the tooling in order to build the assets. Node version 8 is required for this. If you're using `nvm` to manage node on your machine there's
+a `.nvmrc` that means you can run `nvm use` to activate the correct version of node.
+
+To install dependencies and build the assets, run the following commands:
 
 ```sh
 npm install
@@ -53,7 +61,8 @@ If you want to run the tooling in watch mode while making updates, you can use `
 TODO
 
 ## Code review
-Create a pull request with your changes so that it can be code reviewed by a core developer. Ensure that you give a summary with the purpose of the change
+Create a pull request with your changes so that it can be code reviewed by a core developer. Ensure that you give a summary with the purpose
+of the change and any steps that the reviewer needs to take to test your work.
 
 ## How to build the package
 
@@ -69,9 +78,10 @@ python ./setup.py bdist_wheel
 
 ## Releasing a new version
 
+On the `master branch`:
+
 1. Bump the release number in `pattern_library/__init__.py`.
 2. Update the change log found at `CHANGELOG.md`
 3. Commit and tag the release: `git tag -a v0.1.14 -m "Release version v0.1.14"`
 4. Build the project: `python3 setup.py sdist bdist_wheel`
-5. Upload the latest version to PyPi: `python3 -m twine upload dist/*`
-
+5. Upload the latest version to PyPI (requires credentials): `python3 -m twine upload dist/*`
