@@ -24,7 +24,13 @@ classifiers = [
     "Framework :: Django :: 2.2",
 ]
 packages = [
-    { include = "pattern_library" }
+    { include = "pattern_library" },
+]
+include = [
+    'pattern_library/static/pattern_library/dist/bundle.js',
+]
+exclude = [
+    'pattern_library/static/pattern_library/src/**/*',
 ]
 
 [tool.poetry.dependencies]
