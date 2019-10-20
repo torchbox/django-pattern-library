@@ -1,6 +1,6 @@
+import operator
 import os
 import re
-import operator
 
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template, render_to_string
@@ -11,9 +11,7 @@ import markdown
 import yaml
 
 from pattern_library import (
-    get_pattern_context_var_name,
-    get_pattern_template_suffix,
-    get_sections,
+    get_pattern_context_var_name, get_pattern_template_suffix, get_sections
 )
 from pattern_library.exceptions import TemplateIsNotPattern
 

@@ -8,13 +8,8 @@ from pattern_library.exceptions import (
     PatternLibraryEmpty, TemplateIsNotPattern
 )
 from pattern_library.utils import (
-    get_pattern_config,
-    get_pattern_config_str,
-    get_pattern_markdown,
-    get_pattern_templates,
-    get_sections,
-    is_pattern_type,
-    render_pattern,
+    get_pattern_config, get_pattern_config_str, get_pattern_markdown,
+    get_pattern_templates, get_sections, is_pattern_type, render_pattern
 )
 
 
