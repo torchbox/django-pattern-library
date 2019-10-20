@@ -41,3 +41,10 @@ TEMPLATES = [
         },
     },
 ]
+
+PATTERN_LIBRARY = {
+    'SECTIONS': [
+        ('atoms', ['patterns/atoms']),
+        ('molecules', ['patterns/molecules']),
+    ],
+}

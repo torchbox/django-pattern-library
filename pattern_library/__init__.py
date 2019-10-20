@@ -1,31 +1,19 @@
-import importlib
-from functools import wraps
+from django.conf import settings
+
 
 default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
-settings = None
 
-
-def uses_settings(func):
-    @wraps(func)
-    def wrapped(*args, **kwargs):
-        global settings
-        if settings is None:
-            settings = importlib.import_module('django.conf').settings
-        return func(*args, **kwargs)
-    return wrapped
-
-
-PATTERN_LIBRARY_SETTINGS = {
+DEFAULT_SETTINGS = {
     'BASE_TEMPLATE_NAME': 'patterns/base.html',
     'TEMPLATE_SUFFIX': '.html',
-    'SECTIONS': tuple(),
+    'SECTIONS': (),
 }
 
 
-@uses_settings
 def get_from_settings(attr):
-    library_settings = getattr(settings, 'PATTERN_LIBRARY', PATTERN_LIBRARY_SETTINGS)
-    return library_settings.get(attr, PATTERN_LIBRARY_SETTINGS[attr])
+    library_settings = DEFAULT_SETTINGS.copy()
+    library_settings.update(getattr(settings, 'PATTERN_LIBRARY', {}))
+    return library_settings.get(attr)
 
 
 def get_pattern_template_suffix():
