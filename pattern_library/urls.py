@@ -2,7 +2,6 @@ from django.conf.urls import url
 
 from pattern_library import get_pattern_template_suffix, views
 
-
 app_name = 'pattern_library'
 urlpatterns = [
     # UI
