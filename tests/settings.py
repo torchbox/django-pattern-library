@@ -51,3 +51,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+PATTERN_LIBRARY = {
+    'SECTIONS': [
+        ('atoms', ['patterns/atoms']),
+        ('molecules', ['patterns/molecules']),
+    ],
+}
