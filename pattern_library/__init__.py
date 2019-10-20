@@ -1,4 +1,3 @@
-from django.conf import settings
 
 
 default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
@@ -11,8 +10,11 @@ DEFAULT_SETTINGS = {
 
 
 def get_from_settings(attr):
+    from django.conf import settings
+
     library_settings = DEFAULT_SETTINGS.copy()
     library_settings.update(getattr(settings, 'PATTERN_LIBRARY', {}))
+
     return library_settings.get(attr)
 
 
