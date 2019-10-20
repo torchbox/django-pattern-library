@@ -20,7 +20,11 @@ STATIC_URL = '/static/'
 ROOT_URLCONF = 'tests.urls'
 
 PATTERN_LIBRARY = {
-    'TEMPLATE_DIR': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+    'TEMPLATE_DIR': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates'),
+    'SECTIONS': [
+        ('atoms', ['patterns/atoms']),
+        ('molecules', ['patterns/molecules']),
+    ],
 }
 
 TEMPLATES = [
@@ -51,10 +55,3 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-PATTERN_LIBRARY = {
-    'SECTIONS': [
-        ('atoms', ['patterns/atoms']),
-        ('molecules', ['patterns/molecules']),
-    ],
-}
