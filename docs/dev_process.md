@@ -36,8 +36,8 @@ source venv/bin/activate
 Next, install the dependencies and run the test app:
 
 ```sh
-pip install -e .  # installs the library and its dependencies in editable mode
-./runserver.sh    # runs the test app using the Django development server
+pip install -e .[dev]  # installs the library and its dependencies in editable mode
+./runserver.sh         # runs the test app using the Django development server
 ```
 
 Once the server is started, the pattern library will be available at `http://localhost:8000/pattern-library/`.
@@ -66,7 +66,7 @@ If you want to run the tooling in watch mode while making updates, you can use `
 To run the python tests, use the script in the root of the repo:
 
 ```sh
-$ ./runstests.sh
+$ ./runtests.py
 ```
 
 To run the tests using different Python versions (currently 3.6 and 3.7, which you'll need to have installed on your machine), use `tox`.
