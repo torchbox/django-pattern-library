@@ -26,18 +26,13 @@ git clone [repo url]
 cd django-pattern-library
 ```
 
-You'll need to set up a virtual environment to run the code in:
+We use [Poetry](https://poetry.eustace.io/docs/) to manage Python dependencies, so make sure you've got it installed.
+
+Then you can install the dependencies and run the test app:
 
 ```sh
-python3 -m venv venv
-source venv/bin/activate
-```
-
-Next, install the dependencies and run the test app:
-
-```sh
-pip install -e .[dev]  # installs the library and its dependencies in editable mode
-./runserver.sh         # runs the test app using the Django development server
+poetry install  # installs the library and its dependencies in editable mode
+./runserver.sh  # runs the test app using the Django development server
 ```
 
 Once the server is started, the pattern library will be available at `http://localhost:8000/pattern-library/`.
@@ -100,8 +95,13 @@ python ./setup.py bdist_wheel
 
 On the `master branch`:
 
-1. Bump the release number in `pattern_library/__init__.py`.
+1. Bump the release number in `pyproject.toml`
 2. Update the change log found at `CHANGELOG.md` - see https://keepachangelog.com/en/1.0.0/ for guidelines
 3. Commit and tag the release: `git tag -a v0.1.14 -m "Release version v0.1.14"`
-4. Build the project: `python3 setup.py sdist bdist_wheel`
-5. Upload the latest version to PyPI (requires credentials): `python3 -m twine upload dist/*`
+4. Make sure your working copy is clean by running `git clean` (BE CAREFUL)
+5. Install the locked versions of the `node` dependencies and run the production build:
+   ```sh
+   $ npm ci && npm run build
+   ```
+6. Package the new version using `poetry build`
+5. Upload the latest version to PyPI (requires credentials): `poetry publish`
