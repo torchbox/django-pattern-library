@@ -1,0 +1,30 @@
+.md {
+    padding: 20px;
+    background-color: #eee;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0.67em;
+        font-weight: 700;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4, h5, h6 {
+        font-size: 16px;
+    }
+
+    p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+}

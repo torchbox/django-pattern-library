@@ -30,6 +30,10 @@
                 <li class="tabbed-content__heading">
                     <a href="#tab-2">Template config</a>
                 </li>
+
+                <li class="tabbed-content__heading">
+                    <a href="#tab-3">Template docs</a>
+                </li>
             </ul>
 
             <div class="tabbed-content__tabs">
@@ -39,6 +43,10 @@
 
                 <div id="tab-2" class="tabbed-content__item">
                     <pre><code class="code yaml">{{ pattern_config }}</code></pre>
+                </div>
+
+                <div id="tab-3" class="tabbed-content__item">
+                    <div class="md">{{ pattern_markdown|safe }}</div>
                 </div>
             </div>
         </div>
