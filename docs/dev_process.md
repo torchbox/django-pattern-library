@@ -86,7 +86,11 @@ On the `master branch`:
 
 1. Bump the release number in `pyproject.toml`
 2. Update the change log found at `CHANGELOG.md`
-3. Commit and tag the release: `git tag -a v0.1.14 -m "Release version v0.1.14"`
+3. Commit and tag the release:
+   ```sh
+   $ git tag -a v0.1.14 -m "Release version v0.1.14"
+   $ git push --tags
+   ```
 4. Check that your working copy is clean by running `git clean -dxn -e __pycache__`.
    Any files returned by this command should be removed before continuing to prevent them being included in the build.
 5. Install the locked versions of the `node` dependencies and run the production build:
