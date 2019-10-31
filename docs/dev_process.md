@@ -6,8 +6,9 @@ If you would like to contribute, you will follow these steps:
 
 - [Set up a local build](#how-to-set-up-a-local-build)
 - [Make your changes](#making-changes)
+- [Running the tests](#running-the-tests)
+- [Writing tests](#writing-tests)
 - [Submit your changes for code review](#code-review)
-- [Build the package ready for release](#how-to-build-the-package)
 - [Release a new version](#releasing-a-new-version)
 
 
@@ -32,7 +33,7 @@ Then you can install the dependencies and run the test app:
 
 ```sh
 poetry install  # installs the library and its dependencies in editable mode
-./runserver.sh  # runs the test app using the Django development server
+poetry run ./runserver.sh  # runs the test app using the Django development server
 ```
 
 Once the server is started, the pattern library will be available at `http://localhost:8000/pattern-library/`.
@@ -61,7 +62,7 @@ If you want to run the tooling in watch mode while making updates, you can use `
 To run the python tests, use the script in the root of the repo:
 
 ```sh
-$ ./runtests.py
+$ poetry run ./runtests.py
 ```
 
 To run the tests using different Python versions (currently 3.6 and 3.7, which you'll need to have installed on your machine), use `tox`.
@@ -79,18 +80,6 @@ Create a pull request with your changes so that it can be code reviewed by a cor
 of the change and any steps that the reviewer needs to take to test your work. Please provide unit tests for your work, if possible!
 
 
-## How to build the package
-
-To build the package you need to use Python 3.
-
-Build the python package:
-
-```sh
-virtualenv -p python3.6 venv
-source venv/bin/activate
-python ./setup.py bdist_wheel
-```
-
 ## Releasing a new version
 
 On the `master branch`:
@@ -98,10 +87,14 @@ On the `master branch`:
 1. Bump the release number in `pyproject.toml`
 2. Update the change log found at `CHANGELOG.md`
 3. Commit and tag the release: `git tag -a v0.1.14 -m "Release version v0.1.14"`
-4. Make sure your working copy is clean by running `git clean` (BE CAREFUL)
+4. Check that your working copy is clean by running `git clean -dxn -e __pycache__`.
+   Any files returned by this command should be removed before continuing to prevent them being included in the build.
 5. Install the locked versions of the `node` dependencies and run the production build:
    ```sh
-   $ npm ci && npm run build
+   $ npm ci
+   $ npm run build
    ```
 6. Package the new version using `poetry build`
-5. Upload the latest version to PyPI (requires credentials): `poetry publish`
+7. Test the newly-built package by installing it an existing project using `django-pattern-library` and verifying
+   everything is as you expect it to be.
+8. Upload the latest version to PyPI (requires credentials): `poetry publish`
