@@ -1,18 +1,22 @@
 stages:
   - test
 
-test_python36:
+.test: &test
   stage: test
-  image: python:3.6-alpine
   before_script:
-    - pip install tox
+    - pip install poetry tox
   script:
-    - tox -e py36-dj111,py36-dj20,py36-dj21,py36-dj22,py36-djmaster
+    - tox -e lint
+    - tox -e $(tox -l | grep ${PYVER} | xargs echo | sed 's/ /,/g')
+
+test_python36:
+  image: python:3.6-alpine
+  variables:
+    PYVER: py36
+  <<: *test
 
 test_python37:
-  stage: test
   image: python:3.7-alpine
-  before_script:
-    - pip install tox
-  script:
-    - tox -e py37-dj111,py37-dj20,py37-dj21,py37-dj22,py37-djmaster
+  variables:
+    PYVER: py37
+  <<: *test
