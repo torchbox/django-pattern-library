@@ -101,7 +101,7 @@ python ./setup.py bdist_wheel
 On the `master branch`:
 
 1. Bump the release number in `pattern_library/__init__.py`.
-2. Update the change log found at `CHANGELOG.md`
+2. Update the change log found at `CHANGELOG.md` - see https://keepachangelog.com/en/1.0.0/ for guidelines
 3. Commit and tag the release: `git tag -a v0.1.14 -m "Release version v0.1.14"`
 4. Build the project: `python3 setup.py sdist bdist_wheel`
 5. Upload the latest version to PyPI (requires credentials): `python3 -m twine upload dist/*`
