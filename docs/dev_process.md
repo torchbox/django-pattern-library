@@ -64,7 +64,7 @@ If you want to make changes to the front-end assets (located in the `pattern_lib
  the tooling is set up in order to build the assets.
 
 If you are [using docker](#run-a-local-build-with-docker) you will already have
-installed the dependencies and be running the tooling in watch mode in your docker container. If you are running the build without docker then read on to get the tooling set up.
+the tooling set up and running. Otherwise read on to get the tooling set up.
 
 Node version 8 is required for this. If you're using `nvm` to manage node on your machine there's
 a `.nvmrc` that means you can run `nvm use` to activate the correct version of node.
