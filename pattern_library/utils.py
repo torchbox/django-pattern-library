@@ -182,8 +182,8 @@ def get_pattern_markdown(template_name):
         return markdown.markdown(f.read())
 
 
-def render_pattern(request, template_name):
-    if not is_pattern(template_name):
+def render_pattern(request, template_name, allow_non_patterns=False):
+    if not allow_non_patterns and not is_pattern(template_name):
         raise TemplateIsNotPattern
 
     context = get_pattern_context(template_name)

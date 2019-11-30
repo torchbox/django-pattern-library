@@ -5,7 +5,13 @@ default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
 DEFAULT_SETTINGS = {
     'BASE_TEMPLATE_NAME': 'patterns/base.html',
     'TEMPLATE_SUFFIX': '.html',
-    'SECTIONS': (),
+    'SECTIONS': (
+        ('atoms', ['patterns/atoms']),
+        ('molecules', ['patterns/molecules']),
+        ('organisms', ['patterns/organisms']),
+        ('templates', ['patterns/templates']),
+        ('pages', ['patterns/pages']),
+    ),
 }
 
 
