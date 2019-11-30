@@ -51,7 +51,7 @@ def override_tag(register, name):
                         # Render pattern, if raw string is not defined
                         template_name = tag_config['template_name']
                         request = context.get('request')
-                        result = render_pattern(request, template_name)
+                        result = render_pattern(request, template_name, allow_non_patterns=True)
                         tag_overridden = True
 
                     # TODO: Allow objects with the __str__ method
