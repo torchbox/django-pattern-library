@@ -26,15 +26,14 @@ def path_to_section():
 
 
 def is_pattern(template_name):
-    return template_name.endswith(get_pattern_template_suffix())
-
-
-def is_pattern_type(template_name, pattern_type):
-    if not is_pattern(template_name):
+    if not template_name.endswith(get_pattern_template_suffix()):
         return False
 
-    substring = '/{}/'.format(pattern_type)
-    return substring in template_name
+    section, path = section_for(os.path.dirname(template_name))
+    if section is None:
+        return False
+
+    return True
 
 
 def is_pattern_library_context(context):
