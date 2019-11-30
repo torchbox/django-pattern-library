@@ -1,0 +1,4 @@
+.body {
+    display: grid;
+    grid-template-columns: $sidebar-width auto;
+}
