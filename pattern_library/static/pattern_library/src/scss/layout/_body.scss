@@ -1,0 +1,7 @@
+.body {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: $sidebar-width 1fr;
+    -ms-grid-rows: 45px 1fr;
+    grid-template-columns: $sidebar-width 1fr;
+}

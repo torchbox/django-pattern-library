@@ -51,7 +51,7 @@ a {
 }
 
 .is-hidden {
-    display: none;
+    @include hidden();
 }
 
 .sr-only {

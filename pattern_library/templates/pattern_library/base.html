@@ -10,7 +10,7 @@
     <script type="text/javascript" src="{% static 'pattern_library/dist/bundle.js' %}"></script>
 </head>
 
-<body>
+<body class="body">
     <header class="header">
         <a class="button button--close-menu js-close-menu" href="#">
             <span class="sr-only">Close menu</span>
@@ -21,49 +21,48 @@
             {# Set in _config.scss #}
         </h1>
     </header>
-    <div class="wrapper">
-        <sidebar class="sidebar">
-            <input type="text" class="sidebar__search" id="js-pattern-search-input" placeholder="Search library...">
-            <div class="sidebar__search-results" id="js-pattern-search-results-container"></div>
-            <nav class="sidebar__nav" id="sidebar-nav">
-                <ul class="list">
-                    {% for pattern_type, pattern_type_groups in pattern_templates.items %}
-                    <li class="list__item">
-                        <h2 class="list__item-heading js-toggle-pattern">
-                            <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
-                            </svg>
-                            {{ pattern_type|title }}
-                        </h2>
-                        <ul class="list list--child">
-                            {% for group_name, pattern_templates in pattern_type_groups.items %}
-                            <li class="list__item">
-                                <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
-                                    <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                                        <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
-                                    </svg>
-                                    {{ group_name }}
-                                </h3>
-                                <ul class="list list--grandchild">
-                                    {% for template in pattern_templates %}
-                                    <li class="list__item">
-                                        <a class="list__item-link" href="{% url 'pattern_library:display_pattern' template.origin.template_name %}" id="{{ template.origin.template_name }}">
-                                            {{ template.pattern_name }}
-                                        </a>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        </sidebar>
-        <main class="main">
-            {% block content %}{% endblock %}
-        </main>
-    </div>
+    <aside class="sidebar">
+        <label for="js-pattern-search-input" class="is-hidden">Search pattern library</label>
+        <input type="text" class="sidebar__search" id="js-pattern-search-input" placeholder="Search library...">
+        <div class="sidebar__search-results" id="js-pattern-search-results-container"></div>
+        <nav class="sidebar__nav" id="sidebar-nav">
+            <ul class="list">
+                {% for pattern_type, pattern_type_groups in pattern_templates.items %}
+                <li class="list__item">
+                    <h2 class="list__item-heading js-toggle-pattern">
+                        <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+                            <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                        </svg>
+                        {{ pattern_type|title }}
+                    </h2>
+                    <ul class="list list--child">
+                        {% for group_name, pattern_templates in pattern_type_groups.items %}
+                        <li class="list__item">
+                            <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+                                <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+                                    <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                                </svg>
+                                {{ group_name }}
+                            </h3>
+                            <ul class="list list--grandchild">
+                                {% for template in pattern_templates %}
+                                <li class="list__item">
+                                    <a class="list__item-link" href="{% url 'pattern_library:display_pattern' template.origin.template_name %}" id="{{ template.origin.template_name }}">
+                                        {{ template.pattern_name }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </aside>
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>
