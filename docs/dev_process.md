@@ -63,7 +63,7 @@ To make changes you need to edit the files under the `pattern_library` folder. Y
 If you want to make changes to the front-end assets (located in the `pattern_library/static/pattern_library/src` folder), you'll need to enusre
  the tooling is set up in order to build the assets.
 
-If you are [using docker]#(run_a_local_build_with_docker) you will already have
+If you are [using docker](#run-a-local-build-with-docker) you will already have
 installed the dependencies and be running the tooling in watch mode in your docker container. If you are running the build without docker then read on to get the tooling set up.
 
 Node version 8 is required for this. If you're using `nvm` to manage node on your machine there's
