@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import Http404
 from django.template.loader import get_template
 from django.utils.decorators import method_decorator
 from django.utils.html import escape
@@ -11,7 +11,7 @@ from pattern_library.exceptions import (
 )
 from pattern_library.utils import (
     get_pattern_config, get_pattern_config_str, get_pattern_markdown,
-    get_pattern_templates, get_sections, is_pattern_type, render_pattern
+    get_pattern_templates, get_sections, is_pattern, render_pattern
 )
 
 
@@ -51,6 +51,9 @@ class IndexView(TemplateView):
             # Just display the first pattern if a specific one isn't requested
             pattern_template_name = self.get_first_template(templates)
 
+        if not is_pattern(pattern_template_name):
+            raise Http404
+
         template = get_template(pattern_template_name)
         pattern_config = get_pattern_config(pattern_template_name)
 
@@ -74,12 +77,7 @@ class RenderPatternView(TemplateView):
         try:
             rendered_pattern = render_pattern(request, pattern_template_name)
         except TemplateIsNotPattern:
-            return HttpResponseBadRequest()
-
-        # Do not render page patterns as part of the base template
-        # because it should already extend base template
-        if is_pattern_type(pattern_template_name, 'pages'):
-            return HttpResponse(rendered_pattern)
+            raise Http404
 
         context = self.get_context_data()
         context['pattern_library_rendered_pattern'] = rendered_pattern
