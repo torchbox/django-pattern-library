@@ -171,18 +171,16 @@ def get_pattern_context(template_name):
 
 def get_pattern_markdown(template_name):
     replace_pattern = '{}$'.format(get_pattern_template_suffix())
-    md_file = re.sub(replace_pattern, '', template_name)
+    md_path = re.sub(replace_pattern, '', template_name)
 
-    md_file = md_file + '.md'
-    md_file = os.path.join(get_pattern_template_dir(), md_file)
-
+    md_name = md_path + '.md'
     try:
-        # Default encoding is platform-dependant, so we explicitly open it as utf-8.
-        with open(md_file, 'r', encoding='utf-8') as f:
-            htmlmarkdown = markdown.markdown(f.read())
-            return htmlmarkdown
-    except IOError:
+        md_file = get_template(md_name)
+    except TemplateDoesNotExist:
         return ''
+
+    with open(md_file.origin.name, 'r', encoding='utf-8') as f:
+        return markdown.markdown(f.read())
 
 
 def render_pattern(request, template_name):
