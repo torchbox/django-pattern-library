@@ -1,0 +1,31 @@
+version: '3.2'
+
+services:
+  web:
+    build: .
+    environment:
+      PYTHONDONTWRITEBYTECODE: 1
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+        consistency: delegated
+
+  frontend:
+    command: npm start
+    environment:
+      WDS_PORT: 3000
+      WDS_PUBLIC_PATH: /static/pattern_library/dist/
+      WDS_PROXY_TARGET: http://web:8000/
+    image: "node:carbon"
+    ports:
+      - "3000:3000"
+    user: node
+    volumes:
+      - type: bind
+        source: .
+        target: /home/node/app
+        consistency: delegated
+    working_dir: /home/node/app

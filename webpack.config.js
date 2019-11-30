@@ -8,7 +8,6 @@ module.exports = {
     output: {
         path: path.join(staticDir, 'dist'),
         filename: 'bundle.js',
-        publicPath: './dist'
     },
     module: {
         rules: [
@@ -44,5 +43,19 @@ module.exports = {
             /highlight\.js\/lib\/languages$/,
             new RegExp(`^./(${['django', 'yaml'].join('|')})$`)
         )
-    ]
+    ],
+    devServer: {
+        hot: true,
+        host: '0.0.0.0',
+        port: process.env.WDS_PORT,
+        publicPath: process.env.WDS_PUBLIC_PATH,
+        open: true,
+        openPage: 'pattern-library/',
+        index: '',
+        proxy: {
+            '/': {
+                target: process.env.WDS_PROXY_TARGET
+            }
+        }
+    }
 };
