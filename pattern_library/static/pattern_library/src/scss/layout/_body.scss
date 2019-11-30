@@ -4,4 +4,13 @@
     -ms-grid-columns: $sidebar-width 1fr;
     -ms-grid-rows: 45px 1fr;
     grid-template-columns: $sidebar-width 1fr;
+
+    &.nav-closed {
+        -ms-grid-columns: 0 1fr;
+        grid-template-columns: 0 1fr;
+    }
+
+    @media only screen and (min-width: 600px) {
+        transition: grid-template-columns 0.25s ease; // works in firefox
+    }
 }
