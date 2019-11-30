@@ -5,7 +5,7 @@ export default function() {
     const searchResultsContainer = document.getElementById('js-pattern-search-results-container')
 
     searchBox.addEventListener('keyup', e => {
-        let searchValue = e.target.value;
+        let searchValue = e.target.value.toLowerCase();
 
         // Clear if input value is empty
         if (searchValue === '') {
@@ -22,7 +22,7 @@ export default function() {
 
             // Match search query
             let matchedValues = patternList.filter(function (item) {
-                return item.textContent.includes(searchValue);
+                return item.textContent.toLowerCase().includes(searchValue);
             });
 
             // Populate search results
