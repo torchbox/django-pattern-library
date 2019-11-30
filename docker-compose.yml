@@ -15,13 +15,7 @@ services:
 
   frontend:
     command: npm start
-    environment:
-      WDS_PORT: 3000
-      WDS_PUBLIC_PATH: /static/pattern_library/dist/
-      WDS_PROXY_TARGET: http://web:8000/
     image: "node:carbon"
-    ports:
-      - "3000:3000"
     user: node
     volumes:
       - type: bind
