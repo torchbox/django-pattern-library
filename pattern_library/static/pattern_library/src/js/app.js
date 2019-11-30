@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import '../scss/main.scss';
 import persistMenu from './components/persist-menu';
 import patternSearch from './components/pattern-search';
@@ -6,6 +8,11 @@ import syntaxHighlighting from './components/syntax-highlighting';
 import hideMenuMobile from './components/hide-menu-mobile';
 import {setIframeSize, resizeIframe} from './components/iframe';
 import {toggleNav, toggleNavItems} from './components/navigation';
+import foreachPolyfill from './components/foreach-polyfill';
+import closestPolyfill from './components/closest-polyfill';
+
+foreachPolyfill();
+closestPolyfill();
 
 document.addEventListener('DOMContentLoaded', () => {
     syntaxHighlighting();
