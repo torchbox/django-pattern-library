@@ -1,5 +1,8 @@
 .main {
+    display: block;
     padding: 20px;
     background: $white;
     overflow: scroll;
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
 }

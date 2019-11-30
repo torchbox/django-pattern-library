@@ -4,6 +4,8 @@
     height: 100vh;
     margin-left: 0;
     overflow: auto;
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
 
     @media only screen and (min-width: 600px) {
         transition: margin 0.25s ease;
