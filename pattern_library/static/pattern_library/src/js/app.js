@@ -8,8 +8,8 @@ import syntaxHighlighting from './components/syntax-highlighting';
 import hideMenuMobile from './components/hide-menu-mobile';
 import {setIframeSize, resizeIframe} from './components/iframe';
 import {toggleNav, toggleNavItems} from './components/navigation';
-import foreachPolyfill from './components/foreach-polyfill';
-import closestPolyfill from './components/closest-polyfill';
+import foreachPolyfill from './polyfills/foreach-polyfill';
+import closestPolyfill from './polyfills/closest-polyfill';
 
 foreachPolyfill();
 closestPolyfill();
