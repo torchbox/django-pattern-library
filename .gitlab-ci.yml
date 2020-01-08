@@ -10,13 +10,19 @@ stages:
     - tox -e $(tox -l | grep ${PYVER} | xargs echo | sed 's/ /,/g')
 
 test_python36:
-  image: python:3.6-alpine
+  image: python:3.6-buster
   variables:
     PYVER: py36
   <<: *test
 
 test_python37:
-  image: python:3.7-alpine
+  image: python:3.7-buster
   variables:
     PYVER: py37
+  <<: *test
+
+test_python38:
+  image: python:3.8-buster
+  variables:
+    PYVER: py38
   <<: *test
