@@ -5,6 +5,8 @@
 A module for Django that helps you to build pattern libraries and follow the
 [Atomic design](http://bradfrost.com/blog/post/atomic-web-design/) methodology.
 
+![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](.github/pattern-library-screenshot.png)
+
 ## Objective
 
 At the moment, the main focus is to allow developers and designers
@@ -27,53 +29,54 @@ Documentation is located [here](./docs).
 
 1. Add `pattern_library` into your `INSTALLED_APPS`:
 
-    ```python
-    INSTALLED_APPS = [
-        # ...
+   ```python
+   INSTALLED_APPS = [
+       # ...
 
-        'pattern_library',
+       'pattern_library',
 
-        # ...
-    ]
-    ```
+       # ...
+   ]
+   ```
 
 2. Add `pattern_library.loader_tags` into the `TEMPLATES` setting. For example:
 
-    ```python
-    TEMPLATES = [
-        {
-            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
-            'APP_DIRS': True,
-            'OPTIONS': {
-                'context_processors': [
-                    'django.template.context_processors.debug',
-                    'django.template.context_processors.request',
-                    'django.contrib.auth.context_processors.auth',
-                    'django.contrib.messages.context_processors.messages',
-                ],
-                'builtins': ['pattern_library.loader_tags'],
-            },
-        },
-    ]
-    ```
+   ```python
+   TEMPLATES = [
+       {
+           'BACKEND': 'django.template.backends.django.DjangoTemplates',
+           'DIRS': [],
+           'APP_DIRS': True,
+           'OPTIONS': {
+               'context_processors': [
+                   'django.template.context_processors.debug',
+                   'django.template.context_processors.request',
+                   'django.contrib.auth.context_processors.auth',
+                   'django.contrib.messages.context_processors.messages',
+               ],
+               'builtins': ['pattern_library.loader_tags'],
+           },
+       },
+   ]
+   ```
 
-    Note that this module only supports the Django template backend out of the box.
+   Note that this module only supports the Django template backend out of the box.
 
 3. Set the `PATTERN_LIBRARY_TEMPLATE_DIR` setting to point to a template directory with your patterns:
 
-    ```python
-    PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(BASE_DIR, 'project_styleguide', 'templates')
-    ```
+   ```python
+   PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(BASE_DIR, 'project_styleguide', 'templates')
+   ```
 
-    Note that `PATTERN_LIBRARY_TEMPLATE_DIR` must be available for
-    [template loaders](https://docs.djangoproject.com/en/1.11/ref/templates/api/#loader-types).
+   Note that `PATTERN_LIBRARY_TEMPLATE_DIR` must be available for
+   [template loaders](https://docs.djangoproject.com/en/1.11/ref/templates/api/#loader-types).
 
 4. Include `pattern_library.urls` into your `urlpatterns`. Here's an example `urls.py`:
 
-    ```python
-    from django.apps import apps
-    from django.conf.urls import url, include
+   ```python
+   from django.apps import apps
+   from django.conf.urls import url, include
+   ```
 
 
     urlpatterns = [
@@ -86,16 +89,14 @@ Documentation is located [here](./docs).
         ]
     ```
 
-
 ## Developer docs
 
 Developer docs can be found [here](./docs/dev_process.md).
-
 
 ## TODO
 
 - [ ] Add a note about production usage
 - [ ] Tests: Add tests.
-    It's ok to not bother about tests during prototyping,
-    but it will be extremely hard to maintain
-    the project without tests.
+      It's ok to not bother about tests during prototyping,
+      but it will be extremely hard to maintain
+      the project without tests.
