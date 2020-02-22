@@ -73,10 +73,9 @@ Documentation is located [here](./docs).
 
 4. Include `pattern_library.urls` into your `urlpatterns`. Here's an example `urls.py`:
 
-   ```python
-   from django.apps import apps
-   from django.conf.urls import url, include
-   ```
+    ```python
+    from django.apps import apps
+    from django.conf.urls import url, include
 
 
     urlpatterns = [
