@@ -453,16 +453,3 @@ context:
   imageLarge:
     url: '//placekitten.com/829/585'
 ```
-
-
-**TODO:**
-
-- [ ] Check all examples;
-- [ ] Describe the approach to the base template
-    which should include CSS and JS;
-  * The base template should be very minimalistic;
-  * Not only docs: We need to decide which templates
-    should be rendered in base template and which should
-    be rendered on their own. Currently we render only page templates
-    without using base template, but it's hardcoded.
-    We should, probably, make it configurable.
