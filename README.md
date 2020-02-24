@@ -91,11 +91,3 @@ Documentation is located [here](./docs).
 ## Developer docs
 
 Developer docs can be found [here](./docs/dev_process.md).
-
-## TODO
-
-- [ ] Add a note about production usage
-- [ ] Tests: Add tests.
-      It's ok to not bother about tests during prototyping,
-      but it will be extremely hard to maintain
-      the project without tests.
