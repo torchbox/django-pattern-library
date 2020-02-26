@@ -1,0 +1,25 @@
+version: '3.2'
+
+services:
+  web:
+    build: .
+    environment:
+      PYTHONDONTWRITEBYTECODE: 1
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+        consistency: delegated
+
+  frontend:
+    command: npm start
+    image: "node:carbon"
+    user: node
+    volumes:
+      - type: bind
+        source: .
+        target: /home/node/app
+        consistency: delegated
+    working_dir: /home/node/app
