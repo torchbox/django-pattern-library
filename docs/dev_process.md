@@ -35,7 +35,7 @@ Then you can install the dependencies and run the test app:
 
 ```sh
 $ poetry install  # installs the library and its dependencies in editable mode
-$ poetry run ./runserver.sh  # runs the test app using the Django development server
+$ poetry run 'django-admin runserver --settings=tests.settings --pythonpath=.'  # runs the test app using the Django development server
 ```
 
 ### Run a local build with docker
