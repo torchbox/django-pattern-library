@@ -7,14 +7,6 @@
     -ms-grid-column: 1;
     -ms-grid-row: 2;
 
-    @media only screen and (min-width: 600px) {
-        transition: margin 0.25s ease;
-    }
-
-    .nav-closed & {
-        margin-left: -230px;
-    }
-
     &__search {
         width: 100%;
         padding: 10px;

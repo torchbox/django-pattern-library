@@ -44,5 +44,5 @@ module.exports = {
             /highlight\.js\/lib\/languages$/,
             new RegExp(`^./(${['django', 'yaml'].join('|')})$`)
         )
-    ]
+    ],
 };
