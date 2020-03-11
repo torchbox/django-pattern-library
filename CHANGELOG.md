@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+### Added
+- Support for Django 3.0
+- Support for Python 3.8
+
 ## [0.2.5] - 2019-11-01
 ### Added
 - Switch to Poetry for dependency management
