@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.8] - 2020-03-13
+### Added
+- Moved to github and open sourced
+- Support for Django 3.0
+- Support for Python 3.8
+
+### Removed
+- webpack-dev-server
+- references to old name of 'Mikalab'
+
+### Fixed
+- Documentation links and improved documentation
+- Accessibility issues with pattern library chrome
+- JavaScript in IE11 (added polyfills)
+- Pattern search (no longer case sensitive)
+- Issue with xframe-options header in django 3
+
 ## [Unreleased]
 ### Added
 - Support for Django 3.0
