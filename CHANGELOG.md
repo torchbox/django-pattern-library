@@ -1,5 +1,8 @@
 # Changelog
 
+## [Unreleased]
+
+
 ## [0.2.8] - 2020-03-13
 ### Added
 - Moved to github and open sourced
@@ -17,10 +20,6 @@
 - Pattern search (no longer case sensitive)
 - Issue with xframe-options header in django 3
 
-## [Unreleased]
-### Added
-- Support for Django 3.0
-- Support for Python 3.8
 
 ## [0.2.5] - 2019-11-01
 ### Added
