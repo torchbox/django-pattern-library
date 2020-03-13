@@ -1,6 +1,8 @@
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.template.loader import get_template
+from django.utils.decorators import method_decorator
 from django.utils.html import escape
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.generic.base import TemplateView
 
 from pattern_library import get_pattern_base_template_name, get_pattern_types
@@ -58,6 +60,7 @@ class RenderPatternView(TemplateView):
     http_method_names = ('get',)
     template_name = get_pattern_base_template_name()
 
+    @method_decorator(xframe_options_sameorigin)
     def get(self, request, pattern_template_name=None):
         try:
             rendered_pattern = render_pattern(request, pattern_template_name)
