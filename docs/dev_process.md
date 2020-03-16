@@ -110,10 +110,14 @@ On the `master branch`:
 2. Update the change log found at `CHANGELOG.md` - see https://keepachangelog.com/en/1.0.0/ for guidelines
 3. Commit and tag the release:
    ```sh
+   $ git commit -m "Updates for version 0.1.14"
    $ git tag -a v0.1.14 -m "Release version v0.1.14"
    $ git push --tags
    ```
-4. Check that your working copy is clean by running `git clean -dxn -e __pycache__`.
+4. Check that your working copy is clean by running:
+   ```sh
+   $ git clean -dxn -e __pycache__
+   ```
    Any files returned by this command should be removed before continuing to prevent them being included in the build.
 5. Install the locked versions of the `node` dependencies and run the production build.
 
@@ -124,13 +128,19 @@ On the `master branch`:
    ```
 
    Or, via the docker container:
-    ```sh
+   ```sh
    $ docker-compose run frontend npm ci
    $ docker-compose run frontend npm run-script build
    ```
-
-
 6. Package the new version using `poetry build`
-7. Test the newly-built package by installing it an existing project using `django-pattern-library` and verifying
-   everything is as you expect it to be.
+
+7. Test the newly-built package:
+   Find the file ending in `.whl` in the `dist` directory
+   Copy it to a test local build.
+   Run this to install it on the test build:
+   ```sh
+   $ pip install django_pattern_library-0.2.6-py3-none-any.whl
+   ```
+   Verify that the pattern library is working as you expect it to on your local build.
+
 8. Upload the latest version to PyPI (requires credentials): `poetry publish`
