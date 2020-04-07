@@ -94,6 +94,28 @@ You can define a list or a dict or anything that
 [`PyYAML`](http://pyyaml.org/wiki/PyYAMLDocumentation)
 allows you to create in `yaml` format without creating a custom objects.
 
+## Customising the patterns’ surroundings
+
+All patterns that are not pages are rendered within a base page template, `pages/base.html` by default. The pattern library will render patterns inside the `content` block, which you can tweak to change how patterns are displayed.
+
+You can for example add a theme wrapper around the components:
+
+```html
+{% block content %}
+    {% if pattern_library_rendered_pattern %}
+        <div class="pattern-library bg bg--light">
+            {{ pattern_library_rendered_pattern }}
+        </div>
+    {% endif %}
+{% endblock %}
+```
+
+`pattern_library_rendered_pattern` can also be used to do other modifications on the page for the pattern library only, for example adding an extra class to `<body>`:
+
+```html
+<body class="{% block body_class %}{% endblock %}{% if pattern_library_rendered_pattern %} pattern-library-template{% endif %}">
+```
+
 ## Override template tags
 
 The package overrides the following Django tags:
