@@ -17,7 +17,7 @@ class ExtendsNode(DjangoExtendsNode):
     """
     def render(self, context):
         if is_pattern_library_context(context):
-            parent_context = get_pattern_context(self.parent_name.var)
+            parent_context = get_pattern_context(self.parent_name.resolve(context))
             if parent_context:
                 # We want parent_context to appear later in the lookup process
                 # than context of the actual template.
@@ -59,7 +59,7 @@ class IncludeNode(DjangoIncludeNode):
     """
     def render(self, context):
         if is_pattern_library_context(context):
-            pattern_context = get_pattern_context(self.template.var)
+            pattern_context = get_pattern_context(self.template.resolve(context))
             extra_context = {name: var.resolve(context) for name, var in self.extra_context.items()}
 
             if self.isolated_context:
