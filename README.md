@@ -73,9 +73,10 @@ Documentation is located [here](./docs).
 
 4. Include `pattern_library.urls` into your `urlpatterns`. Here's an example `urls.py`:
 
-    ```python
-    from django.apps import apps
-    from django.conf.urls import url, include
+   ```python
+   from django.apps import apps
+   from django.conf.urls import url, include
+   ```
 
 
     urlpatterns = [
@@ -88,6 +89,12 @@ Documentation is located [here](./docs).
         ]
     ```
 
-## Developer docs
+## Contributing
 
-Developer docs can be found [here](./docs/dev_process.md).
+See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](CONTRIBUTING.md).
+
+If you just want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
+
+## Credits
+
+View the full list of [contributors](https://github.com/torchbox/django-pattern-library/graphs/contributors). [BSD](LICENSE) licensed.
