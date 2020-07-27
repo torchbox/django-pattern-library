@@ -8,7 +8,7 @@ authors = [
 ]
 license = "BSD-3-Clause"
 readme = "README.md"
-url = "https://github.com/torchbox/django-pattern-library"
+homepage = "https://github.com/torchbox/django-pattern-library"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Web Environment",
