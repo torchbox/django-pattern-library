@@ -1,11 +1,12 @@
 {
-    "name": "webpack-sass",
-    "version": "1.0.0",
+    "name": "django-attern-library",
+    "version": "0.1.0",
+    "private": true,
+    "license": "UNLICENSED",
     "scripts": {
         "start": "webpack --mode development --watch",
         "build": "webpack --mode production"
     },
-    "license": "UNLICENSED",
     "devDependencies": {
         "babel-core": "^6.26.0",
         "babel-loader": "^7.1.4",
