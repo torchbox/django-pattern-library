@@ -19,7 +19,6 @@ jobs:
       install:
         - npm install --no-optional --no-audit --progress=false
       script:
-        - npm run lint
         - npm run build
 install:
   - pip install poetry tox
