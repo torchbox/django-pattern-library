@@ -1,11 +1,13 @@
 version: ~> 1.0
+os: linux
 dist: bionic
 language: python
 cache:
   pip: true
   directories:
     - .tox
-matrix:
+    - node_modules
+jobs:
   include:
     - env: PYVER=py36
       python: 3.6
@@ -13,6 +15,12 @@ matrix:
       python: 3.7
     - env: PYVER=py38
       python: 3.8
+    - language: node_js
+      install:
+        - npm install --no-optional --no-audit --progress=false
+      script:
+        - npm run lint
+        - npm run build
 install:
   - pip install poetry tox
 script:
