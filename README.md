@@ -76,8 +76,6 @@ Documentation is located [here](./docs).
    ```python
    from django.apps import apps
    from django.conf.urls import url, include
-   ```
-
 
     urlpatterns = [
         # ... Your URLs
