@@ -3,6 +3,15 @@
 ## [Unreleased]
 
 
+## [0.2.9] - 2020-07-29
+### Added
+- Atomic design no longer enforced and pattern templates can be from several locations, rather than a single location.
+  These changes are currently undocumented, see the tests for examples.
+
+### Fixed
+- Templates that are not explicitly part of the pattern library can no longer be rendered by the pattern library
+
+
 ## [0.2.8] - 2020-03-13
 ### Added
 - Moved to github and open sourced
