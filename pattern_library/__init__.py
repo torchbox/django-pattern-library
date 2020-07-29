@@ -1,42 +1,39 @@
-import importlib
-from functools import wraps
+
 
 default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
-settings = None
+
+DEFAULT_SETTINGS = {
+    'BASE_TEMPLATE_NAME': 'patterns/base.html',
+    'TEMPLATE_SUFFIX': '.html',
+    'SECTIONS': (
+        ('atoms', ['patterns/atoms']),
+        ('molecules', ['patterns/molecules']),
+        ('organisms', ['patterns/organisms']),
+        ('templates', ['patterns/templates']),
+        ('pages', ['patterns/pages']),
+    ),
+}
 
 
-def uses_settings(func):
-    @wraps(func)
-    def wrapped():
-        global settings
-        if settings is None:
-            settings = importlib.import_module('django.conf').settings
-        return func()
-    return wrapped
+def get_from_settings(attr):
+    from django.conf import settings
+
+    library_settings = DEFAULT_SETTINGS.copy()
+    library_settings.update(getattr(settings, 'PATTERN_LIBRARY', {}))
+
+    return library_settings.get(attr)
 
 
-@uses_settings
-def get_pattern_template_dir():
-    return settings.PATTERN_LIBRARY_TEMPLATE_DIR
-
-
-@uses_settings
-def get_pattern_template_prefix():
-    return getattr(settings, 'PATTERN_LIBRARY_TEMPLATE_PREFIX', 'patterns')
-
-
-@uses_settings
 def get_pattern_template_suffix():
-    return getattr(settings, 'PATTERN_LIBRARY_TEMPLATE_SUFFIX', '.html')
+    return get_from_settings('TEMPLATE_SUFFIX')
 
 
-@uses_settings
 def get_pattern_base_template_name():
-    return getattr(settings, 'PATTERN_LIBRARY_BASE_TEMPLATE_NAME', 'patterns/base.html')
+    return get_from_settings('BASE_TEMPLATE_NAME')
 
 
-def get_pattern_types():
-    return ['atoms', 'molecules', 'organisms', 'templates', 'pages']
+def get_sections():
+    return get_from_settings('SECTIONS')
 
 
 def get_pattern_context_var_name():

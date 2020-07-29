@@ -52,3 +52,22 @@ class ViewsTestCase(SimpleTestCase):
 
         self.assertEqual(display_link.text.strip(), "test_molecule_no_context.html")
         self.assertEqual(render_link.text.strip(), pattern_path)
+
+    def test_includes(self):
+        pattern_path = 'patterns/atoms/test_includes/test_includes.html'
+        display_url = reverse(
+            'pattern_library:display_pattern',
+            kwargs={'pattern_template_name': pattern_path},
+        )
+        render_url = reverse(
+            'pattern_library:render_pattern',
+            kwargs={'pattern_template_name': pattern_path},
+        )
+
+        display_response = self.client.get(display_url)
+        self.assertEqual(display_response.status_code, 200)
+
+        render_response = self.client.get(render_url)
+        self.assertEqual(render_response.status_code, 200)
+        self.assertContains(render_response, 'SHOWME')
+        self.assertNotContains(render_response, 'HIDEME')

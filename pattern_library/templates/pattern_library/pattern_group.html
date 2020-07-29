@@ -1,0 +1,24 @@
+<ul class="list list--child">
+    {% for group_name, pattern_templates in groups.items %}
+    <li class="list__item">
+        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+            <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+            </svg>
+            {{ group_name }}
+        </h3>
+        {% if pattern_templates.template_groups %}
+            {% include "pattern_library/pattern_group.html" with groups=pattern_templates.template_groups %}
+        {% endif %}
+        <ul class="list list--grandchild">
+            {% for template in pattern_templates.templates_stored %}
+            <li class="list__item">
+                <a class="list__item-link" href="{% url 'pattern_library:display_pattern' template.origin.template_name %}" id="{{ template.origin.template_name }}">
+                    {{ template.pattern_name }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
