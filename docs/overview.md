@@ -134,6 +134,19 @@ The override process has two parts:
 1.  Override your template tag with a mock implementation
 2.  Define fake result for your tag in a `yaml` file
 
+
+### Providing a default value for template tags
+To provide a default for a template tag, you need to provide a keyword argument default when overriding your tag.
+
+```
+from pattern_library.monkey_utils import override_tag
+
+override_tag(register, 'a_tag_name', default="https://potato.com")
+```
+
+This default is used for any tag that's not passed it's own context allowing specificity for certain elements that need it but stops the tags breaking when they're not structural to the component.
+
+
 ### When do I need to override a template tag?
 
 Ideally your pattern library should be independent, so it doesn't fail when
