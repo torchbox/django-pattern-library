@@ -43,7 +43,9 @@ class Command(BaseCommand):
 
         # Resolve the output dir according to the directory the command is run from.
         parent_dir = Path.cwd().joinpath(self.output_dir)
-        parent_dir.mkdir(exist_ok=True)
+
+        if not self.dry_run:
+            parent_dir.mkdir(exist_ok=True)
 
         self.render_group(request, parent_dir, templates)
 
@@ -56,7 +58,12 @@ class Command(BaseCommand):
 
             render_path = parent_dir.joinpath(template.pattern_name)
             rendered_pattern = render_pattern(request, template.origin.template_name)
-            render_path.write_text(rendered_pattern)
+
+            if self.dry_run:
+                if self.verbosity >= 2:
+                    self.stdout.write(rendered_pattern)
+            else:
+                render_path.write_text(rendered_pattern)
 
         if not pattern_templates['template_groups']:
             return
@@ -65,5 +72,6 @@ class Command(BaseCommand):
             if self.verbosity >= 2:
                 self.stdout.write(f'Group: {pattern_type_group}')
             group_parent = parent_dir.joinpath(pattern_type_group)
-            group_parent.mkdir(exist_ok=True)
+            if not self.dry_run:
+                group_parent.mkdir(exist_ok=True)
             self.render_group(request, group_parent, pattern_templates)
