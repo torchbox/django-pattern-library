@@ -18,7 +18,6 @@
         "webpack-cli": "^3.3.10"
     },
     "dependencies": {
-        "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.6.1",
         "highlight.js": "^9.12.0"
     }
