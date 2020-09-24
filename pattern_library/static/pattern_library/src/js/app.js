@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 import '../scss/main.scss';
 import persistMenu from './components/persist-menu';
 import patternSearch from './components/pattern-search';
