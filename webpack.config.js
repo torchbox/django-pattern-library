@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const sass = require('sass');
 
 const staticDir = path.resolve(__dirname, 'pattern_library', 'static', 'pattern_library');
 
@@ -16,7 +17,6 @@ module.exports = {
                 test: /\.js$/,
                 use: {
                     loader: 'babel-loader',
-                    options: { presets: ['env'] }
                 }
             },
             {
@@ -29,7 +29,13 @@ module.exports = {
                         loader: 'css-loader' // translates CSS into CommonJS
                     },
                     {
-                        loader: 'sass-loader' // compiles Sass to CSS
+                        loader: 'sass-loader', // compiles Sass to CSS
+                        options: {
+                            implementation: sass,
+                            sassOptions: {
+                                outputStyle: 'compressed',
+                            },
+                        },
                     }
                 ]
             }
