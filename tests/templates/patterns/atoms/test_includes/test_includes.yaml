@@ -1,3 +1,6 @@
+context:
+    variable_include: non-patterns/variable_include.html
+
 tags:
   error_tag:
     include:
