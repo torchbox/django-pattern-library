@@ -2,7 +2,7 @@
     "name": "django-attern-library",
     "version": "0.1.0",
     "private": true,
-    "license": "UNLICENSED",
+    "license": "BSD-3-Clause",
     "scripts": {
         "start": "webpack --mode development --watch",
         "build": "webpack --mode production"
