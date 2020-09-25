@@ -1,0 +1,26 @@
+site_name: django-pattern-library
+repo_url: https://github.com/torchbox/django-pattern-library
+site_url:
+edit_uri: edit/master/docs/
+
+repo_name: django-pattern-library
+dev_addr: 0.0.0.0:8001
+theme:
+  name: material
+  font: false
+markdown_extensions:
+  - codehilite
+  - admonition
+  - sane_lists
+  - toc:
+      permalink: true
+  # pymdown-extensions meant to bring the Markdown implementation closer to GFM.
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - 'Home': 'README.md'
+  - 'Overview': 'overview.md'
