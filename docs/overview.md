@@ -1,6 +1,6 @@
 # Overview
 
-As we [already mentioned](../README.md), the main idea of this package is
+The main idea of this package is
 to allow you use template in both: your pattern library and
 production code of your Django project.
 
@@ -193,8 +193,7 @@ Note that the fake implementation will only be used when viewing the
 pattern library: you will be using the actual implementation in
 our production code.
 
-Assuming that you already have
-[module installed in your project](../README.md),
+Assuming that you already have module installed in your project,
 to define a fake implementation we need to:
 
 1.  Create [a `templatetags` package](https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#code-layout)
