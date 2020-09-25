@@ -9,6 +9,7 @@
 - Support for Django 1.11
 - Support for Django 2.0
 - Support for Django 2.1
+- The project no longer includes polyfills for all ES6 features, and only supports modern browsers.
 
 ## [0.2.9] - 2020-07-29
 
