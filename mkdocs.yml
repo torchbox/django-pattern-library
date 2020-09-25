@@ -22,5 +22,6 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
+  # Auto-magically copied from the root of the project in the CI build.
   - 'Home': 'README.md'
   - 'Overview': 'overview.md'
