@@ -5,7 +5,7 @@
 A module for Django that helps you to build pattern libraries and follow the
 [Atomic design](http://bradfrost.com/blog/post/atomic-web-design/) methodology.
 
-![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](.github/pattern-library-screenshot.png)
+![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](https://raw.githubusercontent.com/torchbox/django-pattern-library/master/.github/pattern-library-screenshot.png)
 
 ## Objective
 
@@ -23,76 +23,70 @@ attempt to solve this issue and reduce the amount of copy-pasted code.
 
 ## Documentation
 
-Documentation is located [here](./docs).
+Documentation is located in GitHub in [`docs/`](https://github.com/torchbox/django-pattern-library/tree/master/docs).
 
 ## How to install
 
-1. Add `pattern_library` into your `INSTALLED_APPS`:
+In your Django settings, add `pattern_library` into your `INSTALLED_APPS`, and `pattern_library.loader_tags` into the `TEMPLATES` setting. For example:
 
-   ```python
-   INSTALLED_APPS = [
-       # ...
+```python
+INSTALLED_APPS = [
+    # ...
+    'pattern_library',
+    # ...
+]
 
-       'pattern_library',
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'builtins': ['pattern_library.loader_tags'],
+        },
+    },
+]
+```
 
-       # ...
-   ]
-   ```
+Note that this module only supports the Django template backend out of the box.
 
-2. Add `pattern_library.loader_tags` into the `TEMPLATES` setting. For example:
+Set the `PATTERN_LIBRARY_TEMPLATE_DIR` setting to point to a template directory with your patterns:
 
-   ```python
-   TEMPLATES = [
-       {
-           'BACKEND': 'django.template.backends.django.DjangoTemplates',
-           'DIRS': [],
-           'APP_DIRS': True,
-           'OPTIONS': {
-               'context_processors': [
-                   'django.template.context_processors.debug',
-                   'django.template.context_processors.request',
-                   'django.contrib.auth.context_processors.auth',
-                   'django.contrib.messages.context_processors.messages',
-               ],
-               'builtins': ['pattern_library.loader_tags'],
-           },
-       },
-   ]
-   ```
+```python
+PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(BASE_DIR, 'project_styleguide', 'templates')
+```
 
-   Note that this module only supports the Django template backend out of the box.
+Note that `PATTERN_LIBRARY_TEMPLATE_DIR` must be available for
+[template loaders](https://docs.djangoproject.com/en/1.11/ref/templates/api/#loader-types).
 
-3. Set the `PATTERN_LIBRARY_TEMPLATE_DIR` setting to point to a template directory with your patterns:
+Include `pattern_library.urls` into your `urlpatterns`. Here's an example `urls.py`:
 
-   ```python
-   PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(BASE_DIR, 'project_styleguide', 'templates')
-   ```
+```python
+from django.apps import apps
+from django.conf.urls import url, include
 
-   Note that `PATTERN_LIBRARY_TEMPLATE_DIR` must be available for
-   [template loaders](https://docs.djangoproject.com/en/1.11/ref/templates/api/#loader-types).
+urlpatterns = [
+    # ... Your URLs
+]
 
-4. Include `pattern_library.urls` into your `urlpatterns`. Here's an example `urls.py`:
-
-   ```python
-   from django.apps import apps
-   from django.conf.urls import url, include
-
-    urlpatterns = [
-        # ... Your URLs
+if apps.is_installed('pattern_library'):
+    urlpatterns += [
+        url(r'^pattern-library/', include('pattern_library.urls')),
     ]
-
-    if apps.is_installed('pattern_library'):
-        urlpatterns += [
-            url(r'^pattern-library/', include('pattern_library.urls')),
-        ]
-    ```
+```
 
 ## Contributing
 
-See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](CONTRIBUTING.md).
+See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](https://github.com/torchbox/django-pattern-library/blob/master/CONTRIBUTING.md).
 
 If you just want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
 
 ## Credits
 
-View the full list of [contributors](https://github.com/torchbox/django-pattern-library/graphs/contributors). [BSD](LICENSE) licensed.
+View the full list of [contributors](https://github.com/torchbox/django-pattern-library/graphs/contributors). [BSD](https://github.com/torchbox/django-pattern-library/blob/master/LICENSE) licensed.
