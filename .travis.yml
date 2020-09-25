@@ -22,6 +22,7 @@ jobs:
         - npm run build
     - python: 3.8
       install:
+        - pip install poetry
         - poetry install
       script:
         - cp README.md docs/README.md
