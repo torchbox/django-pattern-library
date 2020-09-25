@@ -11,6 +11,10 @@
 - Support for Django 2.1
 - The project no longer includes polyfills for all ES6 features, and only supports modern browsers.
 
+### Fixed
+
+- PyPI package metadata now uses absolute URLs to GitHub ([#120](https://github.com/torchbox/django-pattern-library/issues/120)).
+
 ## [0.2.9] - 2020-07-29
 
 ### Added
