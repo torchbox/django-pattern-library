@@ -81,6 +81,8 @@ if apps.is_installed('pattern_library'):
     ]
 ```
 
+This package is not intended for production. It is **highly recommended** to only enable this package in testing environments for a restricted, trusted audience. One simple way to do this is to only expose its URLs if `apps.is_installed('pattern_library')`, as demonstrated above, and only have the app installed in environment-specific settings.
+
 ## Contributing
 
 See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](https://github.com/torchbox/django-pattern-library/blob/master/CONTRIBUTING.md).
