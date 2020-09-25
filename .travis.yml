@@ -27,6 +27,13 @@ jobs:
       script:
         - cp README.md docs/README.md
         - poetry run mkdocs build
+      deploy:
+        - provider: pages
+          skip_cleanup: true
+          local_dir: build
+          github_token: "$PAGES_GITHUB_API_TOKEN"
+          on:
+            branch: master
 install:
   - pip install poetry tox
 script:
@@ -37,3 +44,8 @@ branches:
     - gh-pages
 notifications:
   email: false
+env:
+  global:
+    # Permissions: public_repo
+    # travis encrypt --pro PAGES_GITHUB_API_TOKEN=<value>
+    - secure: "X2mgTFLOKwPpWqYMtcPxeGduDrXcKZN9Nwg/90TrzZU07+hNTm5nfd4WZxnBK1B/EZLysetBMMtovVxxtI84mYOMnY+gOTp37AlrY79dldz7nRD5R5ECOvMegQ+cndJ4OAvR2eJm4WsHSBMWsxx4a6NdX/jJI4iAg8CxNdPopO8EsjInHtA8ANmUkJKJyVnnUbe/Un4c713rwnB7nbILiKDqCgkZwhsF34e1Ft7oaJ0XKZg2e/h0DNqseSMwp2HDi/Ti5Y4eQlSYHnPshscxRV21EVlhDqNS0opxgyKd14AFSV3bkxmbD8hzn7VEHSVmkL2PHEd3atIqcGa/VwIw4bZWqTPtHR4YqJeKsnBPLPlQOZy3097rtuRVAPs8OuoOOm7OTss0INRFav8fOY5zq3aZqdywQoLZuDbJOpHz7idZyXwuQKUDxsXKncjoR3XoFhqhLxVUvj6zjXWFSRPc5e/+f17zBIQhr0BQJ/IPIRj3yFdnDGElCpBwJLs5KQM0Ay3NLygvZ4yb4b73m0VgdM/oC0aOw99oElimyllbeSSZzRoPzk3PX/gg45acerGNGbZlDQF363xCjqJB4I7c0GlhQW4vGf+rkpFnFfXZqxDMKVlUmGCpV5QITCqcP2U042eF+/zcxj//F7c4kqyLB8Tz1ktwmQEI/Qi7Y4cMuKE="
