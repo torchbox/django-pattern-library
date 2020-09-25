@@ -26,7 +26,7 @@ jobs:
         - poetry install
       script:
         - cp README.md docs/README.md
-        - poetry run mkdocs
+        - poetry run mkdocs build
 install:
   - pip install poetry tox
 script:
