@@ -45,6 +45,9 @@ beautifulsoup4 = "^4.8"
 coverage = "^4.5"
 flake8 = "^3.7"
 isort = {version = "^4.3", extras = ["pyproject"]}
+mkdocs = "^1.1.2"
+mkdocs-material = "^5.5.14"
+pymdown-extensions = "^8.0"
 
 [tool.isort]
 known_first_party = "pattern_library"
