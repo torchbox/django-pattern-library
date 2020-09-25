@@ -2,7 +2,6 @@ export function resizeIframe() {
     const body = document.querySelector('body');
     const patternIframe = document.querySelector('.js-iframe');
     const resizeButtons = document.querySelectorAll('.js-resize-iframe');
-    const closeButton = document.querySelector('.js-close-iframe');
 
     // remove animating class to prevent delay when dragging iframe
     patternIframe.addEventListener('mousedown', function(){
