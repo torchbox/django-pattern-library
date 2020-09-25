@@ -69,6 +69,12 @@ PATTERN_LIBRARY_TEMPLATE_DIR = os.path.join(BASE_DIR, 'project_styleguide', 'tem
 Note that `PATTERN_LIBRARY_TEMPLATE_DIR` must be available for
 [template loaders](https://docs.djangoproject.com/en/1.11/ref/templates/api/#loader-types).
 
+For Django 3.0 and up, set the X-Frame-Options response headers:
+
+```python
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+```
+
 Include `pattern_library.urls` into your `urlpatterns`. Here's an example `urls.py`:
 
 ```python
