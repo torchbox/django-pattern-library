@@ -7,6 +7,10 @@ A module for Django that helps you to build pattern libraries and follow the
 
 ![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](https://raw.githubusercontent.com/torchbox/django-pattern-library/master/.github/pattern-library-screenshot.png)
 
+## Documentation
+
+Documentation is located in GitHub in [`docs/`](https://github.com/torchbox/django-pattern-library/tree/master/docs).
+
 ## Objective
 
 At the moment, the main focus is to allow developers and designers
@@ -21,9 +25,9 @@ we find it hard to maintain layout on big projects in several places:
 in a project's pattern library and in actual production code. This is our
 attempt to solve this issue and reduce the amount of copy-pasted code.
 
-## Documentation
+To learn more about how this package can be used, have a look at our Wagtail Space 2020 talk: [Reusable UI components: A journey from React to Wagtail](https://www.youtube.com/watch?v=isrOufI7TKc)
 
-Documentation is located in GitHub in [`docs/`](https://github.com/torchbox/django-pattern-library/tree/master/docs).
+[![Reusable UI components: A journey from React to Wagtail](https://raw.githubusercontent.com/torchbox/django-pattern-library/master/.github/pattern-library-talk-youtube.webp)](https://www.youtube.com/watch?v=isrOufI7TKc)
 
 ## How to install
 
