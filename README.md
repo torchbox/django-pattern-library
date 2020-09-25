@@ -5,7 +5,7 @@
 A module for Django that helps you to build pattern libraries and follow the
 [Atomic design](http://bradfrost.com/blog/post/atomic-web-design/) methodology.
 
-![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](https://raw.githubusercontent.com/torchbox/django-pattern-library/master/.github/pattern-library-screenshot.png)
+![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](https://raw.githubusercontent.com/torchbox/django-pattern-library/master/.github/pattern-library-screenshot.webp)
 
 ## Documentation
 
