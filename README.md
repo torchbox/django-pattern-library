@@ -1,4 +1,4 @@
-# Django pattern library
+# An Amazing Django pattern library
 
 [![PyPI](https://img.shields.io/pypi/v/django-pattern-library.svg)](https://pypi.org/project/django-pattern-library/) [![PyPI downloads](https://img.shields.io/pypi/dm/django-pattern-library.svg)](https://pypi.org/project/django-pattern-library/) [![Travis](https://travis-ci.com/torchbox/django-pattern-library.svg?branch=master)](https://travis-ci.com/torchbox/django-pattern-library) [![Total alerts](https://img.shields.io/lgtm/alerts/g/torchbox/django-pattern-library.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/torchbox/django-pattern-library/alerts/)
 
@@ -9,7 +9,7 @@ A module for Django that helps you to build pattern libraries and follow the
 
 ## Documentation
 
-Documentation is located in GitHub in [`docs/`](https://github.com/torchbox/django-pattern-library/tree/master/docs).
+Documentation is located in GitHub in [`docs/`](https://github.com/torchbox/django-pattern-library/tree/master/docs).Just check it out
 
 ## Objective
 
