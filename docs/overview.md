@@ -144,8 +144,7 @@ from pattern_library.monkey_utils import override_tag
 override_tag(register, 'a_tag_name', default="https://potato.com")
 ```
 
-This default is used for any tag that's not passed it's own context allowing specificity for certain elements that need it but stops the tags breaking when they're not structural to the component.
-
+This default is used for any tag that's not passed its own context, allowing specificity for those elements that need it while preventing the tag from breaking when it's not structural to the component.
 
 ### When do I need to override a template tag?
 

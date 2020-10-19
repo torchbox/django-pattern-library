@@ -7,9 +7,10 @@ from pattern_library.utils import (
 )
 
 logger = logging.getLogger(__name__)
+UNSPECIFIED = object()
 
 
-def override_tag(register, name, default=None):
+def override_tag(register, name, default_html=None):
     """
     An utility that helps you override original tags for use in your pattern library.
 
@@ -53,7 +54,7 @@ def override_tag(register, name, default=None):
                         request = context.get('request')
                         result = render_pattern(request, template_name, allow_non_patterns=True)
                         tag_overridden = True
-                    
+
                     # TODO: Allow objects with the __str__ method
                     # In some cases we must return an object that can
                     # be rendered as a string `{{ result }}`
@@ -75,12 +76,11 @@ def override_tag(register, name, default=None):
 
                     # Render result instead of the tag
                     return result
+                elif default_html is not UNSPECIFIED:
+                    # Render provided default;
+                    # if no stub data supplied.
+                    return default_html
                 else:
-                    if default:
-                        # Render provided default;
-                        # if no stub data supplied.
-                        return default
-
                     logger.warning(
                         'No default or stub data defined for the "%s" tag in the "%s" template',
                         tag_name, current_template_name

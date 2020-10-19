@@ -6,10 +6,15 @@ tags:
       raw: null
     zero:
       raw: 0
-  default_tag:
+  default_html_tag:
     page.url:
       raw: "example"
     page.child.url:
       raw: "another_example"
-    # None supplied by default value.
+    # None handled by default html value.
+  default_html_tag_falsey:
+    page.url:
+      raw: "None"
+    page.child.url:
+      raw: "False"
   
