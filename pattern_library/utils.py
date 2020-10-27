@@ -3,7 +3,9 @@ import os
 import re
 
 from django.template import TemplateDoesNotExist
+from django.template.context import Context
 from django.template.loader import get_template, render_to_string
+from django.template.loader_tags import ExtendsNode
 from django.template.loaders.app_directories import get_app_template_dirs
 from django.utils.safestring import mark_safe
 
@@ -189,3 +191,27 @@ def render_pattern(request, template_name, allow_non_patterns=False):
     context = get_pattern_context(template_name)
     context[get_pattern_context_var_name()] = True
     return render_to_string(template_name, request=request, context=context)
+
+
+def get_template_ancestors(template_name, context=None, ancestors=None):
+    """
+    Returns a list of template names, starting with provided name
+    and followed by the names of any templates that extends until
+    the most extended template is reached.
+    """
+    if ancestors is None:
+        ancestors = [template_name]
+
+    if context is None:
+        context = Context()
+
+    pattern_template = get_template(template_name)
+
+    for node in pattern_template.template.nodelist:
+        if isinstance(node, ExtendsNode):
+            parent_template_name = node.parent_name.resolve(context)
+            ancestors.append(parent_template_name)
+            get_template_ancestors(parent_template_name, context=context, ancestors=ancestors)
+            break
+
+    return ancestors

@@ -13,6 +13,7 @@
 
 ### Fixed
 
+- Pages and fragments are now handled correctly again ([#119](https://github.com/torchbox/django-pattern-library/issues/119))
 - PyPI package metadata now uses absolute URLs to GitHub ([#120](https://github.com/torchbox/django-pattern-library/issues/120)).
 
 ## [0.2.9] - 2020-07-29
@@ -57,3 +58,8 @@
 
 ### Added
 - Compatibility with Django 2.2
+
+[0.2.9]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.9
+[0.2.8]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.8
+[0.2.5]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.5
+[0.2.4]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.4

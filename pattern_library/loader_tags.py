@@ -17,7 +17,8 @@ class ExtendsNode(DjangoExtendsNode):
     """
     def render(self, context):
         if is_pattern_library_context(context):
-            parent_context = get_pattern_context(self.parent_name.var)
+            parent_name = self.parent_name.resolve(context)
+            parent_context = get_pattern_context(parent_name)
             if parent_context:
                 # We want parent_context to appear later in the lookup process
                 # than context of the actual template.
@@ -59,7 +60,8 @@ class IncludeNode(DjangoIncludeNode):
     """
     def render(self, context):
         if is_pattern_library_context(context):
-            pattern_context = get_pattern_context(self.template.var)
+            template = self.template.resolve(context)
+            pattern_context = get_pattern_context(template)
             extra_context = {name: var.resolve(context) for name, var in self.extra_context.items()}
 
             if self.isolated_context:
@@ -89,8 +91,8 @@ class IncludeNode(DjangoIncludeNode):
 @register.tag('extends')
 def do_extends(parser, token):
     """
-    Copy if Django's built-in {% extends ... %} tag that uses the custom
-    ExtendsNode to allow us to load dump data for pattern library.
+    A copy of Django's built-in {% extends ... %} tag that uses our custom
+    ExtendsNode to allow us to load dummy context for the pattern library.
     """
     bits = token.split_contents()
     if len(bits) != 2:
@@ -106,8 +108,8 @@ def do_extends(parser, token):
 @register.tag('include')
 def do_include(parser, token):
     """
-    Copy if Django's built-in {% include ... %} tag that uses the custom
-    IncludeNode to allow us to load dump data for pattern library.
+    A copy of Django's built-in {% include ... %} tag that uses our custom
+    IncludeNode to allow us to load dummy context for the pattern library.
     """
     bits = token.split_contents()
     if len(bits) < 2:

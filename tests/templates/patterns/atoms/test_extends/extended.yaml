@@ -1,0 +1,2 @@
+context:
+    parent_template_name: patterns/atoms/test_extends/base.html

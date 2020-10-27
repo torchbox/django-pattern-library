@@ -71,3 +71,40 @@ class ViewsTestCase(SimpleTestCase):
         self.assertEqual(render_response.status_code, 200)
         self.assertContains(render_response, 'SHOWME')
         self.assertNotContains(render_response, 'HIDEME')
+        self.assertContains(render_response, 'included content from variable')
+
+    def test_page(self):
+        test_page_render_url = reverse(
+            'pattern_library:render_pattern',
+            kwargs={'pattern_template_name': "patterns/pages/test_page/test_page.html"},
+        )
+        response = self.client.get(test_page_render_url)
+
+        self.assertContains(response, '<title>Page</title>')
+
+    def test_fragments(self):
+        for template_name in [
+            'patterns/atoms/test_atom/test_atom.html',
+            'patterns/molecules/test_molecule/test_molecule.html',
+        ]:
+            with self.subTest(template_name=template_name):
+                self.assertContains(
+                    self.client.get(
+                        reverse(
+                            'pattern_library:render_pattern',
+                            kwargs={'pattern_template_name': template_name},
+                        ),
+                    ),
+                    '<title>Fragment</title>',
+                )
+
+    def test_fragment_extended_from_variable(self):
+        self.assertContains(
+            self.client.get(
+                reverse(
+                    'pattern_library:render_pattern',
+                    kwargs={'pattern_template_name': "patterns/atoms/test_extends/extended.html"},
+                ),
+            ),
+            'base content - extended content',
+        )
