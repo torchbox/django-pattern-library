@@ -146,6 +146,9 @@ override_tag(register, 'a_tag_name', default="https://potato.com")
 
 This default is used for any tag that's not passed its own context, allowing specificity for those elements that need it while preventing the tag from breaking when it's not structural to the component.
 
+#### limitation
+Currently the default override is limited to direct references only i.e. {% a_tag_name page.url %} and not {% a_tag_name page.url as variable_name %} 
+
 ### When do I need to override a template tag?
 
 Ideally your pattern library should be independent, so it doesn't fail when
