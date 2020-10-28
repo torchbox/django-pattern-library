@@ -13,8 +13,10 @@ tags:
       raw: "another_example"
     # None handled by default html value.
   default_html_tag_falsey:
-    page.url:
-      raw: "None"
-    page.child.url:
-      raw: "False"
+    empty_string:
+      raw: ''
+    none:
+      raw: null
+    zero:
+      raw: 0
   

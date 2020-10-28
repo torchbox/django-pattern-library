@@ -28,4 +28,4 @@ def default_html_tag_falsey(arg=None):
 
 override_tag(register, 'error_tag')
 override_tag(register, 'default_html_tag', default_html="https://potato.com")
-override_tag(register, 'default_html_tag_falsey', default_html="None")
+override_tag(register, 'default_html_tag_falsey', default_html=None)

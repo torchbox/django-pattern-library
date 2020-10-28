@@ -29,5 +29,5 @@ class TagsTestCase(SimpleTestCase):
             kwargs={'pattern_template_name': 'patterns/atoms/tags_test_atom/tags_test_atom.html'},
         ))
         self.assertContains(response, "POTATO1")
-        self.assertContains(response, "POTATO2")
-        self.assertContains(response, "POTATO3")
+        self.assertContains(response, "POTANoneTO2")
+        self.assertContains(response, "POTA0TO3")
