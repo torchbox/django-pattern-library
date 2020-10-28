@@ -7,9 +7,10 @@ from pattern_library.utils import (
 )
 
 logger = logging.getLogger(__name__)
+UNSPECIFIED = object()
 
 
-def override_tag(register, name):
+def override_tag(register, name, default_html=None):
     """
     An utility that helps you override original tags for use in your pattern library.
 
@@ -75,9 +76,13 @@ def override_tag(register, name):
 
                     # Render result instead of the tag
                     return result
+                elif default_html is not UNSPECIFIED:
+                    # Render provided default;
+                    # if no stub data supplied.
+                    return default_html
                 else:
                     logger.warning(
-                        'No stub data defined for the "%s" tag in the "%s" template',
+                        'No default or stub data defined for the "%s" tag in the "%s" template',
                         tag_name, current_template_name
                     )
 
