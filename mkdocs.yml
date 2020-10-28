@@ -8,6 +8,10 @@ dev_addr: 0.0.0.0:8001
 theme:
   name: material
   font: false
+  palette:
+    primary: indigo
+  logo: images/logo.svg
+  favicon: images/favicon.png
 markdown_extensions:
   - codehilite
   - admonition
