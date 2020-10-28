@@ -24,7 +24,9 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-
+plugins:
+  - search
+  - git-revision-date
 nav:
   # Auto-magically copied from the root of the project in the CI build.
   - 'Home': 'README.md'
