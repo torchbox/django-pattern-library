@@ -136,19 +136,18 @@ The override process has two parts:
 
 
 ### Providing a default value for template tags
-To provide a default for a template tag, you need to provide a keyword argument default when overriding your tag.
+To provide a default for a template tag, you need to provide a keyword argument default_html when overriding your tag.
 
 ```
 from pattern_library.monkey_utils import override_tag
 
-override_tag(register, 'a_tag_name', default="https://potato.com")
+override_tag(register, 'a_tag_name', default_html="https://potato.com")
 ```
 
 This default is used for any tag that's not passed its own context, allowing specificity for those elements that need it while preventing the tag from breaking when it's not structural to the component.
 
-#### limitation
-Currently the default override is limited to direct references only i.e. {% a_tag_name page.url %} and not {% a_tag_name page.url as variable_name %} 
-
+#### Limitation
+Currently this feature only supports providing a default for the output of the tag, this does not support modifying context in templates such as {% an_example_tag page.url as example_variable %}.
 ### When do I need to override a template tag?
 
 Ideally your pattern library should be independent, so it doesn't fail when
