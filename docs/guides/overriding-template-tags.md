@@ -1,122 +1,4 @@
-# Overview
-
-The main idea of this package is
-to allow you use template in both: your pattern library and
-production code of your Django project.
-
-To achieve this the package must to provide a way to:
-
-* Define a fake context for templates
-* Override template tags (default and custom ones)
-
-## Directory structure
-
-The initial structure of your pattern library should look like this:
-
-```
-.
-├── templates
-|   └── patterns
-|       |── atoms
-|       |── molecules
-|       |── organisms
-|       |── templates
-|       └── pages
-└── templatetags
-```
-
-- a `templates/patterns` directory with subfolders for the different levels of
-  pattern, following standard atomic design naming conventions.
-  - Your `PATTERN_LIBRARY_TEMPLATE_DIR` setting should point to the library's
-    root `templates` directory
-- a `templatetags` directory for holding template tag overrides (see below)
-
-
-## Defining fake context for templates
-
-To define fake context you need to create a `yaml` file alongside your
-template file. For example, for the template `big_red_button.html` you need to
-create a file called `big_red_button.yaml`.
-
-Let's imagine that your `big_red_button.html` template looks like this:
-
-```django
-<a href="{{ button_link }}" class="button button--red">
-    <span>{{ button_text }}</span>
-</a>
-```
-
-The `big_red_button.yaml` can be something like this:
-
-```yaml
-context:
-    button_link: https://example.com/
-    button_text: Example link
-```
-
-In the same way you can provide context in more complex templates. Here is
-an example on how you can define fake context that pretends to be a `QuerySet`.
-
-Let's assume you have the following template:
-
-```django
-{% if my_objects.exists %}
-    {{ items_title }}
-    <ul>
-        {% for obj in my_objects.all %}
-            <li>
-                <a href="{{ obj.link }}">
-                    {{ obj.title }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
-```
-
-You might define a `yaml` file similar to this to provide fake data:
-
-```yaml
-name: My example pattern
-
-context:
-    items_title: Related pages
-    my_objects:
-        exists: true  # simulate `QuerySet`'s `exists` method
-        all:          # simulate `QuerySet`'s `all` method
-            - title: Page 1
-              link: /page1
-            - title: Page 2
-              link: /page2
-```
-
-You can define a list or a dict or anything that
-[`PyYAML`](http://pyyaml.org/wiki/PyYAMLDocumentation)
-allows you to create in `yaml` format without creating a custom objects.
-
-## Customising the patterns’ surroundings
-
-All patterns that are not pages are rendered within a base page template, `pages/base.html` by default. The pattern library will render patterns inside the `content` block, which you can tweak to change how patterns are displayed.
-
-You can for example add a theme wrapper around the components:
-
-```html
-{% block content %}
-    {% if pattern_library_rendered_pattern %}
-        <div class="pattern-library bg bg--light">
-            {{ pattern_library_rendered_pattern }}
-        </div>
-    {% endif %}
-{% endblock %}
-```
-
-`pattern_library_rendered_pattern` can also be used to do other modifications on the page for the pattern library only, for example adding an extra class to `<body>`:
-
-```html
-<body class="{% block body_class %}{% endblock %}{% if pattern_library_rendered_pattern %} pattern-library-template{% endif %}">
-```
-
-## Override template tags
+# Overriding template tags
 
 The package overrides the following Django tags:
 
@@ -210,23 +92,20 @@ our production code.
 Assuming that you already have module installed in your project,
 to define a fake implementation we need to:
 
-1.  Create [a `templatetags` package](https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#code-layout)
-    in one of your apps. Note that your app should be defined in
-    [`INSTALLED_APPS`](https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-INSTALLED_APPS)
-    and it should be defined after the package you are
-    overriding (`some_package` in our case).
-2.  Create `image_utils.py` in this package with the following code:
+First, create a [`templatetags` package](https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#code-layout) in one of your apps. Note that your app should be defined in [`INSTALLED_APPS`](https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) and it should be defined after the package you are overriding (`some_package` in our case).
 
-    ```python
-    from some_package.templatetags.image_utils import register
+Then, create `image_utils.py` in this package with the following code:
 
-    from pattern_library.monkey_utils import override_tag
+```python
+from some_package.templatetags.image_utils import register
 
-    # We are monkey patching here
-    # Note that `register` should be an instance of `django.template.Library`
-    # and it's important to the instance where the original tag is defined.
-    override_tag(register, name='image')
-    ```
+from pattern_library.monkey_utils import override_tag
+
+# We are monkey patching here
+# Note that `register` should be an instance of `django.template.Library`
+# and it's important to the instance where the original tag is defined.
+override_tag(register, name='image')
+```
 
 **Note:** it's recommended to have a single app that contains all template tag
 overrides, so it's easy to exclude it from `INSTALLED_APPS` in production,
@@ -376,115 +255,3 @@ tags:
 
 Note the `target_var` field.
 
-## Some more examples
-
-### Looping over a template tag
-
-#### HTML
-
-```
-{% social_media_links as social_links %}
-<ul class="footer__social-links">
-    {% for link in social_links %}
-    {# Only render if we have a link #}
-        {% if link.url %}
-            <li class="social-item social-item--{{link.type}}">
-                <a class="social-item__link" href="{{link.url}}" aria-label="{{link.label}}">
-                    <svg class="social-item__icon" width="24" height="24">
-                        <use xlink:href="#{{link.type}}">
-                        </use>
-                    </svg>
-                </a>
-            </li>
-        {% endif %}
-    {% endfor %}
-</ul>
-```
-
-#### Yaml
-
-```
-tags:
-  social_media_links:
-    as social_links:
-      raw:
-        - url: '#'
-          type: twitter
-          label: Twitter
-        - url: '#'
-          type: facebook
-          label: Facebook
-        - url: '#'
-          type: instagram
-          label: Instagram
-        - url: '#'
-          type: youtube
-          label: YouTube
-        - url: '#'
-          type: linkedin
-          label: LinkedIn
-```
-
-### Inclusion tags
-
-#### HTML
-
-```
-<div class="footer__action">
-    {% footernav %}
-</div>
-```
-
-#### YAML
-
-```
-tags:
-  footernav:
-    "":
-      template_name: "patterns/molecules/navigation/footernav.html"
-```
-
-### Image lazy load example
-
-#### HTML
-
-```
-    {% image slide.image fill-100x71 as imageSmall %}
-    {% image slide.image fill-829x585 as imageLarge %}
-
-    {% include "patterns/atoms/image/image--lazyload.html" with imageSmall=imageSmall width=829 height=585 imageLarge=imageLarge classList='slide__image' %}
-```
-
-#### YAML
-```
-tags:
-  image:
-    slide.image fill-100x71 as imageSmall:
-      target_var: imageSmall
-      raw:
-        url: '//placekitten.com/100/71'
-    slide.image fill-829x585 as imageLarge:
-      target_var: imageLarge
-      raw:
-        url: '//placekitten.com/829/585'
-        width: '829'
-        height: '585'
-```
-
-##### Image inlude example
-
-#### HTML
-```
-<img src="{{ imageSmall.url }}" data-src="{{ imageLarge.url }}" width="{{ width }}" height="{{ height }}" alt="{{ imageLarge.alt }}" class="{{ classList }} lazyload">
-```
-
-#### YAML
-```
-context:
-  width: '829'
-  height: '585'
-  imageSmall:
-    url: '//placekitten.com/100/71'
-  imageLarge:
-    url: '//placekitten.com/829/585'
-```

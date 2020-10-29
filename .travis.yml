@@ -25,7 +25,6 @@ jobs:
         - pip install poetry
         - poetry install
       script:
-        - cp README.md docs/README.md
         - poetry run mkdocs build
       deploy:
         - provider: pages

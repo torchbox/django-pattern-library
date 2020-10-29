@@ -53,6 +53,17 @@ npm run build
 npm run start
 ```
 
+### Documentation
+
+The project’s documentation website is built with [MkDocs](https://www.mkdocs.org/).
+
+```sh
+# One-off build.
+poetry run mkdocs build
+# Rebuild the docs as you work on them
+poetry run mkdocs serve
+```
+
 ## Running the tests
 
 To run the python tests, use the script in the root of the repo:
