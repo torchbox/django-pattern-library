@@ -6,7 +6,7 @@ All patterns that are not pages are rendered within a base page template. The pa
 
 You can for example add a theme wrapper around the components:
 
-```html
+```jinja2
 {% block content %}
     {% if pattern_library_rendered_pattern %}
         <div class="pattern-library bg bg--light">
@@ -18,6 +18,6 @@ You can for example add a theme wrapper around the components:
 
 `pattern_library_rendered_pattern` can also be used to do other modifications on the page for the pattern library only, for example adding an extra class to `<body>`:
 
-```html
+```jinja2
 <body class="{% block body_class %}{% endblock %}{% if pattern_library_rendered_pattern %} pattern-library-template{% endif %}">
 ```
