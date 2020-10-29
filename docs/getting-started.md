@@ -35,7 +35,7 @@ INSTALLED_APPS = [
 
 Also add `pattern_library.loader_tags` to `OPTIONS["builtins"]` into the `TEMPLATES` setting:
 
-```python
+```python hl_lines="13 14 15"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -121,7 +121,7 @@ Now let’s look at adding our first template!
 
 Now we’ve done all of the configuration – let’s create a UI component. We’ll use `quote-block` as an example, and place it at `patterns/components/quote_block/quote_block.html` inside one of our Django apps:
 
-```html
+```jinja2
 <blockquote class="quote-block block--spacing">
     <div class="quote-block__text">
         <p class="quote-block__quote">{{ quote }}</p>
@@ -136,7 +136,7 @@ Now we’ve done all of the configuration – let’s create a UI component. We�
 
 We additionally need to customize a base template, so the standalone component can be rendered within a page with CSS. This is what the `PATTERN_BASE_TEMPLATE_NAME` setting is for. As a separate template in `patterns/base.html`:
 
-```html
+```jinja2 hl_lines="11"
 <!DOCTYPE html>
 <html lang="en">
 <head>
