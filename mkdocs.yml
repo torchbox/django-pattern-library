@@ -28,6 +28,16 @@ plugins:
   - search
   - git-revision-date
 nav:
-  # Auto-magically copied from the root of the project in the CI build.
-  - 'Home': 'README.md'
-  - 'Overview': 'overview.md'
+  - 'Home': 'index.md'
+  - 'Getting started': 'getting-started.md'
+  # Ideally these should be in a "Guides" section, however it’s not currently possible to
+  # display those sections expanded by default.
+  # See https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/.
+  # Choose the order carefully from fundamental topics to advanced ones.
+  - 'Defining template context': 'guides/defining-template-context.md'
+  - 'Overriding template tags': 'guides/overriding-template-tags.md'
+  - 'Customizing template rendering': 'guides/customizing-template-rendering.md'
+  - 'Reference':
+    - 'Concepts': 'reference/concepts.md'
+    - 'Examples': 'reference/examples.md'
+    - 'Related projects': 'reference/related-projects.md'
