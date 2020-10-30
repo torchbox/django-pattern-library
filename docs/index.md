@@ -16,12 +16,22 @@ Here is a screenshot of the pattern library in action:
 
 [![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](images/pattern-library-screenshot.webp)](images/pattern-library-screenshot.webp)
 
+## Why you need this
+
+Pattern libraries will change your workflow for the better:
+
+- They help separate concerns, both in code, and between members of a development team.
+- If needed, they make it possible for UI development to happen before models and views are created.
+- They encourage code reuse – defining independent UI components, that can be reused across apps, or ported to other projects.
+- It makes it much simpler to test UI components – no need to figure out where they’re used across a site or app.
+
 ## Why this exists
 
 We want to make it possible for developers to maintain large pattern libraries with minimal fuss – no copy-pasting of templates between a static library and the “production” templates.
 
-There are a lot of alternative solutions for building pattern libraries, or to have [UI development playgrounds](https://www.componentdriven.org/). At [Torchbox](https://torchbox.com/) we mainly use Django and Wagtail, and we found it hard to maintain large libraries with those tools that have no awareness of Django Templates.
-This is our attempt to solve this issue, bringing [Pattern Lab](http://patternlab.io/) to the Django world.
+There are a lot of alternative solutions for building pattern libraries, or to have [UI development playgrounds](https://www.componentdriven.org/).
+At [Torchbox](https://torchbox.com/) we mainly use Django and Wagtail, and we found it hard to maintain large libraries with those tools that have no awareness of Django Templates.
+This is our attempt to solve this issue – [Pattern Lab](http://patternlab.io/) goes Django!
 
 To learn more about how this package can be used, have a look at our talk:
 

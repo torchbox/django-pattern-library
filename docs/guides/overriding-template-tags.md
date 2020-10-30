@@ -2,19 +2,16 @@
 
 The package overrides the following Django tags:
 
-* `{% extends %}`
-* `{% include %}`
+- `{% extends %}`
+- `{% include %}`
 
-It's required to allow us to define fake template context
-and override other template tags in `yaml` files.
-This package uses custom behaviour for these tags only when
-rendering pattern library and falls back to Django's standard behaviour
-on all other cases.
+It's required to allow us to define fake template context and override other template tags in YAML files.
+This package uses custom behaviour for these tags only when rendering pattern library and falls back to Django's standard behaviour on all other cases.
 
 The override process has two parts:
 
-1.  Override your template tag with a mock implementation
-2.  Define fake result for your tag in a `yaml` file
+1. Override your template tag with a mock implementation
+2. Define fake result for your tag in a YAML file
 
 
 ### Providing a default value for template tags
@@ -34,9 +31,10 @@ Currently this feature only supports providing a default for the output of the t
 
 Ideally your pattern library should be independent, so it doesn't fail when
 you run it with a project that has no entries in DB or on a local machine
-without internet connection. This means that you need to override
-a template tag when it hits DB or any other resource
-(cache, or requests URL, for example).
+without internet connection.
+This means that you need to override a template tag when it hits DB or any other resource (cache, or requests URL, for example).
+
+You amy also need to override template tags in other cases, when data provided by the pattern library’s context mocking is of a different type to what Django would expect – this is because the pattern library only uses data types that are de-serializable from YAML.
 
 ### Override modes
 

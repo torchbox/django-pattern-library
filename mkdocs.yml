@@ -34,10 +34,19 @@ nav:
   # display those sections expanded by default.
   # See https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/.
   # Choose the order carefully from fundamental topics to advanced ones.
-  - 'Defining template context': 'guides/defining-template-context.md'
-  - 'Overriding template tags': 'guides/overriding-template-tags.md'
-  - 'Customizing template rendering': 'guides/customizing-template-rendering.md'
+  - 'Template context': 'guides/defining-template-context.md'
+  - 'Overriding tags': 'guides/overriding-template-tags.md'
+  - 'Customizing rendering': 'guides/customizing-template-rendering.md'
+  - 'Workflows that work': 'guides/workflows-that-work.md'
+  - 'Reuse across projects': 'guides/reuse-across-projects.md'
+  - 'Recipes':
+    - 'Inclusion tags': 'recipes/inclusion-tags.md'
+    - 'Looping for tags': 'recipes/looping-for-tags.md'
+    - 'Image include': 'recipes/image-include.md'
+    - 'Image lazyload': 'recipes/image-lazyload.md'
+    - 'Multiple variants': 'recipes/multiple-variants.md'
   - 'Reference':
+    - 'API and settings': 'reference/api.md'
     - 'Concepts': 'reference/concepts.md'
-    - 'Examples': 'reference/examples.md'
+    - 'Known issues': 'reference/known-issues.md'
     - 'Related projects': 'reference/related-projects.md'

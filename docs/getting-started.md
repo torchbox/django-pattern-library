@@ -58,7 +58,7 @@ TEMPLATES = [
 
 ### Pattern library settings
 
-Still in Django settings, set the `PATTERN_LIBRARY` setting. Here is an example showing the defaults:
+Still in Django settings, set the [`PATTERN_LIBRARY`](./reference/api.md#pattern_library) setting. Here is an example showing the defaults:
 
 ```python
 PATTERN_LIBRARY = {
@@ -83,7 +83,7 @@ PATTERN_LIBRARY = {
 }
 ```
 
-Note the templates in your `PATTERN_LIBRARY` settings must be available to [template loaders](https://docs.djangoproject.com/en/3.1/ref/templates/api/#loader-types).
+Note the templates in your [`PATTERN_LIBRARY`](./reference/api.md#pattern_library) settings must be available to [template loaders](https://docs.djangoproject.com/en/3.1/ref/templates/api/#loader-types).
 
 ### URLs
 
@@ -160,6 +160,15 @@ We additionally need to customize a base template, so the standalone component c
 We can provide context and tags overrides for our new component by creating a `quote_block.yaml` YAML file alongside the HTML, at `patterns/components/quote_block/quote_block.yaml` in our example.
 
 ```yaml
+context:
+  quote: What is love?
+  attribution: Haddaway
+```
+
+We could also provide it with a custom name:
+
+```yaml
+name: Quote Block
 context:
   quote: What is love?
   attribution: Haddaway
