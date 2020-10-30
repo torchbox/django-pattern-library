@@ -31,7 +31,13 @@ Documentation is available at [torchbox.github.io/django-pattern-library/](https
 
 - [Getting started](https://torchbox.github.io/django-pattern-library/getting-started/)
 - Guides
+  - [Defining template context](https://torchbox.github.io/django-pattern-library/guides/defining-template-context/)
+  - [Overriding template tags](https://torchbox.github.io/django-pattern-library/guides/overriding-template-tags/)
+  - [Customizing template rendering](https://torchbox.github.io/django-pattern-library/guides/customizing-template-rendering/)
+  - [Workflows that work](https://torchbox.github.io/django-pattern-library/guides/workflows-that-work/)
 - Reference
+  - [API & settings](https://torchbox.github.io/django-pattern-library/reference/api/)
+  - [Known issues and limitations](https://torchbox.github.io/django-pattern-library/reference/known-issues/)
 
 ## Contributing
 

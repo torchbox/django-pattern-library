@@ -1,4 +1,4 @@
-# Known issues
+# Known issues and limitations
 
 django-pattern-library has a few known limitations due to its design, which are worth knowing about when authoring templates or attempting to document them in the pattern library.
 
