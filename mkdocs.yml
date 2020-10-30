@@ -30,21 +30,19 @@ plugins:
 nav:
   - 'Home': 'index.md'
   - 'Getting started': 'getting-started.md'
-  # Ideally these should be in a "Guides" section, however it’s not currently possible to
-  # display those sections expanded by default.
-  # See https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/.
-  # Choose the order carefully from fundamental topics to advanced ones.
+  # The most important guides are shown in the top-level navigation.
   - 'Template context': 'guides/defining-template-context.md'
   - 'Overriding tags': 'guides/overriding-template-tags.md'
-  - 'Customizing rendering': 'guides/customizing-template-rendering.md'
   - 'Workflows that work': 'guides/workflows-that-work.md'
-  - 'Reuse across projects': 'guides/reuse-across-projects.md'
+  - 'Guides':
+    - 'Customizing rendering': 'guides/customizing-template-rendering.md'
+    - 'Multiple variants': 'recipes/multiple-variants.md'
+    - 'Reuse across projects': 'guides/reuse-across-projects.md'
   - 'Recipes':
     - 'Inclusion tags': 'recipes/inclusion-tags.md'
     - 'Looping for tags': 'recipes/looping-for-tags.md'
     - 'Image include': 'recipes/image-include.md'
     - 'Image lazyload': 'recipes/image-lazyload.md'
-    - 'Multiple variants': 'recipes/multiple-variants.md'
   - 'Reference':
     - 'API and settings': 'reference/api.md'
     - 'Concepts': 'reference/concepts.md'
