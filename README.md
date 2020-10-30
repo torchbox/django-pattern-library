@@ -16,6 +16,15 @@ This package automates the maintenance of UI pattern libraries or styleguides fo
 - Override Django templates tags as needed to mock the template’s dependencies.
 - Document your patterns with Markdown.
 
+## Why you need this
+
+Pattern libraries will change your workflow for the better:
+
+- They help separate concerns, both in code, and between members of a development team.
+- If needed, they make it possible for UI development to happen before models and views are created.
+- They encourage code reuse – defining independent UI components, that can be reused across apps, or ported to other projects.
+- It makes it much simpler to test UI components – no need to figure out where they’re used across a site or app.
+
 ## Documentation
 
 Documentation is available at [torchbox.github.io/django-pattern-library/](https://torchbox.github.io/django-pattern-library/), with source files in the `docs` directory.
@@ -23,10 +32,6 @@ Documentation is available at [torchbox.github.io/django-pattern-library/](https
 - [Getting started](https://torchbox.github.io/django-pattern-library/getting-started/)
 - Guides
 - Reference
-
-## Examples of usage
-
-At [Torchbox](https://torchbox.com/), we use this package for all of the Wagtail websites we build, for example [rca.ac.uk](https://github.com/torchbox/rca-wagtail-2019).
 
 ## Contributing
 
