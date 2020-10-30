@@ -29,7 +29,7 @@ This default is used for any tag that's not passed its own context, allowing spe
 
 Currently this feature only supports providing a default for the output of the tag, this does not support modifying context in templates such as `{% an_example_tag page.url as example_variable %}`.
 
-### When do I need to override a template tag?
+## When do I need to override a template tag?
 
 Ideally your pattern library should be independent, so it doesn't fail when
 you run it with a project that has no entries in DB or on a local machine
@@ -38,7 +38,7 @@ This means that you need to override a template tag when it hits DB or any other
 
 You amy also need to override template tags in other cases, when data provided by the pattern library’s context mocking is of a different type to what Django would expect – this is because the pattern library only uses data types that are de-serializable from YAML.
 
-### Override modes
+## Override modes
 
 There are two options when it comes to template tag overriding:
 
@@ -49,7 +49,7 @@ There are two options when it comes to template tag overriding:
     You can also return a structure (dict or list) which is useful when
     overriding ["Simple tags"](https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#simple-tags) or a custom tag that returns an object or dict
 
-### Output into a variable
+## Output into a variable
 
 Some tags can set their value into a variable like:
 
@@ -71,7 +71,7 @@ But when you need to override a tag which sets result into a variable in
 you would need to specify output var name manually. We will look into how
 to do that later in the examples section.
 
-### Overriding examples
+## Overriding examples
 
 Let's assume that we want to override the `{% image image resize_rule %}`
 template tag from the `some_package.image_utils` template tag set
@@ -133,7 +133,7 @@ Let's assume that we have a template with two calls of the
 </div>
 ```
 
-#### Render another template or pattern
+### Render another template or pattern
 
 Our `yaml` will similar to this:
 
@@ -182,7 +182,7 @@ There are two approaches for this problem:
     in your `yaml` file
 
 
-#### Return raw data
+### Return raw data
 
 Let's update our `yaml` to use raw data:
 
