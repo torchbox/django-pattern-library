@@ -3,12 +3,12 @@ name = "django-pattern-library"
 version = "0.2.9"
 description = "A module for Django that allows to build pattern libraries for your projects."
 authors = [
-    "Mikalai Radchuk <mikalai.radchuk@torchbox.com>",
     "Ben Dickinson <ben.dickinson@torchbox.com>"
 ]
 license = "BSD-3-Clause"
 readme = "README.md"
-homepage = "https://github.com/torchbox/django-pattern-library"
+repository = "https://github.com/torchbox/django-pattern-library"
+documentation = "https://torchbox.github.io/django-pattern-library/"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Web Environment",

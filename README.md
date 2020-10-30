@@ -25,17 +25,19 @@ Pattern libraries will change your workflow for the better:
 - They encourage code reuse – defining independent UI components, that can be reused across apps, or ported to other projects.
 - It makes it much simpler to test UI components – no need to figure out where they’re used across a site or app.
 
+Learn more by watching our presentation – [Reusable UI components: A journey from React to Wagtail](https://www.youtube.com/watch?v=isrOufI7TKc).
+
 ## Documentation
 
-Documentation is available at [torchbox.github.io/django-pattern-library/](https://torchbox.github.io/django-pattern-library/), with source files in the `docs` directory.
+Documentation is available at [torchbox.github.io/django-pattern-library](https://torchbox.github.io/django-pattern-library/), with source files in the `docs` directory.
 
-- [Getting started](https://torchbox.github.io/django-pattern-library/getting-started/)
-- Guides
+- **[Getting started](https://torchbox.github.io/django-pattern-library/getting-started/)**
+- **Guides**
   - [Defining template context](https://torchbox.github.io/django-pattern-library/guides/defining-template-context/)
   - [Overriding template tags](https://torchbox.github.io/django-pattern-library/guides/overriding-template-tags/)
   - [Customizing template rendering](https://torchbox.github.io/django-pattern-library/guides/customizing-template-rendering/)
   - [Workflows that work](https://torchbox.github.io/django-pattern-library/guides/workflows-that-work/)
-- Reference
+- **Reference**
   - [API & settings](https://torchbox.github.io/django-pattern-library/reference/api/)
   - [Known issues and limitations](https://torchbox.github.io/django-pattern-library/reference/known-issues/)
 
