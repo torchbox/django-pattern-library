@@ -1,0 +1,31 @@
+context:
+  page:
+    title: Dr John Doe
+    first_name: John
+    last_name: Doe
+    photo: fake
+    job_title: Stub person
+    website: 'https://example.com'
+    email: 'test@example.com'
+    social_media_profile:
+      all:
+        - profile_url: 'https://example.com/'
+        - profile_url: 'https://example.com/2'
+    phone_numbers:
+      all:
+        - phone_number: 12345678
+        - phone_number: 87654321
+    introduction: Some intro text for this peroson
+    person_types:
+      all:
+        - Staff
+        - Director
+    accordions:
+      - title: Title A
+        description: Description A. Ask for help.
+      - title: Title B
+        description: Description B. Ask for help.
+      - title: Title C
+        description: Description C. Ask for help.
+      - title: Title D
+        description: Description D. Ask for help.

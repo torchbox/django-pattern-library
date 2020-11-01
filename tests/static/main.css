@@ -1,0 +1,63 @@
+.icon {
+    fill: currentColor;
+}
+.icon--close {
+    width: 24px;
+    height: 24px;
+}
+.icon--cancel {
+    width: 11px;
+    height: 12px;
+}
+.icon--chevron-down {
+    width: 23px;
+    height: 14px;
+}
+.icon--checkmark {
+    width: 12px;
+    height: 10px;
+}
+
+.accordion__panel {
+    padding: 20px;
+    border-top: 1px solid #222222;
+}
+.accordion__panel:last-child {
+    border-bottom: 1px solid #222222;
+}
+.accordion__toggle {
+    display: flex;
+    width: 100%;
+    padding: 15px 0;
+    align-items: baseline;
+    justify-content: space-between;
+    text-align: left;
+    appearance: none;
+    background-color: transparent;
+    background-image: none;
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+}
+.accordion__title {
+    margin-bottom: 0;
+    line-height: 30px;
+}
+.accordion__title-inner {
+    display: block;
+    flex: 1;
+}
+.accordion__icon {
+    color: navy;
+    transform: rotate(360deg);
+    transition: transform 0.25s ease-out;
+    margin-left: 10px;
+}
+.accordion__toggle[aria-pressed="true"] .accordion__icon {
+    transform: rotate(180deg);
+}
+.accordion__content {
+    line-height: 1.25;
+    max-width: 768px;
+    padding-bottom: 5px;
+}

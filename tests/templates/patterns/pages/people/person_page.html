@@ -1,0 +1,58 @@
+{% extends 'patterns/base_page.html' %}
+
+{% block content %}
+<div class="section section--main">
+    <div class="intro">
+        <div class="container">
+            <h1>{{ page.first_name }} {{ page.last_name }}</h1>
+
+            {% if page.job_title %}
+                <p>{{ page.job_title }}</p>
+            {% endif %}
+
+            {% if page.website %}
+                <p><a href="{{ page.website }}">{{ page.website }}</a></p>
+            {% endif %}
+
+            {% if page.email %}
+                <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+            {% endif %}
+
+            {% for item in page.social_media_profile.all %}
+                <p><a href="{{ item.profile_url }}">{{ item.profile_url }}</a></p>
+            {% endfor %}
+
+            {% with phone_numbers=page.phone_numbers.all %}
+                {% if phone_numbers %}
+                    {% for related_phone_number in phone_numbers %}
+                        <p><a href="tel:{{ related_phone_number.phone_number|cut:" "|urlencode }}">{{ related_phone_number.phone_number }}</a></p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+
+    <div class="container">
+        {% if page.introduction %}
+            <p class="heading--2">{{ page.introduction }}</p>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    {% include "patterns/molecules/accordion/accordion.html" with accordions=page.accordions %}
+
+    <hr>
+
+    {% with person_type=page.person_types.all %}
+        {% if person_type %}
+            <div class="container">
+                <h2 class="heading--4">Person types</h2>
+                {% for person_type in person_type %}
+                    <p>{{ person_type }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

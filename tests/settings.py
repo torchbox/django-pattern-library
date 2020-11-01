@@ -1,5 +1,10 @@
 import os
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
+
 SECRET_KEY = 'foobar'
 
 DEBUG = True
@@ -16,6 +21,19 @@ INSTALLED_APPS = [
 ]
 
 STATIC_URL = '/static/'
+
+# This is where Django will put files collected from application directories
+# and custom direcotires set in "STATICFILES_DIRS" when
+# using "django-admin collectstatic" command.
+# https://docs.djangoproject.com/en/stable/ref/settings/#static-root
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# This is where Django will look for static files outside the directories of
+# applications which are used by default.
+# https://docs.djangoproject.com/en/stable/ref/settings/#staticfiles-dirs
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, "tests", "static")
+]
 
 ROOT_URLCONF = 'tests.urls'
 

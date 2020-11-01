@@ -1,0 +1,11 @@
+context:
+  id_prefix: test
+  accordions:
+    - title: Title A
+      description: Description A. Ask for help.
+    - title: Title B
+      description: Description B. Ask for help.
+    - title: Title C
+      description: Description C. Ask for help.
+    - title: Title D
+      description: Description D. Ask for help.
