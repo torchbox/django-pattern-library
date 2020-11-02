@@ -56,6 +56,7 @@ patterns/atoms/icons/icon.html
     <use xlink:href="#close"></use>
 </svg>
 
+        </main>
         <script src="/static/main.js"></script>
     </body>
 </html>""", stdout.getvalue())

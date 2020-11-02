@@ -28,8 +28,68 @@ One of the advantages of `render_patterns` is the ability for you to test the pa
 
 ## Visual regression testing
 
-Pattern libraries are a natural fit for automated visual regression tests. Check out [BackstopJS](https://github.com/garris/BackstopJS) to get started.
+Pattern libraries are a natural fit for automated visual regression tests. Here is an example [BackstopJS](https://github.com/garris/BackstopJS) configuration file:
+
+```json
+{
+  "viewports": [
+    {
+      "label": "tablet",
+      "width": 1024,
+      "height": 768
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "accordion.html",
+      "url": "https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/molecules/accordion/accordion.html"
+    },
+    {
+      "label": "person_page.html",
+      "url": "https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/pages/people/person_page.html"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "engine": "puppeteer"
+}
+```
+
+Try this out by saving the file as `backstop.json`, then:
+
+```sh
+npm install -g backstopjs
+backstop test
+```
 
 ## Accessibility testing
 
 Here as well, pattern libraries are a natural fit, due to them providing the test data, and making it possible to test components in isolation. Have a look at [Pa11y](https://pa11y.org/) or [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) to get started.
+
+Here is an example Pa11y configuration:
+
+```js
+module.exports = {
+  defaults: {
+    standard: "WCAG2AAA",
+    runners: ["axe"],
+  },
+
+  urls: [
+    "https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/molecules/accordion/accordion.html",
+    "https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/pages/people/person_page.html",
+  ],
+};
+```
+
+Try this out by saving the file as `pa11y.config.js`, then:
+
+```sh
+npm install -g pa11y-ci
+pa11y-ci --config pa11y.config.js
+```
