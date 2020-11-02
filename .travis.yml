@@ -35,6 +35,8 @@ jobs:
         # Demo website build.
         - wget --mirror --page-requisites --no-parent --no-verbose http://localhost:8000/django-pattern-library/demo/pattern-library/
         - mv localhost:8000/django-pattern-library/demo site
+        # Demo render_patterns.
+        - poetry run django-admin render_patterns --settings=tests.settings.production --pythonpath=. --wrap-fragments --output=site/dpl-rendered-patterns
         # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `master`.
         - cat pyproject.toml| awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
         - poetry build
