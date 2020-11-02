@@ -4,9 +4,12 @@ from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from django.test.client import RequestFactory
 
-from pattern_library import get_base_template_names, get_pattern_base_template_name
+from pattern_library import (
+    get_base_template_names, get_pattern_base_template_name
+)
 from pattern_library.utils import (
-    get_pattern_templates, get_pattern_context, get_template_ancestors, render_pattern
+    get_pattern_context, get_pattern_templates, get_template_ancestors,
+    render_pattern
 )
 
 
