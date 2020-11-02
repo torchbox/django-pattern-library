@@ -39,7 +39,7 @@ class Command(BaseCommand):
         request = factory.get('/')
 
         if self.verbosity >= 2:
-            self.stdout.write(f'Target directory: {self.output_dir}')
+            self.stderr.write(f'Target directory: {self.output_dir}')
 
         # Resolve the output dir according to the directory the command is run from.
         parent_dir = Path.cwd().joinpath(self.output_dir)
@@ -52,9 +52,9 @@ class Command(BaseCommand):
     def render_group(self, request, parent_dir: Path, pattern_templates):
         for template in pattern_templates['templates_stored']:
             if self.verbosity >= 2:
-                self.stdout.write(f'Pattern: {template.pattern_name}')
+                self.stderr.write(f'Pattern: {template.pattern_name}')
             if self.verbosity >= 1:
-                self.stdout.write(template.origin.template_name)
+                self.stderr.write(template.origin.template_name)
 
             render_path = parent_dir.joinpath(template.pattern_name)
             rendered_pattern = render_pattern(request, template.origin.template_name)
@@ -70,7 +70,7 @@ class Command(BaseCommand):
 
         for pattern_type_group, pattern_templates in pattern_templates['template_groups'].items():
             if self.verbosity >= 2:
-                self.stdout.write(f'Group: {pattern_type_group}')
+                self.stderr.write(f'Group: {pattern_type_group}')
             group_parent = parent_dir.joinpath(pattern_type_group)
             if not self.dry_run:
                 group_parent.mkdir(exist_ok=True)

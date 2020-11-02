@@ -13,40 +13,39 @@ class RenderPatternsTests(SimpleTestCase):
 
     def test_displays_patterns(self):
         stdout = io.StringIO()
-        call_command('render_patterns', dry_run=True, stdout=stdout)
-        stdout = stdout.getvalue()
+        stderr = io.StringIO()
+        call_command('render_patterns', dry_run=True, stdout=stdout, stderr=stderr)
         self.assertIn("""patterns/atoms/tags_test_atom/tags_test_atom.html
 patterns/atoms/test_atom/test_atom.html
-""", stdout)
+""", stderr.getvalue())
 
     def test_verbose_output(self):
         stdout = io.StringIO()
-        call_command('render_patterns', dry_run=True, stdout=stdout, verbosity=2)
-        stdout = stdout.getvalue()
+        stderr = io.StringIO()
+        call_command('render_patterns', dry_run=True, stdout=stdout, stderr=stderr, verbosity=2)
         self.assertIn("""Target directory: dpl-rendered-patterns
 Group: atoms
-Group: tags_test_atom
-Pattern: tags_test_atom.html
-patterns/atoms/tags_test_atom/tags_test_atom.html
-
-
-SANDWICH
-SANDNoneWICH
-SAND0WICH
-""", stdout)
+Group: icons
+Pattern: icon.html
+patterns/atoms/icons/icon.html
+""", stderr.getvalue())
+        self.assertIn("""<svg class="icon icon--close" aria-hidden="true" focusable="false">
+    <use xlink:href="#close"></use>
+</svg>""", stdout.getvalue())
 
     def test_quiet_output(self):
         stdout = io.StringIO()
-        call_command('render_patterns', dry_run=True, stdout=stdout, verbosity=0)
-        stdout = stdout.getvalue()
-        self.assertEqual(stdout, '')
+        stderr = io.StringIO()
+        call_command('render_patterns', dry_run=True, stdout=stdout, stderr=stderr, verbosity=0)
+        self.assertEqual(stdout.getvalue(), '')
+        self.assertEqual(stderr.getvalue(), '')
 
     def test_shows_output_folder(self):
         stdout = io.StringIO()
+        stderr = io.StringIO()
         temp = tempfile.gettempdir()
-        call_command('render_patterns', dry_run=True, stdout=stdout, output=temp, verbosity=2)
-        stdout = stdout.getvalue()
-        self.assertIn(temp, stdout)
+        call_command('render_patterns', dry_run=True, stdout=stdout, stderr=stderr, output=temp, verbosity=2)
+        self.assertIn(temp, stderr.getvalue())
 
 
 class RenderPatternsFileSystemTests(SimpleTestCase):
@@ -60,19 +59,21 @@ class RenderPatternsFileSystemTests(SimpleTestCase):
 
     def test_uses_output(self):
         stdout = io.StringIO()
+        stderr = io.StringIO()
         modification_time_before = Path(self.output).stat().st_mtime
-        call_command('render_patterns', dry_run=False, stdout=stdout, output=self.output)
+        call_command('render_patterns', dry_run=False, stdout=stdout, stderr=stderr, output=self.output)
         self.assertNotEqual(Path(self.output).stat().st_mtime, modification_time_before)
-        stdout = stdout.getvalue()
 
     def test_uses_subfolders(self):
         stdout = io.StringIO()
-        call_command('render_patterns', dry_run=False, stdout=stdout, output=self.output)
+        stderr = io.StringIO()
+        call_command('render_patterns', dry_run=False, stdout=stdout, stderr=stderr, output=self.output)
         subfolders = Path(self.output).iterdir()
         self.assertIn('atoms', [p.name for p in subfolders])
 
     def test_outputs_html(self):
         stdout = io.StringIO()
-        call_command('render_patterns', dry_run=False, stdout=stdout, output=self.output)
+        stderr = io.StringIO()
+        call_command('render_patterns', dry_run=False, stdout=stdout, stderr=stderr, output=self.output)
         html_files = Path(self.output).glob('**/*.html')
         self.assertIn('test_atom.html', [p.name for p in html_files])
