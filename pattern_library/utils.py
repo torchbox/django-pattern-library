@@ -92,13 +92,17 @@ def get_pattern_templates():
                     template = get_template(pattern_path)
                     pattern_config = get_pattern_config(pattern_path)
                     pattern_name = pattern_config.get('name')
+                    pattern_filename = os.path.relpath(
+                        template.origin.template_name,
+                        base_path,
+                    )
                     if pattern_name:
                         template.pattern_name = pattern_name
                     else:
-                        template.pattern_name = os.path.relpath(
-                            template.origin.template_name,
-                            base_path,
-                        )
+                        template.pattern_name = pattern_filename
+
+                    template.pattern_filename = pattern_filename
+
                     found_templates.append(template)
 
             if found_templates:

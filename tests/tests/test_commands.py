@@ -60,6 +60,12 @@ patterns/atoms/icons/icon.html
     </body>
 </html>""", stdout.getvalue())
 
+    def test_saves_with_template_filename(self):
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        call_command('render_patterns', dry_run=True, stdout=stdout, stderr=stderr, verbosity=2)
+        self.assertIn('Pattern: test_molecule.html', stderr.getvalue())
+
 
 class RenderPatternsFileSystemTests(SimpleTestCase):
     """Tests of the render_pattern command’s file system changes, based on the test project’s templates"""

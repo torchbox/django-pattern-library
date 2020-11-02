@@ -69,11 +69,11 @@ class Command(BaseCommand):
     def render_group(self, request, parent_dir: Path, pattern_templates):
         for template in pattern_templates['templates_stored']:
             if self.verbosity >= 2:
-                self.stderr.write(f'Pattern: {template.pattern_name}')
+                self.stderr.write(f'Pattern: {template.pattern_filename}')
             if self.verbosity >= 1:
                 self.stderr.write(template.origin.template_name)
 
-            render_path = parent_dir.joinpath(template.pattern_name)
+            render_path = parent_dir.joinpath(template.pattern_filename)
             rendered_pattern = self.render_pattern(request, template.origin.template_name)
 
             if self.dry_run:
