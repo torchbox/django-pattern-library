@@ -1,14 +1,18 @@
 # Changelog
 
-## [Unreleased]
+## [0.3.0] - 2020-11-02
+
+We have a new documentation website! Check out [torchbox.github.io/django-pattern-library](https://torchbox.github.io/django-pattern-library/).
 
 ### Added
-- Support for Django 3.1
+
+- This package now supports Django 3.1, and has tentative support for Django 3.2
+- Implement optional default for [override_tag](https://torchbox.github.io/django-pattern-library/reference/api/#override_tag) ([#125](https://github.com/torchbox/django-pattern-library/issues/125))
+- A new `render_patterns` command makes it possible to export the pattern library templates for automated tests or static hosting ([#16](https://github.com/torchbox/django-pattern-library/issues/16), [#17](https://github.com/torchbox/django-pattern-library/issues/17))
 
 ### Removed
-- Support for Django 1.11
-- Support for Django 2.0
-- Support for Django 2.1
+
+- We no longer support Django 1.11, 2.0, 2.1
 - The project no longer includes polyfills for all ES6 features, and only supports modern browsers.
 
 ### Fixed
