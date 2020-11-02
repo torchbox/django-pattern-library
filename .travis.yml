@@ -17,16 +17,21 @@ jobs:
       env: PYVER=py38
     - python: 3.9
       env: PYVER=py39
-    - python: 3.8
+    # Separate job for tasks which should only run once per build.
+    - python: 3.9
       install:
-        - pip install poetry
-        - poetry install
+        - pip install poetry tox
         - nvm install
         - npm install --no-optional --no-audit --progress=false
+        - poetry install
       script:
+        # Python linting.
+        - tox -e lint
+        # Docs website build.
         - poetry run mkdocs build
-        - npm run build
+        # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `master`.
         - cat pyproject.toml| awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
+        - npm run build
         - poetry build
         - cp -R dist site
       deploy:
@@ -39,7 +44,6 @@ jobs:
 install:
   - pip install poetry tox
 script:
-  - tox -e lint
   - tox -e $(tox -l | grep ${PYVER} | xargs echo | sed 's/ /,/g')
 branches:
   except:
