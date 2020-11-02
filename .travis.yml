@@ -24,12 +24,13 @@ jobs:
         - nvm install
         - npm install --no-optional --no-audit --progress=false
         - poetry install
+      before_script:
+        - poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
       script:
         # Python linting.
         - tox -e lint
         # Docs website build.
         - poetry run mkdocs build --strict
-        - poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
         - wget --mirror --page-requisites --no-parent http://localhost:8000/django-pattern-library/demo/pattern-library/
         - mv localhost:8000/django-pattern-library/demo site
         # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `master`.
