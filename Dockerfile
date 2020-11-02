@@ -9,7 +9,7 @@ RUN useradd dpl && \
 COPY pyproject.toml ./
 RUN poetry install --no-root
 
-ENV DJANGO_SETTINGS_MODULE=tests.settings \
+ENV DJANGO_SETTINGS_MODULE=tests.settings.dev \
     PYTHONPATH=.
 
 USER dpl

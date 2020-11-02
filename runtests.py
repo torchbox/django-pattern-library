@@ -22,7 +22,7 @@ if __name__ == "__main__":
     cov.start()
 
     # Django setup
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings.dev'
     django.setup()
 
     # Test runner setup

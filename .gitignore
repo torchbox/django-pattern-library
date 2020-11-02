@@ -62,7 +62,6 @@ coverage.xml
 *.pot
 # Django stuff:
 *.log
-local_settings.py
 # Flask instance folder
 instance/
 # Scrapy stuff:
