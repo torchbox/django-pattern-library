@@ -47,6 +47,20 @@ patterns/atoms/icons/icon.html
         call_command('render_patterns', dry_run=True, stdout=stdout, stderr=stderr, output=temp, verbosity=2)
         self.assertIn(temp, stderr.getvalue())
 
+    def test_shows_wrap_fragment(self):
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        call_command('render_patterns', dry_run=True, wrap_fragments=True, stdout=stdout, stderr=stderr, verbosity=2)
+        self.assertIn('Writing fragment patterns wrapped in base template', stderr.getvalue())
+        # Only testing a small subset of the output just to show patterns are wrapped.
+        self.assertIn("""<svg class="icon icon--close" aria-hidden="true" focusable="false">
+    <use xlink:href="#close"></use>
+</svg>
+
+        <script src="/static/main.js"></script>
+    </body>
+</html>""", stdout.getvalue())
+
 
 class RenderPatternsFileSystemTests(SimpleTestCase):
     """Tests of the render_pattern command’s file system changes, based on the test project’s templates"""
