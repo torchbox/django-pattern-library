@@ -4,7 +4,7 @@
 
 ## Features
 
-This package automates the maintenance of UI pattern libraries or styleguides for Django projects, and allows developers to experiment with Django templates without having to create Django views and models.
+The [django-pattern-library](https://pypi.org/project/django-pattern-library/) package automates the maintenance of UI pattern libraries or styleguides for Django projects, and allows developers to experiment with Django templates without having to create Django views and models.
 
 - Create reusable patterns by creating Django templates files as usual.
 - All patterns automatically show up in the pattern library’s interface.

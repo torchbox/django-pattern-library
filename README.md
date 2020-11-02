@@ -47,6 +47,10 @@ See anything you like in here? Anything missing? We welcome all support, whether
 
 If you want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
 
+### Nightly builds
+
+To try out the latest features before a release, we also create builds from every commit to `master`. Note we make no guarantee as to the quality of those pre-releases, and the pre-releases are overwritten on every build so shouldn’t be relied on for reproducible builds. [Download the latest `django_pattern_library-0.0.0.dev0-py3-none-any.whl`](http://torchbox.github.io/django-pattern-library/dist/django_pattern_library-0.0.0.dev0-py3-none-any.whl).
+
 ## Credits
 
 View the full list of [contributors](https://github.com/torchbox/django-pattern-library/graphs/contributors). [BSD](https://github.com/torchbox/django-pattern-library/blob/master/LICENSE) licensed.
