@@ -1,10 +1,12 @@
 from pathlib import Path
 
 from django.core.management.base import BaseCommand
+from django.template.loader import render_to_string
 from django.test.client import RequestFactory
 
+from pattern_library import get_base_template_names, get_pattern_base_template_name
 from pattern_library.utils import (
-    get_pattern_templates, render_pattern
+    get_pattern_templates, get_pattern_context, get_template_ancestors, render_pattern
 )
 
 
@@ -27,10 +29,16 @@ class Command(BaseCommand):
             action='store_true',
             help="Render the patterns without writing them to disk.",
         )
+        parser.add_argument(
+            '--wrap-fragments',
+            action='store_true',
+            help="Render fragment patterns wrapped in the base template.",
+        )
 
     def handle(self, **options):
         self.verbosity = options['verbosity']
         self.dry_run = options['dry_run']
+        self.wrap_fragments = options['wrap_fragments']
         self.output_dir = options['output_dir']
 
         templates = get_pattern_templates()
@@ -43,6 +51,10 @@ class Command(BaseCommand):
                 self.stderr.write(f'Target directory: {self.output_dir}. Dry run, not writing files to disk')
             else:
                 self.stderr.write(f'Target directory: {self.output_dir}')
+
+            if self.wrap_fragments:
+                self.stderr.write('Writing fragment patterns wrapped in base template')
+
 
         # Resolve the output dir according to the directory the command is run from.
         parent_dir = Path.cwd().joinpath(self.output_dir)
@@ -60,7 +72,7 @@ class Command(BaseCommand):
                 self.stderr.write(template.origin.template_name)
 
             render_path = parent_dir.joinpath(template.pattern_name)
-            rendered_pattern = render_pattern(request, template.origin.template_name)
+            rendered_pattern = self.render_pattern(request, template.origin.template_name)
 
             if self.dry_run:
                 if self.verbosity >= 2:
@@ -78,3 +90,24 @@ class Command(BaseCommand):
             if not self.dry_run:
                 group_parent.mkdir(exist_ok=True)
             self.render_group(request, group_parent, pattern_templates)
+
+    def render_pattern(self, request, pattern_template_name):
+        rendered_pattern = render_pattern(request, pattern_template_name)
+
+        # If we don’t wrap fragments in the base template, we can simply render the pattern and return as-is.
+        if not self.wrap_fragments:
+            return rendered_pattern
+
+        pattern_template_ancestors = get_template_ancestors(
+            pattern_template_name,
+            context=get_pattern_context(pattern_template_name),
+        )
+        pattern_is_fragment = set(pattern_template_ancestors).isdisjoint(set(get_base_template_names()))
+
+        if pattern_is_fragment:
+            base_template = get_pattern_base_template_name()
+            context = get_pattern_context(base_template)
+            context['pattern_library_rendered_pattern'] = rendered_pattern
+            return render_to_string(base_template, request=request, context=context)
+        else:
+            return rendered_pattern
