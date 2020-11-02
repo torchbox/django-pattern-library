@@ -2,7 +2,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 SECRET_KEY = 'foobar'
@@ -32,7 +32,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # applications which are used by default.
 # https://docs.djangoproject.com/en/stable/ref/settings/#staticfiles-dirs
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, "tests", "static")
+    os.path.join(BASE_DIR, "tests", "static")
 ]
 
 ROOT_URLCONF = 'tests.urls'
