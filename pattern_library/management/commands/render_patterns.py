@@ -55,7 +55,6 @@ class Command(BaseCommand):
             if self.wrap_fragments:
                 self.stderr.write('Writing fragment patterns wrapped in base template')
 
-
         # Resolve the output dir according to the directory the command is run from.
         parent_dir = Path.cwd().joinpath(self.output_dir)
 

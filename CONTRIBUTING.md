@@ -20,7 +20,10 @@ Then you can install the dependencies and run the test app:
 
 ```sh
 poetry install
-poetry run 'django-admin runserver --settings=tests.settings --pythonpath=.'
+# Start the server for testing:
+poetry run django-admin runserver --settings=tests.settings --pythonpath=.
+# Or to try out the render_patterns command:
+poetry run django-admin render_patterns --settings=tests.settings --pythonpath=. --dry-run --verbosity 2
 ```
 
 ### Run a local build with docker
