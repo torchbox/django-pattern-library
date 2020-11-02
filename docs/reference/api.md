@@ -116,3 +116,27 @@ PATTERN_LIBRARY = {
     "BASE_TEMPLATE_NAMES": ["patterns/base_page.html"],
 }
 ```
+
+## Commands
+
+### `render_patterns`
+
+Renders all django-pattern-library patterns to HTML files, in a directory
+structure. This can be useful for [automated tests](../guides/automated-tests.md)
+
+Usage:
+
+```sh
+# Render all patterns to the default directory.
+./manage.py render_patterns
+# Render patterns without outputting files.
+./manage.py render_patterns --dry-run
+# Render all patterns, with fragment patterns wrapped in the base template.
+./manage.py render_patterns --wrap-fragments
+# Render patterns to a specific directory.
+./manage.py render_patterns --output ./my/path/relative/to/cwd
+# Render patterns to stdout.
+./manage.py render_patterns --dry-run --verbosity 2
+# View all options
+./manage.py render_patterns --help
+```
