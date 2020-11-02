@@ -117,6 +117,18 @@ PATTERN_LIBRARY = {
 }
 ```
 
+## `monkey_utils`
+
+### `override_tag`
+
+This function tells the pattern library which Django tags to override, and optionally supports providing a default value. See [../guides/overriding-template-tags.md] for more information.
+
+```python
+from pattern_library.monkey_utils import override_tag
+
+override_tag(register, 'a_tag_name', default_html="https://example.com/")
+```
+
 ## Commands
 
 ### `render_patterns`
@@ -140,3 +152,5 @@ Usage:
 # View all options
 ./manage.py render_patterns --help
 ```
+
+By default patterns will be saved in a `dpl-rendered-patterns` folder. Make sure to add this to your `.gitignore` and other ignore files, or customize the output directory with `--output`.
