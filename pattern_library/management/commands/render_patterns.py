@@ -39,7 +39,10 @@ class Command(BaseCommand):
         request = factory.get('/')
 
         if self.verbosity >= 2:
-            self.stderr.write(f'Target directory: {self.output_dir}')
+            if self.dry_run:
+                self.stderr.write(f'Target directory: {self.output_dir}. Dry run, not writing files to disk')
+            else:
+                self.stderr.write(f'Target directory: {self.output_dir}')
 
         # Resolve the output dir according to the directory the command is run from.
         parent_dir = Path.cwd().joinpath(self.output_dir)

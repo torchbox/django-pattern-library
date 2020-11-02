@@ -23,7 +23,7 @@ patterns/atoms/test_atom/test_atom.html
         stdout = io.StringIO()
         stderr = io.StringIO()
         call_command('render_patterns', dry_run=True, stdout=stdout, stderr=stderr, verbosity=2)
-        self.assertIn("""Target directory: dpl-rendered-patterns
+        self.assertIn("""Target directory: dpl-rendered-patterns. Dry run, not writing files to disk
 Group: atoms
 Group: icons
 Pattern: icon.html
