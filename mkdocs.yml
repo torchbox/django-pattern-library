@@ -33,10 +33,12 @@ nav:
   # The most important guides are shown in the top-level navigation.
   - 'Template context': 'guides/defining-template-context.md'
   - 'Overriding tags': 'guides/overriding-template-tags.md'
-  - 'Workflows that work': 'guides/workflows-that-work.md'
+  - 'Usage tips': 'guides/usage-tips.md'
   - 'Guides':
     - 'Customizing rendering': 'guides/customizing-template-rendering.md'
     - 'Multiple variants': 'guides/multiple-variants.md'
+    - 'Automated tests': 'guides/automated-tests.md'
+    - 'Static site export': 'guides/static-site-export.md'
     - 'Reuse across projects': 'guides/reuse-across-projects.md'
   - 'Recipes':
     - 'Inclusion tags': 'recipes/inclusion-tags.md'

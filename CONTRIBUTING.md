@@ -64,7 +64,7 @@ The project’s documentation website is built with [MkDocs](https://www.mkdocs.
 # One-off build.
 poetry run mkdocs build --strict
 # Rebuild the docs as you work on them
-poetry run mkdocs serve --strict
+poetry run mkdocs serve
 ```
 
 ## Running the tests
