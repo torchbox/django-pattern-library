@@ -41,5 +41,5 @@ mv static dpl-rendered-patterns/static
 It’s very straightforward to export the whole pattern library as a static site, including all templates, and the pattern library UI. Here is an example exporting the pattern library with [`wget`](https://en.wikipedia.org/wiki/Wget):
 
 ```sh
-wget --mirror --page-requisites --no-parent http://localhost:8000/pattern-library
+wget --mirror --page-requisites --no-parent http://localhost:8000/pattern-library/
 ```
