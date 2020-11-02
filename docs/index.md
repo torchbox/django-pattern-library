@@ -25,6 +25,13 @@ Pattern libraries will change your workflow for the better:
 - They encourage code reuse – defining independent UI components, that can be reused across apps, or ported to other projects.
 - It makes it much simpler to test UI components – no need to figure out where they’re used across a site or app.
 
+## Online demo
+
+The pattern library is dependent on Django for rendering – but also supports exporting as a static site if needed. Try out our online demo:
+
+- For a component, [accordion.html](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/molecules/accordion/accordion.html)
+- For a page-level template, [person_page.html](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/pages/people/person_page.html)
+
 ## Why this exists
 
 We want to make it possible for developers to maintain large pattern libraries with minimal fuss – no copy-pasting of templates between a static library and the “production” templates.

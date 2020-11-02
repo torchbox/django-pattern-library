@@ -50,3 +50,4 @@ nav:
     - 'Concepts': 'reference/concepts.md'
     - 'Known issues': 'reference/known-issues.md'
     - 'Related projects': 'reference/related-projects.md'
+  - 'Online demo': '/django-pattern-library/demo/pattern-library/'
