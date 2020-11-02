@@ -15,7 +15,7 @@ poetry add --dev django-pattern-library
 
 We support:
 
-- Django 2.2.x, 3.0.x, 3.1.x
+- Django 2.2.x, 3.0.x, 3.1.x, 3.2.x (experimental)
 - Python 3.6, 3.7, 3.8
 - Django Templates only, no Jinja support
 
