@@ -1,11 +1,10 @@
 import io
-
+import shutil
 import tempfile
 from pathlib import Path
-import shutil
 
-from django.test import SimpleTestCase
 from django.core.management import call_command
+from django.test import SimpleTestCase
 
 
 class RenderPatternsTests(SimpleTestCase):
