@@ -28,7 +28,7 @@ jobs:
         # Python linting.
         - tox -e lint
         # Docs website build.
-        - poetry run mkdocs build
+        - poetry run mkdocs build --strict
         # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `master`.
         - cat pyproject.toml| awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
         - npm run build
