@@ -63,7 +63,7 @@ context:
 
 See [#87](https://github.com/torchbox/django-pattern-library/issues/87). There is currently no support for trying out a single component with different variations in context or tag overrides.
 
-This can be worked around by creating pattern-library-only templates, see [Multiple template variants](../recipes/multiple-variants.md)
+This can be worked around by creating pattern-library-only templates, see [Multiple template variants](../guides/multiple-variants.md)
 
 ## Can’t mock each use of a template tag with different attributes
 
