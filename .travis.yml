@@ -9,12 +9,14 @@ cache:
     - node_modules
 jobs:
   include:
-    - env: PYVER=py36
-      python: 3.6
-    - env: PYVER=py37
-      python: 3.7
-    - env: PYVER=py38
-      python: 3.8
+    - python: 3.6
+      env: PYVER=py36
+    - python: 3.7
+      env: PYVER=py37
+    - python: 3.8
+      env: PYVER=py38
+    - python: 3.9
+      env: PYVER=py39
     - python: 3.8
       install:
         - pip install poetry
