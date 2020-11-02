@@ -25,17 +25,18 @@ jobs:
         - npm install --no-optional --no-audit --progress=false
         - poetry install
       before_script:
+        - npm run build
         - poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
       script:
         # Python linting.
         - tox -e lint
         # Docs website build.
         - poetry run mkdocs build --strict
-        - wget --mirror --page-requisites --no-parent http://localhost:8000/django-pattern-library/demo/pattern-library/
+        # Demo website build.
+        - wget --mirror --page-requisites --no-parent --no-verbose http://localhost:8000/django-pattern-library/demo/pattern-library/
         - mv localhost:8000/django-pattern-library/demo site
         # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `master`.
         - cat pyproject.toml| awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
-        - npm run build
         - poetry build
         - mv dist site
       deploy:
