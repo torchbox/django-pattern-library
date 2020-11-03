@@ -9,8 +9,10 @@ We have a new documentation website! Check out [torchbox.github.io/django-patter
 ### Added
 
 - This package now supports Django 3.1, and has tentative support for Django 3.2
+- We also now support Python 3.9
 - Implement optional default for [override_tag](https://torchbox.github.io/django-pattern-library/reference/api/#override_tag) ([#125](https://github.com/torchbox/django-pattern-library/issues/125))
 - A new `render_patterns` command makes it possible to export the pattern library templates for automated tests or static hosting ([#16](https://github.com/torchbox/django-pattern-library/issues/16), [#17](https://github.com/torchbox/django-pattern-library/issues/17))
+- Permit variable template names in extends and include tags ([#112](https://github.com/torchbox/django-pattern-library/pull/112))
 
 ### Removed
 
