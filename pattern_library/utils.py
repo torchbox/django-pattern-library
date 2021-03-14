@@ -16,6 +16,7 @@ from pattern_library import (
     get_pattern_context_var_name, get_pattern_template_suffix, get_sections
 )
 from pattern_library.exceptions import TemplateIsNotPattern
+from pattern_library.object_utils import inject_python_objects
 
 
 def path_to_section():
@@ -194,6 +195,7 @@ def render_pattern(request, template_name, allow_non_patterns=False):
 
     context = get_pattern_context(template_name)
     context[get_pattern_context_var_name()] = True
+    inject_python_objects(context, request, template_name)
     return render_to_string(template_name, request=request, context=context)
 
 
