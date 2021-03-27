@@ -1,3 +1,5 @@
+from .context_modifiers import register_context_modifier  # NOQA
+
 default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
 
 DEFAULT_SETTINGS = {
