@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Update tox config to account for Django's primary branch rename.
+
+
 ## [0.3.0] - 2020-11-02
 
 We have a new documentation website! Check out [torchbox.github.io/django-pattern-library](https://torchbox.github.io/django-pattern-library/).
