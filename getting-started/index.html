@@ -1,0 +1,960 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+    
+    
+      
+        <title>Getting started - django-pattern-library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d3202873.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ff0a5ce4.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#4051b5">
+      
+    
+    
+    
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="django-pattern-library" class="md-header-nav__button md-logo" aria-label="django-pattern-library">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            django-pattern-library
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Getting started
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/torchbox/django-pattern-library/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    django-pattern-library
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="django-pattern-library" class="md-nav__button md-logo" aria-label="django-pattern-library">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    django-pattern-library
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/torchbox/django-pattern-library/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    django-pattern-library
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Getting started" class="md-nav__link md-nav__link--active">
+      Getting started
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#django-settings" class="md-nav__link">
+    Django settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-library-settings" class="md-nav__link">
+    Pattern library settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urls" class="md-nav__link">
+    URLs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-pattern" class="md-nav__link">
+    First pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="First pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-template" class="md-nav__link">
+    Base template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-data" class="md-nav__link">
+    Component data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../guides/defining-template-context/" title="Template context" class="md-nav__link">
+      Template context
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../guides/overriding-template-tags/" title="Overriding tags" class="md-nav__link">
+      Overriding tags
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../guides/usage-tips/" title="Usage tips" class="md-nav__link">
+      Usage tips
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Guides
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Guides" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Guides
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../guides/customizing-template-rendering/" title="Customizing rendering" class="md-nav__link">
+      Customizing rendering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../guides/multiple-variants/" title="Multiple variants" class="md-nav__link">
+      Multiple variants
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../guides/automated-tests/" title="Automated tests" class="md-nav__link">
+      Automated tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../guides/static-site-export/" title="Static site export" class="md-nav__link">
+      Static site export
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../guides/reuse-across-projects/" title="Reuse across projects" class="md-nav__link">
+      Reuse across projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Recipes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Recipes" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Recipes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../recipes/inclusion-tags/" title="Inclusion tags" class="md-nav__link">
+      Inclusion tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../recipes/looping-for-tags/" title="Looping for tags" class="md-nav__link">
+      Looping for tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../recipes/image-include/" title="Image include" class="md-nav__link">
+      Image include
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../recipes/image-lazyload/" title="Image lazyload" class="md-nav__link">
+      Image lazyload
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reference/api/" title="API and settings" class="md-nav__link">
+      API and settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reference/concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reference/known-issues/" title="Known issues" class="md-nav__link">
+      Known issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reference/related-projects/" title="Related projects" class="md-nav__link">
+      Related projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="/django-pattern-library/demo/pattern-library/" title="Online demo" class="md-nav__link">
+      Online demo
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#django-settings" class="md-nav__link">
+    Django settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-library-settings" class="md-nav__link">
+    Pattern library settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urls" class="md-nav__link">
+    URLs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-pattern" class="md-nav__link">
+    First pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="First pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-template" class="md-nav__link">
+    Base template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-data" class="md-nav__link">
+    Component data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/torchbox/django-pattern-library/edit/master/docs/getting-started.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>If you just want to see django-pattern-library up and running, have a look at our <a href="https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/molecules/accordion/accordion.html">online demo</a>.</p>
+</blockquote>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>django-pattern-library is available <a href="https://pypi.org/project/django-pattern-library/">on PyPI</a>. First install it in your Django project:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># With pip,</span>
+pip install django-pattern-library
+<span class="c1"># Alternatively, with Poetry,</span>
+poetry add --dev django-pattern-library
+</code></pre></div>
+
+<h3 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h3>
+<p>We support:</p>
+<ul>
+<li>Django 2.2.x, 3.0.x, 3.1.x, 3.2.x (experimental)</li>
+<li>Python 3.6, 3.7, 3.8, 3.9</li>
+<li>Django Templates only, no Jinja support</li>
+</ul>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="django-settings">Django settings<a class="headerlink" href="#django-settings" title="Permanent link">&para;</a></h3>
+<p>In your Django settings file, add <code>pattern_library</code> to <code>INSTALLED_APPS</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="s2">&quot;pattern_library&quot;</span><span class="p">,</span>
+    <span class="c1"># ...</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Also add <code>pattern_library.loader_tags</code> to <code>OPTIONS["builtins"]</code> into the <code>TEMPLATES</code> setting:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;BACKEND&quot;</span><span class="p">:</span> <span class="s2">&quot;django.template.backends.django.DjangoTemplates&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DIRS&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;APP_DIRS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;OPTIONS&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;context_processors&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;django.template.context_processors.debug&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;django.template.context_processors.request&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;django.contrib.auth.context_processors.auth&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;django.contrib.messages.context_processors.messages&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+<span class="hll">            <span class="s2">&quot;builtins&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class="hll">                <span class="s2">&quot;pattern_library.loader_tags&quot;</span>
+</span><span class="hll">            <span class="p">],</span>
+</span>        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<h3 id="pattern-library-settings">Pattern library settings<a class="headerlink" href="#pattern-library-settings" title="Permanent link">&para;</a></h3>
+<p>Still in Django settings, set the <a href="../reference/api/#pattern_library"><code>PATTERN_LIBRARY</code></a> setting. Here is an example showing the defaults:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">PATTERN_LIBRARY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Groups of templates for the pattern library navigation. The keys</span>
+    <span class="c1"># are the group titles and the values are lists of template name prefixes that will</span>
+    <span class="c1"># be searched to populate the groups.</span>
+    <span class="s2">&quot;SECTIONS&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s2">&quot;components&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;patterns/components&quot;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s2">&quot;pages&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;patterns/pages&quot;</span><span class="p">]),</span>
+    <span class="p">),</span>
+
+    <span class="c1"># Configure which files to detect as templates.</span>
+    <span class="s2">&quot;TEMPLATE_SUFFIX&quot;</span><span class="p">:</span> <span class="s2">&quot;.html&quot;</span><span class="p">,</span>
+
+    <span class="c1"># Set which template components should be rendered inside of,</span>
+    <span class="c1"># so they may use page-level component dependencies like CSS.</span>
+    <span class="s2">&quot;PATTERN_BASE_TEMPLATE_NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;patterns/base.html&quot;</span><span class="p">,</span>
+
+    <span class="c1"># Any template in BASE_TEMPLATE_NAMES or any template that extends a template in</span>
+    <span class="c1"># BASE_TEMPLATE_NAMES is a &quot;page&quot; and will be rendered as-is without being wrapped.</span>
+    <span class="s2">&quot;BASE_TEMPLATE_NAMES&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;patterns/base_page.html&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Note the templates in your <a href="../reference/api/#pattern_library"><code>PATTERN_LIBRARY</code></a> settings must be available to <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#loader-types">template loaders</a>.</p>
+<h3 id="urls">URLs<a class="headerlink" href="#urls" title="Permanent link">&para;</a></h3>
+<p>Include <code>pattern_library.urls</code> in your <code>urlpatterns</code>. Here is an example <code>urls.py</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.apps</span> <span class="kn">import</span> <span class="n">apps</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># … Your URLs</span>
+<span class="p">]</span>
+
+<span class="k">if</span> <span class="n">apps</span><span class="o">.</span><span class="n">is_installed</span><span class="p">(</span><span class="s2">&quot;pattern_library&quot;</span><span class="p">):</span>
+    <span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
+        <span class="n">path</span><span class="p">(</span><span class="s2">&quot;pattern-library/&quot;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s2">&quot;pattern_library.urls&quot;</span><span class="p">)),</span>
+    <span class="p">]</span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Security</p>
+<p>This package isn’t intended for production usage, and hasn’t received extensive security scrutiny.</p>
+</div>
+<p>It is <strong>highly recommended</strong> to only enable this package in testing environments, for a restricted, trusted audience. One way to do this is to only expose its URLs if <code>apps.is_installed("pattern_library")</code>, as demonstrated above, and only have the app installed in environment-specific settings.</p>
+<hr />
+<p>Alright, now that we got this far, we can navigate to <code>http://localhost:8000/pattern-library/</code> to see our pattern library! But if we tried to do this now, we would likely get a <code>PatternLibraryEmpty</code> error – this is expected, as we haven’t added any patterns yet.</p>
+<p><img alt="Screenshot of the PatternLibraryEmpty error message from Django" src="../images/getting-started/PatternLibraryEmpty.png" /></p>
+<p>Now let’s look at adding our first template!</p>
+<h2 id="first-pattern">First pattern<a class="headerlink" href="#first-pattern" title="Permanent link">&para;</a></h2>
+<p>Now we’ve done all of the configuration – let’s create a UI component. We’ll use <code>quote-block</code> as an example, and place it at <code>patterns/components/quote_block/quote_block.html</code> inside one of our Django apps:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">&quot;quote-block block--spacing&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;quote-block__text&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;quote-block__quote&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">quote</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">attribution</span> <span class="cp">%}</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;quote-block__attribution&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">attribution</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+</code></pre></div>
+
+<h3 id="base-template">Base template<a class="headerlink" href="#base-template" title="Permanent link">&para;</a></h3>
+<p>We additionally need to customize a base template, so the standalone component can be rendered within a page with CSS. This is what the <code>PATTERN_BASE_TEMPLATE_NAME</code> setting is for. As a separate template in <code>patterns/base.html</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Base<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="c">{# pattern_library_rendered_pattern is where the pattern library will inject the rendered pattern. #}</span>
+<span class="hll">    <span class="cp">{{</span> <span class="nv">pattern_library_rendered_pattern</span> <span class="cp">}}</span>
+</span>  <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><code>quote_block</code> should now appear in the pattern library UI menu! But the template doesn’t display anything – we additionally need to provide it with test data.</p>
+<h3 id="component-data">Component data<a class="headerlink" href="#component-data" title="Permanent link">&para;</a></h3>
+<p>We can provide context and tags overrides for our new component by creating a <code>quote_block.yaml</code> YAML file alongside the HTML, at <code>patterns/components/quote_block/quote_block.yaml</code> in our example.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
+  <span class="nt">quote</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">What is love?</span>
+  <span class="nt">attribution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Haddaway</span>
+</code></pre></div>
+
+<p>We could also provide it with a custom name:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Quote Block</span>
+<span class="nt">context</span><span class="p">:</span>
+  <span class="nt">quote</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">What is love?</span>
+  <span class="nt">attribution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Haddaway</span>
+</code></pre></div>
+
+<p>And that’s it! Our <code>quote_block</code> should finally appear in the pattern library, along with its rendering with this mock data.</p>
+<p><img alt="Screenshot of the quote_block template" src="../images/getting-started/getting-started-complete.png" /></p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-11-02
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." title="Home" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../guides/defining-template-context/" title="Template context" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Template context
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

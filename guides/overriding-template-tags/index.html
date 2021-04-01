@@ -1,0 +1,999 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+    
+    
+      
+        <title>Overriding tags - django-pattern-library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d3202873.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ff0a5ce4.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#4051b5">
+      
+    
+    
+    
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overriding-template-tags" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="django-pattern-library" class="md-header-nav__button md-logo" aria-label="django-pattern-library">
+      
+  <img src="../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            django-pattern-library
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Overriding tags
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/torchbox/django-pattern-library/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    django-pattern-library
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="django-pattern-library" class="md-nav__button md-logo" aria-label="django-pattern-library">
+      
+  <img src="../../images/logo.svg" alt="logo">
+
+    </a>
+    django-pattern-library
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/torchbox/django-pattern-library/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    django-pattern-library
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../defining-template-context/" title="Template context" class="md-nav__link">
+      Template context
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Overriding tags
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Overriding tags" class="md-nav__link md-nav__link--active">
+      Overriding tags
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#providing-a-default-value-for-template-tags" class="md-nav__link">
+    Providing a default value for template tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Providing a default value for template tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation" class="md-nav__link">
+    Limitation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-do-i-need-to-override-a-template-tag" class="md-nav__link">
+    When do I need to override a template tag?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#override-modes" class="md-nav__link">
+    Override modes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-into-a-variable" class="md-nav__link">
+    Output into a variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-examples" class="md-nav__link">
+    Overriding examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Overriding examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#render-another-template-or-pattern" class="md-nav__link">
+    Render another template or pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-raw-data" class="md-nav__link">
+    Return raw data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../usage-tips/" title="Usage tips" class="md-nav__link">
+      Usage tips
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Guides
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Guides" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Guides
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../customizing-template-rendering/" title="Customizing rendering" class="md-nav__link">
+      Customizing rendering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../multiple-variants/" title="Multiple variants" class="md-nav__link">
+      Multiple variants
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../automated-tests/" title="Automated tests" class="md-nav__link">
+      Automated tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../static-site-export/" title="Static site export" class="md-nav__link">
+      Static site export
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reuse-across-projects/" title="Reuse across projects" class="md-nav__link">
+      Reuse across projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Recipes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Recipes" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Recipes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/inclusion-tags/" title="Inclusion tags" class="md-nav__link">
+      Inclusion tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/looping-for-tags/" title="Looping for tags" class="md-nav__link">
+      Looping for tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/image-include/" title="Image include" class="md-nav__link">
+      Image include
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/image-lazyload/" title="Image lazyload" class="md-nav__link">
+      Image lazyload
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/api/" title="API and settings" class="md-nav__link">
+      API and settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/known-issues/" title="Known issues" class="md-nav__link">
+      Known issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/related-projects/" title="Related projects" class="md-nav__link">
+      Related projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="/django-pattern-library/demo/pattern-library/" title="Online demo" class="md-nav__link">
+      Online demo
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#providing-a-default-value-for-template-tags" class="md-nav__link">
+    Providing a default value for template tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Providing a default value for template tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation" class="md-nav__link">
+    Limitation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-do-i-need-to-override-a-template-tag" class="md-nav__link">
+    When do I need to override a template tag?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#override-modes" class="md-nav__link">
+    Override modes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-into-a-variable" class="md-nav__link">
+    Output into a variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-examples" class="md-nav__link">
+    Overriding examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Overriding examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#render-another-template-or-pattern" class="md-nav__link">
+    Render another template or pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-raw-data" class="md-nav__link">
+    Return raw data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/torchbox/django-pattern-library/edit/master/docs/guides/overriding-template-tags.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="overriding-template-tags">Overriding template tags<a class="headerlink" href="#overriding-template-tags" title="Permanent link">&para;</a></h1>
+<p>The package overrides the following Django tags:</p>
+<ul>
+<li><code>{% extends %}</code></li>
+<li><code>{% include %}</code></li>
+</ul>
+<p>It's required to allow us to define fake template context and override other template tags in YAML files.
+This package uses custom behaviour for these tags only when rendering pattern library and falls back to Django's standard behaviour on all other cases.</p>
+<p>The override process has two parts:</p>
+<ol>
+<li>Override your template tag with a mock implementation</li>
+<li>Define fake result for your tag in a YAML file</li>
+</ol>
+<h2 id="providing-a-default-value-for-template-tags">Providing a default value for template tags<a class="headerlink" href="#providing-a-default-value-for-template-tags" title="Permanent link">&para;</a></h2>
+<p>To provide a default for a template tag, you need to provide a keyword argument default_html when overriding your tag.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pattern_library.monkey_utils</span> <span class="kn">import</span> <span class="n">override_tag</span>
+
+<span class="n">override_tag</span><span class="p">(</span><span class="n">register</span><span class="p">,</span> <span class="s1">&#39;a_tag_name&#39;</span><span class="p">,</span> <span class="n">default_html</span><span class="o">=</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This default is used for any tag that's not passed its own context, allowing specificity for those elements that need it while preventing the tag from breaking when it's not structural to the component.</p>
+<h3 id="limitation">Limitation<a class="headerlink" href="#limitation" title="Permanent link">&para;</a></h3>
+<p>Currently this feature only supports providing a default for the output of the tag, this does not support modifying context in templates such as <code>{% an_example_tag page.url as example_variable %}</code>.</p>
+<h2 id="when-do-i-need-to-override-a-template-tag">When do I need to override a template tag?<a class="headerlink" href="#when-do-i-need-to-override-a-template-tag" title="Permanent link">&para;</a></h2>
+<p>Ideally your pattern library should be independent, so it doesn't fail when
+you run it with a project that has no entries in DB or on a local machine
+without internet connection.
+This means that you need to override a template tag when it hits DB or any other resource (cache, or requests URL, for example).</p>
+<p>You amy also need to override template tags in other cases, when data provided by the pattern library’s context mocking is of a different type to what Django would expect – this is because the pattern library only uses data types that are de-serializable from YAML.</p>
+<h2 id="override-modes">Override modes<a class="headerlink" href="#override-modes" title="Permanent link">&para;</a></h2>
+<p>There are two options when it comes to template tag overriding:</p>
+<ol>
+<li>Render another template or pattern (a template with own fake context)
+    instead of calling the original template tag</li>
+<li>Return raw data. For example, you can return a string,
+    that will be rendered instead of the original template tag.
+    You can also return a structure (dict or list) which is useful when
+    overriding <a href="https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#simple-tags">"Simple tags"</a> or a custom tag that returns an object or dict</li>
+</ol>
+<h2 id="output-into-a-variable">Output into a variable<a class="headerlink" href="#output-into-a-variable" title="Permanent link">&para;</a></h2>
+<p>Some tags can set their value into a variable like:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">{# renders something #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">my_tag</span> <span class="nv">some_arg</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# Outputs into a variable for later use #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">my_tag</span> <span class="nv">some_arg</span> <span class="k">as</span> <span class="nv">result_var</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">result_var.some_attr</span> <span class="cp">}}</span><span class="x"></span>
+</code></pre></div>
+
+<p>The package automatically detects an output variable
+(<code>result_var</code> in our example) when a custom template tag is a
+<a href="https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#simple-tags">"Simple tag"</a>,
+so you don't need to worry about these tags.
+But when you need to override a tag which sets result into a variable in
+<a href="https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#a-quick-overview">it's custom <code>django.template.Node</code></a>
+you would need to specify output var name manually. We will look into how
+to do that later in the examples section.</p>
+<h2 id="overriding-examples">Overriding examples<a class="headerlink" href="#overriding-examples" title="Permanent link">&para;</a></h2>
+<p>Let's assume that we want to override the <code>{% image image resize_rule %}</code>
+template tag from the <code>some_package.image_utils</code> template tag set
+(you have something like <code>{% load image_utils %}</code> at the top of your template).</p>
+<p>This template tag resizes an <code>image</code> accordingly
+to a specific <code>resize_rule</code> and outputs the <code>&lt;img&gt;</code> html tag.
+It's also possible to assign an image object into a variable
+using this syntax: <code>{% image image resize_rule as my_var_name %}</code>.
+In this case tag doesn't render the <code>&lt;img&gt;</code> tag, but you can access
+image object's properties (<code>my_var_name.url</code>, for example).</p>
+<p>First, we need to override a template tag with fake implementation.
+Note that the fake implementation will only be used when viewing the
+pattern library: you will be using the actual implementation in
+our production code.</p>
+<p>Assuming that you already have module installed in your project,
+to define a fake implementation we need to:</p>
+<p>First, create a <a href="https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#code-layout"><code>templatetags</code> package</a> in one of your apps. Note that your app should be defined in <a href="https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-INSTALLED_APPS"><code>INSTALLED_APPS</code></a> and it should be defined after the package you are overriding (<code>some_package</code> in our case).</p>
+<p>Then, create <code>image_utils.py</code> in this package with the following code:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">some_package.templatetags.image_utils</span> <span class="kn">import</span> <span class="n">register</span>
+
+<span class="kn">from</span> <span class="nn">pattern_library.monkey_utils</span> <span class="kn">import</span> <span class="n">override_tag</span>
+
+<span class="c1"># We are monkey patching here</span>
+<span class="c1"># Note that `register` should be an instance of `django.template.Library`</span>
+<span class="c1"># and it&#39;s important to the instance where the original tag is defined.</span>
+<span class="n">override_tag</span><span class="p">(</span><span class="n">register</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> it's recommended to have a single app that contains all template tag
+overrides, so it's easy to exclude it from <code>INSTALLED_APPS</code> in production,
+if you want to.</p>
+<p>Now we need to define fake result for each instance of our template tag.
+Let's assume that we have a template with two calls of the
+<code>{% image $}</code> template tag:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">`</span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">image_utils</span> <span class="cp">%}</span><span class="x">`</span>
+
+
+<span class="x">&lt;div class=&quot;user&quot;&gt;</span>
+<span class="x">    &lt;div class=&quot;user-avatar&quot;&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">image</span> <span class="nv">avatar</span> <span class="nv">fill-200x200</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    &lt;div class=&quot;user-data&quot;&gt;</span>
+<span class="x">        &lt;div&gt;Username: </span><span class="cp">{{</span> <span class="nv">username</span> <span class="cp">}}</span><span class="x">&lt;/div&gt;</span>
+<span class="x">        &lt;div&gt;</span>
+<span class="x">            &lt;div&gt;User photo:&lt;/div&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">image</span> <span class="nv">avatar</span> <span class="nv">fill-200x400</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+
+<h3 id="render-another-template-or-pattern">Render another template or pattern<a class="headerlink" href="#render-another-template-or-pattern" title="Permanent link">&para;</a></h3>
+<p>Our <code>yaml</code> will similar to this:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Override template tags</span>
+<span class="nt">tags</span><span class="p">:</span>
+    <span class="c1"># Name of the template tag we are overriding</span>
+    <span class="nt">image</span><span class="p">:</span>
+        <span class="c1"># Arguments of the template tag</span>
+        <span class="c1"># Override {% image avatar fill-200x200 %}</span>
+        <span class="nt">avatar fill-200x200</span><span class="p">:</span>
+            <span class="nt">template_name</span><span class="p">:</span> <span class="s">&quot;patterns/atoms/images/image.html&quot;</span>
+        <span class="c1"># Override {% image avatar fill-200x400 %}</span>
+        <span class="nt">avatar fill-200x400</span><span class="p">:</span>
+            <span class="nt">template_name</span><span class="p">:</span> <span class="s">&quot;patterns/atoms/images/image.html&quot;</span>
+
+<span class="c1"># Override context, if needed</span>
+</code></pre></div>
+
+<p>In this example, we override both template tags and
+render the same template: <code>patterns/atoms/images/image.html</code>.
+This template is a regular Django template. If it's a pattern,
+like in our example, it will be rendered with its own fake
+content defined in <code>patterns/atoms/images/image.yaml</code>.</p>
+<p>The downside of this approach is that we render the
+same template where an image can be rendered in a different size.
+So, if <code>patterns/atoms/images/image.html</code> has something like
+<code>&lt;img src="http://via.placeholder.com/200x200" width="200" height="200" alt="Placeholder"&gt;</code>
+inside, this means that we will render image of size <code>200x200</code> few times.</p>
+<p>Probably, in the majority of cases, it's ok to render the same
+template, but not when we are rendering images
+of different sizes.</p>
+<p>There are two approaches for this problem:</p>
+<ul>
+<li>Create a template for every image size you need. It can be a template
+    that you will be only using for pattern library: no production use.
+    This is a good option, when you want define a fake result for a template
+    tag that renders a big piece of HTML code.
+    Also it's useful when the template tag renders some other pattern,
+    which is a common situation.</li>
+<li>For tags that render something small like <code>&lt;img&gt;</code> tag,
+    there is an alternative option: you can define raw data
+    in your <code>yaml</code> file</li>
+</ul>
+<h3 id="return-raw-data">Return raw data<a class="headerlink" href="#return-raw-data" title="Permanent link">&para;</a></h3>
+<p>Let's update our <code>yaml</code> to use raw data:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Override template tags</span>
+<span class="nt">tags</span><span class="p">:</span>
+    <span class="c1"># Name of the template tag we are overriding</span>
+    <span class="nt">image</span><span class="p">:</span>
+        <span class="c1"># Arguments of the template tag</span>
+        <span class="c1"># Override {% image avatar fill-200x200 %}</span>
+        <span class="nt">avatar fill-200x200</span><span class="p">:</span>
+            <span class="nt">raw</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
+                <span class="no">&lt;img src=&quot;http://via.placeholder.com/200x200&quot; width=&quot;200&quot; height=&quot;200&quot; alt=&quot;Placeholder&quot;&gt;</span>
+        <span class="c1"># Override {% image avatar fill-200x400 %}</span>
+        <span class="nt">avatar fill-200x400</span><span class="p">:</span>
+            <span class="nt">raw</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
+                <span class="no">&lt;img src=&quot;http://via.placeholder.com/200x400&quot; width=&quot;200&quot; height=&quot;400&quot; alt=&quot;Placeholder&quot;&gt;</span>
+
+<span class="c1"># Override context, if needed</span>
+</code></pre></div>
+
+<p>Now we make both <code>{% image %}</code> tags return different strings
+without creating a separate templates for them.</p>
+<p>The <code>raw</code> field, can contain any data supported by
+<a href="http://pyyaml.org/wiki/PyYAMLDocumentation"><code>PyYAML</code></a>
+without creating a custom object type.</p>
+<p>For example, if we have a template like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">comment</span> <span class="cp">%}</span><span class="c"></span>
+<span class="c">The following tag assigns result into avatar_thumbnail</span>
+<span class="c">for later use and renders nothing (empty string).</span>
+<span class="cp">{%</span> <span class="k">endcomment</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">image</span> <span class="nv">avatar</span> <span class="nv">fill-200x200</span> <span class="k">as</span> <span class="nv">avatar_thumbnail</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">Avatar file path: </span><span class="cp">{{</span> <span class="nv">avatar_thumbnail.file</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">Avatar URL: </span><span class="cp">{{</span> <span class="nv">avatar_thumbnail.url</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">Avatar: &lt;img src=&quot;</span><span class="cp">{{</span> <span class="nv">avatar_thumbnail.url</span> <span class="cp">}}</span><span class="x">&quot; alt=&quot;</span><span class="cp">{{</span> <span class="nv">username</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+</code></pre></div>
+
+<p>We can define our <code>yaml</code> like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span>
+        <span class="c1"># Override {% image avatar fill-200x200 as avatar_thumbnail %}</span>
+        <span class="nt">avatar fill-200x200 as avatar_thumbnail</span><span class="p">:</span>
+            <span class="nt">raw</span><span class="p">:</span>
+                <span class="nt">file</span><span class="p">:</span> <span class="s">&quot;/path/to/avatar/file&quot;</span>
+                <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://via.placeholder.com/200x200&quot;</span>
+</code></pre></div>
+
+<p>Note that the example above will only work if our <code>image</code> is a
+<a href="https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#simple-tags">"Simple tag"</a>.
+If it's a more custom implementation, we will need to specify output
+variable name explicitly like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span>
+        <span class="c1"># Override {% image avatar fill-200x200 as avatar_thumbnail %}</span>
+        <span class="nt">avatar fill-200x200 as avatar_thumbnail</span><span class="p">:</span>
+            <span class="nt">target_var</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">avatar_thumbnail</span>
+            <span class="nt">raw</span><span class="p">:</span>
+                <span class="nt">file</span><span class="p">:</span> <span class="s">&quot;/path/to/avatar/file&quot;</span>
+                <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://via.placeholder.com/200x200&quot;</span>
+</code></pre></div>
+
+<p>Note the <code>target_var</code> field.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-10-30
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../defining-template-context/" title="Template context" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Template context
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../usage-tips/" title="Usage tips" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Usage tips
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,825 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+    
+    
+      
+        <title>Known issues - django-pattern-library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d3202873.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ff0a5ce4.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#4051b5">
+      
+    
+    
+    
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#known-issues-and-limitations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="django-pattern-library" class="md-header-nav__button md-logo" aria-label="django-pattern-library">
+      
+  <img src="../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            django-pattern-library
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Known issues
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/torchbox/django-pattern-library/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    django-pattern-library
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="django-pattern-library" class="md-nav__button md-logo" aria-label="django-pattern-library">
+      
+  <img src="../../images/logo.svg" alt="logo">
+
+    </a>
+    django-pattern-library
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/torchbox/django-pattern-library/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    django-pattern-library
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/defining-template-context/" title="Template context" class="md-nav__link">
+      Template context
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/overriding-template-tags/" title="Overriding tags" class="md-nav__link">
+      Overriding tags
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/usage-tips/" title="Usage tips" class="md-nav__link">
+      Usage tips
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Guides
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Guides" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Guides
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/customizing-template-rendering/" title="Customizing rendering" class="md-nav__link">
+      Customizing rendering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/multiple-variants/" title="Multiple variants" class="md-nav__link">
+      Multiple variants
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/automated-tests/" title="Automated tests" class="md-nav__link">
+      Automated tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/static-site-export/" title="Static site export" class="md-nav__link">
+      Static site export
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../guides/reuse-across-projects/" title="Reuse across projects" class="md-nav__link">
+      Reuse across projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Recipes
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Recipes" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Recipes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/inclusion-tags/" title="Inclusion tags" class="md-nav__link">
+      Inclusion tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/looping-for-tags/" title="Looping for tags" class="md-nav__link">
+      Looping for tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/image-include/" title="Image include" class="md-nav__link">
+      Image include
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recipes/image-lazyload/" title="Image lazyload" class="md-nav__link">
+      Image lazyload
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/" title="API and settings" class="md-nav__link">
+      API and settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Known issues
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Known issues" class="md-nav__link md-nav__link--active">
+      Known issues
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#no-way-to-specify-objects-that-have-attributes-and-support-iteration" class="md-nav__link">
+    No way to specify objects that have attributes and support iteration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-filters-is-not-supported" class="md-nav__link">
+    Overriding filters is not supported
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django-form-fields-are-not-well-supported" class="md-nav__link">
+    Django form fields are not well supported
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cant-override-context-in-a-child-template" class="md-nav__link">
+    Can’t override context in a child template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-support-for-pattern-variations" class="md-nav__link">
+    No support for pattern variations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cant-mock-each-use-of-a-template-tag-with-different-attributes" class="md-nav__link">
+    Can’t mock each use of a template tag with different attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cant-mock-objects-comparison-by-reference" class="md-nav__link">
+    Can’t mock objects comparison by reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../related-projects/" title="Related projects" class="md-nav__link">
+      Related projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="/django-pattern-library/demo/pattern-library/" title="Online demo" class="md-nav__link">
+      Online demo
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#no-way-to-specify-objects-that-have-attributes-and-support-iteration" class="md-nav__link">
+    No way to specify objects that have attributes and support iteration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-filters-is-not-supported" class="md-nav__link">
+    Overriding filters is not supported
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django-form-fields-are-not-well-supported" class="md-nav__link">
+    Django form fields are not well supported
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cant-override-context-in-a-child-template" class="md-nav__link">
+    Can’t override context in a child template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-support-for-pattern-variations" class="md-nav__link">
+    No support for pattern variations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cant-mock-each-use-of-a-template-tag-with-different-attributes" class="md-nav__link">
+    Can’t mock each use of a template tag with different attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cant-mock-objects-comparison-by-reference" class="md-nav__link">
+    Can’t mock objects comparison by reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/torchbox/django-pattern-library/edit/master/docs/reference/known-issues.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="known-issues-and-limitations">Known issues and limitations<a class="headerlink" href="#known-issues-and-limitations" title="Permanent link">&para;</a></h1>
+<p>django-pattern-library has a few known limitations due to its design, which are worth knowing about when authoring templates or attempting to document them in the pattern library.</p>
+<h2 id="no-way-to-specify-objects-that-have-attributes-and-support-iteration">No way to specify objects that have attributes and support iteration<a class="headerlink" href="#no-way-to-specify-objects-that-have-attributes-and-support-iteration" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://github.com/torchbox/django-pattern-library/issues/10">#10</a>. It’s impossible to mock the context when a variable needs to support iteration <em>and</em> attributes. Here is an example of this impossible case:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">for</span> <span class="nv">result</span> <span class="k">in</span> <span class="nv">search_results</span> <span class="cp">%}</span><span class="x"></span>
+<span class="c">{# […] #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">search_results.paginator.count</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+
+<h2 id="overriding-filters-is-not-supported">Overriding filters is not supported<a class="headerlink" href="#overriding-filters-is-not-supported" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://github.com/torchbox/django-pattern-library/issues/114">#114</a>. PRs welcome!</p>
+<h2 id="django-form-fields-are-not-well-supported">Django form fields are not well supported<a class="headerlink" href="#django-form-fields-are-not-well-supported" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://github.com/torchbox/django-pattern-library/issues/113">#113</a>. If a template contains <code>{% for field in form %}</code> or even <code>{% if form %}</code>, then it's easy enough to render in django-pattern-library so long as we force the form to be null in the YAML context, and are happy not to have the form.</p>
+<p>If the form is rendered explicitly by field names, then it requires a lot more work, which can quickly become too much of a maintenance burden – for example creating deeply nested structures for form fields:</p>
+<div class="codehilite"><pre><span></span><code>  <span class="nt">form</span><span class="p">:</span>
+    <span class="nt">email</span><span class="p">:</span>
+      <span class="nt">bound_field</span><span class="p">:</span>
+        <span class="nt">field</span><span class="p">:</span>
+          <span class="nt">widget</span><span class="p">:</span>
+            <span class="nt">class</span><span class="p">:</span>
+              <span class="nt">__name__</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">char_field</span>
+</code></pre></div>
+
+<p>While this is in theory possible, it’s not a very desirable prospect.</p>
+<h2 id="cant-override-context-in-a-child-template">Can’t override context in a child template<a class="headerlink" href="#cant-override-context-in-a-child-template" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://github.com/torchbox/django-pattern-library/issues/8">#8</a>.</p>
+<p>If you have a <code>some_page.html</code>, <code>some_page.yaml</code>, and <code>include_me.html</code>, <code>include_me.html</code>, and <code>some_page.html</code> includes <code>include_me.html</code>.</p>
+<p><code>some_page.yaml</code> with something like:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
+  <span class="nt">page</span><span class="p">:</span>
+    <span class="nt">pk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;my</span><span class="nv"> </span><span class="s">title&quot;</span>
+</code></pre></div>
+
+<p>and <code>include_me.yaml</code> with something like:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
+  <span class="nt">page</span><span class="p">:</span>
+    <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;Title</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">include&quot;</span>
+</code></pre></div>
+
+<p><code>Title from include</code> will appear on both patterns. It's impossible to override single key in <code>some_page.html</code></p>
+<h2 id="no-support-for-pattern-variations">No support for pattern variations<a class="headerlink" href="#no-support-for-pattern-variations" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://github.com/torchbox/django-pattern-library/issues/87">#87</a>. There is currently no support for trying out a single component with different variations in context or tag overrides.</p>
+<p>This can be worked around by creating pattern-library-only templates, see <a href="../../guides/multiple-variants/">Multiple template variants</a></p>
+<h2 id="cant-mock-each-use-of-a-template-tag-with-different-attributes">Can’t mock each use of a template tag with different attributes<a class="headerlink" href="#cant-mock-each-use-of-a-template-tag-with-different-attributes" title="Permanent link">&para;</a></h2>
+<p>For example, with a template that uses the same tag many times like:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">load</span> <span class="nv">wagtailcore_tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">link</span> <span class="k">in</span> <span class="nv">primarynav</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">with</span> <span class="nv">children</span><span class="o">=</span><span class="nv">link.value.page.get_children.live.public.in_menu</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">          &lt;div class=&quot;primary-nav__item&quot;&gt;</span>
+<span class="x">              </span><span class="cp">{%</span> <span class="k">include_block</span> <span class="nv">link</span> <span class="k">with</span> <span class="nv">has_children</span><span class="o">=</span><span class="nv">children.exists</span> <span class="nv">nav_type</span><span class="o">=</span><span class="s2">&quot;primary-nav&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">              &lt;ul class=&quot;sub-nav&quot;&gt;</span>
+<span class="x">                  &lt;li class=&quot;sub-nav__item&quot;&gt;</span><span class="cp">{%</span> <span class="k">include_block</span> <span class="nv">link</span> <span class="k">with</span> <span class="nv">nav_type</span><span class="o">=</span><span class="s2">&quot;sub-nav&quot;</span> <span class="cp">%}</span><span class="x">&lt;/li&gt;</span>
+<span class="x">                  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">child</span> <span class="k">in</span> <span class="nv">children.all</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                      &lt;li class=&quot;sub-nav__item sub-nav__item--secondary&quot;&gt;</span>
+<span class="x">                          </span><span class="cp">{%</span> <span class="k">include_block</span> <span class="nv">link</span> <span class="k">with</span> <span class="nv">page</span><span class="o">=</span><span class="nv">child</span> <span class="nv">nav_type</span><span class="o">=</span><span class="s2">&quot;sub-nav&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                      &lt;/li&gt;</span>
+<span class="x">                  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">              &lt;/ul&gt;</span>
+<span class="x">          &lt;/div&gt;</span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">endwith</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+
+<p>This can’t be mocked for all usage of <code>include_block</code>.</p>
+<h2 id="cant-mock-objects-comparison-by-reference">Can’t mock objects comparison by reference<a class="headerlink" href="#cant-mock-objects-comparison-by-reference" title="Permanent link">&para;</a></h2>
+<p>With instances of models, the following works fine in vanilla Django, due to <code>item</code> and <code>page</code> being the same object:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="nv">item</span> <span class="o">==</span> <span class="nv">page</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+
+<p>This can’t be mocked with the pattern library’s context mocking support. As a workaround, you can switch equality checks to using literals:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="nv">item.id</span> <span class="o">==</span> <span class="nv">page.id</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-11-02
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../concepts/" title="Concepts" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Concepts
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../related-projects/" title="Related projects" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Related projects
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
