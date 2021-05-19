@@ -17,6 +17,34 @@ jobs:
           poetry-version: '1.1.4'
       - run: pip install tox
       - run: tox -e lint,py39-dj31
+  test_compatibility:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - python: "3.6"
+            toxenv: py36-dj22,py36-dj30,py36-dj31,py36-djmain
+          - python: "3.7"
+            toxenv: py37-dj22,py37-dj30,py37-dj31,py37-djmain
+          - python: "3.8"
+            toxenv: py38-dj22,py38-dj30,py38-dj31,py38-djmain
+          - python: "3.9"
+            toxenv: py39-dj22,py39-dj30,py39-dj31,py39-djmain
+          # - python: "3.10.0-alpha.6"
+          #   toxenv: py39-dj22,py39-dj30,py39-dj31,py39-djmain
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: Gr1n/setup-poetry@v4
+        with:
+          poetry-version: '1.1.4'
+      - run: pip install tox
+      - run: tox --parallel
+        env:
+          TOXENV: ${{ matrix.toxenv }}
   build_site:
     needs: test
     runs-on: ubuntu-latest
