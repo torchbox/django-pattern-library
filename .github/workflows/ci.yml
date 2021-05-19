@@ -38,6 +38,7 @@ jobs:
           poetry config virtualenvs.create false &&
           poetry install
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
+      - run: pip install tox
       # Python linting.
       - run: tox -e lint
       # Docs website build.
