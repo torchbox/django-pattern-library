@@ -2,6 +2,7 @@ import operator
 import os
 import re
 
+from django.conf import settings
 from django.template import TemplateDoesNotExist
 from django.template.context import Context
 from django.template.loader import get_template, render_to_string
@@ -66,9 +67,16 @@ def order_dict(dictionary, key_sort=None):
     return dict(values)
 
 
+def get_template_dirs():
+    template_dirs = [d for engines in settings.TEMPLATES for d in engines.get("DIRS", [])]
+    template_app_dirs = get_app_template_dirs('templates')
+    template_dirs += template_app_dirs
+    return template_dirs
+
+
 def get_pattern_templates():
     templates = base_dict()
-    template_dirs = get_app_template_dirs('templates')
+    template_dirs = get_template_dirs()
 
     for lookup_dir in template_dirs:
         for root, dirs, files in os.walk(lookup_dir, topdown=True):
