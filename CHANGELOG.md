@@ -4,7 +4,7 @@
 
 ### Added
 
-- We now officially support Django 3.2
+- We now officially support Django 3.2, and tentatively Django 4.0
 
 ### Fixed
 
