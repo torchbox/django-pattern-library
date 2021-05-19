@@ -5,6 +5,7 @@
 ### Added
 
 - We now officially support Django 3.2, and tentatively Django 4.0
+- Load templates from template engines’ [`DIRS`](https://docs.djangoproject.com/en/3.2/ref/settings/#dirs) as well as apps’ `templates` subdirectories.
 
 ### Fixed
 

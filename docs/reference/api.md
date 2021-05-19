@@ -59,7 +59,7 @@ PATTERN_LIBRARY = {
 ### `SECTIONS`
 
 `SECTIONS` controls the groups of templates that appear in the navigation.
-The keys are the group titles and the values are lists of template name prefixes that will be searched to populate the groups.
+The keys are the group titles and the values are lists of template name prefixes that will be searched to populate the groups. The pattern library searches for templates both in [`DIRS`](https://docs.djangoproject.com/en/3.2/ref/settings/#dirs) directories for template engines, and in the `templates` subdirectory inside each installed application if using [`APP_DIRS`](https://docs.djangoproject.com/en/3.2/ref/settings/#app-dirs).
 
 You can use this to create basic two-folder "includes and pages" hierarchies:
 
