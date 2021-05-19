@@ -5,7 +5,20 @@ on:
       - master
   pull_request:
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - uses: Gr1n/setup-poetry@v4
+        with:
+          poetry-version: '1.1.4'
+      - run: pip install tox
+      - run: tox -e lint,py39-dj31
   build_site:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -38,9 +51,6 @@ jobs:
           poetry config virtualenvs.create false &&
           poetry install
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
-      - run: pip install tox
-      # Python linting.
-      - run: tox -e lint
       # Docs website build.
       - run: poetry run mkdocs build --strict
       # Demo website build.
