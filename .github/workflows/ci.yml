@@ -24,15 +24,13 @@ jobs:
       matrix:
         include:
           - python: "3.6"
-            toxenv: py36-dj22,py36-dj30,py36-dj31,py36-djmain
+            toxenv: py36-dj22,py36-dj30,py36-dj31
           - python: "3.7"
-            toxenv: py37-dj22,py37-dj30,py37-dj31,py37-djmain
+            toxenv: py37-dj22,py37-dj30,py37-dj31
           - python: "3.8"
-            toxenv: py38-dj22,py38-dj30,py38-dj31,py38-djmain
+            toxenv: py38-dj22,py38-dj30,py38-dj31
           - python: "3.9"
-            toxenv: py39-dj22,py39-dj30,py39-dj31,py39-djmain
-          # - python: "3.10.0-alpha.6"
-          #   toxenv: py39-dj22,py39-dj30,py39-dj31,py39-djmain
+            toxenv: py39-dj22,py39-dj30,py39-dj31
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
