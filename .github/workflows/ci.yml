@@ -40,7 +40,7 @@ jobs:
         with:
           poetry-version: '1.1.4'
       - run: pip install tox
-      - run: tox --parallel
+      - run: tox -q --parallel
         env:
           TOXENV: ${{ matrix.toxenv }}
   build_site:
