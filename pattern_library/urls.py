@@ -1,12 +1,12 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from pattern_library import get_pattern_template_suffix, views
 
 app_name = 'pattern_library'
 urlpatterns = [
     # UI
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(
+    re_path(r'^$', views.IndexView.as_view(), name='index'),
+    re_path(
         r'^pattern/(?P<pattern_template_name>[\w./-]+%s)$' % (
             get_pattern_template_suffix()
         ),
@@ -15,7 +15,7 @@ urlpatterns = [
     ),
 
     # iframe rendering
-    url(
+    re_path(
         r'^render-pattern/(?P<pattern_template_name>[\w./-]+%s)$' % (
             get_pattern_template_suffix()
         ),
