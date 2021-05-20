@@ -833,7 +833,7 @@
 
 <h3 id="sections"><code>SECTIONS</code><a class="headerlink" href="#sections" title="Permanent link">&para;</a></h3>
 <p><code>SECTIONS</code> controls the groups of templates that appear in the navigation.
-The keys are the group titles and the values are lists of template name prefixes that will be searched to populate the groups.</p>
+The keys are the group titles and the values are lists of template name prefixes that will be searched to populate the groups. The pattern library searches for templates both in <a href="https://docs.djangoproject.com/en/3.2/ref/settings/#dirs"><code>DIRS</code></a> directories for template engines, and in the <code>templates</code> subdirectory inside each installed application if using <a href="https://docs.djangoproject.com/en/3.2/ref/settings/#app-dirs"><code>APP_DIRS</code></a>.</p>
 <p>You can use this to create basic two-folder "includes and pages" hierarchies:</p>
 <div class="codehilite"><pre><span></span><code><span class="n">PATTERN_LIBRARY</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;SECTIONS&quot;</span><span class="p">:</span> <span class="p">(</span>
@@ -913,7 +913,7 @@ structure. This can be useful for <a href="../../guides/automated-tests/">automa
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-19
+      Last update: 2021-05-20
     
   </small>
 </div>
