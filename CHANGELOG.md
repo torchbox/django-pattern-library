@@ -2,14 +2,12 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-05-20
+
 ### Added
 
-- We now officially support Django 3.2, and tentatively Django 4.0
-- Load templates from template engines’ [`DIRS`](https://docs.djangoproject.com/en/3.2/ref/settings/#dirs) as well as apps’ `templates` subdirectories.
-
-### Fixed
-
-- Update tox config to account for Django's primary branch rename.
+- We now officially support Django 3.2, and tentatively Django 4.0 ([#144](https://github.com/torchbox/django-pattern-library/pull/144))
+- Load templates from template engines’ [`DIRS`](https://docs.djangoproject.com/en/3.2/ref/settings/#dirs) as well as apps’ `templates` subdirectories ([#145](https://github.com/torchbox/django-pattern-library/pull/145))
 
 ## [0.3.0] - 2020-11-02
 
