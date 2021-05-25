@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added support for 'context modifiers' - A way to modify template contexts with Python [#141](https://github.com/torchbox/django-pattern-library/pull/141)
+
 ## [0.4.0] - 2021-05-20
 
 ### Added
