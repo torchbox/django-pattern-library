@@ -40,7 +40,7 @@ Let's assume you have the following template:
 {% endif %}
 ```
 
-You might define a `yaml` file similar to this to provide fake data:
+You might define a YAML file similar to this to provide fake data:
 
 ```yaml
 name: My example pattern
@@ -56,12 +56,12 @@ context:
               link: /page2
 ```
 
-You can define a list or a dict or anything that [`PyYAML`](http://pyyaml.org/wiki/PyYAMLDocumentation) allows you to create in `yaml` format without creating a custom objects.
+You can define a list or a dict or anything that [`PyYAML`](http://pyyaml.org/wiki/PyYAMLDocumentation) allows you to create in YAML format without creating a custom objects.
 
 
 ## Modifying template contexts with Python
 
-While most objects can be faked with `yaml`, Django has a few common constructs that are difficult to replicate. For example: `Form` and `Paginator` instances. To help with this, django-pattern library allows you to register any number of 'context modifiers'. Context modifiers are simply Python functions that accept the `context` dictionary generated from the `yaml` file, and can make additions or updates to it as necessary. For convenience, they also receive the current `HttpRequest` as `request`.
+While most objects can be faked with YAML, Django has a few common constructs that are difficult to replicate. For example: `Form` and `Paginator` instances. To help with this, django-pattern-library allows you to register any number of 'context modifiers'. Context modifiers are simply Python functions that accept the `context` dictionary generated from the YAML file, and can make additions or updates to it as necessary. For convenience, they also receive the current `HttpRequest` as `request`.
 
 Context modifiers can easily be registered using the `register_context_modifier` decorator. Here is a simple example:
 

@@ -9,6 +9,11 @@ from .cm_utils import accepts_kwarg
 GENERIC_CM_KEY = "__generic__"
 ORDER_ATTR_NAME = "__cm_order"
 
+__all__ = [
+    "ContextModifierRegistry",
+    "register_context_modifier"
+]
+
 
 class ContextModifierRegistry(defaultdict):
     def __init__(self):
@@ -24,11 +29,11 @@ class ContextModifierRegistry(defaultdict):
             )
         if not accepts_kwarg(func, "context"):
             raise ImproperlyConfigured(
-                f"Context modifiers must accept a 'context' argument. {func} does not."
+                f"Context modifiers must accept a 'context' keyword argument. {func} does not."
             )
         if not accepts_kwarg(func, "request"):
             raise ImproperlyConfigured(
-                f"Context modifiers must accept a 'request' argument. {func} does not."
+                f"Context modifiers must accept a 'request' keyword argument. {func} does not."
             )
 
         key = template or GENERIC_CM_KEY

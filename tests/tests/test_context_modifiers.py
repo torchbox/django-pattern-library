@@ -46,15 +46,15 @@ class ContextModifierTestCase(SimpleTestCase):
         with self.assertRaisesRegex(ImproperlyConfigured, "must be callables"):
             registry.register(0, template=atom_template)
         with self.assertRaisesRegex(
-            ImproperlyConfigured, "must accept a 'request' argument"
+            ImproperlyConfigured, "must accept a 'request' keyword argument"
         ):
             registry.register(accepts_context_only, template=atom_template)
         with self.assertRaisesRegex(
-            ImproperlyConfigured, "must accept a 'context' argument"
+            ImproperlyConfigured, "must accept a 'context' keyword argument"
         ):
             registry.register(accepts_request_only, template=atom_template)
 
-    def test_registred_without_ordering(self):
+    def test_registered_without_ordering(self):
         registry.register(modifier_1, template=atom_template)
         registry.register(modifier_2, template=atom_template)
         registry.register(modifier_3, template=atom_template)
