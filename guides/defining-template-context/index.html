@@ -213,9 +213,58 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Template context
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
     <a href="./" title="Template context" class="md-nav__link md-nav__link--active">
       Template context
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-template-contexts-with-python" class="md-nav__link">
+    Modifying template contexts with Python
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying template contexts with Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registering-a-context-modifier-for-a-specific-template" class="md-nav__link">
+    Registering a context modifier for a specific template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlling-the-order-in-which-context-modifiers-are-applied" class="md-nav__link">
+    Controlling the order in which context modifiers are applied
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -507,6 +556,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-template-contexts-with-python" class="md-nav__link">
+    Modifying template contexts with Python
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying template contexts with Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registering-a-context-modifier-for-a-specific-template" class="md-nav__link">
+    Registering a context modifier for a specific template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlling-the-order-in-which-context-modifiers-are-applied" class="md-nav__link">
+    Controlling the order in which context modifiers are applied
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -558,7 +642,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
 </code></pre></div>
 
-<p>You might define a <code>yaml</code> file similar to this to provide fake data:</p>
+<p>You might define a YAML file similar to this to provide fake data:</p>
 <div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">My example pattern</span>
 
 <span class="nt">context</span><span class="p">:</span>
@@ -572,7 +656,134 @@ an example on how you can define fake context that pretends to be a <code>QueryS
               <span class="nt">link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/page2</span>
 </code></pre></div>
 
-<p>You can define a list or a dict or anything that <a href="http://pyyaml.org/wiki/PyYAMLDocumentation"><code>PyYAML</code></a> allows you to create in <code>yaml</code> format without creating a custom objects.</p>
+<p>You can define a list or a dict or anything that <a href="http://pyyaml.org/wiki/PyYAMLDocumentation"><code>PyYAML</code></a> allows you to create in YAML format without creating a custom objects.</p>
+<h2 id="modifying-template-contexts-with-python">Modifying template contexts with Python<a class="headerlink" href="#modifying-template-contexts-with-python" title="Permanent link">&para;</a></h2>
+<p>While most objects can be faked with YAML, Django has a few common constructs that are difficult to replicate. For example: <code>Form</code> and <code>Paginator</code> instances. To help with this, django-pattern-library allows you to register any number of 'context modifiers'. Context modifiers are simply Python functions that accept the <code>context</code> dictionary generated from the YAML file, and can make additions or updates to it as necessary. For convenience, they also receive the current <code>HttpRequest</code> as <code>request</code>.</p>
+<p>Context modifiers can easily be registered using the <code>register_context_modifier</code> decorator. Here is a simple example:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># myproject/core/pattern_contexts.py</span>
+
+<span class="kn">from</span> <span class="nn">pattern_library</span> <span class="kn">import</span> <span class="n">register_context_modifier</span>
+<span class="kn">from</span> <span class="nn">myproject.core.forms</span> <span class="kn">import</span> <span class="n">SearchForm</span><span class="p">,</span> <span class="n">SignupForm</span>
+
+<span class="nd">@register_context_modifier</span>
+<span class="k">def</span> <span class="nf">add_common_forms</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;search_form&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;search_form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SearchForm</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;signup_form&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;signup_form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SignupForm</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Context modifiers are also great for reducing the amount of template tag patching that is needed. The following examples are from a Wagtail project:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># myproject/core/pattern_contexts.py</span>
+
+<span class="kn">from</span> <span class="nn">django.core.paginator</span> <span class="kn">import</span> <span class="n">Paginator</span>
+<span class="kn">from</span> <span class="nn">wagtail.images</span> <span class="kn">import</span> <span class="n">get_image_model</span>
+<span class="kn">from</span> <span class="nn">pattern_library</span> <span class="kn">import</span> <span class="n">register_context_modifier</span>
+
+
+<span class="nd">@register_context_modifier</span>
+<span class="k">def</span> <span class="nf">add_page_images</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace some common &#39;image&#39; field values on pages with real `Image`</span>
+<span class="sd">    instances, so that the {% image %} template tag will work.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Image</span> <span class="o">=</span> <span class="n">get_image_model</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">&quot;page&quot;</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;hero_image&quot;</span> <span class="ow">in</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;page&quot;</span><span class="p">]:</span>
+            <span class="n">context</span><span class="p">[</span><span class="s2">&quot;hero_image&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s2">&quot;main_image&quot;</span> <span class="ow">in</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;page&quot;</span><span class="p">]:</span>
+            <span class="n">context</span><span class="p">[</span><span class="s2">&quot;main_image&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+
+<span class="nd">@register_context_modifier</span>
+<span class="k">def</span> <span class="nf">replicate_pagination</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace lists of items using the &#39;page_obj.object_list&#39; key</span>
+<span class="sd">    with a real Paginator page, and add a few other pagination-related</span>
+<span class="sd">    things to the context (like Django&#39;s `ListView` does).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">object_list</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;page_obj.object_list&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">object_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">original_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">object_list</span><span class="p">)</span>
+
+    <span class="c1"># add dummy items to force pagination</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">object_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># paginate and add ListView-like values</span>
+    <span class="n">paginator</span> <span class="o">=</span> <span class="n">Paginator</span><span class="p">(</span><span class="n">object_list</span><span class="p">,</span> <span class="n">original_length</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="n">paginator</span><span class="o">=</span><span class="n">paginator</span><span class="p">,</span>
+        <span class="n">page_obj</span><span class="o">=</span><span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">is_paginated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">object_list</span><span class="o">=</span><span class="n">object_list</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<h3 id="registering-a-context-modifier-for-a-specific-template">Registering a context modifier for a specific template<a class="headerlink" href="#registering-a-context-modifier-for-a-specific-template" title="Permanent link">&para;</a></h3>
+<p>By default, context modifiers are applied to all pattern library templates. If you only wish for a context modifier to be applied to a specific pattern, you can use the <code>template</code> parameter to indicate this. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># myproject/accounts/pattern_contexts.py</span>
+
+<span class="kn">from</span> <span class="nn">pattern_library</span> <span class="kn">import</span> <span class="n">register_context_modifier</span>
+<span class="kn">from</span> <span class="nn">my_app.accounts.forms</span> <span class="kn">import</span> <span class="n">SubscribeForm</span>
+
+
+<span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;patterns/subscribe/form.html&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_subscribe_form</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds an unbount form to &#39;form.html&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SubscribeForm</span><span class="p">()</span>
+
+
+<span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;patterns/subscribe/form_invalid.html&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_invalid_subscribe_form</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a bound form with invalid data to &#39;form_invalid.html&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SubscribeForm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s1">&#39;invalid-email&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">})</span>
+</code></pre></div>
+
+<h3 id="controlling-the-order-in-which-context-modifiers-are-applied">Controlling the order in which context modifiers are applied<a class="headerlink" href="#controlling-the-order-in-which-context-modifiers-are-applied" title="Permanent link">&para;</a></h3>
+<p>By default, context modifiers are applied in the order they were registered (which can be difficult to predict accross multiple apps), with generic context modifiers being applied first, followed by template-specific ones. If you need to control the order in which a series of context modifiers are applied, you can use the <code>order</code> parameter to do this.</p>
+<p>In the following example, a generic context modifier is registered with an <code>order</code> value of <code>1</code>, while others recieve the default value of <code>0</code>. Because <code>1</code> is higher than <code>0</code>, the generic context modifier will be applied <strong>after</strong> the others.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># myproject/sums/pattern_contexts.py</span>
+
+
+<span class="kn">from</span> <span class="nn">pattern_library</span> <span class="kn">import</span> <span class="n">register_context_modifier</span>
+
+
+<span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;patterns/sums/single_number.html&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_single_number</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">context</span><span class="p">[</span><span class="s1">&#39;first_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">933</span>
+
+
+<span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;patterns/sums/two_numbers.html&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_two_numbers</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">context</span><span class="p">[</span><span class="s1">&#39;first_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">125</span>
+    <span class="n">context</span><span class="p">[</span><span class="s1">&#39;second_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>
+
+
+<span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">&#39;patterns/sums/three_numbers.html&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_three_numbers</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">context</span><span class="p">[</span><span class="s1">&#39;first_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">125</span>
+    <span class="n">context</span><span class="p">[</span><span class="s1">&#39;second_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>
+    <span class="n">context</span><span class="p">[</span><span class="s1">&#39;third_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+
+
+<span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_total</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;total&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+        <span class="n">first_num</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;first_number&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">second_num</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;second_number&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">third_num</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;third_number&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">context</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_num</span> <span class="o">+</span> <span class="n">second_num</span> <span class="o">+</span> <span class="n">third_num</span>
+</code></pre></div>
                 
                   
                     
@@ -581,7 +792,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-20
+      Last update: 2021-05-26
     
   </small>
 </div>
