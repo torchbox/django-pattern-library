@@ -16,6 +16,7 @@ import yaml
 from pattern_library import (
     get_pattern_context_var_name, get_pattern_template_suffix, get_sections
 )
+from pattern_library.context_modifiers import registry
 from pattern_library.exceptions import TemplateIsNotPattern
 
 
@@ -202,6 +203,8 @@ def render_pattern(request, template_name, allow_non_patterns=False):
 
     context = get_pattern_context(template_name)
     context[get_pattern_context_var_name()] = True
+    for modifier in registry.get_for_template(template_name):
+        modifier(context=context, request=request)
     return render_to_string(template_name, request=request, context=context)
 
 

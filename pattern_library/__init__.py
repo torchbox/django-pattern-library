@@ -1,4 +1,17 @@
+from .context_modifiers import register_context_modifier
+
 default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
+
+__all__ = [
+    'DEFAULT_SETTINGS',
+    'get_setting',
+    'get_pattern_template_suffix',
+    'get_pattern_base_template_name',
+    'get_base_template_names',
+    'get_sections',
+    'get_pattern_context_var_name',
+    'register_context_modifier',
+]
 
 DEFAULT_SETTINGS = {
     # PATTERN_BASE_TEMPLATE_NAME is the template that fragments will be wrapped with.
