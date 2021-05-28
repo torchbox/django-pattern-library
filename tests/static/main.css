@@ -1,3 +1,13 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 .icon {
     fill: currentColor;
 }
@@ -60,4 +70,58 @@
     line-height: 1.25;
     max-width: 768px;
     padding-bottom: 5px;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field--errors {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px dotted #f00;
+}
+
+.field__required {
+    color: #f00;
+}
+.field__label,
+.field__label--multiple {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.field__errors {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #f00;
+}
+.field__help {
+    margin-top: 5px;
+    color: rgba(20, 20, 20, 0.6);
+}
+.field__fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+.field textarea,
+.field select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #141414;
+}
+
+.field select:not([multiple]) {
+    background-color: #fff;
+    padding: 0.5em 3.5em 0.5em 1em;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #444 50%),
+        linear-gradient(135deg, #444 50%, transparent 50%),
+        linear-gradient(to right, rgba(20, 20, 20, 0.2), rgba(20, 20, 20, 0.2));
+    background-position: calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
 }
