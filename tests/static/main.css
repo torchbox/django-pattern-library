@@ -98,12 +98,6 @@ html {
 }
 .field__help {
     margin-top: 5px;
-    color: rgba(20, 20, 20, 0.6);
-}
-.field__fieldset {
-    border: 0;
-    padding: 0;
-    margin: 0;
 }
 .field input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
 .field textarea,

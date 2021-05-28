@@ -43,6 +43,7 @@ nav:
   - 'Recipes':
     - 'Inclusion tags': 'recipes/inclusion-tags.md'
     - 'Looping for tags': 'recipes/looping-for-tags.md'
+    - 'Forms and fields': 'recipes/forms-and-fields.md'
     - 'Image include': 'recipes/image-include.md'
     - 'Image lazyload': 'recipes/image-lazyload.md'
   - 'Reference':
