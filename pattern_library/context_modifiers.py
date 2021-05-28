@@ -4,7 +4,7 @@ from typing import Callable
 
 from django.core.exceptions import ImproperlyConfigured
 
-from .cm_utils import accepts_kwarg
+from .cm_utils import accepts_kwarg, get_app_submodules
 
 GENERIC_CM_KEY = "__generic__"
 ORDER_ATTR_NAME = "__cm_order"
@@ -18,6 +18,12 @@ __all__ = [
 class ContextModifierRegistry(defaultdict):
     def __init__(self):
         super().__init__(list)
+        self.searched_for_modifiers = False
+
+    def search_for_modifiers(self) -> None:
+        if not self.searched_for_modifiers:
+            list(get_app_submodules('pattern_contexts'))
+            self.searched_for_modifiers = True
 
     def register(self, func: Callable, template: str = None, order: int = 0) -> None:
         """
@@ -50,6 +56,7 @@ class ContextModifierRegistry(defaultdict):
         return self.register(func, **kwargs)
 
     def get_for_template(self, template: str):
+        self.search_for_modifiers()
         modifiers = self[GENERIC_CM_KEY] + self[template]
         return sorted(modifiers, key=attrgetter(ORDER_ATTR_NAME))
 
