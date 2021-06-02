@@ -315,8 +315,8 @@
     <section>
         <div class="wrapper wrapper--pattern-header">
             <h3 class="heading">
-                <a href="/django-pattern-library/demo/pattern-library/render-pattern/patterns/atoms/test_extends/extended.html">
-                    patterns/atoms/test_extends/extended.html
+                <a href="/django-pattern-library/demo/pattern-library/render-pattern/patterns/molecules/field/field.html">
+                    patterns/molecules/field/field.html
                     <svg class="icon icon--external" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h48v48h-48z" fill="none"/><path d="M38 38h-28v-28h14v-4h-14c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-14h-4v14zm-10-32v4h7.17l-19.66 19.66 2.83 2.83 19.66-19.66v7.17h4v-14h-14z"/></svg>
                 </a>
             </h3>
@@ -331,7 +331,7 @@
             </div>
         </div>
 
-        <iframe class="iframe js-iframe is-animatable" src="/django-pattern-library/demo/pattern-library/render-pattern/patterns/atoms/test_extends/extended.html" title="Iframe pattern"></iframe>
+        <iframe class="iframe js-iframe is-animatable" src="/django-pattern-library/demo/pattern-library/render-pattern/patterns/molecules/field/field.html" title="Iframe pattern"></iframe>
 
         <div class="tabbed-content">
             <ul class="tabbed-content__list">
@@ -349,16 +349,62 @@
 
             <div class="tabbed-content__tabs">
                 <div id="tab-1" class="tabbed-content__item tabbed-content__item--active">
-                    <pre><code class="code django">{% extends parent_template_name %}
+                    <pre><code class="code django">{% load test_tags %}
+{% with widget_type=field|widget_type %}
+&lt;div class=&quot;field {% if widget_type %}field--{{ widget_type }}{% endif %} {% if field.errors %}field--errors{% endif %}&quot;&gt;
 
-{% block content %}{{ block.super }} - extended content{% endblock %}
+    {% if field.errors %}
+        &lt;div class=&quot;field__errors&quot;&gt;
+            {{ field.errors }}
+        &lt;/div&gt;
+    {% endif %}
+
+    {% if widget_type == &#x27;checkbox-select-multiple&#x27; or widget_type == &#x27;radio-select&#x27; %}
+        &lt;fieldset class=&quot;field__fieldset&quot;&gt;
+            &lt;legend class=&quot;field__label field__label--multiple&quot;&gt;
+                {{ field.label }}
+                {% if field.field.required %}&lt;span class=&quot;field__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;{% endif %}
+            &lt;/legend&gt;
+
+            &lt;ul&gt;
+                {% for boundwidget in field %}
+                    &lt;li class=&quot;field__radio-checkbox&quot;&gt;
+                        &lt;input id=&quot;{{ boundwidget.id_for_label }}&quot; type=&quot;{{ boundwidget.data.type }}&quot; name=&quot;{{ boundwidget.data.name }}&quot; value=&quot;{{ boundwidget.data.value }}&quot;{% if boundwidget.data.selected %} checked{% endif %}&gt;
+                        &lt;label for=&quot;{{ boundwidget.id_for_label }}&quot; class=&quot;field__label&quot;&gt;{{ boundwidget.data.label }}&lt;/label&gt;
+                    &lt;/li&gt;
+                {% endfor %}
+            &lt;/ul&gt;
+        &lt;/fieldset&gt;
+
+    {% elif widget_type == &#x27;checkbox-input&#x27; %}
+
+        &lt;div class=&quot;field__radio-checkbox&quot;&gt;
+            {{ field }}
+            &lt;label for=&quot;{{ field.id_for_label }}&quot; class=&quot;field__label&quot;&gt;
+                {{ field.label }}
+                {% if field.field.required %}&lt;span class=&quot;field__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;{% endif %}
+            &lt;/label&gt;
+        &lt;/div&gt;
+
+    {% else %}
+
+        &lt;label for=&quot;{{ field.id_for_label }}&quot; class=&quot;field__label&quot;&gt;
+            {{ field.label }}
+            {% if field.field.required %}&lt;span class=&quot;field__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;{% endif %}
+        &lt;/label&gt;
+        {{ field }}
+
+    {% endif %}
+
+    {% if field.help_text %}&lt;div class=&quot;field__help&quot;&gt;{{ field.help_text }}&lt;/div&gt;{% endif %}
+
+&lt;/div&gt;
+{% endwith %}
 </code></pre>
                 </div>
 
                 <div id="tab-2" class="tabbed-content__item">
-                    <pre><code class="code yaml">context:
-    parent_template_name: patterns/atoms/test_extends/base.html
-</code></pre>
+                    <pre><code class="code yaml"></code></pre>
                 </div>
 
                 <div id="tab-3" class="tabbed-content__item">

@@ -430,6 +430,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../recipes/forms-and-fields/" title="Forms and fields" class="md-nav__link">
+      Forms and fields
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../recipes/image-include/" title="Image include" class="md-nav__link">
       Image include
     </a>
@@ -750,8 +762,8 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 </code></pre></div>
 
 <h3 id="controlling-the-order-in-which-context-modifiers-are-applied">Controlling the order in which context modifiers are applied<a class="headerlink" href="#controlling-the-order-in-which-context-modifiers-are-applied" title="Permanent link">&para;</a></h3>
-<p>By default, context modifiers are applied in the order they were registered (which can be difficult to predict accross multiple apps), with generic context modifiers being applied first, followed by template-specific ones. If you need to control the order in which a series of context modifiers are applied, you can use the <code>order</code> parameter to do this.</p>
-<p>In the following example, a generic context modifier is registered with an <code>order</code> value of <code>1</code>, while others recieve the default value of <code>0</code>. Because <code>1</code> is higher than <code>0</code>, the generic context modifier will be applied <strong>after</strong> the others.</p>
+<p>By default, context modifiers are applied in the order they were registered (which can be difficult to predict across multiple apps), with generic context modifiers being applied first, followed by template-specific ones. If you need to control the order in which a series of context modifiers are applied, you can use the <code>order</code> parameter to do this.</p>
+<p>In the following example, a generic context modifier is registered with an <code>order</code> value of <code>1</code>, while others receive the default value of <code>0</code>. Because <code>1</code> is higher than <code>0</code>, the generic context modifier will be applied <strong>after</strong> the others.</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># myproject/sums/pattern_contexts.py</span>
 
 
@@ -792,7 +804,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-28
+      Last update: 2021-06-02
     
   </small>
 </div>

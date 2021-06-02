@@ -372,6 +372,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../recipes/forms-and-fields/" title="Forms and fields" class="md-nav__link">
+      Forms and fields
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../recipes/image-include/" title="Image include" class="md-nav__link">
       Image include
     </a>
@@ -546,6 +558,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#register_context_modifier" class="md-nav__link">
+    register_context_modifier
+  </a>
   
 </li>
       
@@ -748,6 +767,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#register_context_modifier" class="md-nav__link">
+    register_context_modifier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#commands" class="md-nav__link">
     Commands
   </a>
@@ -811,7 +837,7 @@
 <span class="nt">tags</span><span class="p">:</span>
   <span class="nt">error_tag</span><span class="p">:</span>
     <span class="nt">include</span><span class="p">:</span>
-      <span class="nt">template_name</span><span class="p">:</span> <span class="s">&#39;non-patterns/include.html&#39;</span>
+      <span class="nt">template_name</span><span class="p">:</span> <span class="s">&quot;non-patterns/include.html&quot;</span>
 </code></pre></div>
 
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
@@ -879,16 +905,29 @@ It should include any required CSS and JS, and output <a href="#pattern_library_
 
 <h2 id="monkey_utils"><code>monkey_utils</code><a class="headerlink" href="#monkey_utils" title="Permanent link">&para;</a></h2>
 <h3 id="override_tag"><code>override_tag</code><a class="headerlink" href="#override_tag" title="Permanent link">&para;</a></h3>
-<p>This function tells the pattern library which Django tags to override, and optionally supports providing a default value. See [../guides/overriding-template-tags.md] for more information.</p>
+<p>This function tells the pattern library which Django tags to override, and optionally supports providing a default value. See <a href="../../guides/overriding-template-tags/">Overriding template tags</a> for more information.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pattern_library.monkey_utils</span> <span class="kn">import</span> <span class="n">override_tag</span>
 
 <span class="n">override_tag</span><span class="p">(</span><span class="n">register</span><span class="p">,</span> <span class="s1">&#39;a_tag_name&#39;</span><span class="p">,</span> <span class="n">default_html</span><span class="o">=</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">)</span>
 </code></pre></div>
 
+<h2 id="register_context_modifier"><code>register_context_modifier</code><a class="headerlink" href="#register_context_modifier" title="Permanent link">&para;</a></h2>
+<p>This decorator makes it possible to override or create additional context data with Django / Python code, rather than being limited to YAML. It has to be called from within a <code>pattern_contexts</code> module, which can be at the root of any Django app. See <a href="../../guides/defining-template-context/#modifying-template-contexts-with-python">Modifying template contexts with Python</a> for more information.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># myproject/core/pattern_contexts.py</span>
+
+<span class="kn">from</span> <span class="nn">pattern_library</span> <span class="kn">import</span> <span class="n">register_context_modifier</span>
+<span class="kn">from</span> <span class="nn">myproject.core.forms</span> <span class="kn">import</span> <span class="n">SearchForm</span><span class="p">,</span> <span class="n">SignupForm</span>
+
+<span class="nd">@register_context_modifier</span>
+<span class="k">def</span> <span class="nf">add_common_forms</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;search_form&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;search_form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SearchForm</span><span class="p">()</span>
+</code></pre></div>
+
 <h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
 <h3 id="render_patterns"><code>render_patterns</code><a class="headerlink" href="#render_patterns" title="Permanent link">&para;</a></h3>
 <p>Renders all django-pattern-library patterns to HTML files, in a directory
-structure. This can be useful for <a href="../../guides/automated-tests/">automated tests</a></p>
+structure. This can be useful for <a href="../../guides/automated-tests/">automated tests</a>.</p>
 <p>Usage:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Render all patterns to the default directory.</span>
 ./manage.py render_patterns
@@ -913,7 +952,7 @@ structure. This can be useful for <a href="../../guides/automated-tests/">automa
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-28
+      Last update: 2021-06-02
     
   </small>
 </div>
