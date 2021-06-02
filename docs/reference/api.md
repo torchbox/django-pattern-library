@@ -27,7 +27,7 @@ context:
 tags:
   error_tag:
     include:
-      template_name: 'non-patterns/include.html'
+      template_name: "non-patterns/include.html"
 ```
 
 ## Templates
@@ -121,7 +121,7 @@ PATTERN_LIBRARY = {
 
 ### `override_tag`
 
-This function tells the pattern library which Django tags to override, and optionally supports providing a default value. See [../guides/overriding-template-tags.md] for more information.
+This function tells the pattern library which Django tags to override, and optionally supports providing a default value. See [Overriding template tags](../guides/overriding-template-tags.md) for more information.
 
 ```python
 from pattern_library.monkey_utils import override_tag
@@ -129,12 +129,28 @@ from pattern_library.monkey_utils import override_tag
 override_tag(register, 'a_tag_name', default_html="https://example.com/")
 ```
 
+## `register_context_modifier`
+
+This decorator makes it possible to override or create additional context data with Django / Python code, rather than being limited to YAML. It has to be called from within a `pattern_contexts` module, which can be at the root of any Django app. See [Modifying template contexts with Python](../guides/defining-template-context.md#modifying-template-contexts-with-python) for more information.
+
+```python
+# myproject/core/pattern_contexts.py
+
+from pattern_library import register_context_modifier
+from myproject.core.forms import SearchForm, SignupForm
+
+@register_context_modifier
+def add_common_forms(context, request):
+    if 'search_form' not in context:
+        context["search_form"] = SearchForm()
+```
+
 ## Commands
 
 ### `render_patterns`
 
 Renders all django-pattern-library patterns to HTML files, in a directory
-structure. This can be useful for [automated tests](../guides/automated-tests.md)
+structure. This can be useful for [automated tests](../guides/automated-tests.md).
 
 Usage:
 

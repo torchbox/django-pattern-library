@@ -1,0 +1,51 @@
+{% load test_tags %}
+{% with widget_type=field|widget_type %}
+<div class="field {% if widget_type %}field--{{ widget_type }}{% endif %} {% if field.errors %}field--errors{% endif %}">
+
+    {% if field.errors %}
+        <div class="field__errors">
+            {{ field.errors }}
+        </div>
+    {% endif %}
+
+    {% if widget_type == 'checkbox-select-multiple' or widget_type == 'radio-select' %}
+        <fieldset class="field__fieldset">
+            <legend class="field__label field__label--multiple">
+                {{ field.label }}
+                {% if field.field.required %}<span class="field__required" aria-hidden="true">*</span>{% endif %}
+            </legend>
+
+            <ul>
+                {% for boundwidget in field %}
+                    <li class="field__radio-checkbox">
+                        <input id="{{ boundwidget.id_for_label }}" type="{{ boundwidget.data.type }}" name="{{ boundwidget.data.name }}" value="{{ boundwidget.data.value }}"{% if boundwidget.data.selected %} checked{% endif %}>
+                        <label for="{{ boundwidget.id_for_label }}" class="field__label">{{ boundwidget.data.label }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </fieldset>
+
+    {% elif widget_type == 'checkbox-input' %}
+
+        <div class="field__radio-checkbox">
+            {{ field }}
+            <label for="{{ field.id_for_label }}" class="field__label">
+                {{ field.label }}
+                {% if field.field.required %}<span class="field__required" aria-hidden="true">*</span>{% endif %}
+            </label>
+        </div>
+
+    {% else %}
+
+        <label for="{{ field.id_for_label }}" class="field__label">
+            {{ field.label }}
+            {% if field.field.required %}<span class="field__required" aria-hidden="true">*</span>{% endif %}
+        </label>
+        {{ field }}
+
+    {% endif %}
+
+    {% if field.help_text %}<div class="field__help">{{ field.help_text }}</div>{% endif %}
+
+</div>
+{% endwith %}

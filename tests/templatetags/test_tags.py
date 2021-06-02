@@ -1,4 +1,5 @@
 from django import template
+from django.utils.text import camel_case_to_spaces, slugify
 
 from pattern_library.monkey_utils import override_tag
 
@@ -24,6 +25,12 @@ def default_html_tag(arg=None):
 def default_html_tag_falsey(arg=None):
     "Just raise an exception, never do anything"
     raise Exception("default_tag raised an exception")
+
+
+# Get widget type of a field
+@register.filter(name="widget_type")
+def widget_type(bound_field):
+    return slugify(camel_case_to_spaces(bound_field.field.widget.__class__.__name__))
 
 
 override_tag(register, 'error_tag')

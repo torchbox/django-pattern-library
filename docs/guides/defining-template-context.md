@@ -58,7 +58,6 @@ context:
 
 You can define a list or a dict or anything that [`PyYAML`](http://pyyaml.org/wiki/PyYAMLDocumentation) allows you to create in YAML format without creating a custom objects.
 
-
 ## Modifying template contexts with Python
 
 While most objects can be faked with YAML, Django has a few common constructs that are difficult to replicate. For example: `Form` and `Paginator` instances. To help with this, django-pattern-library allows you to register any number of 'context modifiers'. Context modifiers are simply Python functions that accept the `context` dictionary generated from the YAML file, and can make additions or updates to it as necessary. For convenience, they also receive the current `HttpRequest` as `request`.
@@ -135,7 +134,7 @@ def replicate_pagination(context, request):
 
 ### Registering a context modifier for a specific template
 
-By default, context modifiers are applied to all pattern library templates. If you only wish for a context modifier to be applied to a specific pattern, you can use the ``template`` parameter to indicate this. For example:
+By default, context modifiers are applied to all pattern library templates. If you only wish for a context modifier to be applied to a specific pattern, you can use the `template` parameter to indicate this. For example:
 
 ```python
 
@@ -166,9 +165,9 @@ def add_invalid_subscribe_form(context, request):
 
 ### Controlling the order in which context modifiers are applied
 
-By default, context modifiers are applied in the order they were registered (which can be difficult to predict accross multiple apps), with generic context modifiers being applied first, followed by template-specific ones. If you need to control the order in which a series of context modifiers are applied, you can use the `order` parameter to do this.
+By default, context modifiers are applied in the order they were registered (which can be difficult to predict across multiple apps), with generic context modifiers being applied first, followed by template-specific ones. If you need to control the order in which a series of context modifiers are applied, you can use the `order` parameter to do this.
 
-In the following example, a generic context modifier is registered with an `order` value of `1`, while others recieve the default value of `0`. Because `1` is higher than `0`, the generic context modifier will be applied **after** the others.
+In the following example, a generic context modifier is registered with an `order` value of `1`, while others receive the default value of `0`. Because `1` is higher than `0`, the generic context modifier will be applied **after** the others.
 
 ```python
 
