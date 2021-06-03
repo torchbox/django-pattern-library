@@ -334,8 +334,8 @@
     <section>
         <div class="wrapper wrapper--pattern-header">
             <h3 class="heading">
-                <a href="/django-pattern-library/demo/pattern-library/render-pattern/patterns/pages/people/person_page.html">
-                    patterns/pages/people/person_page.html
+                <a href="/django-pattern-library/demo/pattern-library/render-pattern/patterns/pages/search/search.html">
+                    patterns/pages/search/search.html
                     <svg class="icon icon--external" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h48v48h-48z" fill="none"/><path d="M38 38h-28v-28h14v-4h-14c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-14h-4v14zm-10-32v4h7.17l-19.66 19.66 2.83 2.83 19.66-19.66v7.17h4v-14h-14z"/></svg>
                 </a>
             </h3>
@@ -350,7 +350,7 @@
             </div>
         </div>
 
-        <iframe class="iframe js-iframe is-animatable" src="/django-pattern-library/demo/pattern-library/render-pattern/patterns/pages/people/person_page.html" title="Iframe pattern"></iframe>
+        <iframe class="iframe js-iframe is-animatable" src="/django-pattern-library/demo/pattern-library/render-pattern/patterns/pages/search/search.html" title="Iframe pattern"></iframe>
 
         <div class="tabbed-content">
             <ul class="tabbed-content__list">
@@ -368,105 +368,54 @@
 
             <div class="tabbed-content__tabs">
                 <div id="tab-1" class="tabbed-content__item tabbed-content__item--active">
-                    <pre><code class="code django">{% extends &#x27;patterns/base_page.html&#x27; %}
+                    <pre><code class="code django">{% extends &quot;patterns/base.html&quot; %}
 
 {% block content %}
-&lt;div class=&quot;section section--main&quot;&gt;
-    &lt;div class=&quot;intro&quot;&gt;
-        &lt;div class=&quot;container&quot;&gt;
-            &lt;h1&gt;{{ page.first_name }} {{ page.last_name }}&lt;/h1&gt;
+    &lt;h1&gt;{% if search_query %}Search results for “{{ search_query }}”{% else %}Search{% endif %}&lt;/h1&gt;
 
-            {% if page.job_title %}
-                &lt;p&gt;{{ page.job_title }}&lt;/p&gt;
-            {% endif %}
+    {% if search_results %}
+        {% with count=search_results.paginator.count %}
+            {{ count }} result{{ count|pluralize }} found.
+        {% endwith %}
 
-            {% if page.website %}
-                &lt;p&gt;&lt;a href=&quot;{{ page.website }}&quot;&gt;{{ page.website }}&lt;/a&gt;&lt;/p&gt;
-            {% endif %}
+        {% for result in search_results %}
+            &lt;h4&gt;{{ result.title }}&lt;/h4&gt;
+        {% endfor %}
 
-            {% if page.email %}
-                &lt;p&gt;&lt;a href=&quot;mailto:{{ page.email }}&quot;&gt;{{ page.email }}&lt;/a&gt;&lt;/p&gt;
-            {% endif %}
+        {% if search_results.paginator.num_pages &gt; 1 %}
+            &lt;nav aria-label=&quot;Pagination&quot;&gt;
+                &lt;ul&gt;
+                    {% if search_results.has_previous %}
+                        &lt;li&gt;&lt;a href=&quot;#page={{ search_results.previous_page_number }}{% if search_query %}&amp;amp;query={{ search_query|urlencode }}{% endif %}&quot;&gt;previous&lt;/a&gt;&lt;/li&gt;
+                    {% endif %}
 
-            {% for item in page.social_media_profile.all %}
-                &lt;p&gt;&lt;a href=&quot;{{ item.profile_url }}&quot;&gt;{{ item.profile_url }}&lt;/a&gt;&lt;/p&gt;
-            {% endfor %}
+                    &lt;li&gt;{{ search_results.number }}/{{ search_results.paginator.num_pages }}&lt;/li&gt;
 
-            {% with phone_numbers=page.phone_numbers.all %}
-                {% if phone_numbers %}
-                    {% for related_phone_number in phone_numbers %}
-                        &lt;p&gt;&lt;a href=&quot;tel:{{ related_phone_number.phone_number|cut:&quot; &quot;|urlencode }}&quot;&gt;{{ related_phone_number.phone_number }}&lt;/a&gt;&lt;/p&gt;
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;container&quot;&gt;
-        {% if page.introduction %}
-            &lt;p class=&quot;heading--2&quot;&gt;{{ page.introduction }}&lt;/p&gt;
+                    {% if search_results.has_next %}
+                        &lt;li&gt;&lt;a href=&quot;#page={{ search_results.next_page_number }}{% if search_query %}&amp;amp;query={{ search_query|urlencode }}{% endif %}&quot;&gt;next&lt;/a&gt;&lt;/li&gt;
+                    {% endif %}
+                &lt;/ul&gt;
+            &lt;/nav&gt;
         {% endif %}
-    &lt;/div&gt;
 
-    &lt;hr&gt;
-
-    {% include &quot;patterns/molecules/accordion/accordion.html&quot; with accordions=page.accordions %}
-
-    &lt;hr&gt;
-
-    {% with person_type=page.person_types.all %}
-        {% if person_type %}
-            &lt;div class=&quot;container&quot;&gt;
-                &lt;h2 class=&quot;heading--4&quot;&gt;Person types&lt;/h2&gt;
-                {% for person_type in person_type %}
-                    &lt;p&gt;{{ person_type }}&lt;/p&gt;
-                {% endfor %}
-            &lt;/div&gt;
-        {% endif %}
-    {% endwith %}
-&lt;/div&gt;
+    {% elif search_query %}
+        No results found.
+    {% endif %}
 {% endblock %}
 </code></pre>
                 </div>
 
                 <div id="tab-2" class="tabbed-content__item">
                     <pre><code class="code yaml">context:
-  page:
-    title: Dr John Doe
-    first_name: John
-    last_name: Doe
-    photo: fake
-    job_title: Stub person
-    website: &#x27;https://example.com&#x27;
-    email: &#x27;test@example.com&#x27;
-    social_media_profile:
-      all:
-        - profile_url: &#x27;https://example.com/&#x27;
-        - profile_url: &#x27;https://example.com/2&#x27;
-    phone_numbers:
-      all:
-        - phone_number: 12345678
-        - phone_number: 87654321
-    introduction: Some intro text for this peroson
-    person_types:
-      all:
-        - Staff
-        - Director
-    accordions:
-      - title: Title A
-        description: Description A. Ask for help.
-      - title: Title B
-        description: Description B. Ask for help.
-      - title: Title C
-        description: Description C. Ask for help.
-      - title: Title D
-        description: Description D. Ask for help.
+  search_query: test query
+  search_results:
+    - title: First result
+    - title: Second result
 </code></pre>
                 </div>
 
                 <div id="tab-3" class="tabbed-content__item">
-                    <div class="md"><h1>person_page</h1>
-<p>Testing page-level documentation</p></div>
+                    <div class="md"></div>
                 </div>
             </div>
         </div>
