@@ -32,6 +32,7 @@ def default_html_tag_falsey(arg=None):
 def widget_type(bound_field):
     return slugify(camel_case_to_spaces(bound_field.field.widget.__class__.__name__))
 
+
 override_tag(register, 'error_tag')
 override_tag(register, 'default_html_tag', default_html="https://potato.com")
 override_tag(register, 'default_html_tag_falsey', default_html=None)
