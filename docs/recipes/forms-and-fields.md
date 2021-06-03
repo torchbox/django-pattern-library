@@ -1,5 +1,7 @@
 # Forms and fields
 
+We can define context for forms and fields in Python, with [context modifiers](../guides/defining-template-context.md#modifying-template-contexts-with-python).
+
 Basic Django form definition:
 
 ```python
