@@ -78,7 +78,7 @@ See [#10](https://github.com/torchbox/django-pattern-library/issues/10). It’s 
 {% if search_results.paginator.count %}
 ```
 
-## Django form fields are not well supported
+### Django form fields are not well supported
 
 🎉 This is now addressed as of v0.5.0, with the [context modifiers in Python](../guides/defining-template-context.md#modifying-template-contexts-with-python) API. View our [forms and fields](../recipes/forms-and-fields.md) recipe.
 
@@ -100,7 +100,7 @@ form:
 
 While this is in theory possible, it’s not a very desirable prospect.
 
-## Can’t mock objects comparison by reference
+### Can’t mock objects comparison by reference
 
 🎉 This is now addressed as of v0.5.0, with the [context modifiers in Python](../guides/defining-template-context.md#modifying-template-contexts-with-python) API.
 
