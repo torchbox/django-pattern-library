@@ -757,7 +757,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 <span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;patterns/subscribe/form.html&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">add_subscribe_form</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Adds an unbount form to &#39;form.html&#39;</span>
+<span class="sd">    Adds an unbound form to &#39;form.html&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">context</span><span class="p">[</span><span class="s2">&quot;form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SubscribeForm</span><span class="p">()</span>
 
