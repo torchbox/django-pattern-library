@@ -2,37 +2,9 @@
 
 django-pattern-library has a few known limitations due to its design, which are worth knowing about when authoring templates or attempting to document them in the pattern library.
 
-## No way to specify objects that have attributes and support iteration
-
-See [#10](https://github.com/torchbox/django-pattern-library/issues/10). It’s impossible to mock the context when a variable needs to support iteration _and_ attributes. Here is an example of this impossible case:
-
-```django
-{% for result in search_results %}
-{# […] #}
-{% if search_results.paginator.count %}
-```
-
 ## Overriding filters is not supported
 
 See [#114](https://github.com/torchbox/django-pattern-library/issues/114). PRs welcome!
-
-## Django form fields are not well supported
-
-See [#113](https://github.com/torchbox/django-pattern-library/issues/113). If a template contains `{% for field in form %}` or even `{% if form %}`, then it's easy enough to render in django-pattern-library so long as we force the form to be null in the YAML context, and are happy not to have the form.
-
-If the form is rendered explicitly by field names, then it requires a lot more work, which can quickly become too much of a maintenance burden – for example creating deeply nested structures for form fields:
-
-```yaml
-  form:
-    email:
-      bound_field:
-        field:
-          widget:
-            class:
-              __name__: char_field
-```
-
-While this is in theory possible, it’s not a very desirable prospect.
 
 ## Can’t override context in a child template
 
@@ -67,7 +39,7 @@ This can be worked around by creating pattern-library-only templates, see [Multi
 
 ## Can’t mock each use of a template tag with different attributes
 
-For example, with a template that uses the same tag many times like:
+See [#138](https://github.com/torchbox/django-pattern-library/issues/138). For example, with a template that uses the same tag many times like:
 
 ```django
 {% load wagtailcore_tags %}
@@ -90,7 +62,49 @@ For example, with a template that uses the same tag many times like:
 
 This can’t be mocked for all usage of `include_block`.
 
+## Past limitations
+
+### No way to specify objects that have attributes and support iteration
+
+🎉 This is now addressed as of v0.5.0, with the [context modifiers in Python](../guides/defining-template-context.md#modifying-template-contexts-with-python) API. View our [pagination](../recipes/pagination.md) recipe.
+
+---
+
+See [#10](https://github.com/torchbox/django-pattern-library/issues/10). It’s impossible to mock the context when a variable needs to support iteration _and_ attributes. Here is an example of this impossible case:
+
+```django
+{% for result in search_results %}
+{# […] #}
+{% if search_results.paginator.count %}
+```
+
+## Django form fields are not well supported
+
+🎉 This is now addressed as of v0.5.0, with the [context modifiers in Python](../guides/defining-template-context.md#modifying-template-contexts-with-python) API. View our [forms and fields](../recipes/forms-and-fields.md) recipe.
+
+---
+
+See [#113](https://github.com/torchbox/django-pattern-library/issues/113). If a template contains `{% for field in form %}` or even `{% if form %}`, then it's easy enough to render in django-pattern-library so long as we force the form to be null in the YAML context, and are happy not to have the form.
+
+If the form is rendered explicitly by field names, then it requires a lot more work, which can quickly become too much of a maintenance burden – for example creating deeply nested structures for form fields:
+
+```yaml
+form:
+  email:
+    bound_field:
+      field:
+        widget:
+          class:
+            __name__: char_field
+```
+
+While this is in theory possible, it’s not a very desirable prospect.
+
 ## Can’t mock objects comparison by reference
+
+🎉 This is now addressed as of v0.5.0, with the [context modifiers in Python](../guides/defining-template-context.md#modifying-template-contexts-with-python) API.
+
+---
 
 With instances of models, the following works fine in vanilla Django, due to `item` and `page` being the same object:
 
