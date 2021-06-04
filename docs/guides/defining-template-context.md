@@ -147,7 +147,7 @@ from my_app.accounts.forms import SubscribeForm
 @register_context_modifier(template="patterns/subscribe/form.html")
 def add_subscribe_form(context, request):
     """
-    Adds an unbount form to 'form.html'
+    Adds an unbound form to 'form.html'
     """
     context["form"] = SubscribeForm()
 
