@@ -545,22 +545,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#django-form-fields-are-not-well-supported" class="md-nav__link">
     Django form fields are not well supported
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#cant-mock-objects-comparison-by-reference" class="md-nav__link">
     Can’t mock objects comparison by reference
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -666,22 +666,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#django-form-fields-are-not-well-supported" class="md-nav__link">
     Django form fields are not well supported
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#cant-mock-objects-comparison-by-reference" class="md-nav__link">
     Can’t mock objects comparison by reference
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -760,7 +760,7 @@
 <span class="cp">{%</span> <span class="k">if</span> <span class="nv">search_results.paginator.count</span> <span class="cp">%}</span><span class="x"></span>
 </code></pre></div>
 
-<h2 id="django-form-fields-are-not-well-supported">Django form fields are not well supported<a class="headerlink" href="#django-form-fields-are-not-well-supported" title="Permanent link">&para;</a></h2>
+<h3 id="django-form-fields-are-not-well-supported">Django form fields are not well supported<a class="headerlink" href="#django-form-fields-are-not-well-supported" title="Permanent link">&para;</a></h3>
 <p>🎉 This is now addressed as of v0.5.0, with the <a href="../../guides/defining-template-context/#modifying-template-contexts-with-python">context modifiers in Python</a> API. View our <a href="../../recipes/forms-and-fields/">forms and fields</a> recipe.</p>
 <hr />
 <p>See <a href="https://github.com/torchbox/django-pattern-library/issues/113">#113</a>. If a template contains <code>{% for field in form %}</code> or even <code>{% if form %}</code>, then it's easy enough to render in django-pattern-library so long as we force the form to be null in the YAML context, and are happy not to have the form.</p>
@@ -775,7 +775,7 @@
 </code></pre></div>
 
 <p>While this is in theory possible, it’s not a very desirable prospect.</p>
-<h2 id="cant-mock-objects-comparison-by-reference">Can’t mock objects comparison by reference<a class="headerlink" href="#cant-mock-objects-comparison-by-reference" title="Permanent link">&para;</a></h2>
+<h3 id="cant-mock-objects-comparison-by-reference">Can’t mock objects comparison by reference<a class="headerlink" href="#cant-mock-objects-comparison-by-reference" title="Permanent link">&para;</a></h3>
 <p>🎉 This is now addressed as of v0.5.0, with the <a href="../../guides/defining-template-context/#modifying-template-contexts-with-python">context modifiers in Python</a> API.</p>
 <hr />
 <p>With instances of models, the following works fine in vanilla Django, due to <code>item</code> and <code>page</code> being the same object:</p>
