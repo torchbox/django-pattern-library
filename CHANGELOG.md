@@ -96,6 +96,9 @@ We have a new documentation website! Check out [torchbox.github.io/django-patter
 
 - Compatibility with Django 2.2
 
+[0.5.0]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.5.0
+[0.4.0]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.4.0
+[0.3.0]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.3.0
 [0.2.9]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.9
 [0.2.8]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.8
 [0.2.5]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.5
