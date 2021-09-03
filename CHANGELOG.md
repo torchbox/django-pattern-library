@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+Define `AppConfig.default_auto_field` as [required since Django 3.2](https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys).
+
 ## [0.5.0] - 2021-06-04
 
 ### Added
