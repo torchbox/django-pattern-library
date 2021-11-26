@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Upgrade PyYAML to v6.0
+
 ## [0.5.0] - 2021-06-04
 
 ### Added
