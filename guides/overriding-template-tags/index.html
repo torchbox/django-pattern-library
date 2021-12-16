@@ -12,7 +12,7 @@
       
       
       <link rel="shortcut icon" href="../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-5.5.14">
     
     
       
@@ -805,9 +805,8 @@ overrides, so it's easy to exclude it from <code>INSTALLED_APPS</code> in produc
 if you want to.</p>
 <p>Now we need to define fake result for each instance of our template tag.
 Let's assume that we have a template with two calls of the
-<code>{% image $}</code> template tag:</p>
-<div class="codehilite"><pre><span></span><code><span class="x">`</span><span class="cp">{%</span> <span class="k">load</span> <span class="nv">image_utils</span> <span class="cp">%}</span><span class="x">`</span>
-
+<code>{% image %}</code> template tag:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">load</span> <span class="nv">image_utils</span> <span class="cp">%}</span><span class="x"></span>
 
 <span class="x">&lt;div class=&quot;user&quot;&gt;</span>
 <span class="x">    &lt;div class=&quot;user-avatar&quot;&gt;</span>
@@ -934,7 +933,7 @@ variable name explicitly like this:</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-07-15
+      Last update: 2021-12-16
     
   </small>
 </div>
