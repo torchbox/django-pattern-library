@@ -113,11 +113,10 @@ if you want to.
 
 Now we need to define fake result for each instance of our template tag.
 Let's assume that we have a template with two calls of the
-`{% image $}` template tag:
+`{% image %}` template tag:
 
 ```django
-`{% load image_utils %}`
-
+{% load image_utils %}
 
 <div class="user">
     <div class="user-avatar">
