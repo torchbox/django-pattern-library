@@ -5,7 +5,7 @@
 - Avoid Deprectaion Warnings for Django versions >= 3.2 [Changed in Django 3.2](https://docs.djangoproject.com/en/3.2/ref/applications/#for-application-authors)
 
 - Define `AppConfig.default_auto_field` as [required since Django 3.2](https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys).
-- Upgrade PyYAML to v6.0
+- Support PyYAML v6 ([#158](https://github.com/torchbox/django-pattern-library/pull/158))
 
 ## [0.5.0] - 2021-06-04
 
