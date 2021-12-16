@@ -1,7 +1,7 @@
 site_name: django-pattern-library
 repo_url: https://github.com/torchbox/django-pattern-library
 site_url:
-edit_uri: edit/master/docs/
+edit_uri: edit/main/docs/
 
 repo_name: django-pattern-library
 dev_addr: localhost:8001

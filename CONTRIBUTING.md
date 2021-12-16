@@ -87,7 +87,7 @@ Create a pull request with your changes so that it can be code reviewed by a mai
 
 ## Releasing a new version
 
-On the `master` branch:
+On the `main` branch:
 
 1. Bump the release number in `pyproject.toml`
 2. Update the CHANGELOG

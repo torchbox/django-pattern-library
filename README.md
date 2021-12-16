@@ -4,7 +4,7 @@
 
 > UI pattern libraries for Django templates. Try our [online demo](https://torchbox.github.io/django-pattern-library/demo/pattern-library/).
 
-![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](https://raw.githubusercontent.com/torchbox/django-pattern-library/master/.github/pattern-library-screenshot.webp)
+![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](https://raw.githubusercontent.com/torchbox/django-pattern-library/main/.github/pattern-library-screenshot.webp)
 
 ## Features
 
@@ -50,16 +50,16 @@ Documentation is available at [torchbox.github.io/django-pattern-library](https:
 
 ## Contributing
 
-See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](https://github.com/torchbox/django-pattern-library/blob/master/CONTRIBUTING.md).
+See anything you like in here? Anything missing? We welcome all support, whether on bug reports, feature requests, code, design, reviews, tests, documentation, and more. Please have a look at our [contribution guidelines](https://github.com/torchbox/django-pattern-library/blob/main/CONTRIBUTING.md).
 
 If you want to set up the project on your own computer, the contribution guidelines also contain all of the setup commands.
 
 ### Nightly builds
 
-To try out the latest features before a release, we also create builds from every commit to `master`. Note we make no guarantee as to the quality of those pre-releases, and the pre-releases are overwritten on every build so shouldn’t be relied on for reproducible builds. [Download the latest `django_pattern_library-0.0.0.dev0-py3-none-any.whl`](http://torchbox.github.io/django-pattern-library/dist/django_pattern_library-0.0.0.dev0-py3-none-any.whl).
+To try out the latest features before a release, we also create builds from every commit to `main`. Note we make no guarantee as to the quality of those pre-releases, and the pre-releases are overwritten on every build so shouldn’t be relied on for reproducible builds. [Download the latest `django_pattern_library-0.0.0.dev0-py3-none-any.whl`](http://torchbox.github.io/django-pattern-library/dist/django_pattern_library-0.0.0.dev0-py3-none-any.whl).
 
 ## Credits
 
-View the full list of [contributors](https://github.com/torchbox/django-pattern-library/graphs/contributors). [BSD](https://github.com/torchbox/django-pattern-library/blob/master/LICENSE) licensed.
+View the full list of [contributors](https://github.com/torchbox/django-pattern-library/graphs/contributors). [BSD](https://github.com/torchbox/django-pattern-library/blob/main/LICENSE) licensed.
 
 Project logo from [FxEmoji](https://github.com/mozilla/fxemoji). Documentation website built with [MkDocs](https://www.mkdocs.org/), and hosted in [GitHub Pages](https://pages.github.com/).

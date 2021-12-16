@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 jobs:
   test:
@@ -84,7 +84,7 @@ jobs:
       - run: mv localhost:8000/django-pattern-library/demo site
       # Demo render_patterns.
       - run: poetry run django-admin render_patterns --settings=tests.settings.production --pythonpath=. --wrap-fragments --output=site/dpl-rendered-patterns
-      # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `master`.
+      # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `main`.
       - run: cat pyproject.toml| awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
       - run: poetry build
       - run: mv dist site
@@ -96,7 +96,7 @@ jobs:
   deploy_site:
     runs-on: ubuntu-latest
     needs: build_site
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
