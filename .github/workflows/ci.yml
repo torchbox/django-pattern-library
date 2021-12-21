@@ -65,11 +65,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      - uses: Gr1n/setup-poetry@v7
-        with:
-          # Using pre-release to work around Python 3.10 compatibility issue.
-          # See https://github.com/python-poetry/poetry/issues/4210.
-          poetry-version: '1.2.0a2'
+      # Using un-pinned installer to work around Python 3.10 compatibility issue.
+      # See https://github.com/python-poetry/poetry/issues/4210.
+      - run: curl -sSL https://install.python-poetry.org | python3 - --version 1.2.0a2
       - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
