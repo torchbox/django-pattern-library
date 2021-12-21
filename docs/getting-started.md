@@ -20,6 +20,7 @@ We support:
 - Django 2.2, 3.2, 4.0, 4.1 (experimental)
 - Python 3.7, 3.8, 3.9, 3.10, 3.11 (experimental)
 - Django Templates only, no Jinja support
+- Modern “evergreen” desktop and mobile browsers
 
 ## Configuration
 
