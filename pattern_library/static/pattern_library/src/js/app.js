@@ -6,11 +6,6 @@ import syntaxHighlighting from './components/syntax-highlighting';
 import hideMenuMobile from './components/hide-menu-mobile';
 import {setIframeSize, resizeIframe} from './components/iframe';
 import {toggleNav, toggleNavItems} from './components/navigation';
-import foreachPolyfill from './polyfills/foreach-polyfill';
-import closestPolyfill from './polyfills/closest-polyfill';
-
-foreachPolyfill();
-closestPolyfill();
 
 document.addEventListener('DOMContentLoaded', () => {
     syntaxHighlighting();
