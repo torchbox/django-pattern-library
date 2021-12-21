@@ -61,5 +61,5 @@ default_section = "THIRDPARTY"
 multi_line_output = 5
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>=1.1.10"]
 build-backend = "poetry.masonry.api"

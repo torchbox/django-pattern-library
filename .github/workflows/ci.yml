@@ -12,9 +12,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      - uses: Gr1n/setup-poetry@v4
+      - uses: Gr1n/setup-poetry@v7
         with:
-          poetry-version: '1.1.4'
+          poetry-version: '1.1.10'
       - run: pip install tox
       - run: tox -e lint,py39-dj32
   test_compatibility:
@@ -36,9 +36,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python }}
-      - uses: Gr1n/setup-poetry@v4
+      - uses: Gr1n/setup-poetry@v7
         with:
-          poetry-version: '1.1.4'
+          poetry-version: '1.1.10'
       - run: pip install tox
       - run: tox -q
         env:
@@ -62,9 +62,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      - uses: Gr1n/setup-poetry@v4
+      - uses: Gr1n/setup-poetry@v7
         with:
-          poetry-version: '1.1.4'
+          poetry-version: '1.1.10'
       - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
