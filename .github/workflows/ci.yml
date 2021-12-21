@@ -16,7 +16,7 @@ jobs:
         with:
           poetry-version: '1.1.10'
       - run: pip install tox
-      - run: tox -e lint,py39-dj32
+      - run: tox -e lint,py310-dj32
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
