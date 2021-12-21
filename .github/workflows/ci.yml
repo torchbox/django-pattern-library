@@ -71,9 +71,9 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-python-${{ hashFiles('**/pyproject.toml') }}
+          key: ${{ runner.os }}-python-py310-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
-            ${{ runner.os }}-python-
+            ${{ runner.os }}-python-py310-
       # Disabling experimental installer for compatibility with Python 3.10.
       # See https://github.com/python-poetry/poetry/issues/4210.
       - run: poetry config experimental.new-installer false
