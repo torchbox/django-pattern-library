@@ -1,6 +1,9 @@
+import django
+
 from .context_modifiers import register_context_modifier
 
-default_app_config = 'pattern_library.apps.PatternLibraryAppConfig'
+if django.VERSION < (3, 2):
+    default_app_config = "pattern_library.apps.PatternLibraryAppConfig"
 
 __all__ = [
     'DEFAULT_SETTINGS',
