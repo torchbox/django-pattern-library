@@ -67,16 +67,15 @@ jobs:
           python-version: "3.10"
       - uses: Gr1n/setup-poetry@v7
         with:
-          poetry-version: '1.1.10'
+          # Using pre-release to work around Python 3.10 compatibility issue.
+          # See https://github.com/python-poetry/poetry/issues/4210.
+          poetry-version: '1.2.0a2'
       - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-python-py310-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
             ${{ runner.os }}-python-py310-
-      # Disabling experimental installer for compatibility with Python 3.10.
-      # See https://github.com/python-poetry/poetry/issues/4210.
-      - run: poetry config experimental.new-installer false
       - run: poetry config virtualenvs.create false
       - run: poetry install
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
