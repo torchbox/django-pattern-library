@@ -14,7 +14,7 @@ jobs:
           python-version: "3.10"
       - uses: Gr1n/setup-poetry@v7
         with:
-          poetry-version: '1.1.10'
+          poetry-version: '1.1.12'
       - run: pip install tox
       - run: tox -e lint,py310-dj32
   test_compatibility:
@@ -41,7 +41,7 @@ jobs:
           python-version: ${{ matrix.python }}
       - uses: Gr1n/setup-poetry@v7
         with:
-          poetry-version: '1.1.10'
+          poetry-version: '1.1.12'
       - run: pip install tox
       - run: tox -q
         env:
@@ -65,9 +65,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      # Using un-pinned installer to work around Python 3.10 compatibility issue.
-      # See https://github.com/python-poetry/poetry/issues/4210.
-      - run: curl -sSL https://install.python-poetry.org | python3 - --version 1.2.0a2
+      - uses: Gr1n/setup-poetry@v7
+        with:
+          poetry-version: '1.1.12'
       - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
