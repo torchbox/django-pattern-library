@@ -3,9 +3,9 @@ tags:
     empty_string:
       raw: ''
     none:
-      raw: null
+      raw: 'None'
     zero:
-      raw: 0
+      raw: '0'
   default_html_tag:
     page.url:
       raw: "example"
@@ -16,7 +16,7 @@ tags:
     empty_string:
       raw: ''
     none:
-      raw: null
+      raw: 'None'
     zero:
-      raw: 0
+      raw: '0'
   
