@@ -74,9 +74,11 @@ jobs:
           key: ${{ runner.os }}-python-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
             ${{ runner.os }}-python-
-      - run: |
-          poetry config virtualenvs.create false &&
-          poetry install
+      # Disabling experimental installer for compatibility with Python 3.10.
+      # See https://github.com/python-poetry/poetry/issues/4210.
+      - run: poetry config experimental.new-installer false
+      - run: poetry config virtualenvs.create false
+      - run: poetry install
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
       # Docs website build.
       - run: poetry run mkdocs build --strict
