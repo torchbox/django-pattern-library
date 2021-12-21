@@ -615,7 +615,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/torchbox/django-pattern-library/edit/master/docs/reference/concepts.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/torchbox/django-pattern-library/edit/main/docs/reference/concepts.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -630,11 +630,11 @@
 <h2 id="fragments">Fragments<a class="headerlink" href="#fragments" title="Permanent link">&para;</a></h2>
 <p>A fragment is a pattern whose markup does not include all of the resources (typically CSS and Javascript) for it to be displayed correctly on its own. This is typical for reusable component templates which depend on global stylesheets or Javascript bundles to render and behave correctly.</p>
 <p>To enable them to be correctly displayed in the pattern library, <code>django-pattern-library</code> will inject the rendered markup of fragments into the <strong>pattern base template</strong> specified by <code>PATTERN_LIBRARY['PATTERN_BASE_TEMPLATE_NAME']</code>.</p>
-<p>This template should include references to any required static files. The rendered markup of fragments will be available in the <code>pattern_library_rendered_pattern</code> context variable (see the tests for <a href="https://github.com/torchbox/django-pattern-library/blob/master/tests/templates/patterns/base.html">an example</a>).</p>
+<p>This template should include references to any required static files. The rendered markup of fragments will be available in the <code>pattern_library_rendered_pattern</code> context variable (see the tests for <a href="https://github.com/torchbox/django-pattern-library/blob/main/tests/templates/patterns/base.html">an example</a>).</p>
 <h2 id="pages">Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h2>
 <p>In contrast to fragments, pages are patterns that include everything they need to be displayed correctly in their markup. Pages are defined by <code>PATTERN_LIBRARY['BASE_TEMPLATE_NAMES']</code>.</p>
 <p>Any template in that list — or that extends a template in that list — is considered a page and will be displayed as-is when rendered in the pattern library.</p>
-<p>It is common practice for page templates to extend the pattern base template to avoid duplicate references to stylesheets and Javascript bundles. Again, <a href="https://github.com/torchbox/django-pattern-library/blob/master/tests/templates/patterns/base_page.html">an example</a> of this can be seen in the tests.</p>
+<p>It is common practice for page templates to extend the pattern base template to avoid duplicate references to stylesheets and Javascript bundles. Again, <a href="https://github.com/torchbox/django-pattern-library/blob/main/tests/templates/patterns/base_page.html">an example</a> of this can be seen in the tests.</p>
                 
                   
                     
