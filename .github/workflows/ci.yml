@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: "3.9"
+          python-version: "3.10"
       - uses: Gr1n/setup-poetry@v4
         with:
           poetry-version: '1.1.4'
@@ -26,9 +26,11 @@ jobs:
           - python: "3.7"
             toxenv: py37-dj22,py37-dj30,py37-dj31,py37-dj32
           - python: "3.8"
-            toxenv: py38-dj22,py38-dj30,py38-dj31,py38-dj32,py38-djmain
+            toxenv: py38-dj22,py38-dj30,py38-dj31,py38-dj32
           - python: "3.9"
             toxenv: py39-dj22,py39-dj30,py39-dj31,py39-dj32,py39-djmain
+          - python: "3.10"
+            toxenv: py310-dj22,py310-dj30,py310-dj31,py310-dj32,py310-djmain
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -59,7 +61,7 @@ jobs:
       - run: npm run build
       - uses: actions/setup-python@v2
         with:
-          python-version: "3.9"
+          python-version: "3.10"
       - uses: Gr1n/setup-poetry@v4
         with:
           poetry-version: '1.1.4'
