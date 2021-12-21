@@ -2,11 +2,13 @@
 
 ## [Unreleased]
 
+## [0.6.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.6.0) - 2021-12-21
+
 - Make `default_app_config conditional` to avoid [deprecation warnings](https://docs.djangoproject.com/en/3.2/ref/applications/#for-application-authors) for Django versions >= 3.2 ([#153](https://github.com/torchbox/django-pattern-library/issues/153), [#160](https://github.com/torchbox/django-pattern-library/pull/160)).
 - Define `AppConfig.default_auto_field` as [required since Django 3.2](https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys) ([#154](https://github.com/torchbox/django-pattern-library/pull/154)).
 - Support PyYAML v6 ([#158](https://github.com/torchbox/django-pattern-library/pull/158))
 
-## [0.5.0] - 2021-06-04
+## [0.5.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.5.0) - 2021-06-04
 
 ### Added
 
@@ -20,14 +22,14 @@ This addresses the following limitations of the pattern library:
 
 View the [documentation](https://torchbox.github.io/django-pattern-library/guides/defining-template-context/#modifying-template-contexts-with-python), as well as demos leveraging the new capability: [forms](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/pages/forms/example_form.html) (see [forms and fields recipe](https://torchbox.github.io/django-pattern-library/recipes/forms-and-fields/)), and [pagination](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/pages/search/search.html) (see [pagination recipe](https://torchbox.github.io/django-pattern-library/recipes/pagination/)).
 
-## [0.4.0] - 2021-05-20
+## [0.4.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.4.0) - 2021-05-20
 
 ### Added
 
 - We now officially support Django 3.2, and tentatively Django 4.0 ([#144](https://github.com/torchbox/django-pattern-library/pull/144))
 - Load templates from template engines’ [`DIRS`](https://docs.djangoproject.com/en/3.2/ref/settings/#dirs) as well as apps’ `templates` subdirectories ([#145](https://github.com/torchbox/django-pattern-library/pull/145))
 
-## [0.3.0] - 2020-11-02
+## [0.3.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.3.0) - 2020-11-02
 
 We have a new documentation website! Check out [torchbox.github.io/django-pattern-library](https://torchbox.github.io/django-pattern-library/).
 
@@ -49,7 +51,7 @@ We have a new documentation website! Check out [torchbox.github.io/django-patter
 - Pages and fragments are now handled correctly again ([#119](https://github.com/torchbox/django-pattern-library/issues/119))
 - PyPI package metadata now uses absolute URLs to GitHub ([#120](https://github.com/torchbox/django-pattern-library/issues/120)).
 
-## [0.2.9] - 2020-07-29
+## [0.2.9](https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.9) - 2020-07-29
 
 ### Added
 
@@ -60,7 +62,7 @@ We have a new documentation website! Check out [torchbox.github.io/django-patter
 
 - Templates that are not explicitly part of the pattern library can no longer be rendered by the pattern library
 
-## [0.2.8] - 2020-03-13
+## [0.2.8](https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.8) - 2020-03-13
 
 ### Added
 
@@ -81,7 +83,7 @@ We have a new documentation website! Check out [torchbox.github.io/django-patter
 - Pattern search (no longer case sensitive)
 - Issue with xframe-options header in django 3
 
-## [0.2.5] - 2019-11-01
+## [0.2.5](https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.5) - 2019-11-01
 
 ### Added
 
@@ -94,16 +96,8 @@ We have a new documentation website! Check out [torchbox.github.io/django-patter
 
 - Improve documentation for developers
 
-## [0.2.4] - 2019-06-11
+## [0.2.4](https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.4) - 2019-06-11
 
 ### Added
 
 - Compatibility with Django 2.2
-
-[0.5.0]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.5.0
-[0.4.0]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.4.0
-[0.3.0]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.3.0
-[0.2.9]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.9
-[0.2.8]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.8
-[0.2.5]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.5
-[0.2.4]: https://github.com/torchbox/django-pattern-library/releases/tag/v0.2.4
