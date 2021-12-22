@@ -1,0 +1,7 @@
+context:
+  target_page:
+    title: Get started
+tags:
+  pageurl:
+    target_page:
+      raw: /get-started

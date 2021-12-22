@@ -27,6 +27,12 @@ def default_html_tag_falsey(arg=None):
     raise Exception("default_tag raised an exception")
 
 
+@register.simple_tag()
+def pageurl(page):
+    """Approximation of wagtail built-in tag for realistic example."""
+    return "/page/url"
+
+
 # Get widget type of a field
 @register.filter(name="widget_type")
 def widget_type(bound_field):
@@ -36,3 +42,4 @@ def widget_type(bound_field):
 override_tag(register, "error_tag")
 override_tag(register, "default_html_tag", default_html="https://potato.com")
 override_tag(register, "default_html_tag_falsey", default_html=None)
+override_tag(register, "pageurl")

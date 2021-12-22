@@ -1,9 +1,12 @@
+import json
+
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from django.utils.decorators import method_decorator
 from django.utils.html import escape
 from django.views.decorators.clickjacking import xframe_options_sameorigin
-from django.views.generic.base import TemplateView
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic.base import TemplateView, View
 
 from pattern_library import get_base_template_names, get_pattern_base_template_name
 from pattern_library.exceptions import PatternLibraryEmpty, TemplateIsNotPattern
@@ -99,3 +102,17 @@ class RenderPatternView(TemplateView):
             return self.render_to_response(context)
 
         return HttpResponse(rendered_pattern)
+
+
+@csrf_exempt
+def render_pattern_api(request):
+    data = json.loads(request.body.decode("utf-8"))
+    template_name = data["template_name"]
+    config = data["config"]
+
+    try:
+        rendered_pattern = render_pattern(request, template_name, allow_non_patterns=False, config=config)
+    except TemplateIsNotPattern:
+        raise Http404
+
+    return HttpResponse(rendered_pattern)
