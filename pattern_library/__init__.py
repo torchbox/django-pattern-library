@@ -62,4 +62,4 @@ def get_sections():
 
 
 def get_pattern_context_var_name():
-    return '__pattern_library_view'
+    return 'is_pattern_library'

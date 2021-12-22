@@ -22,9 +22,9 @@ You can for example add a theme wrapper around the components:
 <body class="{% block body_class %}{% endblock %}{% if pattern_library_rendered_pattern %} pattern-library-template{% endif %}">
 ```
 
-## Customizing a single pattern’s rendering
+## Customizing a single pattern’s surroundings
 
-There is no API to customize a single pattern’s rendering, but it can be done by using pattern-library-only templates. For example, with our `quote_block.html` component:
+There is no API to customize a single pattern’s surroundings, but it can be done by using pattern-library-only templates. For example, with our `quote_block.html` component:
 
 ```django
 <blockquote class="quote-block block--spacing">
@@ -46,3 +46,29 @@ We could create another template next to it called `quote_block_example.html`,
 ```
 
 This is a fair amount of boilerplate, but neatly solves the problem per pattern.
+
+## Customizing a single pattern’s rendering
+
+Sometimes, it can help for a pattern to work differently in the pattern library. This can be done to make it easier to test, or to avoid rendering parts of a component that have intricate dependencies in the context of the pattern library.
+
+We can do this with the `is_pattern_library` context variable. Here is an example where we bypass loading the real menu data and would instead use the pattern library’s mock context:
+
+```django
+{% load hub_tags %}
+
+{# Check if this is loading the pattern library or not. #}
+{% if not is_pattern_library %}
+    {% get_hub_menu page as menu %}
+{% endif %}
+
+<nav>
+    <ul>
+        <li class="hub-menu__list-item">
+            <a class="hub-menu__link href="{{ menu.parent.url }}">
+                {{ menu.parent.get_menu_title }}
+            </a>
+        </li>
+        […]
+    </ul>
+</nav>
+```
