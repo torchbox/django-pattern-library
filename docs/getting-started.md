@@ -169,6 +169,7 @@ We additionally need to customize a base template, so the standalone component c
 ### Component data
 
 We can provide context and tags overrides for our new component by creating a `quote_block.yaml` YAML file alongside the HTML, at `patterns/components/quote_block/quote_block.yaml` in our example.
+(You can use either `.yaml` or `.yml` as the file extension.)
 
 ```yaml
 context:
