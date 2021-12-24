@@ -4,7 +4,7 @@ from django.conf import settings
 from django.test import SimpleTestCase, override_settings
 
 from pattern_library.utils import (
-    get_template_ancestors, get_template_dirs, get_pattern_config_str,
+    get_pattern_config_str, get_template_ancestors, get_template_dirs
 )
 
 
