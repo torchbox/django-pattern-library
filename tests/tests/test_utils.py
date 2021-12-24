@@ -3,7 +3,11 @@ import os
 from django.conf import settings
 from django.test import SimpleTestCase, override_settings
 
-from pattern_library.utils import get_template_ancestors, get_template_dirs
+from pattern_library.utils import (
+    get_template_ancestors,
+    get_template_dirs,
+    get_pattern_config_str,
+)
 
 
 class TestGetTemplateAncestors(SimpleTestCase):
@@ -79,3 +83,22 @@ class TestGetTemplateDirs(SimpleTestCase):
             'dpl/pattern_library',
             'dpl/tests',
         ])
+
+
+class TestGetPatternConfigStr(SimpleTestCase):
+    def test_not_existing_template(self):
+        result = get_pattern_config_str("doesnotexist")
+
+        self.assertEqual(result, "")
+
+    def test_atom_yaml(self):
+        result = get_pattern_config_str("patterns/atoms/test_atom/test_atom.html")
+
+        self.assertNotEqual(result, "")
+        self.assertIn("atom_var value from test_atom.yaml", result)
+
+    def test_atom_yml(self):
+        result = get_pattern_config_str("patterns/atoms/test_atom_yml/test_atom_yml.html")
+
+        self.assertNotEqual(result, "")
+        self.assertIn("atom_var value from test_atom.yml", result)
