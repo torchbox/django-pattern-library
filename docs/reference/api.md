@@ -42,6 +42,20 @@ tags:
 </body>
 ```
 
+### `is_pattern_library`
+
+`is_pattern_library` is available in the template context of each pattern, and is `True` if the pattern is being rendered in the pattern library.
+
+```django
+{% if not is_pattern_library %}
+    {% get_hub_menu page as menu %}
+{% endif %}
+
+<a class="hub-menu__link href="{{ menu.parent.url }}">
+    {{ menu.parent.get_menu_title }}
+</a>
+```
+
 ## Settings
 
 See [Getting started](../getting-started.md) for more guided information.

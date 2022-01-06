@@ -124,7 +124,7 @@ class ContextModifierTestCase(SimpleTestCase):
             request=request,
             context={
                 "atom_var": "atom_var value from test_atom.yaml",
-                "__pattern_library_view": True,
+                "is_pattern_library": True,
                 "foo": "bar",
                 "beep": "boop",
             },
