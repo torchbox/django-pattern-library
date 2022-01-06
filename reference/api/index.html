@@ -500,6 +500,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#is_pattern_library" class="md-nav__link">
+    is_pattern_library
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -705,6 +712,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#is_pattern_library" class="md-nav__link">
+    is_pattern_library
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -836,20 +850,20 @@
 <li>The pattern library uses <a href="https://pyyaml.org/wiki/PyYAMLDocumentation">PyYAML</a> in particular</li>
 </ul>
 <p>Here is an example in practice:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test</span>
-<span class="c1"># Nested structure, dependent on template.</span>
-<span class="nt">context</span><span class="p">:</span>
-  <span class="nt">quote</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">What is love?</span>
-  <span class="nt">attribution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Haddaway</span>
-  <span class="nt">my_list</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="c1"># Mapping from tag names to tag overrides.</span>
-<span class="nt">tags</span><span class="p">:</span>
-  <span class="nt">error_tag</span><span class="p">:</span>
-    <span class="nt">include</span><span class="p">:</span>
-      <span class="nt">template_name</span><span class="p">:</span> <span class="s">&quot;non-patterns/include.html&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test</span><span class="w"></span>
+<span class="c1"># Nested structure, dependent on template.</span><span class="w"></span>
+<span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">quote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">What is love?</span><span class="w"></span>
+<span class="w">  </span><span class="nt">attribution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Haddaway</span><span class="w"></span>
+<span class="w">  </span><span class="nt">my_list</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="c1"># Mapping from tag names to tag overrides.</span><span class="w"></span>
+<span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">error_tag</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">include</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;non-patterns/include.html&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
@@ -858,6 +872,17 @@
 <div class="codehilite"><pre><span></span><code><span class="x">&lt;body&gt;</span>
 <span class="x">  </span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}{{</span> <span class="nv">pattern_library_rendered_pattern</span> <span class="cp">}}{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">&lt;/body&gt;</span>
+</code></pre></div>
+
+<h3 id="is_pattern_library"><code>is_pattern_library</code><a class="headerlink" href="#is_pattern_library" title="Permanent link">&para;</a></h3>
+<p><code>is_pattern_library</code> is available in the template context of each pattern, and is <code>True</code> if the pattern is being rendered in the pattern library.</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">is_pattern_library</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">get_hub_menu</span> <span class="nv">page</span> <span class="k">as</span> <span class="nv">menu</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">&lt;a class=&quot;hub-menu__link href=&quot;</span><span class="cp">{{</span> <span class="nv">menu.parent.url</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">menu.parent.get_menu_title</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">&lt;/a&gt;</span>
 </code></pre></div>
 
 <h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
@@ -964,7 +989,7 @@ structure. This can be useful for <a href="../../guides/automated-tests/">automa
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

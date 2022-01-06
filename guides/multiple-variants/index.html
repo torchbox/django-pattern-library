@@ -562,13 +562,13 @@
 </code></pre></div>
 
 <p>We can try it out once with the following YAML:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
-  <span class="nt">call_to_action</span><span class="p">:</span>
-    <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span>
-    <span class="nt">illustration</span><span class="p">:</span>
-      <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
-    <span class="nt">get_link_text</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
-    <span class="nt">get_link_url</span><span class="p">:</span> <span class="s">&#39;#&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">call_to_action</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span><span class="w"></span>
+<span class="w">    </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
+<span class="w">    </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
+<span class="w">    </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
 </code></pre></div>
 
 <p>If we want to try multiple variants, simply create a custom template for pattern library usage only, that renders <code>call_to_action</code> multiple times:</p>
@@ -583,26 +583,26 @@
 <span class="x">&lt;/div&gt;</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
-  <span class="nt">ctas</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Call to action</span>
-      <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span>
-      <span class="nt">illustration</span><span class="p">:</span>
-        <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
-      <span class="nt">get_link_text</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
-      <span class="nt">get_link_url</span><span class="p">:</span> <span class="s">&#39;#&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Call to action with short title</span>
-      <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Will you help us?</span>
-      <span class="nt">illustration</span><span class="p">:</span>
-        <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
-      <span class="nt">get_link_text</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
-      <span class="nt">get_link_url</span><span class="p">:</span> <span class="s">&#39;#&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Call to action with long title</span>
-      <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant and learn how to make environmentally responsible choices when buying seafood?</span>
-      <span class="nt">illustration</span><span class="p">:</span>
-        <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
-      <span class="nt">get_link_text</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
-      <span class="nt">get_link_url</span><span class="p">:</span> <span class="s">&#39;#&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ctas</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action</span><span class="w"></span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span><span class="w"></span>
+<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
+<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
+<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action with short title</span><span class="w"></span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us?</span><span class="w"></span>
+<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
+<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
+<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action with long title</span><span class="w"></span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant and learn how to make environmentally responsible choices when buying seafood?</span><span class="w"></span>
+<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
+<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
+<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
 </code></pre></div>
                 
                   
@@ -612,7 +612,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

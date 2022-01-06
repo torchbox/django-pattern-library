@@ -387,6 +387,19 @@
         &lt;path d=&quot;M1 4.364l3.536 3.535 6.363-6.363&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1&quot; fill=&quot;none&quot; fill-rule=&quot;evenodd&quot; stroke-linecap=&quot;round&quot;/&gt;
     &lt;/symbol&gt;
 &lt;/svg&gt;
+{# Show available icons, in pattern library view only #}
+{% if is_pattern_library %}
+&lt;template&gt;
+    {% include &quot;patterns/atoms/icons/icon.html&quot; with name=&quot;__icon__&quot; %}
+&lt;/template&gt;
+&lt;script&gt;
+    const template = document.currentScript.previousElementSibling;
+    const symbols = [...template.previousElementSibling.querySelectorAll(&#x27;symbol&#x27;)];
+    const list = document.createElement(&#x27;ul&#x27;);
+    list.innerHTML = symbols.map(el =&gt; `&lt;li&gt;${el.id}&amp;nbsp;${template.innerHTML.replace(/__icon__/g, el.id)}&lt;/li&gt;`).join(&#x27;&#x27;);
+    document.body.appendChild(list);
+&lt;/script&gt;
+{% endif %}
 </code></pre>
                 </div>
 

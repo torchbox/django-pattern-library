@@ -713,16 +713,16 @@
 <p>See <a href="https://github.com/torchbox/django-pattern-library/issues/8">#8</a>.</p>
 <p>If you have a <code>some_page.html</code>, <code>some_page.yaml</code>, and <code>include_me.html</code>, <code>include_me.html</code>, and <code>some_page.html</code> includes <code>include_me.html</code>.</p>
 <p><code>some_page.yaml</code> with something like:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
-  <span class="nt">page</span><span class="p">:</span>
-    <span class="nt">pk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;my</span><span class="nv"> </span><span class="s">title&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">page</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">pk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my</span><span class="nv"> </span><span class="s">title&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p>and <code>include_me.yaml</code> with something like:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
-  <span class="nt">page</span><span class="p">:</span>
-    <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;Title</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">include&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">page</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Title</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">include&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p><code>Title from include</code> will appear on both patterns. It's impossible to override single key in <code>some_page.html</code></p>
@@ -765,13 +765,13 @@
 <hr />
 <p>See <a href="https://github.com/torchbox/django-pattern-library/issues/113">#113</a>. If a template contains <code>{% for field in form %}</code> or even <code>{% if form %}</code>, then it's easy enough to render in django-pattern-library so long as we force the form to be null in the YAML context, and are happy not to have the form.</p>
 <p>If the form is rendered explicitly by field names, then it requires a lot more work, which can quickly become too much of a maintenance burden – for example creating deeply nested structures for form fields:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">form</span><span class="p">:</span>
-  <span class="nt">email</span><span class="p">:</span>
-    <span class="nt">bound_field</span><span class="p">:</span>
-      <span class="nt">field</span><span class="p">:</span>
-        <span class="nt">widget</span><span class="p">:</span>
-          <span class="nt">class</span><span class="p">:</span>
-            <span class="nt">__name__</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">char_field</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">form</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">email</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">bound_field</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">field</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">widget</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">class</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">__name__</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">char_field</span><span class="w"></span>
 </code></pre></div>
 
 <p>While this is in theory possible, it’s not a very desirable prospect.</p>
@@ -793,7 +793,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

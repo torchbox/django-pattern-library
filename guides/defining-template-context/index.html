@@ -644,9 +644,9 @@ create a file called <code>big_red_button.yaml</code>.</p>
 </code></pre></div>
 
 <p>The <code>big_red_button.yaml</code> can be something like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
-    <span class="nt">button_link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/</span>
-    <span class="nt">button_text</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example link</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">button_link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com/</span><span class="w"></span>
+<span class="w">    </span><span class="nt">button_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example link</span><span class="w"></span>
 </code></pre></div>
 
 <p>In the same way you can provide context in more complex templates. Here is
@@ -667,17 +667,17 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 </code></pre></div>
 
 <p>You might define a YAML file similar to this to provide fake data:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">My example pattern</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My example pattern</span><span class="w"></span>
 
-<span class="nt">context</span><span class="p">:</span>
-    <span class="nt">items_title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Related pages</span>
-    <span class="nt">my_objects</span><span class="p">:</span>
-        <span class="nt">exists</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>  <span class="c1"># simulate `QuerySet`&#39;s `exists` method</span>
-        <span class="nt">all</span><span class="p">:</span>          <span class="c1"># simulate `QuerySet`&#39;s `all` method</span>
-            <span class="p p-Indicator">-</span> <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Page 1</span>
-              <span class="nt">link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/page1</span>
-            <span class="p p-Indicator">-</span> <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Page 2</span>
-              <span class="nt">link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/page2</span>
+<span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">items_title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Related pages</span><span class="w"></span>
+<span class="w">    </span><span class="nt">my_objects</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">exists</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># simulate `QuerySet`&#39;s `exists` method</span><span class="w"></span>
+<span class="w">        </span><span class="nt">all</span><span class="p">:</span><span class="w">          </span><span class="c1"># simulate `QuerySet`&#39;s `all` method</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Page 1</span><span class="w"></span>
+<span class="w">              </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/page1</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Page 2</span><span class="w"></span>
+<span class="w">              </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/page2</span><span class="w"></span>
 </code></pre></div>
 
 <p>You can define a list or a dict or anything that <a href="http://pyyaml.org/wiki/PyYAMLDocumentation"><code>PyYAML</code></a> allows you to create in YAML format without creating a custom objects.</p>
@@ -816,7 +816,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

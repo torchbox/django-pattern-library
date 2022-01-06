@@ -873,16 +873,16 @@ poetry add --dev django-pattern-library
 <p><code>quote_block</code> should now appear in the pattern library UI menu! But the template doesn’t display anything – we additionally need to provide it with test data.</p>
 <h3 id="component-data">Component data<a class="headerlink" href="#component-data" title="Permanent link">&para;</a></h3>
 <p>We can provide context and tags overrides for our new component by creating a <code>quote_block.yaml</code> YAML file alongside the HTML, at <code>patterns/components/quote_block/quote_block.yaml</code> in our example.</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
-  <span class="nt">quote</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">What is love?</span>
-  <span class="nt">attribution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Haddaway</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">quote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">What is love?</span><span class="w"></span>
+<span class="w">  </span><span class="nt">attribution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Haddaway</span><span class="w"></span>
 </code></pre></div>
 
 <p>We could also provide it with a custom name:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Quote Block</span>
-<span class="nt">context</span><span class="p">:</span>
-  <span class="nt">quote</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">What is love?</span>
-  <span class="nt">attribution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Haddaway</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quote Block</span><span class="w"></span>
+<span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">quote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">What is love?</span><span class="w"></span>
+<span class="w">  </span><span class="nt">attribution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Haddaway</span><span class="w"></span>
 </code></pre></div>
 
 <p>And that’s it! Our <code>quote_block</code> should finally appear in the pattern library, along with its rendering with this mock data.</p>
@@ -895,7 +895,7 @@ poetry add --dev django-pattern-library
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

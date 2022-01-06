@@ -592,17 +592,17 @@
                   <h1>Image include</h1>
                 
                 <h2 id="image-include">Image include<a class="headerlink" href="#image-include" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;{{ imageSmall.url }}&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;{{ imageLarge.url }}&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;{{ width }}&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;{{ height }}&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;{{ imageLarge.alt }}&quot;</span> <span class="k">class</span><span class="o">=</span><span class="s2">&quot;{{ classList }} lazyload&quot;</span><span class="o">&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="n">img</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;{{ imageSmall.url }}&quot;</span><span class="w"> </span><span class="n">data</span><span class="o">-</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;{{ imageLarge.url }}&quot;</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;{{ width }}&quot;</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="s2">&quot;{{ height }}&quot;</span><span class="w"> </span><span class="n">alt</span><span class="o">=</span><span class="s2">&quot;{{ imageLarge.alt }}&quot;</span><span class="w"> </span><span class="k">class</span><span class="o">=</span><span class="s2">&quot;{{ classList }} lazyload&quot;</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
 
 <p>YAML:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
-  <span class="nt">width</span><span class="p">:</span> <span class="s">&#39;720&#39;</span>
-  <span class="nt">height</span><span class="p">:</span> <span class="s">&#39;400&#39;</span>
-  <span class="nt">imageSmall</span><span class="p">:</span>
-    <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://source.unsplash.com/pZ-XFIrJMtE/360x200</span>
-  <span class="nt">imageLarge</span><span class="p">:</span>
-    <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://source.unsplash.com/pZ-XFIrJMtE/720x400</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;720&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;400&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">imageSmall</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://source.unsplash.com/pZ-XFIrJMtE/360x200</span><span class="w"></span>
+<span class="w">  </span><span class="nt">imageLarge</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://source.unsplash.com/pZ-XFIrJMtE/720x400</span><span class="w"></span>
 </code></pre></div>
                 
                   
@@ -612,7 +612,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

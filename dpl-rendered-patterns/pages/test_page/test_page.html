@@ -30,6 +30,22 @@
 </svg>
 
 
+<template>
+    <svg class="icon icon--__icon__" aria-hidden="true" focusable="false">
+    <use xlink:href="#__icon__"></use>
+</svg>
+
+</template>
+<script>
+    const template = document.currentScript.previousElementSibling;
+    const symbols = [...template.previousElementSibling.querySelectorAll('symbol')];
+    const list = document.createElement('ul');
+    list.innerHTML = symbols.map(el => `<li>${el.id}&nbsp;${template.innerHTML.replace(/__icon__/g, el.id)}</li>`).join('');
+    document.body.appendChild(list);
+</script>
+
+
+
         <main>
             <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

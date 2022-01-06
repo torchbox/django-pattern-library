@@ -592,24 +592,24 @@
                   <h1>Image lazyload</h1>
                 
                 <h2 id="image-lazy-load">Image lazy load<a class="headerlink" href="#image-lazy-load" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="o">%</span> <span class="n">image</span> <span class="n">slide</span><span class="o">.</span><span class="n">image</span> <span class="n">fill</span><span class="o">-</span><span class="mi">100</span><span class="n">x71</span> <span class="k">as</span> <span class="n">imageSmall</span> <span class="o">%</span><span class="p">}</span>
-<span class="p">{</span><span class="o">%</span> <span class="n">image</span> <span class="n">slide</span><span class="o">.</span><span class="n">image</span> <span class="n">fill</span><span class="o">-</span><span class="mi">829</span><span class="n">x585</span> <span class="k">as</span> <span class="n">imageLarge</span> <span class="o">%</span><span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="o">%</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">slide</span><span class="o">.</span><span class="n">image</span><span class="w"> </span><span class="n">fill</span><span class="o">-</span><span class="mi">100</span><span class="n">x71</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">imageSmall</span><span class="w"> </span><span class="o">%</span><span class="p">}</span><span class="w"></span>
+<span class="p">{</span><span class="o">%</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">slide</span><span class="o">.</span><span class="n">image</span><span class="w"> </span><span class="n">fill</span><span class="o">-</span><span class="mi">829</span><span class="n">x585</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">imageLarge</span><span class="w"> </span><span class="o">%</span><span class="p">}</span><span class="w"></span>
 
-<span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s2">&quot;patterns/atoms/image/image--lazyload.html&quot;</span> <span class="n">with</span> <span class="n">imageSmall</span><span class="o">=</span><span class="n">imageSmall</span> <span class="n">width</span><span class="o">=</span><span class="mi">829</span> <span class="n">height</span><span class="o">=</span><span class="mi">585</span> <span class="n">imageLarge</span><span class="o">=</span><span class="n">imageLarge</span> <span class="n">classList</span><span class="o">=</span><span class="s1">&#39;slide__image&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="s2">&quot;patterns/atoms/image/image--lazyload.html&quot;</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">imageSmall</span><span class="o">=</span><span class="n">imageSmall</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="mi">829</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="mi">585</span><span class="w"> </span><span class="n">imageLarge</span><span class="o">=</span><span class="n">imageLarge</span><span class="w"> </span><span class="n">classList</span><span class="o">=</span><span class="s1">&#39;slide__image&#39;</span><span class="w"> </span><span class="o">%</span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
-  <span class="nt">image</span><span class="p">:</span>
-    <span class="nt">slide.image fill-100x71 as imageSmall</span><span class="p">:</span>
-      <span class="nt">target_var</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">imageSmall</span>
-      <span class="nt">raw</span><span class="p">:</span>
-        <span class="nt">url</span><span class="p">:</span> <span class="s">&#39;//placekitten.com/100/71&#39;</span>
-    <span class="nt">slide.image fill-829x585 as imageLarge</span><span class="p">:</span>
-      <span class="nt">target_var</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">imageLarge</span>
-      <span class="nt">raw</span><span class="p">:</span>
-        <span class="nt">url</span><span class="p">:</span> <span class="s">&#39;//placekitten.com/829/585&#39;</span>
-        <span class="nt">width</span><span class="p">:</span> <span class="s">&#39;829&#39;</span>
-        <span class="nt">height</span><span class="p">:</span> <span class="s">&#39;585&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">slide.image fill-100x71 as imageSmall</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">target_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageSmall</span><span class="w"></span>
+<span class="w">      </span><span class="nt">raw</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;//placekitten.com/100/71&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">slide.image fill-829x585 as imageLarge</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">target_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageLarge</span><span class="w"></span>
+<span class="w">      </span><span class="nt">raw</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;//placekitten.com/829/585&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">width</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;829&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">height</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;585&#39;</span><span class="w"></span>
 </code></pre></div>
                 
                   
@@ -619,7 +619,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

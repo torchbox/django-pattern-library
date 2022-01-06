@@ -30,6 +30,8 @@
 </svg>
 
 
+
+
         <main>
             
 <!doctype html>
@@ -63,10 +65,26 @@
 </svg>
 
 
+<template>
+    <svg class="icon icon--__icon__" aria-hidden="true" focusable="false">
+    <use xlink:href="#__icon__"></use>
+</svg>
+
+</template>
+<script>
+    const template = document.currentScript.previousElementSibling;
+    const symbols = [...template.previousElementSibling.querySelectorAll('symbol')];
+    const list = document.createElement('ul');
+    list.innerHTML = symbols.map(el => `<li>${el.id}&nbsp;${template.innerHTML.replace(/__icon__/g, el.id)}</li>`).join('');
+    document.body.appendChild(list);
+</script>
+
+
+
         <main>
             
 <form method="post" class="form">
-    <input type="hidden" name="csrfmiddlewaretoken" value="GeILOvhwdPUg0lC2gF5PeBwQ9mbtdbY7FvXuULrMg8722PaNa7SSWbgslUT5VwXZ">
+    <input type="hidden" name="csrfmiddlewaretoken" value="AZsiGEcdyEe0Fz08jJXQN6tvzfi0eWlqdiSKWSMhuDAoOuUUw7uIZgm2NLT0mBf6">
     <div class="form__container">
         
 

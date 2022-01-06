@@ -302,6 +302,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#customizing-a-single-patterns-surroundings" class="md-nav__link">
+    Customizing a single pattern’s surroundings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#customizing-a-single-patterns-rendering" class="md-nav__link">
     Customizing a single pattern’s rendering
   </a>
@@ -583,6 +590,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#customizing-a-single-patterns-surroundings" class="md-nav__link">
+    Customizing a single pattern’s surroundings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#customizing-a-single-patterns-rendering" class="md-nav__link">
     Customizing a single pattern’s rendering
   </a>
@@ -626,8 +640,8 @@
 <div class="codehilite"><pre><span></span><code><span class="x">&lt;body class=&quot;</span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">body_class</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}{%</span> <span class="k">if</span> <span class="nv">pattern_library_rendered_pattern</span> <span class="cp">%}</span><span class="x"> pattern-library-template</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x">&quot;&gt;</span>
 </code></pre></div>
 
-<h2 id="customizing-a-single-patterns-rendering">Customizing a single pattern’s rendering<a class="headerlink" href="#customizing-a-single-patterns-rendering" title="Permanent link">&para;</a></h2>
-<p>There is no API to customize a single pattern’s rendering, but it can be done by using pattern-library-only templates. For example, with our <code>quote_block.html</code> component:</p>
+<h2 id="customizing-a-single-patterns-surroundings">Customizing a single pattern’s surroundings<a class="headerlink" href="#customizing-a-single-patterns-surroundings" title="Permanent link">&para;</a></h2>
+<p>There is no API to customize a single pattern’s surroundings, but it can be done by using pattern-library-only templates. For example, with our <code>quote_block.html</code> component:</p>
 <div class="codehilite"><pre><span></span><code><span class="x">&lt;blockquote class=&quot;quote-block block--spacing&quot;&gt;</span>
 <span class="x">    &lt;div class=&quot;quote-block__text&quot;&gt;</span>
 <span class="x">        &lt;p class=&quot;quote-block__quote&quot;&gt;</span><span class="cp">{{</span> <span class="nv">quote</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
@@ -645,6 +659,27 @@
 </code></pre></div>
 
 <p>This is a fair amount of boilerplate, but neatly solves the problem per pattern.</p>
+<h2 id="customizing-a-single-patterns-rendering">Customizing a single pattern’s rendering<a class="headerlink" href="#customizing-a-single-patterns-rendering" title="Permanent link">&para;</a></h2>
+<p>Sometimes, it can help for a pattern to work differently in the pattern library. This can be done to make it easier to test, or to avoid rendering parts of a component that have intricate dependencies in the context of the pattern library.</p>
+<p>We can do this with the <code>is_pattern_library</code> context variable. Here is an example where we bypass loading the real menu data and would instead use the pattern library’s mock context:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">load</span> <span class="nv">hub_tags</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# Check if this is loading the pattern library or not. #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">is_pattern_library</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">get_hub_menu</span> <span class="nv">page</span> <span class="k">as</span> <span class="nv">menu</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">&lt;nav&gt;</span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        &lt;li class=&quot;hub-menu__list-item&quot;&gt;</span>
+<span class="x">            &lt;a class=&quot;hub-menu__link href=&quot;</span><span class="cp">{{</span> <span class="nv">menu.parent.url</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">                </span><span class="cp">{{</span> <span class="nv">menu.parent.get_menu_title</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">            &lt;/a&gt;</span>
+<span class="x">        &lt;/li&gt;</span>
+<span class="x">        […]</span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="x">&lt;/nav&gt;</span>
+</code></pre></div>
                 
                   
                     
@@ -653,7 +688,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

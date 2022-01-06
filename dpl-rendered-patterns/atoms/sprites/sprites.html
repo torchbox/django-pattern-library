@@ -30,6 +30,8 @@
 </svg>
 
 
+
+
         <main>
             <svg style="display: none;">
     <symbol id="close" viewBox="0 0 24 24">
@@ -50,6 +52,22 @@
         <path d="M1 4.364l3.536 3.535 6.363-6.363" stroke="currentColor" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round"/>
     </symbol>
 </svg>
+
+
+<template>
+    <svg class="icon icon--__icon__" aria-hidden="true" focusable="false">
+    <use xlink:href="#__icon__"></use>
+</svg>
+
+</template>
+<script>
+    const template = document.currentScript.previousElementSibling;
+    const symbols = [...template.previousElementSibling.querySelectorAll('symbol')];
+    const list = document.createElement('ul');
+    list.innerHTML = symbols.map(el => `<li>${el.id}&nbsp;${template.innerHTML.replace(/__icon__/g, el.id)}</li>`).join('');
+    document.body.appendChild(list);
+</script>
+
 
         </main>
         <script src="/django-pattern-library/demo/static/main.js"></script>

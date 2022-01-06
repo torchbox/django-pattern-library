@@ -824,19 +824,19 @@ Let's assume that we have a template with two calls of the
 
 <h3 id="render-another-template-or-pattern">Render another template or pattern<a class="headerlink" href="#render-another-template-or-pattern" title="Permanent link">&para;</a></h3>
 <p>Our <code>yaml</code> will similar to this:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Override template tags</span>
-<span class="nt">tags</span><span class="p">:</span>
-    <span class="c1"># Name of the template tag we are overriding</span>
-    <span class="nt">image</span><span class="p">:</span>
-        <span class="c1"># Arguments of the template tag</span>
-        <span class="c1"># Override {% image avatar fill-200x200 %}</span>
-        <span class="nt">avatar fill-200x200</span><span class="p">:</span>
-            <span class="nt">template_name</span><span class="p">:</span> <span class="s">&quot;patterns/atoms/images/image.html&quot;</span>
-        <span class="c1"># Override {% image avatar fill-200x400 %}</span>
-        <span class="nt">avatar fill-200x400</span><span class="p">:</span>
-            <span class="nt">template_name</span><span class="p">:</span> <span class="s">&quot;patterns/atoms/images/image.html&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Override template tags</span><span class="w"></span>
+<span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Name of the template tag we are overriding</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Arguments of the template tag</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Override {% image avatar fill-200x200 %}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">avatar fill-200x200</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;patterns/atoms/images/image.html&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Override {% image avatar fill-200x400 %}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">avatar fill-200x400</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;patterns/atoms/images/image.html&quot;</span><span class="w"></span>
 
-<span class="c1"># Override context, if needed</span>
+<span class="c1"># Override context, if needed</span><span class="w"></span>
 </code></pre></div>
 
 <p>In this example, we override both template tags and
@@ -866,21 +866,21 @@ of different sizes.</p>
 </ul>
 <h3 id="return-raw-data">Return raw data<a class="headerlink" href="#return-raw-data" title="Permanent link">&para;</a></h3>
 <p>Let's update our <code>yaml</code> to use raw data:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Override template tags</span>
-<span class="nt">tags</span><span class="p">:</span>
-    <span class="c1"># Name of the template tag we are overriding</span>
-    <span class="nt">image</span><span class="p">:</span>
-        <span class="c1"># Arguments of the template tag</span>
-        <span class="c1"># Override {% image avatar fill-200x200 %}</span>
-        <span class="nt">avatar fill-200x200</span><span class="p">:</span>
-            <span class="nt">raw</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-                <span class="no">&lt;img src=&quot;http://via.placeholder.com/200x200&quot; width=&quot;200&quot; height=&quot;200&quot; alt=&quot;Placeholder&quot;&gt;</span>
-        <span class="c1"># Override {% image avatar fill-200x400 %}</span>
-        <span class="nt">avatar fill-200x400</span><span class="p">:</span>
-            <span class="nt">raw</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-                <span class="no">&lt;img src=&quot;http://via.placeholder.com/200x400&quot; width=&quot;200&quot; height=&quot;400&quot; alt=&quot;Placeholder&quot;&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Override template tags</span><span class="w"></span>
+<span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Name of the template tag we are overriding</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Arguments of the template tag</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Override {% image avatar fill-200x200 %}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">avatar fill-200x200</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="no">&lt;img src=&quot;http://via.placeholder.com/200x200&quot; width=&quot;200&quot; height=&quot;200&quot; alt=&quot;Placeholder&quot;&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Override {% image avatar fill-200x400 %}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">avatar fill-200x400</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="no">&lt;img src=&quot;http://via.placeholder.com/200x400&quot; width=&quot;200&quot; height=&quot;400&quot; alt=&quot;Placeholder&quot;&gt;</span><span class="w"></span>
 
-<span class="c1"># Override context, if needed</span>
+<span class="c1"># Override context, if needed</span><span class="w"></span>
 </code></pre></div>
 
 <p>Now we make both <code>{% image %}</code> tags return different strings
@@ -901,27 +901,27 @@ without creating a custom object type.</p>
 </code></pre></div>
 
 <p>We can define our <code>yaml</code> like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
-    <span class="nt">image</span><span class="p">:</span>
-        <span class="c1"># Override {% image avatar fill-200x200 as avatar_thumbnail %}</span>
-        <span class="nt">avatar fill-200x200 as avatar_thumbnail</span><span class="p">:</span>
-            <span class="nt">raw</span><span class="p">:</span>
-                <span class="nt">file</span><span class="p">:</span> <span class="s">&quot;/path/to/avatar/file&quot;</span>
-                <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://via.placeholder.com/200x200&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Override {% image avatar fill-200x200 as avatar_thumbnail %}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">avatar fill-200x200 as avatar_thumbnail</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/avatar/file&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://via.placeholder.com/200x200&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p>Note that the example above will only work if our <code>image</code> is a
 <a href="https://docs.djangoproject.com/en/2.0/howto/custom-template-tags/#simple-tags">"Simple tag"</a>.
 If it's a more custom implementation, we will need to specify output
 variable name explicitly like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
-    <span class="nt">image</span><span class="p">:</span>
-        <span class="c1"># Override {% image avatar fill-200x200 as avatar_thumbnail %}</span>
-        <span class="nt">avatar fill-200x200 as avatar_thumbnail</span><span class="p">:</span>
-            <span class="nt">target_var</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">avatar_thumbnail</span>
-            <span class="nt">raw</span><span class="p">:</span>
-                <span class="nt">file</span><span class="p">:</span> <span class="s">&quot;/path/to/avatar/file&quot;</span>
-                <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://via.placeholder.com/200x200&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Override {% image avatar fill-200x200 as avatar_thumbnail %}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">avatar fill-200x200 as avatar_thumbnail</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">target_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">avatar_thumbnail</span><span class="w"></span>
+<span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/avatar/file&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://via.placeholder.com/200x200&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p>Note the <code>target_var</code> field.</p>
@@ -933,7 +933,7 @@ variable name explicitly like this:</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>

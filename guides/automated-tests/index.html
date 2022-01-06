@@ -683,33 +683,33 @@ vnu dpl-rendered-patterns/**/*.html
 <p>One of the advantages of <code>render_patterns</code> is the ability for you to test the patterns without wrapping fragments in the base template, should this be more appropriate for your tests.</p>
 <h2 id="visual-regression-testing">Visual regression testing<a class="headerlink" href="#visual-regression-testing" title="Permanent link">&para;</a></h2>
 <p>Pattern libraries are a natural fit for automated visual regression tests. Here is an example <a href="https://github.com/garris/BackstopJS">BackstopJS</a> configuration file:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;viewports&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;tablet&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
-      <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mi">768</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="nt">&quot;scenarios&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;accordion.html&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/molecules/accordion/accordion.html&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;person_page.html&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/pages/people/person_page.html&quot;</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;bitmaps_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;backstop_data/bitmaps_reference&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;bitmaps_test&quot;</span><span class="p">:</span> <span class="s2">&quot;backstop_data/bitmaps_test&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;engine_scripts&quot;</span><span class="p">:</span> <span class="s2">&quot;backstop_data/engine_scripts&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;html_report&quot;</span><span class="p">:</span> <span class="s2">&quot;backstop_data/html_report&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ci_report&quot;</span><span class="p">:</span> <span class="s2">&quot;backstop_data/ci_report&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;engine&quot;</span><span class="p">:</span> <span class="s2">&quot;puppeteer&quot;</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;viewports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tablet&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;scenarios&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;accordion.html&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/molecules/accordion/accordion.html&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person_page.html&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/pages/people/person_page.html&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bitmaps_reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;backstop_data/bitmaps_reference&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bitmaps_test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;backstop_data/bitmaps_test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;engine_scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;backstop_data/engine_scripts&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;html_report&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;backstop_data/html_report&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ci_report&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;backstop_data/ci_report&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;puppeteer&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>Try this out by saving the file as <code>backstop.json</code>, then:</p>
@@ -745,7 +745,7 @@ pa11y-ci --config pa11y.config.js
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-21
+      Last update: 2022-01-06
     
   </small>
 </div>
