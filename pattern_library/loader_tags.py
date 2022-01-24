@@ -4,9 +4,7 @@ from django.template.loader_tags import ExtendsNode as DjangoExtendsNode
 from django.template.loader_tags import IncludeNode as DjangoIncludeNode
 from django.template.loader_tags import construct_relative_path
 
-from pattern_library.utils import (
-    get_pattern_context, is_pattern_library_context
-)
+from pattern_library.utils import get_pattern_context, is_pattern_library_context
 
 register = Library()
 
@@ -15,6 +13,7 @@ class ExtendsNode(DjangoExtendsNode):
     """
     A copy of Django's ExtendsNode that injects context from a file.
     """
+
     def render(self, context):
         if is_pattern_library_context(context):
             parent_name = self.parent_name.resolve(context)
@@ -58,11 +57,14 @@ class IncludeNode(DjangoIncludeNode):
     """
     A copy of Django's IncludeNode that injects context from a file.
     """
+
     def render(self, context):
         if is_pattern_library_context(context):
             template = self.template.resolve(context)
             pattern_context = get_pattern_context(template)
-            extra_context = {name: var.resolve(context) for name, var in self.extra_context.items()}
+            extra_context = {
+                name: var.resolve(context) for name, var in self.extra_context.items()
+            }
 
             if self.isolated_context:
                 context = context.new()
@@ -88,7 +90,7 @@ class IncludeNode(DjangoIncludeNode):
         return super().render(context)
 
 
-@register.tag('extends')
+@register.tag("extends")
 def do_extends(parser, token):
     """
     A copy of Django's built-in {% extends ... %} tag that uses our custom
@@ -101,11 +103,13 @@ def do_extends(parser, token):
     parent_name = parser.compile_filter(bits[1])
     nodelist = parser.parse()
     if nodelist.get_nodes_by_type(ExtendsNode):
-        raise TemplateSyntaxError("'%s' cannot appear more than once in the same template" % bits[0])
+        raise TemplateSyntaxError(
+            "'%s' cannot appear more than once in the same template" % bits[0]
+        )
     return ExtendsNode(nodelist, parent_name)
 
 
-@register.tag('include')
+@register.tag("include")
 def do_include(parser, token):
     """
     A copy of Django's built-in {% include ... %} tag that uses our custom
@@ -122,21 +126,27 @@ def do_include(parser, token):
     while remaining_bits:
         option = remaining_bits.pop(0)
         if option in options:
-            raise TemplateSyntaxError('The %r option was specified more '
-                                      'than once.' % option)
-        if option == 'with':
+            raise TemplateSyntaxError(
+                "The %r option was specified more " "than once." % option
+            )
+        if option == "with":
             value = token_kwargs(remaining_bits, parser, support_legacy=False)
             if not value:
-                raise TemplateSyntaxError('"with" in %r tag needs at least '
-                                          'one keyword argument.' % bits[0])
-        elif option == 'only':
+                raise TemplateSyntaxError(
+                    '"with" in %r tag needs at least ' "one keyword argument." % bits[0]
+                )
+        elif option == "only":
             value = True
         else:
-            raise TemplateSyntaxError('Unknown argument for %r tag: %r.' %
-                                      (bits[0], option))
+            raise TemplateSyntaxError(
+                "Unknown argument for %r tag: %r." % (bits[0], option)
+            )
         options[option] = value
-    isolated_context = options.get('only', False)
-    namemap = options.get('with', {})
+    isolated_context = options.get("only", False)
+    namemap = options.get("with", {})
     bits[1] = construct_relative_path(parser.origin.template_name, bits[1])
-    return IncludeNode(parser.compile_filter(bits[1]), extra_context=namemap,
-                       isolated_context=isolated_context)
+    return IncludeNode(
+        parser.compile_filter(bits[1]),
+        extra_context=namemap,
+        isolated_context=isolated_context,
+    )

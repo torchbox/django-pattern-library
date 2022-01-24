@@ -9,10 +9,7 @@ from .cm_utils import accepts_kwarg, get_app_submodules
 GENERIC_CM_KEY = "__generic__"
 ORDER_ATTR_NAME = "__cm_order"
 
-__all__ = [
-    "ContextModifierRegistry",
-    "register_context_modifier"
-]
+__all__ = ["ContextModifierRegistry", "register_context_modifier"]
 
 
 class ContextModifierRegistry(defaultdict):
@@ -22,7 +19,7 @@ class ContextModifierRegistry(defaultdict):
 
     def search_for_modifiers(self) -> None:
         if not self.searched_for_modifiers:
-            list(get_app_submodules('pattern_contexts'))
+            list(get_app_submodules("pattern_contexts"))
             self.searched_for_modifiers = True
 
     def register(self, func: Callable, template: str = None, order: int = 0) -> None:
