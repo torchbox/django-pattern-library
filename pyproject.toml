@@ -25,6 +25,7 @@ classifiers = [
     "Framework :: Django :: 3.0",
     "Framework :: Django :: 3.1",
     "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
 ]
 packages = [
     { include = "pattern_library" },
@@ -38,7 +39,7 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-Django = ">=2.2,<4.0"
+Django = ">=2.2,<4.1"
 PyYAML = ">=5.1,<7.0"
 Markdown = "^3.1"
 
