@@ -909,7 +909,7 @@ content defined in <code>patterns/atoms/images/image.yaml</code>.</p>
 <p>The downside of this approach is that we render the
 same template where an image can be rendered in a different size.
 So, if <code>patterns/atoms/images/image.html</code> has something like
-<code>&lt;img src="http://via.placeholder.com/200x200" width="200" height="200" alt="Placeholder"&gt;</code>
+<code>&lt;img src="https://source.unsplash.com/200x200?ocean" width="200" height="200" alt=""&gt;</code>
 inside, this means that we will render image of size <code>200x200</code> few times.</p>
 <p>Probably, in the majority of cases, it's ok to render the same
 template, but not when we are rendering images
@@ -936,11 +936,11 @@ of different sizes.</p>
 <span class="w">        </span><span class="c1"># Override {% image avatar fill-200x200 %}</span><span class="w"></span>
 <span class="w">        </span><span class="nt">avatar fill-200x200</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
-<span class="w">                </span><span class="no">&lt;img src=&quot;http://via.placeholder.com/200x200&quot; width=&quot;200&quot; height=&quot;200&quot; alt=&quot;Placeholder&quot;&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="no">&lt;img src=&quot;https://source.unsplash.com/200x200?ocean&quot; width=&quot;200&quot; height=&quot;200&quot; alt=&quot;&quot;&gt;</span><span class="w"></span>
 <span class="w">        </span><span class="c1"># Override {% image avatar fill-200x400 %}</span><span class="w"></span>
 <span class="w">        </span><span class="nt">avatar fill-200x400</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
-<span class="w">                </span><span class="no">&lt;img src=&quot;http://via.placeholder.com/200x400&quot; width=&quot;200&quot; height=&quot;400&quot; alt=&quot;Placeholder&quot;&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="no">&lt;img src=&quot;https://source.unsplash.com/200x400?ocean&quot; width=&quot;200&quot; height=&quot;400&quot; alt=&quot;&quot;&gt;</span><span class="w"></span>
 
 <span class="c1"># Override context, if needed</span><span class="w"></span>
 </code></pre></div>
@@ -969,7 +969,7 @@ without creating a custom object type.</p>
 <span class="w">        </span><span class="nt">avatar fill-200x200 as avatar_thumbnail</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"></span>
 <span class="w">                </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/avatar/file&quot;</span><span class="w"></span>
-<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://via.placeholder.com/200x200&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://source.unsplash.com/200x200?ocean&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p>Note that the example above will only work if our <code>image</code> is a
@@ -983,7 +983,7 @@ variable name explicitly like this:</p>
 <span class="w">            </span><span class="nt">target_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">avatar_thumbnail</span><span class="w"></span>
 <span class="w">            </span><span class="nt">raw</span><span class="p">:</span><span class="w"></span>
 <span class="w">                </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/avatar/file&quot;</span><span class="w"></span>
-<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://via.placeholder.com/200x200&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://source.unsplash.com/200x200?ocean&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p>Note the <code>target_var</code> field.</p>
