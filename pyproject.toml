@@ -53,7 +53,7 @@ Markdown = "^3.1"
 beautifulsoup4 = "^4.8"
 coverage = "^4.5"
 flake8 = "^3.7"
-isort = {version = "^4.3", extras = ["pyproject"]}
+isort = "^5.10.1"
 mkdocs = "^1.1.2"
 mkdocs-material = "^5.5.14"
 pymdown-extensions = "^8.0"
@@ -65,9 +65,10 @@ black = "^21.12b0"
 known_first_party = "pattern_library"
 known_django = "django"
 skip = ".tox,venv,migrations,node_modules"
+skip_gitignore = true
 sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 default_section = "THIRDPARTY"
-multi_line_output = 5
+profile = "black"
 
 [build-system]
 requires = ["poetry>=1.1.12"]
