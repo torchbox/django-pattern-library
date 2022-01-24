@@ -6,16 +6,17 @@
 
 - Support for Django 4.0 ([#164](https://github.com/torchbox/django-pattern-library/pull/164)).
 - Support for Python 3.10 ([#163](https://github.com/torchbox/django-pattern-library/pull/163)).
-- VS Code devcontainer for development [#178](https://github.com/torchbox/django-pattern-library/pull/178)
+- VS Code devcontainer for development ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
+- Documented the need to set `X_FRAME_OPTIONS = "SAMEORIGIN"` to see Django debug responses in the iframe UI ([#186](https://github.com/torchbox/django-pattern-library/pull/186)).
 
 ### Changed
 
-- Change Poetry version to be `>=1.1.12,<2` in Docker development setup (prevents `JSONDecodeError` issue under Python 3.10) [#178](https://github.com/torchbox/django-pattern-library/pull/178)
-- Move demo/test app pattern-library from `/pattern-library/` to `/` [#178](https://github.com/torchbox/django-pattern-library/pull/178)
+- Change Poetry version to be `>=1.1.12,<2` in Docker development setup (prevents `JSONDecodeError` issue under Python 3.10) ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
+- Move demo/test app pattern-library from `/pattern-library/` to `/` ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
 
 ### Removed
 
-- We no longer support Python 3.6, as it has reached its end of life ([#163](https://github.com/torchbox/django-pattern-library/pull/163).
+- We no longer support Python 3.6, as it has reached its end of life ([#163](https://github.com/torchbox/django-pattern-library/pull/163)).
 
 ## [0.6.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.6.0) - 2021-12-21
 
