@@ -1,5 +1,3 @@
-
-
 class PatternLibraryException(Exception):
     pass
 

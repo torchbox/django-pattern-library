@@ -14,7 +14,9 @@ import markdown
 import yaml
 
 from pattern_library import (
-    get_pattern_context_var_name, get_pattern_template_suffix, get_sections
+    get_pattern_context_var_name,
+    get_pattern_template_suffix,
+    get_sections,
 )
 from pattern_library.context_modifiers import registry
 from pattern_library.exceptions import TemplateIsNotPattern
@@ -55,7 +57,7 @@ def section_for(template_folder):
 
 
 def base_dict():
-    return {'templates_stored': [], 'template_groups': {}}
+    return {"templates_stored": [], "template_groups": {}}
 
 
 def order_dict(dictionary, key_sort=None):
@@ -69,8 +71,10 @@ def order_dict(dictionary, key_sort=None):
 
 
 def get_template_dirs():
-    template_dirs = [d for engines in settings.TEMPLATES for d in engines.get("DIRS", [])]
-    template_app_dirs = get_app_template_dirs('templates')
+    template_dirs = [
+        d for engines in settings.TEMPLATES for d in engines.get("DIRS", [])
+    ]
+    template_app_dirs = get_app_template_dirs("templates")
     template_dirs += template_app_dirs
     return template_dirs
 
@@ -100,7 +104,7 @@ def get_pattern_templates():
                 if is_pattern(pattern_path):
                     template = get_template(pattern_path)
                     pattern_config = get_pattern_config(pattern_path)
-                    pattern_name = pattern_config.get('name')
+                    pattern_name = pattern_config.get("name")
                     pattern_filename = os.path.relpath(
                         template.origin.template_name,
                         base_path,
@@ -120,40 +124,45 @@ def get_pattern_templates():
                 templates_to_store = templates
                 for folder in [section, *sub_folders.split(os.sep)]:
                     try:
-                        templates_to_store = templates_to_store['template_groups'][folder]
+                        templates_to_store = templates_to_store["template_groups"][
+                            folder
+                        ]
                     except KeyError:
-                        templates_to_store['template_groups'][folder] = base_dict()
-                        templates_to_store = templates_to_store['template_groups'][folder]
+                        templates_to_store["template_groups"][folder] = base_dict()
+                        templates_to_store = templates_to_store["template_groups"][
+                            folder
+                        ]
 
-                templates_to_store['templates_stored'].extend(found_templates)
+                templates_to_store["templates_stored"].extend(found_templates)
 
     # Order the templates alphabetically
-    for templates_objs in templates['template_groups'].values():
-        templates_objs['template_groups'] = order_dict(templates_objs['template_groups'])
+    for templates_objs in templates["template_groups"].values():
+        templates_objs["template_groups"] = order_dict(
+            templates_objs["template_groups"]
+        )
 
     # Order the top level by the sections
     section_order = [section for section, _ in get_sections()]
-    templates['template_groups'] = order_dict(
-        templates['template_groups'],
-        key_sort=lambda key: section_order.index(key)
+    templates["template_groups"] = order_dict(
+        templates["template_groups"], key_sort=lambda key: section_order.index(key)
     )
 
     return templates
 
 
 def get_pattern_config_str(template_name):
-    replace_pattern = '{}$'.format(get_pattern_template_suffix())
-    context_path = re.sub(replace_pattern, '', template_name)
+    replace_pattern = "{}$".format(get_pattern_template_suffix())
+    context_path = re.sub(replace_pattern, "", template_name)
 
-    context_name = context_path + '.yaml'
+    context_name = context_path + ".yaml"
     try:
         context_file = get_template(context_name)
     except TemplateDoesNotExist:
-        context_name = context_path + '.yml'
+        context_name = context_path + ".yml"
         try:
             context_file = get_template(context_name)
         except TemplateDoesNotExist:
-            return ''
+            return ""
 
     return context_file.render()
 
@@ -180,7 +189,7 @@ def mark_context_strings_safe(value, parent=None, subscript=None):
 
 def get_pattern_context(template_name):
     config = get_pattern_config(template_name)
-    context = config.get('context', {})
+    context = config.get("context", {})
 
     mark_context_strings_safe(context)
 
@@ -188,16 +197,16 @@ def get_pattern_context(template_name):
 
 
 def get_pattern_markdown(template_name):
-    replace_pattern = '{}$'.format(get_pattern_template_suffix())
-    md_path = re.sub(replace_pattern, '', template_name)
+    replace_pattern = "{}$".format(get_pattern_template_suffix())
+    md_path = re.sub(replace_pattern, "", template_name)
 
-    md_name = md_path + '.md'
+    md_name = md_path + ".md"
     try:
         md_file = get_template(md_name)
     except TemplateDoesNotExist:
-        return ''
+        return ""
 
-    with open(md_file.origin.name, 'r', encoding='utf-8') as f:
+    with open(md_file.origin.name, "r", encoding="utf-8") as f:
         return markdown.markdown(f.read())
 
 
@@ -230,7 +239,9 @@ def get_template_ancestors(template_name, context=None, ancestors=None):
         if isinstance(node, ExtendsNode):
             parent_template_name = node.parent_name.resolve(context)
             ancestors.append(parent_template_name)
-            get_template_ancestors(parent_template_name, context=context, ancestors=ancestors)
+            get_template_ancestors(
+                parent_template_name, context=context, ancestors=ancestors
+            )
             break
 
     return ancestors
