@@ -149,7 +149,11 @@ def get_pattern_config_str(template_name):
     try:
         context_file = get_template(context_name)
     except TemplateDoesNotExist:
-        return ''
+        context_name = context_path + '.yml'
+        try:
+            context_file = get_template(context_name)
+        except TemplateDoesNotExist:
+            return ''
 
     return context_file.render()
 
