@@ -29,8 +29,8 @@ Pattern libraries will change your workflow for the better:
 
 The pattern library is dependent on Django for rendering – but also supports exporting as a static site if needed. Try out our online demo:
 
-- For a component, [accordion.html](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/molecules/accordion/accordion.html)
-- For a page-level template, [person_page.html](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/pages/people/person_page.html)
+- For a component, [accordion.html](https://torchbox.github.io/django-pattern-library/demo/pattern/patterns/molecules/accordion/accordion.html)
+- For a page-level template, [person_page.html](https://torchbox.github.io/django-pattern-library/demo/pattern/patterns/pages/people/person_page.html)
 
 ## Why this exists
 

@@ -12,6 +12,7 @@ services:
         source: .
         target: /app
         consistency: delegated
+    command: tail -f /dev/null
 
   frontend:
     command: npm start

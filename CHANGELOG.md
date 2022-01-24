@@ -6,6 +6,12 @@
 
 - Support for Django 4.0 ([#164](https://github.com/torchbox/django-pattern-library/pull/164)).
 - Support for Python 3.10 ([#163](https://github.com/torchbox/django-pattern-library/pull/163)).
+- VS Code devcontainer for development [#178](https://github.com/torchbox/django-pattern-library/pull/178)
+
+### Changed
+
+- Change Poetry version to be `>=1.1.12,<2` in Docker development setup (prevents `JSONDecodeError` issue under Python 3.10) [#178](https://github.com/torchbox/django-pattern-library/pull/178)
+- Move demo/test app pattern-library from `/pattern-library/` to `/` [#178](https://github.com/torchbox/django-pattern-library/pull/178)
 
 ### Removed
 
@@ -29,7 +35,7 @@ This addresses the following limitations of the pattern library:
 - [#113 Django form fields not well supported](https://github.com/torchbox/django-pattern-library/issues/113)
 - [#135 Competing tag/context config for image provides inconsistent result](https://github.com/torchbox/django-pattern-library/issues/135)
 
-View the [documentation](https://torchbox.github.io/django-pattern-library/guides/defining-template-context/#modifying-template-contexts-with-python), as well as demos leveraging the new capability: [forms](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/pages/forms/example_form.html) (see [forms and fields recipe](https://torchbox.github.io/django-pattern-library/recipes/forms-and-fields/)), and [pagination](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/pages/search/search.html) (see [pagination recipe](https://torchbox.github.io/django-pattern-library/recipes/pagination/)).
+View the [documentation](https://torchbox.github.io/django-pattern-library/guides/defining-template-context/#modifying-template-contexts-with-python), as well as demos leveraging the new capability: [forms](https://torchbox.github.io/django-pattern-library/demo/pattern/patterns/pages/forms/example_form.html) (see [forms and fields recipe](https://torchbox.github.io/django-pattern-library/recipes/forms-and-fields/)), and [pagination](https://torchbox.github.io/django-pattern-library/demo/pattern/patterns/pages/search/search.html) (see [pagination recipe](https://torchbox.github.io/django-pattern-library/recipes/pagination/)).
 
 ## [0.4.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.4.0) - 2021-05-20
 
