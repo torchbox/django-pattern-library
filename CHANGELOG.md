@@ -13,7 +13,7 @@
 
 - Change Poetry version to be `>=1.1.12,<2` in Docker development setup (prevents `JSONDecodeError` issue under Python 3.10) ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
 - Move demo/test app pattern-library from `/pattern-library/` to `/` ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
-- Allow `.yml` extension for YAML files. ([#161](https://github.com/torchbox/django-pattern-library/issues/161))
+- Allow `.yml` extension for YAML files ([#161](https://github.com/torchbox/django-pattern-library/issues/161)).
 
 ### Removed
 
