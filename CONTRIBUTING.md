@@ -131,4 +131,4 @@ On the `main` branch:
 
    Verify that the pattern library is working as you expect it to on your local build.
 
-8. Upload the latest version to PyPI (requires credentials): `poetry publish`
+8. Upload the latest version to PyPI (requires credentials, ask someone named in `pyproject.toml` authors): `poetry publish`
