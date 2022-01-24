@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/django-pattern-library.svg)](https://pypi.org/project/django-pattern-library/) [![PyPI downloads](https://img.shields.io/pypi/dm/django-pattern-library.svg)](https://pypi.org/project/django-pattern-library/) [![Build status](https://github.com/torchbox/django-pattern-library/workflows/CI/badge.svg)](https://github.com/torchbox/django-pattern-library/actions) [![Total alerts](https://img.shields.io/lgtm/alerts/g/torchbox/django-pattern-library.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/torchbox/django-pattern-library/alerts/)
 
-> UI pattern libraries for Django templates. Try our [online demo](https://torchbox.github.io/django-pattern-library/demo/pattern-library/).
+> UI pattern libraries for Django templates. Try our [online demo](https://torchbox.github.io/django-pattern-library/demo/).
 
 ![Screenshot of the pattern library UI, with navigation, pattern rendering, and configuration](https://raw.githubusercontent.com/torchbox/django-pattern-library/main/.github/pattern-library-screenshot.webp)
 
@@ -31,8 +31,8 @@ Learn more by watching our presentation – [Reusable UI components: A journey f
 
 The pattern library is dependent on Django for rendering – but also supports exporting as a static site if needed. Try out our online demo:
 
-- For a component, [accordion.html](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/molecules/accordion/accordion.html)
-- For a page-level template, [person_page.html](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/pages/people/person_page.html)
+- For a component, [accordion.html](https://torchbox.github.io/django-pattern-library/demo/pattern/patterns/molecules/accordion/accordion.html)
+- For a page-level template, [person_page.html](https://torchbox.github.io/django-pattern-library/demo/pattern/patterns/pages/people/person_page.html)
 
 ## Documentation
 

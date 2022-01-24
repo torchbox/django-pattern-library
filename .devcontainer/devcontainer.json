@@ -1,0 +1,27 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/docker-existing-docker-compose
+{
+  "name": "django-pattern-library devcontainer",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "web",
+  "workspaceFolder": "/app",
+  "settings": {
+      "terminal.integrated.profiles.linux": {
+          "bash": {
+              "path": "bash",
+              "icon": "terminal-bash"
+          },
+      },
+      "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+      "editorconfig.editorconfig",
+      "github.vscode-pull-request-github",
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "syler.sass-indented"
+  ],
+  "remoteUser": "dpl"
+}

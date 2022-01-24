@@ -81,12 +81,12 @@ jobs:
       # Docs website build.
       - run: poetry run mkdocs build --strict
       # Demo website build.
-      - run: wget --mirror --page-requisites --no-parent --no-verbose http://localhost:8000/django-pattern-library/demo/pattern-library/
+      - run: wget --mirror --page-requisites --no-parent --no-verbose http://localhost:8000/django-pattern-library/demo/
       - run: mv localhost:8000/django-pattern-library/demo site
       # Demo render_patterns.
       - run: poetry run django-admin render_patterns --settings=tests.settings.production --pythonpath=. --wrap-fragments --output=site/dpl-rendered-patterns
       # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `main`.
-      - run: cat pyproject.toml| awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
+      - run: cat pyproject.toml | awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
       - run: poetry build
       - run: mv dist site
       - uses: actions/upload-artifact@v2

@@ -2,9 +2,12 @@
 
 This document contains information for anyone wishing to contribute to the project.
 
-## Install
+
+
+## Installation
 
 The repo includes a simple test application that can be run locally to develop the pattern library itself.
+
 First, clone the repo:
 
 ```sh
@@ -12,9 +15,37 @@ git clone git@github.com:torchbox/django-pattern-library.git
 cd django-pattern-library
 ```
 
-### Run a local build with Poetry
+Once you have the code, there are several ways of running the project:
 
-We use [Poetry](https://poetry.eustace.io/docs/) to manage Python dependencies, so make sure you've got it installed.
+- [In a VS Code devcontainer](#vs-code-devcontainer)
+- [In Docker, via docker-compose](#docker-compose)
+- [Locally, with Poetry](#run-locally-with-poetry)
+
+### VS Code devcontainer
+
+For users of Docker and VS Code, there is a [devcontainer](https://code.visualstudio.com/docs/remote/containers) setup included in the repository
+that will automatically install the Python dependencies and start the frontend tooling.
+
+Once the container is built, open a terminal with VS Code and run `django-admin runserver` and click the URL (normally http://127.0.0.1:8000/) to open the app in your browser. You'll see a 404 page, because there's nothing at `/`, add `pattern-libary/` to the end of the URL to view the demo app.
+
+### `docker-compose`
+
+First [install Docker and docker-compose](https://docs.docker.com/compose/install/), and make sure Docker is started. Then:
+
+```sh
+# Install the front-end tooling in the docker container:
+docker-compose run frontend npm ci
+# Bring up the web container and run the front-end tooling in watch mode:
+docker-compose up
+# Run the development server:
+docker-compose exec web django-admin runserver 0.0.0.0:8000
+```
+
+Once the server is started, the pattern library will be available at `http://localhost:8000/`.
+
+### Run locally with Poetry
+
+We use [Poetry](https://python-poetry.org/docs/) to manage Python dependencies, so make sure you've got it installed.
 
 Then you can install the dependencies and run the test app:
 
@@ -26,24 +57,13 @@ poetry run django-admin runserver --settings=tests.settings.dev --pythonpath=.
 poetry run django-admin render_patterns --settings=tests.settings.dev --pythonpath=. --dry-run --verbosity 2
 ```
 
-### Run a local build with docker
-
-First [install Docker and docker-compose](https://docs.docker.com/compose/install/), and make sure Docker is started.
-
-```sh
-# Install the front-end tooling in the docker container:
-docker-compose run frontend npm ci
-# Start the dev server and run the front-end tooling in watch mode:
-docker-compose up
-```
-
-Once the server is started, the pattern library will be available at `http://localhost:8000/pattern-library/`.
-
-### Front-end tooling
+## Front-end tooling
 
 If you want to make changes to the front-end assets (located in the `pattern_library/static/pattern_library/src` folder), you'll need to ensure the tooling is set up in order to build the assets.
 
-If you are using Docker you will already have the tooling set up and running in watch mode. Otherwise,
+If you are using Docker, you will already have the tooling set up and running in watch mode. You can view the logs with `docker-compose logs frontend` from your host machine.
+
+Otherwise, we recommend using [`nvm`](https://github.com/nvm-sh/nvm):
 
 ```sh
 # Install the correct version of Node
@@ -56,7 +76,7 @@ npm run build
 npm run start
 ```
 
-### Documentation
+## Documentation
 
 The project’s documentation website is built with [MkDocs](https://www.mkdocs.org/).
 

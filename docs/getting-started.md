@@ -1,6 +1,6 @@
 # Getting started
 
-> If you just want to see django-pattern-library up and running, have a look at our [online demo](https://torchbox.github.io/django-pattern-library/demo/pattern-library/pattern/patterns/molecules/accordion/accordion.html).
+> If you just want to see django-pattern-library up and running, have a look at our [online demo](https://torchbox.github.io/django-pattern-library/demo/pattern/patterns/molecules/accordion/accordion.html).
 
 ## Installation
 

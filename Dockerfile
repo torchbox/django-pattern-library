@@ -1,9 +1,9 @@
-FROM python:3.7
+FROM python:3.10
 
 WORKDIR /app
 
-RUN useradd dpl && \
-    pip install --pre poetry && \
+RUN useradd --create-home dpl && \
+    pip install "poetry>=1.1.12,<2" && \
     poetry config virtualenvs.create false
 
 COPY pyproject.toml ./
