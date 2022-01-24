@@ -62,6 +62,10 @@ See [#138](https://github.com/torchbox/django-pattern-library/issues/138). For e
 
 This can’t be mocked for all usage of `include_block`.
 
+## Jinja2 support
+
+Or lack thereof! If you’re interested in this, please share your thoughts with us on [#180](https://github.com/torchbox/django-pattern-library/discussions/180).
+
 ## Past limitations
 
 ### No way to specify objects that have attributes and support iteration
