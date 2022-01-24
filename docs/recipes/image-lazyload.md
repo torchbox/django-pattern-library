@@ -13,11 +13,11 @@ tags:
     slide.image fill-100x71 as imageSmall:
       target_var: imageSmall
       raw:
-        url: '//placekitten.com/100/71'
+        url: 'https://source.unsplash.com/100x71?ocean'
     slide.image fill-829x585 as imageLarge:
       target_var: imageLarge
       raw:
-        url: '//placekitten.com/829/585'
+        url: 'https://source.unsplash.com/829x585?ocean'
         width: '829'
         height: '585'
 ```

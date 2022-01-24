@@ -161,7 +161,7 @@ content defined in `patterns/atoms/images/image.yaml`.
 The downside of this approach is that we render the
 same template where an image can be rendered in a different size.
 So, if `patterns/atoms/images/image.html` has something like
-`<img src="http://via.placeholder.com/200x200" width="200" height="200" alt="Placeholder">`
+`<img src="https://source.unsplash.com/200x200?ocean" width="200" height="200" alt="">`
 inside, this means that we will render image of size `200x200` few times.
 
 Probably, in the majority of cases, it's ok to render the same
@@ -194,11 +194,11 @@ tags:
         # Override {% image avatar fill-200x200 %}
         avatar fill-200x200:
             raw: >
-                <img src="http://via.placeholder.com/200x200" width="200" height="200" alt="Placeholder">
+                <img src="https://source.unsplash.com/200x200?ocean" width="200" height="200" alt="">
         # Override {% image avatar fill-200x400 %}
         avatar fill-200x400:
             raw: >
-                <img src="http://via.placeholder.com/200x400" width="200" height="400" alt="Placeholder">
+                <img src="https://source.unsplash.com/200x400?ocean" width="200" height="400" alt="">
 
 # Override context, if needed
 ```
@@ -233,7 +233,7 @@ tags:
         avatar fill-200x200 as avatar_thumbnail:
             raw:
                 file: "/path/to/avatar/file"
-                url: "http://via.placeholder.com/200x200"
+                url: "https://source.unsplash.com/200x200?ocean"
 ```
 
 Note that the example above will only work if our `image` is a
@@ -249,7 +249,7 @@ tags:
             target_var: avatar_thumbnail
             raw:
                 file: "/path/to/avatar/file"
-                url: "http://via.placeholder.com/200x200"
+                url: "https://source.unsplash.com/200x200?ocean"
 ```
 
 Note the `target_var` field.

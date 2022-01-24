@@ -1,5 +1,7 @@
 ## Image include
 
+To create test cases for images, we recommend using an image hotlinking service like [Unsplash](https://unsplash.com/) or [placeholder.com](https://placeholder.com/).
+
 ```jinja2
 <img src="{{ imageSmall.url }}" data-src="{{ imageLarge.url }}" width="{{ width }}" height="{{ height }}" alt="{{ imageLarge.alt }}" class="{{ classList }} lazyload">
 ```
