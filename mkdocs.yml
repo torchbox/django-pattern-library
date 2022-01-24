@@ -27,6 +27,9 @@ markdown_extensions:
 plugins:
   - search
   - git-revision-date
+  - redirects:
+      redirect_maps:
+        'reference/related-projects.md': 'community/related-projects.md'
 nav:
   - 'Home': 'index.md'
   - 'Getting started': 'getting-started.md'
@@ -51,8 +54,8 @@ nav:
     - 'API and settings': 'reference/api.md'
     - 'Concepts': 'reference/concepts.md'
     - 'Known issues': 'reference/known-issues.md'
-    - 'Related projects': 'reference/related-projects.md'
   - 'Community':
+    - 'Related projects': 'community/related-projects.md'
     - 'Code of conduct': 'community/code-of-conduct.md'
     - 'Security policy': 'community/security-policy.md'
   - 'Online demo': '/django-pattern-library/demo/pattern-library/'
