@@ -115,8 +115,8 @@ def get_pattern_templates():
                     found_templates.append(template)
 
             if found_templates:
-                sub_folders = os.path.relpath(root, lookup_dir)
-                sub_folders = os.path.relpath(sub_folders, path)  # TODO improve this
+                lookup_dir_relpath = os.path.relpath(root, lookup_dir)
+                sub_folders = os.path.relpath(lookup_dir_relpath, path)
                 templates_to_store = templates
                 for folder in [section, *sub_folders.split(os.sep)]:
                     try:
