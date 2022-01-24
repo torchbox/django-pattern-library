@@ -75,4 +75,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Preparation for Django 5.0 change.
+USE_TZ = False
+
 GITHUB_PAGES_EXPORT = False
