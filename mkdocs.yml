@@ -55,6 +55,7 @@ nav:
     - 'Concepts': 'reference/concepts.md'
     - 'Known issues': 'reference/known-issues.md'
   - 'Community':
+    - 'Support': 'community/support.md'
     - 'Related projects': 'community/related-projects.md'
     - 'Code of conduct': 'community/code-of-conduct.md'
     - 'Security policy': 'community/security-policy.md'
