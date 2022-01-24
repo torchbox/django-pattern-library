@@ -35,6 +35,9 @@ jobs:
           - python: "3.10"
             # Skip testing Django 4.0, already tested in previous workflow job.
             toxenv: py310-dj32,py310-djmain
+            # Tentative support for next Python pre-release.
+          - python: "3.11.0-alpha.4"
+            toxenv: py311-dj40
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
