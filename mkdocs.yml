@@ -52,4 +52,6 @@ nav:
     - 'Concepts': 'reference/concepts.md'
     - 'Known issues': 'reference/known-issues.md'
     - 'Related projects': 'reference/related-projects.md'
+  - 'Community':
+    - 'Code of conduct': 'community/code-of-conduct.md'
   - 'Online demo': '/django-pattern-library/demo/pattern-library/'
