@@ -38,6 +38,11 @@ exclude = [
     'pattern_library/static/pattern_library/src/**/*',
 ]
 
+[tool.poetry.urls]
+"Demo" = "https://torchbox.github.io/django-pattern-library/demo/"
+"Support" = "https://github.com/torchbox/django-pattern-library/discussions"
+"Issues" = "https://github.com/torchbox/django-pattern-library/issues"
+
 [tool.poetry.dependencies]
 python = "^3.7"
 Django = ">=2.2,<4.1"
