@@ -54,4 +54,5 @@ nav:
     - 'Related projects': 'reference/related-projects.md'
   - 'Community':
     - 'Code of conduct': 'community/code-of-conduct.md'
+    - 'Security policy': 'community/security-policy.md'
   - 'Online demo': '/django-pattern-library/demo/pattern-library/'
