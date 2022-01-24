@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## Added
+
+- Support for Django 4.0 ([#164](https://github.com/torchbox/django-pattern-library/pull/164)).
+- Support for Python 3.10 ([#163](https://github.com/torchbox/django-pattern-library/pull/163)).
+
+### Removed
+
+- We no longer support Python 3.6, as it has reached its end of life ([#163](https://github.com/torchbox/django-pattern-library/pull/163).
+
 ## [0.6.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.6.0) - 2021-12-21
 
 - Make `default_app_config conditional` to avoid [deprecation warnings](https://docs.djangoproject.com/en/3.2/ref/applications/#for-application-authors) for Django versions >= 3.2 ([#153](https://github.com/torchbox/django-pattern-library/issues/153), [#160](https://github.com/torchbox/django-pattern-library/pull/160)).
