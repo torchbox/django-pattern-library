@@ -3,7 +3,8 @@ name = "django-pattern-library"
 version = "0.6.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 authors = [
-    "Ben Dickinson <ben.dickinson@torchbox.com>"
+    "Ben Dickinson <ben.dickinson@torchbox.com>",
+    "Thibaud Colas <thibaud.colas@torchbox.com>",
 ]
 license = "BSD-3-Clause"
 readme = "README.md"
