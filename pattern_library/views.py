@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.utils.html import escape
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic.base import TemplateView, View
+from django.views.generic.base import TemplateView
 
 from pattern_library import get_base_template_names, get_pattern_base_template_name
 from pattern_library.exceptions import PatternLibraryEmpty, TemplateIsNotPattern
@@ -111,7 +111,9 @@ def render_pattern_api(request):
     config = data["config"]
 
     try:
-        rendered_pattern = render_pattern(request, template_name, allow_non_patterns=False, config=config)
+        rendered_pattern = render_pattern(
+            request, template_name, allow_non_patterns=False, config=config
+        )
     except TemplateIsNotPattern:
         raise Http404
 
