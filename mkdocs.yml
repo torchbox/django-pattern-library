@@ -50,6 +50,7 @@ nav:
     - 'Inclusion tags': 'recipes/inclusion-tags.md'
     - 'Looping for tags': 'recipes/looping-for-tags.md'
     - 'Pagination': 'recipes/pagination.md'
+    - 'API rendering': 'recipes/api-rendering.md'
   - 'Reference':
     - 'API and settings': 'reference/api.md'
     - 'Concepts': 'reference/concepts.md'

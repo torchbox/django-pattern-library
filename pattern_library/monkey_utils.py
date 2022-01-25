@@ -30,8 +30,7 @@ def override_tag(register, name, default_html=None):
                 tag_overridden = False
                 result = ""
 
-                # Load pattern's config
-                current_template_name = parser.origin.template_name
+                # Get overriden tag config.
                 tag_overrides = context.get("__pattern_library_tag_overrides", {})
 
                 # Extract values for lookup from the token
@@ -87,7 +86,7 @@ def override_tag(register, name, default_html=None):
                     logger.warning(
                         'No default or stub data defined for the "%s" tag in the "%s" template',
                         tag_name,
-                        current_template_name,
+                        parser.origin.template_name,
                     )
 
             return original_node_render(context)
