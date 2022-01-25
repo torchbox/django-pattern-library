@@ -2,23 +2,31 @@
 
 ## [Unreleased]
 
+## [0.7.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.7.0) - 2022-01-25
+
 ## Added
 
+- Add a way to customise rendering of a pattern with [`is_pattern_library`](https://torchbox.github.io/django-pattern-library/reference/api/#is_pattern_library) context variable ([#156](https://github.com/torchbox/django-pattern-library/issues/156), [#167](https://github.com/torchbox/django-pattern-library/pull/167)).
 - Support for Django 4.0 ([#164](https://github.com/torchbox/django-pattern-library/pull/164)).
+- Tentative support for Django 4.1 ([#185](https://github.com/torchbox/django-pattern-library/pull/185)).
 - Support for Python 3.10 ([#163](https://github.com/torchbox/django-pattern-library/pull/163)).
+- Tentative support for Python 3.11 ([#185](https://github.com/torchbox/django-pattern-library/pull/185)).
 - VS Code devcontainer for development ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
 - Documented the need to set `X_FRAME_OPTIONS = "SAMEORIGIN"` to see Django debug responses in the iframe UI ([#186](https://github.com/torchbox/django-pattern-library/pull/186)).
+- New `/api/v1/render-pattern` [API endpoint to render patterns](https://torchbox.github.io/django-pattern-library/recipes/api-rendering/) via POST requests, with the pattern’s context and tag overrides as a JSON body ([#104](https://github.com/torchbox/django-pattern-library/issues/104), [#168](https://github.com/torchbox/django-pattern-library/pull/168)).
 
 ### Changed
 
 - Change Poetry version to be `>=1.1.12,<2` in Docker development setup (prevents `JSONDecodeError` issue under Python 3.10) ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
 - Move demo/test app pattern-library from `/pattern-library/` to `/` ([#178](https://github.com/torchbox/django-pattern-library/pull/178)).
-- Allow `.yml` extension for YAML files ([#161](https://github.com/torchbox/django-pattern-library/issues/161)).
+- Allow `.yml` extension for YAML files ([#161](https://github.com/torchbox/django-pattern-library/issues/161), [#169](https://github.com/torchbox/django-pattern-library/pull/169)).
 - Python files are now formatted by `black` ([#187](https://github.com/torchbox/django-pattern-library/pull/187)).
+- Fix potential Django 4.0 compatibility issue for components using non-string values in tag overrides ([#166](https://github.com/torchbox/django-pattern-library/issues/166), [#188](https://github.com/torchbox/django-pattern-library/pull/188)).
 
 ### Removed
 
 - We no longer support Python 3.6, as it has reached its end of life ([#163](https://github.com/torchbox/django-pattern-library/pull/163)).
+- Remove support for IE11 in pattern library UI ([#151](https://github.com/torchbox/django-pattern-library/issue/151), [#162](https://github.com/torchbox/django-pattern-library/pull/162)).
 
 ## [0.6.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.6.0) - 2021-12-21
 
