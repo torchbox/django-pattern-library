@@ -125,6 +125,7 @@ class ContextModifierTestCase(SimpleTestCase):
             context={
                 "atom_var": "atom_var value from test_atom.yaml",
                 "is_pattern_library": True,
+                "__pattern_library_tag_overrides": {},
                 "foo": "bar",
                 "beep": "boop",
             },
