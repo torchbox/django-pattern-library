@@ -116,3 +116,32 @@ class ViewsTestCase(SimpleTestCase):
             ),
             "base content - extended content",
         )
+
+
+class APIViewsTestCase(SimpleTestCase):
+    def test_renders_with_tag_overrides(self):
+        api_endpoint = reverse("pattern_library:render_pattern_api")
+        response = self.client.post(
+            api_endpoint,
+            content_type="application/json",
+            data={
+                "template_name": "patterns/molecules/button/button.html",
+                "config": {
+                    "context": {"target_page": {"title": "API"}},
+                    "tags": {"pageurl": {"target_page": {"raw": "/hello-api"}}},
+                },
+            },
+        )
+        self.assertContains(response, '/hello-api')
+
+    def test_404(self):
+        api_endpoint = reverse("pattern_library:render_pattern_api")
+        response = self.client.post(
+            api_endpoint,
+            content_type="application/json",
+            data={
+                "template_name": "doesnotexist.html",
+                "config": {},
+            },
+        )
+        self.assertEqual(response.status_code, 404)
