@@ -2,10 +2,7 @@ import logging
 
 from django.template.library import SimpleNode
 
-from pattern_library.utils import (
-    is_pattern_library_context,
-    render_pattern,
-)
+from pattern_library.utils import is_pattern_library_context, render_pattern
 
 logger = logging.getLogger(__name__)
 UNSPECIFIED = object()

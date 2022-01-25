@@ -132,7 +132,7 @@ class APIViewsTestCase(SimpleTestCase):
                 },
             },
         )
-        self.assertContains(response, '/hello-api')
+        self.assertContains(response, "/hello-api")
 
     def test_404(self):
         api_endpoint = reverse("pattern_library:render_pattern_api")

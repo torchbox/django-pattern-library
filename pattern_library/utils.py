@@ -217,11 +217,11 @@ def render_pattern(request, template_name, allow_non_patterns=False, config=None
     if not config:
         config = get_pattern_config(template_name)
 
-    context = config.get('context', {})
-    tags = config.get('tags', {})
+    context = config.get("context", {})
+    tags = config.get("tags", {})
     mark_context_strings_safe(context)
     context[get_pattern_context_var_name()] = True
-    context['__pattern_library_tag_overrides'] = tags
+    context["__pattern_library_tag_overrides"] = tags
     for modifier in registry.get_for_template(template_name):
         modifier(context=context, request=request)
     return render_to_string(template_name, request=request, context=context)
