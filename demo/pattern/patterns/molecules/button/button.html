@@ -372,8 +372,8 @@
     <section>
         <div class="wrapper wrapper--pattern-header">
             <h3 class="heading">
-                <a href="/django-pattern-library/demo/render-pattern/patterns/atoms/tags_test_atom/tags_test_atom.html">
-                    patterns/atoms/tags_test_atom/tags_test_atom.html
+                <a href="/django-pattern-library/demo/render-pattern/patterns/molecules/button/button.html">
+                    patterns/molecules/button/button.html
                     <svg class="icon icon--external" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h48v48h-48z" fill="none"/><path d="M38 38h-28v-28h14v-4h-14c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-14h-4v14zm-10-32v4h7.17l-19.66 19.66 2.83 2.83 19.66-19.66v7.17h4v-14h-14z"/></svg>
                 </a>
             </h3>
@@ -388,7 +388,7 @@
             </div>
         </div>
 
-        <iframe class="iframe js-iframe is-animatable" src="/django-pattern-library/demo/render-pattern/patterns/atoms/tags_test_atom/tags_test_atom.html" title="Iframe pattern"></iframe>
+        <iframe class="iframe js-iframe is-animatable" src="/django-pattern-library/demo/render-pattern/patterns/molecules/button/button.html" title="Iframe pattern"></iframe>
 
         <div class="tabbed-content">
             <ul class="tabbed-content__list">
@@ -407,43 +407,21 @@
             <div class="tabbed-content__tabs">
                 <div id="tab-1" class="tabbed-content__item tabbed-content__item--active">
                     <pre><code class="code django">{% load test_tags %}
-
-SAND{% error_tag empty_string %}WICH
-SAND{% error_tag none %}WICH
-SAND{% error_tag zero %}WICH
-
-POTA{% default_html_tag page.url %}TO 
-POTA{% default_html_tag page.child.url %}TO
-POTA{% default_html_tag None %}TO
-
-POTA{% default_html_tag_falsey empty_string %}TO1
-POTA{% default_html_tag_falsey none %}TO2
-POTA{% default_html_tag_falsey zero %}TO3</code></pre>
+&lt;a href=&quot;{% if target_url %}{{ target_url }}{% else %}{% pageurl target_page %}{% endif %}&quot; class=&quot;button&quot;&gt;
+    {% if label %}{{ label }}{% else %}{{ target_page.title }}{% endif %}
+&lt;/a&gt;
+</code></pre>
                 </div>
 
                 <div id="tab-2" class="tabbed-content__item">
-                    <pre><code class="code yaml">tags:
-  error_tag:
-    empty_string:
-      raw: &#x27;&#x27;
-    none:
-      raw: &#x27;None&#x27;
-    zero:
-      raw: &#x27;0&#x27;
-  default_html_tag:
-    page.url:
-      raw: &quot;example&quot;
-    page.child.url:
-      raw: &quot;another_example&quot;
-    # None handled by default html value.
-  default_html_tag_falsey:
-    empty_string:
-      raw: &#x27;&#x27;
-    none:
-      raw: &#x27;None&#x27;
-    zero:
-      raw: &#x27;0&#x27;
-  </code></pre>
+                    <pre><code class="code yaml">context:
+  target_page:
+    title: Get started
+tags:
+  pageurl:
+    target_page:
+      raw: /get-started
+</code></pre>
                 </div>
 
                 <div id="tab-3" class="tabbed-content__item">
