@@ -1,5 +1,7 @@
 import logging
+from typing import Optional
 
+import django
 from django.template.library import SimpleNode
 
 from pattern_library.utils import (
@@ -12,11 +14,11 @@ logger = logging.getLogger(__name__)
 UNSPECIFIED = object()
 
 
-def override_tag(register, name, default_html=None):
+def override_tag(
+    register: django.template.Library, name: str, default_html: Optional[str] = None
+):
     """
     An utility that helps you override original tags for use in your pattern library.
-
-    Accepts the register argument which should be an instance of django.template.Library.
     """
 
     original_tag = register.tags[name]
