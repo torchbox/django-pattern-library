@@ -78,8 +78,9 @@ def override_tag(register, name, default_html=None):
                         context[target_var] = result
                         return ""
 
-                    # Render result instead of the tag
-                    return result
+                    # Render result instead of the tag, as a string.
+                    # See https://github.com/torchbox/django-pattern-library/issues/166.
+                    return str(result)
                 elif default_html is not UNSPECIFIED:
                     # Render provided default;
                     # if no stub data supplied.
