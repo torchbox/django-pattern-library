@@ -104,6 +104,12 @@ class RenderPatternView(TemplateView):
         return HttpResponse(rendered_pattern)
 
 
+def patterns_index_api(request):
+    patterns = get_pattern_templates(store_template=False)
+
+    return HttpResponse(json.dumps(patterns), content_type="application/json")
+
+
 @csrf_exempt
 def render_pattern_api(request):
     data = json.loads(request.body.decode("utf-8"))

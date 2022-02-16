@@ -79,7 +79,7 @@ def get_template_dirs():
     return template_dirs
 
 
-def get_pattern_templates():
+def get_pattern_templates(store_template=True):
     templates = base_dict()
     template_dirs = get_template_dirs()
 
@@ -116,7 +116,13 @@ def get_pattern_templates():
 
                     template.pattern_filename = pattern_filename
 
-                    found_templates.append(template)
+                    if store_template:
+                        found_templates.append(template)
+                    else:
+                        found_templates.append({
+                            "pattern_name": pattern_name,
+                            "pattern_filename": pattern_filename,
+                        })
 
             if found_templates:
                 lookup_dir_relpath = os.path.relpath(root, lookup_dir)

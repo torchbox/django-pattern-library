@@ -20,5 +20,6 @@ urlpatterns = [
         name="render_pattern",
     ),
     # API rendering
+    path("api/v1/", views.patterns_index_api, name="index_api"),
     path("api/v1/render-pattern", views.render_pattern_api, name="render_pattern_api"),
 ]
