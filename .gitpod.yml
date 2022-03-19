@@ -15,24 +15,16 @@ tasks:
       clear
       nvm install
       npm install
-    command: npm run start
+    command: npm run build
     name: Node
     openMode: split-right
 
   - init: |
       clear
+      echo "Waiting for python..."
       gp sync-await python
-    command: poetry run ./runtests.py
+    command: |
+      poetry run ./runtests.py
+      poetry run django-admin render_patterns --settings=tests.settings.dev --pythonpath=.
     name: Tests
     openMode: split-right
-
-  - init: |
-      clear
-    command: |
-      echo "There are 3 terminals ready to use"
-      echo "1. Runserver: is running the django dev-server on http://127.0.0.1:8000"
-      echo "2. Tests: will run the tests once and wait for 'poetry run ./runtests.py' to run the tests again"
-      echo "3. Node: will run 'npm run start' and watch files for changes"
-      echo "4. Bash: is this terminal and can be use to run other adhoc commands"
-      echo "Try out the render_patterns command: 'poetry run django-admin render_patterns --settings=tests.settings.dev --pythonpath=.' and look in the 'dpl-rendered-patterns' folder"
-    openMode: tab-after

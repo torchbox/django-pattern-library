@@ -3,10 +3,13 @@
 This document contains information for anyone wishing to contribute to the project.
 
 
-
 ## Installation
 
-The repo includes a simple test application that can be run locally to develop the pattern library itself.
+The repo includes a simple test application that can be run to develop the pattern library itself.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/torchbox/django-pattern-library) *Using the [Poetry setup](#run-locally-with-poetry)* 
+
+### Or run locally
 
 First, clone the repo:
 
