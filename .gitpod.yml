@@ -1,28 +1,40 @@
+# Commands to start on workspace startup
+
 ports:
+  # when port 8000 becomes available open a browser preview
+  # of the running django pattern library instance
   - port: 8000
     onOpen: open-preview
 
 tasks:
+  # initialise and install the python part of the app by installing poetry
+  # and the python dependencies
   - init: |
       clear
       pip install poetry
       poetry install
       gp sync-done python
+    # Start the server for testing
     command: poetry run django-admin runserver --settings=tests.settings.dev --pythonpath=.
     name: Runserver
 
+  # install the node part of the app by installing the required
+  # node version and npm dependencies
   - init: |
       clear
       nvm install
       npm install
+    # Build the assets
     command: npm run build
     name: Node
     openMode: split-right
 
+  # when the python part of the app is ready...
   - init: |
       clear
       echo "Waiting for python..."
       gp sync-await python
+    # run the tests
     command: |
       poetry run ./runtests.py
       poetry run django-admin render_patterns --settings=tests.settings.dev --pythonpath=.
