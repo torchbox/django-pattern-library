@@ -36,7 +36,7 @@ you run it with a project that has no entries in DB or on a local machine
 without internet connection.
 This means that you need to override a template tag when it hits DB or any other resource (cache, or requests URL, for example).
 
-You amy also need to override template tags in other cases, when data provided by the pattern library’s context mocking is of a different type to what Django would expect – this is because the pattern library only uses data types that are de-serializable from YAML.
+You may also need to override template tags in other cases, when data provided by the pattern library’s context mocking is of a different type to what Django would expect – this is because the pattern library only uses data types that are de-serializable from YAML.
 
 ## Override modes
 
