@@ -4,6 +4,10 @@
 
 ## [0.7.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.7.0) - 2022-01-25
 
+### Added
+
+- The package is now published with type hints for the public API (`register_context_modifier` and `override_tag`) ([#172](https://github.com/torchbox/django-pattern-library/issues/172), [#189](https://github.com/torchbox/django-pattern-library/pull/189)).
+
 ## Added
 
 - Add a way to customise rendering of a pattern with [`is_pattern_library`](https://torchbox.github.io/django-pattern-library/reference/api/#is_pattern_library) context variable ([#156](https://github.com/torchbox/django-pattern-library/issues/156), [#167](https://github.com/torchbox/django-pattern-library/pull/167)).
