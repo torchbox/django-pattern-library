@@ -90,7 +90,7 @@ jobs:
       # Demo render_patterns.
       - run: poetry run django-admin render_patterns --settings=tests.settings.production --pythonpath=. --wrap-fragments --output=site/dpl-rendered-patterns 2>&1 >/dev/null | tee dpl-list.txt
       # Create an archive of render_patterns output so the build artifacts can be inspected easily.
-      - run: mv dpl-list.txt site/dpl-rendered-patterns && tar -czvf site/dpl-rendered-patterns.tar.gz site/dpl-render-patterns
+      - run: mv dpl-list.txt site/dpl-rendered-patterns && tar -czvf site/dpl-rendered-patterns.tar.gz site/dpl-rendered-patterns
       # Package build, incl. publishing an experimental pre-release via GitHub Pages for builds on `main`.
       - run: cat pyproject.toml | awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
       - run: poetry build
