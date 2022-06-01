@@ -58,7 +58,7 @@ mkdocs-material = "^5.5.14"
 pymdown-extensions = "^8.0"
 mkdocs-git-revision-date-plugin = "^0.3.1"
 mkdocs-redirects = "^1.0.3"
-black = "^21.12b0"
+black = "^22.3.0"
 
 [tool.isort]
 known_first_party = "pattern_library"
