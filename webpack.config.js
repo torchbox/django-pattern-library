@@ -1,6 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
-const sass = require('sass');
 
 const staticDir = path.resolve(__dirname, 'pattern_library', 'static', 'pattern_library');
 
@@ -31,7 +29,6 @@ module.exports = {
                     {
                         loader: 'sass-loader', // compiles Sass to CSS
                         options: {
-                            implementation: sass,
                             sassOptions: {
                                 outputStyle: 'compressed',
                             },
@@ -41,14 +38,4 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        // Rather than import the entire contents of the
-        // highlight lib (which includes languages we’re not using)
-        // you can just import the languages you want to highlight,
-        // therefore drastically reducing the bundle size
-        new webpack.ContextReplacementPlugin(
-            /highlight\.js\/lib\/languages$/,
-            new RegExp(`^./(${['django', 'yaml'].join('|')})$`)
-        )
-    ],
 };
