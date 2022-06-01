@@ -1,0 +1,17 @@
+patterns/atoms/icons/icon.html
+patterns/atoms/sprites/sprites.html
+patterns/atoms/tags_test_atom/tags_test_atom.html
+patterns/atoms/test_atom/test_atom.html
+patterns/atoms/test_atom_yml/test_atom_yml.html
+patterns/atoms/test_extends/extended.html
+patterns/atoms/test_extends/base.html
+patterns/atoms/test_includes/test_includes.html
+patterns/molecules/accordion/accordion.html
+patterns/molecules/button/button.html
+patterns/molecules/field/field.html
+patterns/molecules/test_molecule/test_molecule_no_context.html
+patterns/molecules/test_molecule/test_molecule.html
+patterns/pages/forms/example_form.html
+patterns/pages/people/person_page.html
+patterns/pages/search/search.html
+patterns/pages/test_page/test_page.html
