@@ -10,7 +10,6 @@ tasks:
   # initialise and install the python part of the app by installing poetry
   # and the python dependencies
   - init: |
-      clear
       pip install poetry>=1.1.12,<2
       poetry install
       gp sync-done python
@@ -21,7 +20,6 @@ tasks:
   # install the node part of the app by installing the required
   # node version and npm dependencies
   - init: |
-      clear
       nvm install
       npm install
     # Build the assets
@@ -31,7 +29,6 @@ tasks:
 
   # when the python part of the app is ready...
   - init: |
-      clear
       echo "Waiting for python..."
       gp sync-await python
     # run the tests
