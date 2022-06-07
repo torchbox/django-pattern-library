@@ -23,9 +23,10 @@ Here are open-source projects that maintain pattern libraries for Django.
 
 With `django-pattern-library`:
 
+- [Wagtail](https://github.com/wagtail/wagtail)
 - [rca.ac.uk](https://github.com/torchbox/rca-wagtail-2019)
 - [torchbox.com](https://github.com/torchbox/wagtail-torchbox)
-- [UK Department for Transport: Road Freight Survey - Alpha project](https://github.com/torchbox/dft-rfs-alpha)
+- [buckinghamshire.gov.uk](https://github.com/Buckinghamshire-Digital-Service/buckinghamshire-council)
 - [Big Peach - PyATL meetup management system](https://github.com/pyatl/big-peach)
 
 Without `django-pattern-library`:
