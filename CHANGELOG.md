@@ -1,9 +1,6 @@
 # Changelog
 
 ## [Unreleased]
-
-- Add a one-click development setup using Gitpod
-
 ## [0.7.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.7.0) - 2022-01-25
 
 ## Added
