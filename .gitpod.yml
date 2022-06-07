@@ -23,7 +23,7 @@ tasks:
       nvm install
       npm install
     # Build the assets
-    command: npm run build
+    command: npm run start
     name: Node
     openMode: split-right
 
