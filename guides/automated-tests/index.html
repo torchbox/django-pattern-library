@@ -357,6 +357,19 @@
     Accessibility testing
   </a>
   
+    <nav class="md-nav" aria-label="Accessibility testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-testing-in-gitlab-ci" class="md-nav__link">
+    Accessibility testing in GitLab CI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -715,6 +728,19 @@
     Accessibility testing
   </a>
   
+    <nav class="md-nav" aria-label="Accessibility testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-testing-in-gitlab-ci" class="md-nav__link">
+    Accessibility testing in GitLab CI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -811,6 +837,116 @@ backstop <span class="nb">test</span>
 <div class="codehilite"><pre><span></span><code>npm install -g pa11y-ci
 pa11y-ci --config pa11y.config.js
 </code></pre></div>
+
+<h3 id="accessibility-testing-in-gitlab-ci">Accessibility testing in GitLab CI<a class="headerlink" href="#accessibility-testing-in-gitlab-ci" title="Permanent link">&para;</a></h3>
+<p>Here is a practical example of combining <a href="https://pa11y.org/">Pa11y</a> and django-pattern-library in GitLab CI to run automated accessibility tests. This three-stage build first compiles a project’s static assets (CSS, JS), then generates pattern library static files with Django (with the <a href="../../reference/api/#render_patterns"><code>render_patterns</code> command</a> command can be), and finally tests those static pages with Pa11y.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">static</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node:16</span><span class="w"></span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span><span class="w"></span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run build:prod</span><span class="w"></span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;static-$CI_JOB_ID&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./demosite/static_compiled</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expire_in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30 mins</span><span class="w"></span>
+
+<span class="nt">test_python</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python:3.9</span><span class="w"></span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static</span><span class="w"></span>
+<span class="w">  </span><span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:12.3</span><span class="w"></span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DJANGO_SETTINGS_MODULE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demosite.settings.production</span><span class="w"></span>
+<span class="w">    </span><span class="nt">GIT_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span><span class="w"></span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install poetry==1.1.8</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry install</span><span class="w"></span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python manage.py collectstatic --verbosity 0 --noinput --clear</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Render all django-pattern-library patterns, saving a list of the rendered files.</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python manage.py render_patterns --wrap-fragment 2&gt;&amp;1 &gt;/dev/null | tee dpl-list.txt</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mv dpl-list.txt dpl-rendered-patterns &amp;&amp; cp -R static dpl-rendered-patterns/static &amp;&amp; mv dpl-rendered-patterns ../dpl-rendered-patterns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test_patterns-$CI_JOB_ID&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./dpl-rendered-patterns</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expire_in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30 mins</span><span class="w"></span>
+
+<span class="nt">pa11y</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.gitlab.com/gitlab-org/ci-cd/accessibility:6.1.1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accessibility</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_python</span><span class="w"></span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TEST_ORIGIN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:4000</span><span class="w"></span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Serve files locally, in the background, waiting for the server to start before we run the test suite.</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm install -g http-server@14</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server ./dpl-rendered-patterns --port 4000 &amp;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pa11y-ci -j --config pa11y.config.js &gt; dpl-rendered-patterns/gl-accessibility.json</span><span class="w"></span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Create artifacts even if the tests fail.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expire_in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1 week</span><span class="w"></span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpl-rendered-patterns</span><span class="w"></span>
+<span class="w">    </span><span class="nt">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">accessibility</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpl-rendered-patterns/gl-accessibility.json</span><span class="w"></span>
+</code></pre></div>
+
+<p>Here is the <code>pa11y.config.js</code>, which will determine what to test based on the output of <code>render_patterns</code>, as listed in the <code>dpl-list.txt</code> file:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;fs&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">defaults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">chromeLaunchConfig</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Needed to run Pa11y in GitLab CI.</span><span class="w"></span>
+<span class="w">    </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--no-sandbox&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nx">standard</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WCAG2AA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">runners</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;axe&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Assume we run tests over a live django-pattern-library instance, unless TEST_ORIGIN is set;</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://localhost:8000/pattern-library/render-pattern/patterns&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">TEST_ORIGIN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">local</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">urls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
+
+<span class="c1">// In CI mode, retrieve the URLs to test from dpl-rendered-patterns.</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dpl-rendered-patterns&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dpl-list.txt&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;utf-8&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">).</span><span class="nx">filter</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">p</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="nx">urls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">patterns</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">origin</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">p</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;patterns/&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Convert the list of URLs to configuration objects.</span><span class="w"></span>
+<span class="nx">urls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">(</span><span class="nx">urls</span><span class="p">)].</span><span class="nx">map</span><span class="p">((</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">url</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">screenCapture</span><span class="o">:</span><span class="w"> </span><span class="sb">`dpl-rendered-patterns/</span><span class="si">${</span><span class="nx">url</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">origin</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="sb">.png`</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s2">&quot;tab-nav-item.html&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">config</span><span class="p">.</span><span class="nx">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">ignore</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;aria-required-parent&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">config</span><span class="p">;</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Initialising pa11y-ci on </span><span class="si">${</span><span class="nx">urls</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> URLs`</span><span class="p">);</span><span class="w"></span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">defaults</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">urls</span><span class="p">,</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
                 
                   
                     
@@ -819,7 +955,7 @@ pa11y-ci --config pa11y.config.js
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-06-07
+      Last update: 2022-06-10
     
   </small>
 </div>
