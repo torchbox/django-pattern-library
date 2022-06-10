@@ -1,11 +1,18 @@
 # Changelog
 
 ## [Unreleased]
-## [0.7.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.7.0) - 2022-01-25
+
+## [1.0.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.0) - 2022-06-10
 
 ### Added
 
-- The package is now published with type hints for the public API (`register_context_modifier` and `override_tag`) ([#172](https://github.com/torchbox/django-pattern-library/issues/172), [#189](https://github.com/torchbox/django-pattern-library/pull/189)).
+- We now use type hints for the package’s public API (`register_context_modifier` and `override_tag`) ([#172](https://github.com/torchbox/django-pattern-library/issues/172), [#189](https://github.com/torchbox/django-pattern-library/pull/189)).
+
+### Removed
+
+- We no longer support Django 2.2, as it has reached its end of life.
+
+## [0.7.0](https://github.com/torchbox/django-pattern-library/releases/tag/v0.7.0) - 2022-01-25
 
 ## Added
 
