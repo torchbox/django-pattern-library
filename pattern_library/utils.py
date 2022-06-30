@@ -82,8 +82,6 @@ def get_template_dirs():
     return template_dirs
 
 
-
-
 def get_pattern_config_str(template_name):
     replace_pattern = "{}$".format(get_pattern_template_suffix())
     context_path = re.sub(replace_pattern, "", template_name)
@@ -162,13 +160,12 @@ def render_pattern(request, template_name, allow_non_patterns=False, config=None
 
 
 def get_renderer():
-    return JinjaTemplateRenderer
+    return TemplateRenderer
 
 
 class TemplateRenderer:
-
     @classmethod
-    def get_pattern_templates(cls,):
+    def get_pattern_templates(cls):
         templates = base_dict()
         template_dirs = get_template_dirs()
 
@@ -239,13 +236,28 @@ class TemplateRenderer:
 
         return templates
 
-class DTLTemplateRenderer(TemplateRenderer):
     @classmethod
     def get_pattern_source(cls, template):
-        return escape(template.template.source)
+        return cls._get_engine(template).get_pattern_source(template)
 
     @classmethod
-    def get_template_ancestors(cls, template_name, context=None, ancestors=None):
+    def get_template_ancestors(cls, template_name, context=None):
+        template = get_template(template_name)
+        return cls._get_engine(template).get_template_ancestors(template_name, context=context)
+
+    @classmethod
+    def _get_engine(cls, template):
+        if "jinja" in str(type(template)).lower():
+            return JinjaTemplateRenderer
+        return DTLTemplateRenderer
+
+class DTLTemplateRenderer:
+    @staticmethod
+    def get_pattern_source(template):
+        return escape(template.template.source)
+
+    @staticmethod
+    def get_template_ancestors(template_name, context=None, ancestors=None):
         """
         Returns a list of template names, starting with provided name
         and followed by the names of any templates that extends until
@@ -271,18 +283,15 @@ class DTLTemplateRenderer(TemplateRenderer):
         return ancestors
 
 
-
-class JinjaTemplateRenderer(TemplateRenderer):
-
-    @classmethod
-    def get_pattern_source(cls, template):
+class JinjaTemplateRenderer:
+    @staticmethod
+    def get_pattern_source(template):
         with open(template.template.filename) as f:
             source =  escape(f.read())
         return source
 
-
-    @classmethod
-    def get_template_ancestors(cls, template_name, context=None, ancestors=None):
+    @staticmethod
+    def get_template_ancestors(template_name, context=None, ancestors=None):
         """
         Returns a list of template names, starting with provided name
         and followed by the names of any templates that extends until
@@ -306,4 +315,3 @@ class JinjaTemplateRenderer(TemplateRenderer):
             cls.get_template_ancestors(parent_template_name, context=context, ancestors=ancestors)
 
         return ancestors
->>>>>>> 68fea3c (First pass at renderers)
