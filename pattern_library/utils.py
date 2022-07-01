@@ -256,8 +256,8 @@ class DTLTemplateRenderer:
     def get_pattern_source(template):
         return escape(template.template.source)
 
-    @staticmethod
-    def get_template_ancestors(template_name, context=None, ancestors=None):
+    @classmethod
+    def get_template_ancestors(cls, template_name, context=None, ancestors=None):
         """
         Returns a list of template names, starting with provided name
         and followed by the names of any templates that extends until
@@ -290,8 +290,8 @@ class JinjaTemplateRenderer:
             source =  escape(f.read())
         return source
 
-    @staticmethod
-    def get_template_ancestors(template_name, context=None, ancestors=None):
+    @classmethod
+    def get_template_ancestors(cls, template_name, context=None, ancestors=None):
         """
         Returns a list of template names, starting with provided name
         and followed by the names of any templates that extends until
