@@ -6,8 +6,7 @@ Here are other projects that are related to django-pattern-library, and may be r
 
 - [storybook-django](https://github.com/torchbox/storybook-django) – attempting to bridge the gap between React and Django, by bringing django-pattern-library patterns into Storybook stories.
 - [django-components](https://github.com/EmilStenstrom/django-components/) – Reusable UI components for Django, going further than template partials.
-- [django-component](https://gitlab.com/Mojeer/django_components) – Modern components for django templates
-Declarative and composable components inspired by javascript frameworks.
+- [django-component-tags](https://github.com/syse-i/django-component-tags) – Create advanced HTML components using Django Tags.
 - [slippers](https://github.com/mixxorz/slippers) – Reusable components for Django, without writing a single line of Python.
 
 ## Alternatives
