@@ -8,6 +8,7 @@ Here are other projects that are related to django-pattern-library, and may be r
 - [django-components](https://github.com/EmilStenstrom/django-components/) – Reusable UI components for Django, going further than template partials.
 - [django-component-tags](https://github.com/syse-i/django-component-tags) – Create advanced HTML components using Django Tags.
 - [slippers](https://github.com/mixxorz/slippers) – Reusable components for Django, without writing a single line of Python.
+- (Jinja only, incompatible but interesting) [Template Components (tcom)](https://tcom.scaletti.dev/) – Write server-side components as single Jinja template files. Use them as HTML tags without doing any importing.
 
 ## Alternatives
 
@@ -15,6 +16,7 @@ Here are other projects that are related to django-pattern-library, and may be r
 - [Pattern Lab](http://patternlab.io/) – PHP or Node pattern library, from which this project is heavily inspired.
 - [Astrum](http://astrum.nodividestudio.com/) – Similar to Pattern Lab, Node based.
 - [rikki-patterns](https://github.com/springload/rikki-patterns) – Experimental Django-friendly pattern library generator, for Jinja2 and Nunjucks templates
+
 
 ## Pattern libraries based on Django
 
