@@ -4,6 +4,17 @@ from .utils import reverse
 
 
 class TagsTestCase(SimpleTestCase):
+    def test_real_tag_usage(self):
+        response = self.client.get(
+            reverse(
+                "pattern_library:render_pattern",
+                kwargs={
+                    "pattern_template_name": "patterns/atoms/tags_test_atom/tags_test_atom.html"
+                },
+            )
+        )
+        self.assertContains(response, "Real tag usage: /page/url")
+
     def test_falsey_raw_values_for_tag_output(self):
         response = self.client.get(
             reverse(

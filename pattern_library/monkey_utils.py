@@ -7,7 +7,6 @@ from django.template.library import SimpleNode
 from pattern_library.utils import is_pattern_library_context, render_pattern
 
 logger = logging.getLogger(__name__)
-UNSPECIFIED = object()
 
 
 def override_tag(
@@ -78,7 +77,7 @@ def override_tag(
                     # Render result instead of the tag, as a string.
                     # See https://github.com/torchbox/django-pattern-library/issues/166.
                     return str(result)
-                elif default_html is not UNSPECIFIED:
+                elif default_html is not None:
                     # Render provided default;
                     # if no stub data supplied.
                     return default_html
