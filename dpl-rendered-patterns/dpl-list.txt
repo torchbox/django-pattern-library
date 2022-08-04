@@ -9,8 +9,8 @@ patterns/atoms/test_includes/test_includes.html
 patterns/molecules/accordion/accordion.html
 patterns/molecules/button/button.html
 patterns/molecules/field/field.html
-patterns/molecules/test_molecule/test_molecule.html
 patterns/molecules/test_molecule/test_molecule_no_context.html
+patterns/molecules/test_molecule/test_molecule.html
 patterns/pages/forms/example_form.html
 patterns/pages/people/person_page.html
 patterns/pages/search/search.html
