@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Disable pointer events on chevron [CSS styling change](https://github.com/torchbox/django-pattern-library/pull/205)
+
 ## [1.0.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.0) - 2022-06-10
 
 ### Added
