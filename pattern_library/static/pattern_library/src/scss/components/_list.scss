@@ -45,7 +45,7 @@
         width: 15px;
         height: 15px;
         pointer-events: none;
-        
+
         .is-open > & {
             transform: rotate(90deg);
         }
