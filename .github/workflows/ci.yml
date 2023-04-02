@@ -50,8 +50,12 @@ jobs:
       - uses: Gr1n/setup-poetry@v7
         with:
           poetry-version: '1.1.12'
-      - run: pip install tox
-      - run: tox -e
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install tox
+      - name: Tox Test
+        run: tox
         env:
           TOXENV: ${{ matrix.toxenv }}
   build_site:
