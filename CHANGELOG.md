@@ -1,7 +1,8 @@
 # Changelog
 
 ## [Unreleased]
-- Tentative support for Django 4.2 ([#212](https://github.com/torchbox/django-pattern-library/issues/212),[#213](https://github.com/torchbox/django-pattern-library/pull/213)).
+- Rewrote tox.ini and pyproject.toml as response to broken CI due to changes in tox ([#218](https://github.com/torchbox/django-pattern-library/issues/218),[#219](https://github.com/torchbox/django-pattern-library/pull/219)).
+- Tentative support for Django 4.2 ([#212](https://github.com/torchbox/django-pattern-library/issues/212),[#219](https://github.com/torchbox/django-pattern-library/pull/219)).
 - Disable pointer events on menu chevron to allow clicks ([#202](https://github.com/torchbox/django-pattern-library/issues/202), [#205](https://github.com/torchbox/django-pattern-library/pull/205))
 
 ## [1.0.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.0) - 2022-06-10
