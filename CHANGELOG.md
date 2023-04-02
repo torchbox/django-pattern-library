@@ -1,7 +1,7 @@
 # Changelog
 
 ## [Unreleased]
-
+- Tentative support for Django 4.2 ([#212](https://github.com/torchbox/django-pattern-library/issues/212),[#213](https://github.com/torchbox/django-pattern-library/pull/213)).
 - Disable pointer events on menu chevron to allow clicks ([#202](https://github.com/torchbox/django-pattern-library/issues/202), [#205](https://github.com/torchbox/django-pattern-library/pull/205))
 
 ## [1.0.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.0) - 2022-06-10

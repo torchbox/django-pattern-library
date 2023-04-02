@@ -29,12 +29,12 @@ jobs:
           - python: "3.7"
             toxenv: py37-dj32
           - python: "3.8"
-            toxenv: py38-dj32,py38-dj40,py38-dj41
+            toxenv: py38-dj32,py38-dj40,py38-dj41,py38-dj42
           - python: "3.9"
-            toxenv: py39-dj32,py39-dj40,py39-dj41
+            toxenv: py39-dj32,py39-dj40,py39-dj41,py38-dj42
           - python: "3.10"
             # Skip testing Django 4.0, already tested in previous workflow job.
-            toxenv: py310-dj32,py310-dj41,py310-djmain
+            toxenv: py310-dj32,py310-dj41,py310-dj42py,py310-djmain
           - python: "3.11"
             toxenv: py311-dj41,py311-dj42,py311-djmain
             # Tentative support for next Python pre-release. For the correct specifier,
@@ -50,8 +50,12 @@ jobs:
       - uses: Gr1n/setup-poetry@v7
         with:
           poetry-version: '1.1.12'
-      - run: pip install tox
-      - run: tox -q
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install tox
+      - name: Tox Test
+        run: tox
         env:
           TOXENV: ${{ matrix.toxenv }}
   build_site:
@@ -83,7 +87,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-python-py310-
       - run: poetry config virtualenvs.create false
-      - run: poetry install
+      - run: poetry install --extras 'test'
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
       # Docs website build.
       - run: poetry run mkdocs build --strict
