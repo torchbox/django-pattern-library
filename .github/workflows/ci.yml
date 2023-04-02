@@ -87,7 +87,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-python-py310-
       - run: poetry config virtualenvs.create false
-      - run: poetry install
+      - run: poetry install --extras 'test'
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
       # Docs website build.
       - run: poetry run mkdocs build --strict
