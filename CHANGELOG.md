@@ -20,6 +20,11 @@
 - Ensure the project root is on `sys.path` so tests etc. can be run in by Docker Compose ([#233](https://github.com/torchbox/django-pattern-library/issues/233), [#234](https://github.com/torchbox/django-pattern-library/pull/234))
 - Fix URL pattern matching for template with dashes in the file name ([#229](https://github.com/torchbox/django-pattern-library/issues/229), [#230](https://github.com/torchbox/django-pattern-library/pull/230))
 
+### Changed
+
+- Disable pointer events on menu chevron to allow clicks ([#202](https://github.com/torchbox/django-pattern-library/issues/202), [#205](https://github.com/torchbox/django-pattern-library/pull/205))
+- From Django >= 4.0, calls to `Node.render()` must always return a string, but this app previously allowed non-string values to be passed in the `default_html` parameter to `override_tag`. Passing a non-string now raises a `TypeError` when using Django >= 4.0, and logs a warning for older versions ([issue #211](https://github.com/torchbox/django-pattern-library/issues/211)).
+
 ## [1.0.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.1) - 2023-08-19
 
 ### Fixed
