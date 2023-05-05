@@ -1,6 +1,6 @@
 import inspect
 import logging
-from typing import Optional
+import typing
 
 import django
 from django.template.library import SimpleNode
@@ -14,7 +14,7 @@ UNSPECIFIED = object()
 def override_tag(
     register: django.template.Library,
     name: str,
-    default_html: Optional[type] = UNSPECIFIED,
+    default_html: typing.Optional[typing.Any] = UNSPECIFIED,
 ):
     """
     An utility that helps you override original tags for use in your pattern library.
