@@ -1,6 +1,7 @@
 import inspect
 import logging
 import typing
+import warnings
 
 import django
 from django.template.library import SimpleNode
@@ -88,13 +89,10 @@ def override_tag(
                     # Ensure default_html is a string.
                     if not isinstance(default_html, str):
                         if django.VERSION < (4, 0):
-                            logger.warning(
-                                (
-                                    "default_html argument to override_tag should be a string to ensure compatibility "
-                                    'with Django >= 4.0 (line %s in "%s")'
-                                ),
-                                trace.lineno,
-                                trace.filename,
+                            warnings.warn(
+                                "default_html argument to override_tag should be a string to ensure compatibility "
+                                'with Django >= 4.0 (line %s in "%s")' % (trace.lineno, trace.filename),
+                                Warning,
                             )
                         else:
                             raise TypeError(
