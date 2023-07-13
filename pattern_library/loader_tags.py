@@ -152,13 +152,15 @@ def do_include(parser, token):
     )
 
 def visit_extends(self, node, frame):
-    """Dupe of the jinja2.compiler.CodeGenerator visit_Extends
+    """This method serves as overriding the jinja extends tag
+    Dupe of the jinja2.compiler.CodeGenerator visit_Extends
     except for
         self.writeline(
             "parent_template.new_context(context.get_all(), True,"
             f" {self.dump_local_context(frame)})"
         )
-    which is how we pull in context from yaml files to extended templates
+    which executes at runtime to pull in the dpl context
+    Handles visiting extends
     """
     from jinja2.compiler import CompilerExit
 
@@ -214,7 +216,10 @@ def template_new_context(
     shared=False,
     locals=None,  # noqa A002
 ):
-    """Create a new :class:`Context` for this template.  The vars
+    """This method serves as overriding the jinja include tag
+    Is called as part of Template.render by jinja2 and is updated
+    to pull in the dpl context
+    Create a new :class:`Context` for this template.  The vars
     provided will be passed to the template.  Per default the globals
     are added to the context.  If shared is set to `True` the data
     is passed as is to the context without adding the globals.
