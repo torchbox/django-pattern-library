@@ -64,3 +64,11 @@ def get_sections():
 
 def get_pattern_context_var_name():
     return "is_pattern_library"
+
+if get_pattern_template_suffix() == ".jinja":
+    from jinja2.compiler import CodeGenerator as JinjaCodeGenerator
+    from jinja2.environment import Template as JinjaTemplate
+    from .loader_tags import template_new_context, visit_extends
+
+    JinjaTemplate.new_context = template_new_context
+    JinjaCodeGenerator.visit_Extends = visit_extends

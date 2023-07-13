@@ -150,3 +150,85 @@ def do_include(parser, token):
         extra_context=namemap,
         isolated_context=isolated_context,
     )
+
+def visit_extends(self, node, frame):
+    """Dupe of the jinja2.compiler.CodeGenerator visit_Extends
+    except for
+        self.writeline(
+            "parent_template.new_context(context.get_all(), True,"
+            f" {self.dump_local_context(frame)})"
+        )
+    which is how we pull in context from yaml files to extended templates
+    """
+    from jinja2.compiler import CompilerExit
+
+    if not frame.toplevel:
+        self.fail("cannot use extend from a non top-level scope", node.lineno)
+    # if the number of extends statements in general is zero so
+    # far, we don't have to add a check if something extended
+    # the template before this one.
+    if self.extends_so_far > 0:
+        # if we have a known extends we just add a template runtime
+        # error into the generated code.  We could catch that at compile
+        # time too, but i welcome it not to confuse users by throwing the
+        # same error at different times just "because we can".
+        if not self.has_known_extends:
+            self.writeline("if parent_template is not None:")
+            self.indent()
+        self.writeline('raise TemplateRuntimeError("extended multiple times")')
+
+        # if we have a known extends already we don't need that code here
+        # as we know that the template execution will end here.
+        if self.has_known_extends:
+            raise CompilerExit()
+        else:
+            self.outdent()
+    self.writeline("parent_template = environment.get_template(", node)
+    self.visit(node.template, frame)
+    self.write(f", {self.name!r})")
+    # addition to update the context with dpl context
+    # calls the template_new_context method below when
+    # invoked at runtime
+    self.writeline(
+        "parent_template.new_context(context.get_all(), True,"
+        f" {self.dump_local_context(frame)})"
+    )
+    self.writeline("for name, parent_block in parent_template.blocks.items():")
+    self.indent()
+    self.writeline("context.blocks.setdefault(name, []).append(parent_block)")
+    self.outdent()
+
+    # if this extends statement was in the root level we can take
+    # advantage of that information and simplify the generated code
+    # in the top level from this point onwards
+    if frame.rootlevel:
+        self.has_known_extends = True
+
+    # and now we have one more
+    self.extends_so_far += 1
+
+
+def template_new_context(
+    self,
+    vars=None,  # noqa A002
+    shared=False,
+    locals=None,  # noqa A002
+):
+    """Create a new :class:`Context` for this template.  The vars
+    provided will be passed to the template.  Per default the globals
+    are added to the context.  If shared is set to `True` the data
+    is passed as is to the context without adding the globals.
+
+    `locals` can be a dict of local variables for internal usage.
+    """
+    from jinja2.runtime import new_context
+
+    if is_pattern_library_context(vars or {}) and (
+        pattern_context := get_pattern_context(self.name)
+    ):
+        for k, v in pattern_context.items():
+            vars.setdefault(k, v)
+
+    return new_context(
+        self.environment, self.name, self.blocks, vars, shared, self.globals, locals
+    )
