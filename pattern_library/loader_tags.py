@@ -212,9 +212,9 @@ def visit_extends(self, node, frame):
 
 def template_new_context(
     self,
-    vars=None,  # noqa A002
+    vars=None,
     shared=False,
-    locals=None,  # noqa A002
+    locals=None,
 ):
     """This method serves as overriding the jinja include tag
     Is called as part of Template.render by jinja2 and is updated
