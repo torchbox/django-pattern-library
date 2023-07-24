@@ -152,42 +152,15 @@ def do_include(parser, token):
     )
 
 def visit_extends(self, node, frame):
-    """This method serves as overriding the jinja extends tag
-    Dupe of the jinja2.compiler.CodeGenerator visit_Extends
-    except for
-        self.writeline(
-            "parent_template.new_context(context.get_all(), True,"
-            f" {self.dump_local_context(frame)})"
-        )
-    which executes at runtime to pull in the dpl context
+    """This method overrides the jinja extends tag
+    Is called as part of the compiler CodeGenerator 
+    and adds a line to use the template_new_context as
+    part of the runtime render to pull in the dpl context
     Handles visiting extends
     """
-    from jinja2.compiler import CompilerExit
+    from .monkey_utils import jinja_visit_Extends
 
-    if not frame.toplevel:
-        self.fail("cannot use extend from a non top-level scope", node.lineno)
-    # if the number of extends statements in general is zero so
-    # far, we don't have to add a check if something extended
-    # the template before this one.
-    if self.extends_so_far > 0:
-        # if we have a known extends we just add a template runtime
-        # error into the generated code.  We could catch that at compile
-        # time too, but i welcome it not to confuse users by throwing the
-        # same error at different times just "because we can".
-        if not self.has_known_extends:
-            self.writeline("if parent_template is not None:")
-            self.indent()
-        self.writeline('raise TemplateRuntimeError("extended multiple times")')
-
-        # if we have a known extends already we don't need that code here
-        # as we know that the template execution will end here.
-        if self.has_known_extends:
-            raise CompilerExit()
-        else:
-            self.outdent()
-    self.writeline("parent_template = environment.get_template(", node)
-    self.visit(node.template, frame)
-    self.write(f", {self.name!r})")
+    jinja_visit_Extends(self, node, frame)
     # addition to update the context with dpl context
     # calls the template_new_context method below when
     # invoked at runtime
@@ -195,19 +168,6 @@ def visit_extends(self, node, frame):
         "parent_template.new_context(context.get_all(), True,"
         f" {self.dump_local_context(frame)})"
     )
-    self.writeline("for name, parent_block in parent_template.blocks.items():")
-    self.indent()
-    self.writeline("context.blocks.setdefault(name, []).append(parent_block)")
-    self.outdent()
-
-    # if this extends statement was in the root level we can take
-    # advantage of that information and simplify the generated code
-    # in the top level from this point onwards
-    if frame.rootlevel:
-        self.has_known_extends = True
-
-    # and now we have one more
-    self.extends_so_far += 1
 
 
 def template_new_context(
@@ -216,7 +176,7 @@ def template_new_context(
     shared=False,
     locals=None,
 ):
-    """This method serves as overriding the jinja include tag
+    """This method overrides the jinja include tag
     Is called as part of Template.render by jinja2 and is updated
     to pull in the dpl context
     Create a new :class:`Context` for this template.  The vars
