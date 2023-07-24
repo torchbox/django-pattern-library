@@ -97,15 +97,21 @@ def override_tag(
 
     return tag_func
 
+# have to export the original jinja visit Extends
+# in the case jinja tags are being overriden
 jinja_visit_Extends = None
 
 def override_jinja_tags():
+    """
+    Overrides jinja extends and include tags for use in your pattern library.
+    Call it in your settings to override tags 
+    """
     global jinja_visit_Extends
     try:
         from jinja2.compiler import CodeGenerator as JinjaCodeGenerator
         from jinja2.environment import Template as JinjaTemplate
     except ModuleNotFoundError:
-        ModuleNotFoundError("install jinja2 to override tags")
+        ModuleNotFoundError("install jinja2 to override jinja tags")
     
     from .loader_tags import template_new_context, visit_extends
     jinja_visit_Extends = JinjaCodeGenerator.visit_Extends
