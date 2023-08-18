@@ -1,4 +1,5 @@
 .iframe {
+    box-sizing: content-box;
     width: 100%;
     border: 1px solid $light-grey;
     margin: 20px 0;
