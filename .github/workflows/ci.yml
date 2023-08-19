@@ -9,12 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: pipx install poetry
+      - run: pipx install "tox poetry>=1.1.12,<2"
       - uses: actions/setup-python@v4
         with:
           python-version-file: pyproject.toml
           cache: 'poetry'
-      - run: pip install tox
       - run: tox -e lint,py311-dj42
   test_compatibility:
     needs: test
@@ -42,12 +41,11 @@ jobs:
             #   toxenv: py312-dj41
     steps:
       - uses: actions/checkout@v3
-      - run: pipx install poetry
+      - run: pipx install "tox poetry>=1.1.12,<2"
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
           allow-prereleases: true
-      - run: pip install tox
       - run: tox -q
         env:
           TOXENV: ${{ matrix.toxenv }}
@@ -68,7 +66,7 @@ jobs:
       - if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-audit
       - run: npm run build
-      - run: pipx install poetry
+      - run: pipx install "poetry>=1.1.12,<2"
       - uses: actions/setup-python@v4
         with:
           python-version-file: pyproject.toml
@@ -95,6 +93,9 @@ jobs:
   deploy_site:
     needs: build_site
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
