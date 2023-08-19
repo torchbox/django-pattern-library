@@ -13,7 +13,10 @@ class SectionsTestCase(SimpleTestCase):
 
         soup = BeautifulSoup(response.content, features="html.parser")
         sidebar_nav = soup.select_one("#sidebar-nav")
-        sections = [h.text.strip() for h in sidebar_nav.find_all("h2")]
+        sections = [
+            h.text.strip()
+            for h in sidebar_nav.find_all("button", {"class": "list__button--parent"})
+        ]
 
         return sections
 

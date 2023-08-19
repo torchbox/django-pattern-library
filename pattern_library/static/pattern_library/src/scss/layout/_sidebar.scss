@@ -1,11 +1,14 @@
 .sidebar {
     background-color: $off-white;
-    padding: 20px;
     height: 100vh;
     margin-left: 0;
     overflow: auto;
     -ms-grid-column: 1;
     -ms-grid-row: 2;
+
+    &__inner {
+        padding: 20px;
+    }
 
     &__search {
         width: 100%;
