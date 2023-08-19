@@ -22,28 +22,29 @@
         </h1>
     </header>
     <aside class="sidebar">
-        <label for="js-pattern-search-input" class="is-hidden">Search pattern library</label>
-        <input type="text" class="sidebar__search" id="js-pattern-search-input" placeholder="Search library...">
-        <div class="sidebar__search-results" id="js-pattern-search-results-container"></div>
-        <nav class="sidebar__nav" id="sidebar-nav">
-            <ul class="list">
-                
-                <li class="list__item">
-                    <h2 class="list__item-heading js-toggle-pattern">
-                        <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                            <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
-                        </svg>
-                        Atoms
-                    </h2>
-                    <ul class="list list--child">
+        <div class="sidebar__inner">
+            <label for="js-pattern-search-input" class="is-hidden">Search pattern library</label>
+            <input type="text" class="sidebar__search" id="js-pattern-search-input" placeholder="Search library...">
+            <div class="sidebar__search-results" id="js-pattern-search-results-container"></div>
+            <nav class="sidebar__nav" id="sidebar-nav">
+                <ul class="list">
+                    
+                    <li class="list__item js-list-item">
+                        <button class="list__button list__button--parent js-toggle-pattern">
+                            <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+                                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                            </svg>
+                            Atoms
+                        </button>
+                        <ul class="list list--child">
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             icons
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -56,13 +57,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             sprites
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -75,13 +76,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             tags_test_atom
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -94,13 +95,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             test_atom
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -113,13 +114,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             test_atom_yml
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -132,13 +133,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             test_extends
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -157,13 +158,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             test_includes
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -178,24 +179,24 @@
     
 </ul>
 
-                </li>
-                
-                <li class="list__item">
-                    <h2 class="list__item-heading js-toggle-pattern">
-                        <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                            <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
-                        </svg>
-                        Molecules
-                    </h2>
-                    <ul class="list list--child">
+                    </li>
+                    
+                    <li class="list__item js-list-item">
+                        <button class="list__button list__button--parent js-toggle-pattern">
+                            <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+                                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                            </svg>
+                            Molecules
+                        </button>
+                        <ul class="list list--child">
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             accordion
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -208,13 +209,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             button
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -227,13 +228,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             field
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -246,25 +247,25 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             test_molecule
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
             <li class="list__item">
-                <a class="list__item-link" href="/django-pattern-library/demo/pattern/patterns/molecules/test_molecule/test_molecule_no_context.html" id="patterns/molecules/test_molecule/test_molecule_no_context.html">
-                    test_molecule_no_context.html
+                <a class="list__item-link" href="/django-pattern-library/demo/pattern/patterns/molecules/test_molecule/test_molecule.html" id="patterns/molecules/test_molecule/test_molecule.html">
+                    Pretty name for test molecule
                 </a>
             </li>
             
             <li class="list__item">
-                <a class="list__item-link" href="/django-pattern-library/demo/pattern/patterns/molecules/test_molecule/test_molecule.html" id="patterns/molecules/test_molecule/test_molecule.html">
-                    Pretty name for test molecule
+                <a class="list__item-link" href="/django-pattern-library/demo/pattern/patterns/molecules/test_molecule/test_molecule_no_context.html" id="patterns/molecules/test_molecule/test_molecule_no_context.html">
+                    test_molecule_no_context.html
                 </a>
             </li>
             
@@ -273,24 +274,24 @@
     
 </ul>
 
-                </li>
-                
-                <li class="list__item">
-                    <h2 class="list__item-heading js-toggle-pattern">
-                        <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                            <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
-                        </svg>
-                        Pages
-                    </h2>
-                    <ul class="list list--child">
+                    </li>
+                    
+                    <li class="list__item js-list-item">
+                        <button class="list__button list__button--parent js-toggle-pattern">
+                            <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+                                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                            </svg>
+                            Pages
+                        </button>
+                        <ul class="list list--child">
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             forms
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -303,13 +304,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             people
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -322,13 +323,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             search
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -341,13 +342,13 @@
         </ul>
     </li>
     
-    <li class="list__item">
-        <h3 class="list__item-heading list__item-heading--small list__item-heading--light js-toggle-pattern">
+    <li class="list__item js-list-item">
+        <button class="list__button list__button--child js-toggle-pattern">
             <svg class="list__item-icon list__item-icon--small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" fill="currentColor" />
             </svg>
             test_page
-        </h3>
+        </button>
         
         <ul class="list list--grandchild">
             
@@ -362,10 +363,11 @@
     
 </ul>
 
-                </li>
-                
-            </ul>
-        </nav>
+                    </li>
+                    
+                </ul>
+            </nav>
+        </div>
     </aside>
     <main class="main">
         

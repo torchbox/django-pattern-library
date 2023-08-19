@@ -12,7 +12,7 @@
       
       
       <link rel="shortcut icon" href="../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-5.5.14">
     
     
       
@@ -631,52 +631,52 @@
 <div class="codehilite"><pre><span></span><code><span class="x">&lt;div class=&quot;call-to-action&quot;&gt;</span>
 <span class="x">  &lt;img class=&quot;call-to-action__image&quot; src=&quot;</span><span class="cp">{{</span> <span class="nv">call_to_action.illustration.url</span> <span class="cp">}}</span><span class="x">&quot; alt=&quot;&quot;&gt;</span>
 <span class="x">  &lt;p class=&quot;call-to-action__heading heading heading--three&quot;&gt;</span><span class="cp">{{</span> <span class="nv">call_to_action.title</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
-<span class="x">  </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;patterns/atoms/link/link.html&quot;</span> <span class="k">with</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="nv">classes</span><span class="o">=</span><span class="s2">&quot;call-to-action__link&quot;</span> <span class="nv">href</span><span class="o">=</span><span class="nv">call_to_action.get_link_url</span> <span class="nv">text</span><span class="o">=</span><span class="nv">call_to_action.get_link_text</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;patterns/atoms/link/link.html&quot;</span> <span class="k">with</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="nv">classes</span><span class="o">=</span><span class="s2">&quot;call-to-action__link&quot;</span> <span class="nv">href</span><span class="o">=</span><span class="nv">call_to_action.get_link_url</span> <span class="nv">text</span><span class="o">=</span><span class="nv">call_to_action.get_link_text</span> <span class="cp">%}</span>
 <span class="x">&lt;/div&gt;</span>
 </code></pre></div>
 
 <p>We can try it out once with the following YAML:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">call_to_action</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span><span class="w"></span>
-<span class="w">    </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
-<span class="w">    </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
-<span class="w">    </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">call_to_action</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span>
+<span class="w">    </span><span class="nt">illustration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
+<span class="w">    </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
+<span class="w">    </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span>
 </code></pre></div>
 
 <p>If we want to try multiple variants, simply create a custom template for pattern library usage only, that renders <code>call_to_action</code> multiple times:</p>
 <div class="codehilite"><pre><span></span><code><span class="x">&lt;div class=&quot;pl-frame pl-frame--white&quot;&gt;</span>
 <span class="x">    &lt;h2&gt;Call to action&lt;/h2&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">call_to_action</span> <span class="k">in</span> <span class="nv">ctas</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">call_to_action</span> <span class="k">in</span> <span class="nv">ctas</span> <span class="cp">%}</span>
 <span class="x">        &lt;div class=&quot;pl-row </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">call_to_action.classes</span> <span class="cp">%}{{</span> <span class="nv">call_to_action.classes</span> <span class="cp">}}{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x">&quot;&gt;</span>
 <span class="x">            &lt;p&gt;</span><span class="cp">{{</span> <span class="nv">call_to_action.type</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
-<span class="x">            </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;patterns/molecules/cta/call_to_action.html&quot;</span> <span class="k">with</span> <span class="nv">call_to_action</span><span class="o">=</span><span class="nv">call_to_action</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;patterns/molecules/cta/call_to_action.html&quot;</span> <span class="k">with</span> <span class="nv">call_to_action</span><span class="o">=</span><span class="nv">call_to_action</span> <span class="cp">%}</span>
 <span class="x">        &lt;/div&gt;</span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="x">&lt;/div&gt;</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ctas</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action</span><span class="w"></span>
-<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span><span class="w"></span>
-<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
-<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
-<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action with short title</span><span class="w"></span>
-<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us?</span><span class="w"></span>
-<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
-<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
-<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action with long title</span><span class="w"></span>
-<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant and learn how to make environmentally responsible choices when buying seafood?</span><span class="w"></span>
-<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span><span class="w"></span>
-<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span><span class="w"></span>
-<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ctas</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant creatures in the UK waters?</span>
+<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
+<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
+<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action with short title</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us?</span>
+<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
+<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
+<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call to action with long title</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Will you help us protect these magnificant and learn how to make environmentally responsible choices when buying seafood?</span>
+<span class="w">      </span><span class="nt">illustration</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/images/illustrations/sharks.svg</span>
+<span class="w">      </span><span class="nt">get_link_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sign up for our appeal</span>
+<span class="w">      </span><span class="nt">get_link_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#&#39;</span>
 </code></pre></div>
                 
                   
@@ -686,7 +686,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-08-04
+      Last update: 2023-08-19
     
   </small>
 </div>

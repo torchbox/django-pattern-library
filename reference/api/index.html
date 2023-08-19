@@ -12,7 +12,7 @@
       
       
       <link rel="shortcut icon" href="../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-5.5.14">
     
     
       
@@ -924,38 +924,38 @@
 <li>The pattern library uses <a href="https://pyyaml.org/wiki/PyYAMLDocumentation">PyYAML</a> in particular</li>
 </ul>
 <p>Here is an example in practice:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test</span><span class="w"></span>
-<span class="c1"># Nested structure, dependent on template.</span><span class="w"></span>
-<span class="nt">context</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">quote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">What is love?</span><span class="w"></span>
-<span class="w">  </span><span class="nt">attribution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Haddaway</span><span class="w"></span>
-<span class="w">  </span><span class="nt">my_list</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
-<span class="c1"># Mapping from tag names to tag overrides.</span><span class="w"></span>
-<span class="nt">tags</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">error_tag</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">include</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;non-patterns/include.html&quot;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test</span>
+<span class="c1"># Nested structure, dependent on template.</span>
+<span class="nt">context</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">quote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">What is love?</span>
+<span class="w">  </span><span class="nt">attribution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Haddaway</span>
+<span class="w">  </span><span class="nt">my_list</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="c1"># Mapping from tag names to tag overrides.</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">error_tag</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">template_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;non-patterns/include.html&quot;</span>
 </code></pre></div>
 
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
 <h3 id="pattern_library_rendered_pattern"><code>pattern_library_rendered_pattern</code><a class="headerlink" href="#pattern_library_rendered_pattern" title="Permanent link">&para;</a></h3>
 <p><code>pattern_library_rendered_pattern</code> is required in the template defined as <a href="#pattern_base_template_name"><code>PATTERN_BASE_TEMPLATE_NAME</code></a>. This gets replaced by the rendered pattern’s HTML when displaying patterns in the library.</p>
 <div class="codehilite"><pre><span></span><code><span class="x">&lt;body&gt;</span>
-<span class="x">  </span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}{{</span> <span class="nv">pattern_library_rendered_pattern</span> <span class="cp">}}{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}{{</span> <span class="nv">pattern_library_rendered_pattern</span> <span class="cp">}}{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 <span class="x">&lt;/body&gt;</span>
 </code></pre></div>
 
 <h3 id="is_pattern_library"><code>is_pattern_library</code><a class="headerlink" href="#is_pattern_library" title="Permanent link">&para;</a></h3>
 <p><code>is_pattern_library</code> is available in the template context of each pattern, and is <code>True</code> if the pattern is being rendered in the pattern library.</p>
-<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">is_pattern_library</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">    </span><span class="cp">{%</span> <span class="k">get_hub_menu</span> <span class="nv">page</span> <span class="k">as</span> <span class="nv">menu</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">is_pattern_library</span> <span class="cp">%}</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">get_hub_menu</span> <span class="nv">page</span> <span class="k">as</span> <span class="nv">menu</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
 <span class="x">&lt;a class=&quot;hub-menu__link href=&quot;</span><span class="cp">{{</span> <span class="nv">menu.parent.url</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
-<span class="x">    </span><span class="cp">{{</span> <span class="nv">menu.parent.get_menu_title</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">menu.parent.get_menu_title</span> <span class="cp">}}</span>
 <span class="x">&lt;/a&gt;</span>
 </code></pre></div>
 
@@ -1041,17 +1041,17 @@ It should include any required CSS and JS, and output <a href="#pattern_library_
 structure. This can be useful for <a href="../../guides/automated-tests/">automated tests</a>.</p>
 <p>Usage:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Render all patterns to the default directory.</span>
-./manage.py render_patterns
+./manage.py<span class="w"> </span>render_patterns
 <span class="c1"># Render patterns without outputting files.</span>
-./manage.py render_patterns --dry-run
+./manage.py<span class="w"> </span>render_patterns<span class="w"> </span>--dry-run
 <span class="c1"># Render all patterns, with fragment patterns wrapped in the base template.</span>
-./manage.py render_patterns --wrap-fragments
+./manage.py<span class="w"> </span>render_patterns<span class="w"> </span>--wrap-fragments
 <span class="c1"># Render patterns to a specific directory.</span>
-./manage.py render_patterns --output ./my/path/relative/to/cwd
+./manage.py<span class="w"> </span>render_patterns<span class="w"> </span>--output<span class="w"> </span>./my/path/relative/to/cwd
 <span class="c1"># Render patterns to stdout.</span>
-./manage.py render_patterns --dry-run --verbosity <span class="m">2</span>
+./manage.py<span class="w"> </span>render_patterns<span class="w"> </span>--dry-run<span class="w"> </span>--verbosity<span class="w"> </span><span class="m">2</span>
 <span class="c1"># View all options</span>
-./manage.py render_patterns --help
+./manage.py<span class="w"> </span>render_patterns<span class="w"> </span>--help
 </code></pre></div>
 
 <p>By default patterns will be saved in a <code>dpl-rendered-patterns</code> folder. Make sure to add this to your <code>.gitignore</code> and other ignore files, or customize the output directory with <code>--output</code>.</p>
@@ -1063,7 +1063,7 @@ structure. This can be useful for <a href="../../guides/automated-tests/">automa
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-08-04
+      Last update: 2023-08-19
     
   </small>
 </div>

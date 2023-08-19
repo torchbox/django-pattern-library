@@ -12,7 +12,7 @@
       
       
       <link rel="shortcut icon" href="../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-5.5.14">
     
     
       
@@ -718,40 +718,40 @@ create a file called <code>big_red_button.yaml</code>.</p>
 </code></pre></div>
 
 <p>The <code>big_red_button.yaml</code> can be something like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">button_link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com/</span><span class="w"></span>
-<span class="w">    </span><span class="nt">button_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example link</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nt">context</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">button_link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com/</span>
+<span class="w">    </span><span class="nt">button_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example link</span>
 </code></pre></div>
 
 <p>In the same way you can provide context in more complex templates. Here is
 an example on how you can define fake context that pretends to be a <code>QuerySet</code>.</p>
 <p>Let's assume you have the following template:</p>
-<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="nv">my_objects.exists</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">    </span><span class="cp">{{</span> <span class="nv">items_title</span> <span class="cp">}}</span><span class="x"></span>
+<div class="codehilite"><pre><span></span><code><span class="cp">{%</span> <span class="k">if</span> <span class="nv">my_objects.exists</span> <span class="cp">%}</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">items_title</span> <span class="cp">}}</span>
 <span class="x">    &lt;ul&gt;</span>
-<span class="x">        </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">obj</span> <span class="k">in</span> <span class="nv">my_objects.all</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">obj</span> <span class="k">in</span> <span class="nv">my_objects.all</span> <span class="cp">%}</span>
 <span class="x">            &lt;li&gt;</span>
 <span class="x">                &lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">obj.link</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
-<span class="x">                    </span><span class="cp">{{</span> <span class="nv">obj.title</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">                    </span><span class="cp">{{</span> <span class="nv">obj.title</span> <span class="cp">}}</span>
 <span class="x">                &lt;/a&gt;</span>
 <span class="x">            &lt;/li&gt;</span>
-<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="x">    &lt;/ul&gt;</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </code></pre></div>
 
 <p>You might define a YAML file similar to this to provide fake data:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My example pattern</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My example pattern</span>
 
-<span class="nt">context</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">items_title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Related pages</span><span class="w"></span>
-<span class="w">    </span><span class="nt">my_objects</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">exists</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># simulate `QuerySet`&#39;s `exists` method</span><span class="w"></span>
-<span class="w">        </span><span class="nt">all</span><span class="p">:</span><span class="w">          </span><span class="c1"># simulate `QuerySet`&#39;s `all` method</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Page 1</span><span class="w"></span>
-<span class="w">              </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/page1</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Page 2</span><span class="w"></span>
-<span class="w">              </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/page2</span><span class="w"></span>
+<span class="nt">context</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">items_title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Related pages</span>
+<span class="w">    </span><span class="nt">my_objects</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">exists</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># simulate `QuerySet`&#39;s `exists` method</span>
+<span class="w">        </span><span class="nt">all</span><span class="p">:</span><span class="w">          </span><span class="c1"># simulate `QuerySet`&#39;s `all` method</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Page 1</span>
+<span class="w">              </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/page1</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Page 2</span>
+<span class="w">              </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/page2</span>
 </code></pre></div>
 
 <p>You can define a list or a dict or anything that <a href="http://pyyaml.org/wiki/PyYAMLDocumentation"><code>PyYAML</code></a> allows you to create in YAML format without creating a custom objects.</p>
@@ -781,7 +781,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 
 <span class="nd">@register_context_modifier</span>
 <span class="k">def</span> <span class="nf">add_page_images</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replace some common &#39;image&#39; field values on pages with real `Image`</span>
 <span class="sd">    instances, so that the {% image %} template tag will work.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -795,7 +795,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 
 <span class="nd">@register_context_modifier</span>
 <span class="k">def</span> <span class="nf">replicate_pagination</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replace lists of items using the &#39;page_obj.object_list&#39; key</span>
 <span class="sd">    with a real Paginator page, and add a few other pagination-related</span>
 <span class="sd">    things to the context (like Django&#39;s `ListView` does).</span>
@@ -830,7 +830,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 
 <span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;patterns/subscribe/form.html&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">add_subscribe_form</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adds an unbound form to &#39;form.html&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">context</span><span class="p">[</span><span class="s2">&quot;form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SubscribeForm</span><span class="p">()</span>
@@ -838,7 +838,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 
 <span class="nd">@register_context_modifier</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;patterns/subscribe/form_invalid.html&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">add_invalid_subscribe_form</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adds a bound form with invalid data to &#39;form_invalid.html&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">context</span><span class="p">[</span><span class="s2">&quot;form&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SubscribeForm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
@@ -890,7 +890,7 @@ an example on how you can define fake context that pretends to be a <code>QueryS
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-08-04
+      Last update: 2023-08-19
     
   </small>
 </div>

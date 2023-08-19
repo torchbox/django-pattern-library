@@ -12,7 +12,7 @@
       
       
       <link rel="shortcut icon" href="../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-5.5.14">
     
     
       
@@ -634,7 +634,7 @@ This can be useful when implementing a custom UI while still using the pattern l
 <li><code>config</code> – the configuration for the template, with the same data structure as the configuration files (<code>context</code> and <code>tags</code>).</li>
 </ul>
 <p>Here is an example, with curl:</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;{&quot;template_name&quot;: &quot;patterns/molecules/button/button.html&quot;, &quot;config&quot;: {&quot;context&quot;: {&quot;target_page&quot;: {&quot;title&quot;: &quot;API&quot;}}, &quot;tags&quot;: {&quot;pageurl&quot;:{&quot;target_page&quot;:{&quot;raw&quot;: &quot;/hello-api&quot;}}}}}&#39;</span> <span class="p">|</span> curl -d @- http://localhost:8000/api/v1/render-pattern
+<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{&quot;template_name&quot;: &quot;patterns/molecules/button/button.html&quot;, &quot;config&quot;: {&quot;context&quot;: {&quot;target_page&quot;: {&quot;title&quot;: &quot;API&quot;}}, &quot;tags&quot;: {&quot;pageurl&quot;:{&quot;target_page&quot;:{&quot;raw&quot;: &quot;/hello-api&quot;}}}}}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>curl<span class="w"> </span>-d<span class="w"> </span>@-<span class="w"> </span>http://localhost:8000/api/v1/render-pattern
 </code></pre></div>
 
 <p>The response will be the pattern’s rendered HTML:</p>
@@ -652,7 +652,7 @@ This can be useful when implementing a custom UI while still using the pattern l
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-08-04
+      Last update: 2023-08-19
     
   </small>
 </div>

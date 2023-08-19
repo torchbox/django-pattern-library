@@ -12,7 +12,7 @@
       
       
       <link rel="shortcut icon" href="../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-5.5.14">
     
     
       
@@ -688,9 +688,9 @@
 <h2 id="with-render_patterns">With <code>render_patterns</code><a class="headerlink" href="#with-render_patterns" title="Permanent link">&para;</a></h2>
 <p>The <a href="../../reference/api/#render_patterns"><code>render_patterns</code> command</a> command can be used to export all your templates, without exporting the pattern library UI.</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Export all templates, wrapped in the base template like the pattern library UI does.</span>
-./manage.py render_patterns --wrap-fragments --output dpl-rendered-patterns
+./manage.py<span class="w"> </span>render_patterns<span class="w"> </span>--wrap-fragments<span class="w"> </span>--output<span class="w"> </span>dpl-rendered-patterns
 <span class="c1"># Or alternatively export all templates without extra wrapping.</span>
-./manage.py render_patterns --output dpl-rendered-patterns
+./manage.py<span class="w"> </span>render_patterns<span class="w"> </span>--output<span class="w"> </span>dpl-rendered-patterns
 </code></pre></div>
 
 <p>This command will create a new folder, with a structure matching that of your templates:</p>
@@ -707,14 +707,14 @@
 </code></pre></div>
 
 <p>Note this will export all templates but won’t export static files. If you need static files for your export, additionally run <a href="https://docs.djangoproject.com/en/3.1/ref/contrib/staticfiles/#collectstatic"><code>collectstatic</code></a>, and move its output to be where <a href="https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-STATIC_URL"><code>STATIC_URL</code></a> expects it:</p>
-<div class="codehilite"><pre><span></span><code>./manage.py collectstatic
+<div class="codehilite"><pre><span></span><code>./manage.py<span class="w"> </span>collectstatic
 <span class="c1"># Moving the collected files to match STATIC_URL</span>
-mv static dpl-rendered-patterns/static
+mv<span class="w"> </span>static<span class="w"> </span>dpl-rendered-patterns/static
 </code></pre></div>
 
 <h2 id="with-a-website-scrapper">With a website scrapper<a class="headerlink" href="#with-a-website-scrapper" title="Permanent link">&para;</a></h2>
 <p>It’s very straightforward to export the whole pattern library as a static site, including all templates, and the pattern library UI. Here is an example exporting the pattern library with <a href="https://en.wikipedia.org/wiki/Wget"><code>wget</code></a>:</p>
-<div class="codehilite"><pre><span></span><code>wget --mirror --page-requisites --no-parent http://localhost:8000/pattern-library/
+<div class="codehilite"><pre><span></span><code>wget<span class="w"> </span>--mirror<span class="w"> </span>--page-requisites<span class="w"> </span>--no-parent<span class="w"> </span>http://localhost:8000/pattern-library/
 </code></pre></div>
                 
                   
@@ -724,7 +724,7 @@ mv static dpl-rendered-patterns/static
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-08-04
+      Last update: 2023-08-19
     
   </small>
 </div>
