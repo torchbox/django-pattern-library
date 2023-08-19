@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: pipx install "tox poetry>=1.1.12,<2"
+      - run: pipx install tox "poetry>=1.1.12,<2"
       - uses: actions/setup-python@v4
         with:
           python-version-file: pyproject.toml
@@ -41,7 +41,7 @@ jobs:
             #   toxenv: py312-dj41
     steps:
       - uses: actions/checkout@v3
-      - run: pipx install "tox poetry>=1.1.12,<2"
+      - run: pipx install tox "poetry>=1.1.12,<2"
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
