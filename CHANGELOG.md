@@ -2,11 +2,15 @@
 
 ## [Unreleased]
 
+## [1.0.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.1) - 2023-08-19
+
+### Fixed
+
 - Disable pointer events on menu chevron to allow clicks ([#202](https://github.com/torchbox/django-pattern-library/issues/202), [#205](https://github.com/torchbox/django-pattern-library/pull/205))
 - Improve menu accessibility by using buttons for menu items ([#202](https://github.com/torchbox/django-pattern-library/issues/202), [#207](https://github.com/torchbox/django-pattern-library/pull/207)).
 - Fix pattern name URL regex to account for Windows paths with backslash ([#222](https://github.com/torchbox/django-pattern-library/issues/222), [#223](https://github.com/torchbox/django-pattern-library/pull/223))
 - Use the correct iframe width with resize buttons ([#226](https://github.com/torchbox/django-pattern-library/issues/226), [#225](https://github.com/torchbox/django-pattern-library/pull/225)).
-- Tentative support for Django 4.2 ([#212](https://github.com/torchbox/django-pattern-library/issues/212),[#220](https://github.com/torchbox/django-pattern-library/pull/220)).
+- Update the project’s test matrix for upcoming Django 4.2 support ([#212](https://github.com/torchbox/django-pattern-library/issues/212),[#220](https://github.com/torchbox/django-pattern-library/pull/220)).
 
 ## [1.0.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.0) - 2022-06-10
 

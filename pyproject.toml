@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-pattern-library"
-version = "1.0.0"
+version = "1.0.1"
 description = "A module for Django that allows to build pattern libraries for your projects."
 authors = [
     "Ben Dickinson <ben.dickinson@torchbox.com>",
@@ -26,7 +26,6 @@ classifiers = [
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
-    "Framework :: Django :: 4.2",
 ]
 packages = [
     { include = "pattern_library" },
