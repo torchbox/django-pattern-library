@@ -28,9 +28,9 @@ jobs:
           - python: "3.7"
             toxenv: py37-dj32
           - python: "3.8"
-            toxenv: py38-dj32,py38-dj40,py38-dj41,py38-dj42
+            toxenv: py38-dj32,py38-dj41,py38-dj42
           - python: "3.9"
-            toxenv: py39-dj32,py39-dj40,py39-dj41,py39-dj42
+            toxenv: py39-dj32,py39-dj41,py39-dj42
           - python: "3.10"
             # Skip testing Django 4.0, already tested in previous workflow job.
             toxenv: py310-dj32,py310-dj41,py310-dj42,py310-djmain
