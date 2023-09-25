@@ -25,8 +25,6 @@ jobs:
           # Test with all supported Django versions, for all compatible Python versions.
           # See https://docs.djangoproject.com/en/4.0/faq/install/#what-python-version-can-i-use-with-django for the official matrix.
           # Additionally test on Django’s main branch with the most recent Python version.
-          - python: "3.7"
-            toxenv: py37-dj32
           - python: "3.8"
             toxenv: py38-dj32,py38-dj41,py38-dj42
           - python: "3.9"
