@@ -59,6 +59,30 @@ class ViewsTestCase(SimpleTestCase):
         self.assertEqual(display_link.text.strip(), "test_molecule_no_context.html")
         self.assertEqual(render_link.text.strip(), pattern_path)
 
+    def test_pretty_names_from_filename_containing_dashes(self):
+        pattern_path = "patterns/molecules/test_molecule/test-molecule.html"
+        test_molecule_display_url = reverse(
+            "pattern_library:display_pattern",
+            kwargs={"pattern_template_name": pattern_path},
+        )
+        test_molecule_render_url = reverse(
+            "pattern_library:render_pattern",
+            kwargs={"pattern_template_name": pattern_path},
+        )
+
+        response = self.client.get(test_molecule_display_url)
+        self.assertEqual(response.status_code, 200)
+
+        soup = BeautifulSoup(response.content, features="html.parser")
+
+        display_link = soup.select_one(
+            f'.list__item>a[href="{test_molecule_display_url}"]'
+        )
+        render_link = soup.select_one(f'a[href="{test_molecule_render_url}"]')
+
+        self.assertEqual(display_link.text.strip(), "test-molecule.html")
+        self.assertEqual(render_link.text.strip(), pattern_path)
+
     def test_includes(self):
         pattern_path = "patterns/atoms/test_includes/test_includes.html"
         display_url = reverse(
