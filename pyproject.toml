@@ -70,5 +70,5 @@ default_section = "THIRDPARTY"
 profile = "black"
 
 [build-system]
-requires = ["poetry>=1.1.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
