@@ -60,7 +60,7 @@ class ViewsTestCase(SimpleTestCase):
         self.assertEqual(render_link.text.strip(), pattern_path)
 
     def test_pretty_names_from_filename_containing_dashes(self):
-        pattern_path = "patterns/molecules/test_molecule/test-molecule.html"
+        pattern_path = "patterns/molecules/test-molecule/test-molecule.html"
         test_molecule_display_url = reverse(
             "pattern_library:display_pattern",
             kwargs={"pattern_template_name": pattern_path},
@@ -116,6 +116,7 @@ class ViewsTestCase(SimpleTestCase):
         for template_name in [
             "patterns/atoms/test_atom/test_atom.html",
             "patterns/molecules/test_molecule/test_molecule.html",
+            "patterns/molecules/test-molecule/test-molecule.html",
         ]:
             with self.subTest(template_name=template_name):
                 self.assertContains(
