@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Ensure the project root is on `sys.path` so tests etc. can be run in by Docker Compose ([#233](https://github.com/torchbox/django-pattern-library/issues/233), [#234](https://github.com/torchbox/django-pattern-library/pull/234))
+
 ## [1.0.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.1) - 2023-08-19
 
 ### Fixed
