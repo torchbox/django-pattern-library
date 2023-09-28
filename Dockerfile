@@ -7,6 +7,7 @@ RUN useradd --create-home dpl && \
     chown -R dpl:dpl /venv/ /app/
 
 ENV PATH=/venv/bin:/home/dpl/.local/bin:$PATH \
+    PYTHONPATH=/app/ \
     VIRTUAL_ENV=/venv/ \
     DJANGO_SETTINGS_MODULE=tests.settings.dev
 
