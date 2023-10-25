@@ -2,9 +2,21 @@
 
 ## [Unreleased]
 
-### Fixed
+### Added
+
+- Add support for Django 4.2 ([#231](https://github.com/torchbox/django-pattern-library/pull/231))
+
+### Changed
 
 - Switch to the `poetry-core` build backend ([#232](https://github.com/torchbox/django-pattern-library/pull/232))
+
+### Removed
+
+- Drop support for Python 3.7 ([#231](https://github.com/torchbox/django-pattern-library/pull/231))
+- Drop support for Django 4.0 ([#231](https://github.com/torchbox/django-pattern-library/pull/231))
+
+### Fixed
+
 - Ensure the project root is on `sys.path` so tests etc. can be run in by Docker Compose ([#233](https://github.com/torchbox/django-pattern-library/issues/233), [#234](https://github.com/torchbox/django-pattern-library/pull/234))
 - Fix URL pattern matching for template with dashes in the file name ([#229](https://github.com/torchbox/django-pattern-library/issues/229), [#230](https://github.com/torchbox/django-pattern-library/pull/230))
 
