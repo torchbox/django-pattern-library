@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.1.0)
+## [1.1.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.1.0) - 2023-10-25
 
 ### Added
 
