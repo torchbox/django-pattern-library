@@ -308,7 +308,7 @@ class JinjaTemplateRenderer:
         pattern_template = get_template(template_name)
         #todo - make sure envrionment has context passed in
         environment = pattern_template.template.environment
-        nodelist = environment.parse(pattern_template.name)
+        nodelist = environment.parse(pattern_template.template.name)
         parent_template_name = nodelist.find(Extends)
         if parent_template_name:
             ancestors.append(parent_template_name)
