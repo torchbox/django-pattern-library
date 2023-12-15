@@ -1,8 +1,34 @@
 # Changelog
 
-## [Unreleased]
+## [1.1.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.1.0) - 2023-10-25
+
+### Added
+
+- Add support for Django 4.2 ([#231](https://github.com/torchbox/django-pattern-library/pull/231))
+
+### Changed
+
+- Switch to the `poetry-core` build backend ([#232](https://github.com/torchbox/django-pattern-library/pull/232))
+
+### Removed
+
+- Drop support for Python 3.7 ([#231](https://github.com/torchbox/django-pattern-library/pull/231))
+- Drop support for Django 4.0 ([#231](https://github.com/torchbox/django-pattern-library/pull/231))
+
+### Fixed
+
+- Ensure the project root is on `sys.path` so tests etc. can be run in by Docker Compose ([#233](https://github.com/torchbox/django-pattern-library/issues/233), [#234](https://github.com/torchbox/django-pattern-library/pull/234))
+- Fix URL pattern matching for template with dashes in the file name ([#229](https://github.com/torchbox/django-pattern-library/issues/229), [#230](https://github.com/torchbox/django-pattern-library/pull/230))
+
+## [1.0.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.1) - 2023-08-19
+
+### Fixed
 
 - Disable pointer events on menu chevron to allow clicks ([#202](https://github.com/torchbox/django-pattern-library/issues/202), [#205](https://github.com/torchbox/django-pattern-library/pull/205))
+- Improve menu accessibility by using buttons for menu items ([#202](https://github.com/torchbox/django-pattern-library/issues/202), [#207](https://github.com/torchbox/django-pattern-library/pull/207)).
+- Fix pattern name URL regex to account for Windows paths with backslash ([#222](https://github.com/torchbox/django-pattern-library/issues/222), [#223](https://github.com/torchbox/django-pattern-library/pull/223))
+- Use the correct iframe width with resize buttons ([#226](https://github.com/torchbox/django-pattern-library/issues/226), [#225](https://github.com/torchbox/django-pattern-library/pull/225)).
+- Update the project’s test matrix for upcoming Django 4.2 support ([#212](https://github.com/torchbox/django-pattern-library/issues/212),[#220](https://github.com/torchbox/django-pattern-library/pull/220)).
 
 ## [1.0.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.0.0) - 2022-06-10
 

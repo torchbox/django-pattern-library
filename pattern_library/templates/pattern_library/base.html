@@ -22,24 +22,26 @@
         </h1>
     </header>
     <aside class="sidebar">
-        <label for="js-pattern-search-input" class="is-hidden">Search pattern library</label>
-        <input type="text" class="sidebar__search" id="js-pattern-search-input" placeholder="Search library...">
-        <div class="sidebar__search-results" id="js-pattern-search-results-container"></div>
-        <nav class="sidebar__nav" id="sidebar-nav">
-            <ul class="list">
-                {% for pattern_type_group, pattern_templates in pattern_templates.template_groups.items %}
-                <li class="list__item">
-                    <h2 class="list__item-heading js-toggle-pattern">
-                        <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-                            <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
-                        </svg>
-                        {{ pattern_type_group|title }}
-                    </h2>
-                    {% include "pattern_library/pattern_group.html" with groups=pattern_templates.template_groups %}
-                </li>
-                {% endfor %}
-            </ul>
-        </nav>
+        <div class="sidebar__inner">
+            <label for="js-pattern-search-input" class="is-hidden">Search pattern library</label>
+            <input type="text" class="sidebar__search" id="js-pattern-search-input" placeholder="Search library...">
+            <div class="sidebar__search-results" id="js-pattern-search-results-container"></div>
+            <nav class="sidebar__nav" id="sidebar-nav">
+                <ul class="list">
+                    {% for pattern_type_group, pattern_templates in pattern_templates.template_groups.items %}
+                    <li class="list__item js-list-item">
+                        <button class="list__button list__button--parent js-toggle-pattern">
+                            <svg class="list__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+                                <path d="M88 80l-48 48 16 16 64-64-64-64-16 16 48 48z" />
+                            </svg>
+                            {{ pattern_type_group|title }}
+                        </button>
+                        {% include "pattern_library/pattern_group.html" with groups=pattern_templates.template_groups %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
     </aside>
     <main class="main">
         {% block content %}{% endblock %}

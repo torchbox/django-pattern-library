@@ -9,14 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - run: pipx install "poetry>=1.1.12,<2"
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
-      - uses: Gr1n/setup-poetry@v7
-        with:
-          poetry-version: '1.1.12'
+          python-version-file: pyproject.toml
+          cache: 'poetry'
       - run: pip install tox
-      - run: tox -e lint,py310-dj40
+      - run: tox -e lint,py311-dj42
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
@@ -26,27 +25,26 @@ jobs:
           # Test with all supported Django versions, for all compatible Python versions.
           # See https://docs.djangoproject.com/en/4.0/faq/install/#what-python-version-can-i-use-with-django for the official matrix.
           # Additionally test on Django’s main branch with the most recent Python version.
-          - python: "3.7"
-            toxenv: py37-dj32
           - python: "3.8"
-            toxenv: py38-dj32,py38-dj40,py38-dj41
+            toxenv: py38-dj32,py38-dj41,py38-dj42
           - python: "3.9"
-            toxenv: py39-dj32,py39-dj40,py39-dj41
+            toxenv: py39-dj32,py39-dj41,py39-dj42
           - python: "3.10"
             # Skip testing Django 4.0, already tested in previous workflow job.
-            toxenv: py310-dj32,py310-dj41,py310-djmain
-            # Tentative support for next Python pre-release. For the correct specifier,
-            # Check: https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json.
-          - python: "3.11.0-beta.2"
-            toxenv: py311-dj41
+            toxenv: py310-dj32,py310-dj41,py310-dj42,py310-djmain
+          - python: "3.11"
+            toxenv: py311-dj41,py311-dj42,py311-djmain
+            # Tentative support for next Python pre-release.
+            # When django supports the version, uncomment this
+            # - python: "3.12"
+            #   toxenv: py312-dj41
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - run: pipx install "poetry>=1.1.12,<2"
+      - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
-      - uses: Gr1n/setup-poetry@v7
-        with:
-          poetry-version: '1.1.12'
+          allow-prereleases: true
       - run: pip install tox
       - run: tox -q
         env:
@@ -62,24 +60,17 @@ jobs:
       - id: node-cache
         uses: actions/cache@v2
         with:
+          # Cache node_modules rather than the npm cache, as we rarely update npm packages.
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
       - if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-audit
       - run: npm run build
-      - uses: actions/setup-python@v3
+      - run: pipx install "poetry>=1.1.12,<2"
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
-      - uses: Gr1n/setup-poetry@v7
-        with:
-          poetry-version: '1.1.12'
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-python-py310-${{ hashFiles('**/pyproject.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-python-py310-
-      - run: poetry config virtualenvs.create false
+          python-version-file: pyproject.toml
+          cache: 'poetry'
       - run: poetry install
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
       # Docs website build.
@@ -95,20 +86,19 @@ jobs:
       - run: cat pyproject.toml | awk '{sub(/^version = .+/,"version = \"0.0.0.dev\"")}1' > pyproject.toml.tmp && mv pyproject.toml.tmp pyproject.toml
       - run: poetry build
       - run: mv dist site
-      - uses: actions/upload-artifact@v3
+      - uses: actions/configure-pages@v3
+      - uses: actions/upload-pages-artifact@v2
         with:
-          name: site
           path: site
-          retention-days: 1
   deploy_site:
-    runs-on: ubuntu-latest
     needs: build_site
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-      - uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages
-          folder: site
-          clean: true
+      - uses: actions/deploy-pages@v2

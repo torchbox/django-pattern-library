@@ -1,10 +1,11 @@
 export function toggleNavItems() {
-    const headings = document.querySelectorAll('.js-toggle-pattern');
-    headings.forEach(heading => {
-        heading.addEventListener('click', e => {
+    const categoryButtons = document.querySelectorAll('.js-toggle-pattern');
+
+    categoryButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
             e.target.classList.toggle('is-open');
-            for ( const element of e.target.parentNode.childNodes ) {
-                if ( element.nodeName === "UL" ){
+            for (const element of e.target.closest('.js-list-item').childNodes) {
+                if (element.nodeName === 'UL') {
                     element.classList.toggle('is-open');
                 }
             }

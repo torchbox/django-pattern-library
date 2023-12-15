@@ -19,23 +19,24 @@
         padding-left: 15px;
     }
 
-    &__item-heading {
+    &__button {
         display: flex;
         align-items: center;
         margin: 10px 0;
         user-select: none;
-        font-weight: 500;
         font-size: 19px;
+        appearance: none;
+        background-color: transparent;
+        border: 0;
+        gap: 5px;
+        padding: 0;
 
         &:hover {
             cursor: pointer;
         }
 
-        &--light {
-            font-weight: 200;
-        }
-
-        &--small{
+        &--child {
+            color: $mid-grey;
             font-size: 13px;
         }
     }
@@ -44,7 +45,8 @@
         width: 15px;
         height: 15px;
         pointer-events: none;
-        
+        transition: transform 0.15s ease-in-out;
+
         .is-open > & {
             transform: rotate(90deg);
         }
