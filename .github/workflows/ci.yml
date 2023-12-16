@@ -15,7 +15,7 @@ jobs:
           python-version-file: pyproject.toml
           cache: 'poetry'
       - run: pip install tox
-      - run: tox -e lint,py311-dj42
+      - run: tox -e lint,py311-dj50
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
