@@ -29,7 +29,7 @@ def override_tag(
                 tag_overridden = False
                 result = ""
 
-                # Get overriden tag config.
+                # Get overridden tag config.
                 tag_overrides = context.get("__pattern_library_tag_overrides", {})
 
                 # Extract values for lookup from the token

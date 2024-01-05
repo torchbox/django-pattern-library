@@ -6,7 +6,7 @@ YAML isn’t everyone’s favorite markup language, but it has the advantage of 
 
 Here is what you need to know:
 
-- Use `.yaml` or `.yml` as the file extension for pattern configuration files. If both are present, the `.yaml` file takes precendence.
+- Use `.yaml` or `.yml` as the file extension for pattern configuration files. If both are present, the `.yaml` file takes precedence.
 - Use Mappings in place of Python Dictionaries.
 - Use Sequences in place of Python lists (or iterables like QuerySets).
 - The pattern library uses [PyYAML](https://pyyaml.org/wiki/PyYAMLDocumentation) in particular
