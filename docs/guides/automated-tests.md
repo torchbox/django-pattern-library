@@ -3,7 +3,7 @@
 Although pattern libraries often start as tools for manual tests during development, they can also be useful for automated UI testing. There are a few benefits to doing UI tests with a pattern library:
 
 - Test the components in isolation. When tests fail, you will know exactly which component has issues, rather than having to inspect whole pages to understand what might have changed.
-- Test the components with mock data. One of the issues with UI tests is to have test data for your UIs to render – you can reuse the pattern library data for this purpose (althoug there are [limitations](../guides/multiple-variants.md)).
+- Test the components with mock data. One of the issues with UI tests is to have test data for your UIs to render – you can reuse the pattern library data for this purpose (although there are [limitations](../guides/multiple-variants.md)).
 
 ## Setting up automated UI tests
 
