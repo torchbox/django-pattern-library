@@ -1,5 +1,9 @@
-from django.test import SimpleTestCase
 from unittest.mock import patch
+
+from django.shortcuts import render
+from django.test import RequestFactory, SimpleTestCase
+
+from pattern_library import get_pattern_context_var_name
 
 from .utils import reverse
 
@@ -45,31 +49,53 @@ class TagsTestCase(SimpleTestCase):
         self.assertContains(response, "POTANoneTO2")
         self.assertContains(response, "POTA0TO3")
 
+
+class TagsTestFailCase(SimpleTestCase):
     def test_bad_default_html_warning(self):
+        """
+        Test that the library raises a warning when passing a non-string `default_html` argument to `override_tag`
+        in Django < 4.0
+        """
         with patch("django.VERSION", (3, 2, 0, "final", 0)):
             with self.assertWarns(Warning) as cm:
-                response = self.client.get(
-                    reverse(
-                        "pattern_library:render_pattern",
-                        kwargs={
-                            "pattern_template_name": "patterns/atoms/tags_test_atom/invalid_tags_test_atom.html",
-                        },
-                    ),
+                template_name = (
+                    "patterns/atoms/tags_test_atom/invalid_tags_test_atom.html.fail"
                 )
-                self.assertContains(response, "MARMALADE01")
-                self.assertContains(response, "MARMANoneLADE02")
-                self.assertIn(
-                    "default_html argument to override_tag should be a string to ensure compatibility with Django",
-                    str(cm.warnings[0]),
-                )
+                request = RequestFactory().get("/")
+
+                # Rendering the template with a non-string `default_html` argument will cause Django >= 4 to raise
+                # a `TypeError`, which we need to catch and ignore in order to check that the warning is raised
+                try:
+                    render(
+                        request,
+                        template_name,
+                        context={get_pattern_context_var_name(): True},
+                    )
+                except TypeError:
+                    pass
+
+            self.assertIn(
+                "default_html argument to override_tag should be a string to ensure compatibility with Django",
+                str(cm.warnings[0]),
+            )
 
     def test_bad_default_html_error(self):
+        """
+        Test that the library raises a TypeError when passing a non-string `default_html` argument to `override_tag`
+        in Django >= 4.0
+        """
         with patch("django.VERSION", (4, 2, 0, "final", 0)):
             with self.assertRaises(TypeError) as cm:
-                self.client.get(
-                    reverse(
-                        "pattern_library:render_pattern",
-                        kwargs={"pattern_template_name": "patterns/atoms/tags_test_atom/invalid_tags_test_atom.html"},
-                    ),
+                template_name = (
+                    "patterns/atoms/tags_test_atom/invalid_tags_test_atom.html.fail"
                 )
-            self.assertIn("default_html argument to override_tag must be a string", str(cm.exception))
+                request = RequestFactory().get("/")
+                render(
+                    request,
+                    template_name,
+                    context={get_pattern_context_var_name(): True},
+                )
+            self.assertIn(
+                "default_html argument to override_tag must be a string",
+                str(cm.exception),
+            )

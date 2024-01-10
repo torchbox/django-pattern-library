@@ -16,7 +16,6 @@ class RenderPatternsTests(SimpleTestCase):
         call_command("render_patterns", dry_run=True, stdout=stdout, stderr=stderr)
         self.assertIn(
             """patterns/atoms/tags_test_atom/tags_test_atom.html
-patterns/atoms/tags_test_atom/invalid_tags_test_atom.html
 patterns/atoms/test_atom/test_atom.html
 """,
             stderr.getvalue(),

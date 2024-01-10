@@ -91,7 +91,8 @@ def override_tag(
                         if django.VERSION < (4, 0):
                             warnings.warn(
                                 "default_html argument to override_tag should be a string to ensure compatibility "
-                                'with Django >= 4.0 (line %s in "%s")' % (trace.lineno, trace.filename),
+                                'with Django >= 4.0 (line %s in "%s")'
+                                % (trace.lineno, trace.filename),
                                 Warning,
                             )
                         else:
