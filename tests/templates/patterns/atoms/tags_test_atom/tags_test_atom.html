@@ -4,10 +4,12 @@ SAND{% error_tag empty_string %}WICH
 SAND{% error_tag none %}WICH
 SAND{% error_tag zero %}WICH
 
-POTA{% default_html_tag page.url %}TO 
+POTA{% default_html_tag page.url %}TO
 POTA{% default_html_tag page.child.url %}TO
 POTA{% default_html_tag None %}TO
 
 POTA{% default_html_tag_falsey empty_string %}TO1
 POTA{% default_html_tag_falsey none %}TO2
 POTA{% default_html_tag_falsey zero %}TO3
+
+Real tag usage: {% pageurl page %}
