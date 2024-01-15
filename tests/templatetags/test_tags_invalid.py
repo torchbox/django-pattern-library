@@ -7,8 +7,8 @@ register = template.Library()
 
 @register.simple_tag()
 def default_html_tag_invalid(arg=None):
-    "Just pass, never do anything"
-    pass
+    "Just raise an exception, never do anything"
+    raise Exception("default_tag raised an exception")
 
 
 # Test overriding tag with a default_html that's not valid in Django >= 4.0
