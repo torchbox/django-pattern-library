@@ -23,9 +23,6 @@ def override_tag(
 
     original_tag = register.tags[name]
 
-    # Save the caller for the override tag in case it's needed for error reporting.
-    trace = inspect.stack()[1]
-
     @register.tag(name=name)
     def tag_func(parser, token):
         original_node = original_tag(parser, token)
@@ -88,6 +85,8 @@ def override_tag(
                 elif default_html is not UNSPECIFIED:
                     # Ensure default_html is a string.
                     if not isinstance(default_html, str):
+                        # Save the caller for the override tag in case it's needed for error reporting.
+                        trace = inspect.stack()[1]
                         if django.VERSION < (4, 0):
                             warnings.warn(
                                 "default_html argument to override_tag should be a string to ensure compatibility "
