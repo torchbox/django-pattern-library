@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Add support for Django 5.0 ([#241](https://github.com/torchbox/django-pattern-library/pull/241))
+
 ## [1.1.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.1.0) - 2023-10-25
 
 ### Added
