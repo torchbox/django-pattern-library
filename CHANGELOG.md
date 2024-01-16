@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [1.2.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.2.0) - 2024-01-16
 
 ### Added
 
