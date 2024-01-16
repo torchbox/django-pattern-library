@@ -6,6 +6,10 @@
 
 - Add support for Django 5.0 ([#241](https://github.com/torchbox/django-pattern-library/pull/241))
 
+### Changed
+
+- From Django >= 4.0, calls to `Node.render()` must always return a string, but this app previously allowed non-string values to be passed in the `default_html` parameter to `override_tag`. Passing a non-string now raises a `TypeError` when using Django >= 4.0, and raises a warning for older versions ([issue #211](https://github.com/torchbox/django-pattern-library/issues/211)).
+
 ## [1.1.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.1.0) - 2023-10-25
 
 ### Added
