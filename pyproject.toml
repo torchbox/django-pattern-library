@@ -50,7 +50,7 @@ Markdown = "^3.1"
 
 [tool.poetry.dev-dependencies]
 beautifulsoup4 = "^4.8"
-coverage = "^6.2"
+coverage = "^7.4"
 flake8 = {version = "^7.0", python = ">=3.8.1,<4.0"}
 isort = "^5.10.1"
 mkdocs = "^1.1.2"
