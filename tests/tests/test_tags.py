@@ -51,7 +51,7 @@ class TagsTestCase(SimpleTestCase):
 
 
 class TagsTestFailCase(SimpleTestCase):
-    def test_bad_default_html_warning(self):
+    def test_bad_default_html_warning_on_older_django_versions(self):
         """
         Test that the library raises a warning when passing a non-string `default_html` argument to `override_tag`
         in Django < 4.0
@@ -79,13 +79,13 @@ class TagsTestFailCase(SimpleTestCase):
                 str(cm.warnings[0]),
             )
 
-    def test_bad_default_html_error(self):
+    def test_bad_default_html_warning_on_newer_django_versions(self):
         """
-        Test that the library raises a TypeError when passing a non-string `default_html` argument to `override_tag`
+        Test that the library raises a warning when passing a non-string `default_html` argument to `override_tag`
         in Django >= 4.0
         """
         with patch("django.VERSION", (4, 2, 0, "final", 0)):
-            with self.assertRaises(TypeError) as cm:
+            with self.assertWarns(Warning) as cm:
                 template_name = (
                     "patterns/atoms/tags_test_atom/invalid_tags_test_atom.html.fail"
                 )
@@ -97,5 +97,5 @@ class TagsTestFailCase(SimpleTestCase):
                 )
             self.assertIn(
                 "default_html argument to override_tag must be a string",
-                str(cm.exception),
+                str(cm.warnings[0]),
             )
