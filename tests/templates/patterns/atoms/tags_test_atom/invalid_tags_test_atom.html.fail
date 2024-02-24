@@ -1,0 +1,5 @@
+{% load test_tags_invalid %}
+
+MARMA{% default_html_tag_invalid empty_string %}LADE01
+MARMA{% default_html_tag_invalid none %}LADE02
+MARMA{% default_html_tag_invalid dict %}LADE03
