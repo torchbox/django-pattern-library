@@ -22,8 +22,8 @@ from pattern_library.context_modifiers import registry
 from pattern_library.exceptions import TemplateIsNotPattern
 
 
-
 from django.utils.html import escape
+
 
 def path_to_section():
     section_config = get_sections()
@@ -243,13 +243,16 @@ class TemplateRenderer:
     @classmethod
     def get_template_ancestors(cls, template_name, context=None):
         template = get_template(template_name)
-        return cls._get_engine(template).get_template_ancestors(template_name, context=context)
+        return cls._get_engine(template).get_template_ancestors(
+            template_name, context=context
+        )
 
     @classmethod
     def _get_engine(cls, template):
         if "jinja" in str(type(template)).lower():
             return JinjaTemplateRenderer
         return DTLTemplateRenderer
+
 
 class DTLTemplateRenderer:
     @staticmethod
@@ -287,7 +290,7 @@ class JinjaTemplateRenderer:
     @staticmethod
     def get_pattern_source(template):
         with open(template.template.filename) as f:
-            source =  escape(f.read())
+            source = escape(f.read())
         return source
 
     @classmethod
@@ -306,12 +309,14 @@ class JinjaTemplateRenderer:
             context = Context()
 
         pattern_template = get_template(template_name)
-        #todo - make sure envrionment has context passed in
+        # todo - make sure envrionment has context passed in
         environment = pattern_template.template.environment
         nodelist = environment.parse(pattern_template.template.name)
         parent_template_name = nodelist.find(Extends)
         if parent_template_name:
             ancestors.append(parent_template_name)
-            cls.get_template_ancestors(parent_template_name, context=context, ancestors=ancestors)
+            cls.get_template_ancestors(
+                parent_template_name, context=context, ancestors=ancestors
+            )
 
         return ancestors
