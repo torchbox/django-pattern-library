@@ -1,5 +1,7 @@
+import inspect
 import logging
-from typing import Optional
+import typing
+import warnings
 
 import django
 from django.template.library import SimpleNode
@@ -11,7 +13,9 @@ UNSPECIFIED = object()
 
 
 def override_tag(
-    register: django.template.Library, name: str, default_html: Optional[str] = None
+    register: django.template.Library,
+    name: str,
+    default_html: typing.Optional[typing.Any] = UNSPECIFIED,
 ):
     """
     An utility that helps you override original tags for use in your pattern library.
@@ -29,7 +33,7 @@ def override_tag(
                 tag_overridden = False
                 result = ""
 
-                # Get overriden tag config.
+                # Get overridden tag config.
                 tag_overrides = context.get("__pattern_library_tag_overrides", {})
 
                 # Extract values for lookup from the token
@@ -79,6 +83,23 @@ def override_tag(
                     # See https://github.com/torchbox/django-pattern-library/issues/166.
                     return str(result)
                 elif default_html is not UNSPECIFIED:
+                    # Ensure default_html is a string.
+                    if not isinstance(default_html, str):
+                        # Save the caller for the override tag in case it's needed for error reporting.
+                        trace = inspect.stack()[1]
+                        if django.VERSION < (4, 0):
+                            warnings.warn(
+                                "default_html argument to override_tag should be a string to ensure compatibility "
+                                'with Django >= 4.0 (line %s in "%s")'
+                                % (trace.lineno, trace.filename),
+                                Warning,
+                            )
+                        else:
+                            raise TypeError(
+                                'default_html argument to override_tag must be a string (line %s in "%s")'
+                                % (trace.lineno, trace.filename)
+                            )
+
                     # Render provided default;
                     # if no stub data supplied.
                     return default_html
@@ -97,14 +118,16 @@ def override_tag(
 
     return tag_func
 
+
 # have to export the original jinja visit Extends
 # in the case jinja tags are being overriden
 jinja_visit_Extends = None
 
+
 def override_jinja_tags():
     """
     Overrides jinja extends and include tags for use in your pattern library.
-    Call it in your settings to override tags 
+    Call it in your settings to override tags
     """
     global jinja_visit_Extends
     try:
@@ -112,8 +135,9 @@ def override_jinja_tags():
         from jinja2.environment import Template as JinjaTemplate
     except ModuleNotFoundError:
         ModuleNotFoundError("install jinja2 to override jinja tags")
-    
+
     from .loader_tags import template_new_context, visit_extends
+
     jinja_visit_Extends = JinjaCodeGenerator.visit_Extends
     JinjaTemplate.new_context = template_new_context
     JinjaCodeGenerator.visit_Extends = visit_extends
