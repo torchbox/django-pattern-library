@@ -16,10 +16,10 @@ from pattern_library.utils import (
     get_pattern_config_str,
     get_pattern_context,
     get_pattern_markdown,
+    get_renderer,
     get_sections,
     is_pattern,
     render_pattern,
-    get_renderer,
 )
 
 

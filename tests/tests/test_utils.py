@@ -5,8 +5,8 @@ from django.test import SimpleTestCase, override_settings
 
 from pattern_library.utils import (
     get_pattern_config_str,
-    get_template_dirs,
     get_renderer,
+    get_template_dirs,
 )
 
 

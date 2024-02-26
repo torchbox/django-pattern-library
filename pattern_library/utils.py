@@ -8,6 +8,7 @@ from django.template.context import Context
 from django.template.loader import get_template, render_to_string
 from django.template.loader_tags import ExtendsNode
 from django.template.loaders.app_directories import get_app_template_dirs
+from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
 import markdown
@@ -20,9 +21,6 @@ from pattern_library import (
 )
 from pattern_library.context_modifiers import registry
 from pattern_library.exceptions import TemplateIsNotPattern
-
-
-from django.utils.html import escape
 
 
 def path_to_section():
