@@ -151,9 +151,10 @@ def do_include(parser, token):
         isolated_context=isolated_context,
     )
 
+
 def visit_extends(self, node, frame):
     """This method overrides the jinja extends tag
-    Is called as part of the compiler CodeGenerator 
+    Is called as part of the compiler CodeGenerator
     and adds a line to use the template_new_context as
     part of the runtime render to pull in the dpl context
     Handles visiting extends
