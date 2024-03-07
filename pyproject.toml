@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-pattern-library"
-version = "1.1.0"
+version = "1.2.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 authors = [
     "Ben Dickinson <ben.dickinson@torchbox.com>",
@@ -25,6 +25,7 @@ classifiers = [
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
 ]
 packages = [
     { include = "pattern_library" },
@@ -43,13 +44,13 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-Django = ">=3.2,<5.0"
+Django = ">=3.2,<5.1"
 PyYAML = ">=5.1,<7.0"
 Markdown = "^3.1"
 
 [tool.poetry.dev-dependencies]
 beautifulsoup4 = "^4.8"
-coverage = "^6.2"
+coverage = "^7.4"
 flake8 = {version = "^7.0", python = ">=3.8.1,<4.0"}
 isort = "^5.10.1"
 mkdocs = "^1.1.2"

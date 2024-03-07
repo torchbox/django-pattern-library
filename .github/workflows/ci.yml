@@ -12,10 +12,10 @@ jobs:
       - run: pipx install "poetry>=1.1.12,<2"
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
           cache: 'poetry'
       - run: pip install tox
-      - run: tox -e lint,py311-dj42
+      - run: tox -e lint,py312-dj50
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
@@ -24,21 +24,18 @@ jobs:
       matrix:
         include:
           # Test with all supported Django versions, for all compatible Python versions.
-          # See https://docs.djangoproject.com/en/4.0/faq/install/#what-python-version-can-i-use-with-django for the official matrix.
+          # See https://docs.djangoproject.com/en/dev/faq/install/#what-python-version-can-i-use-with-django for the official matrix.
           # Additionally test on Django’s main branch with the most recent Python version.
           - python: "3.8"
-            toxenv: py38-dj32,py38-dj41,py38-dj42
+            toxenv: py38-dj32,py38-dj42
           - python: "3.9"
-            toxenv: py39-dj32,py39-dj41,py39-dj42
+            toxenv: py39-dj32,py39-dj42
           - python: "3.10"
-            # Skip testing Django 4.0, already tested in previous workflow job.
-            toxenv: py310-dj32,py310-dj41,py310-dj42,py310-djmain
+            toxenv: py310-dj32,py310-dj42,py310-dj50,py310-djmain
           - python: "3.11"
-            toxenv: py311-dj41,py311-dj42,py311-djmain
-            # Tentative support for next Python pre-release.
-            # When django supports the version, uncomment this
-            # - python: "3.12"
-            #   toxenv: py312-dj41
+            toxenv: py311-dj42,py311-dj50,py311-djmain
+          - python: "3.12"
+            toxenv: py312-dj42,py312-djmain
     steps:
       - uses: actions/checkout@v4
       - run: pipx install "poetry>=1.1.12,<2"
@@ -68,7 +65,7 @@ jobs:
         run: npm ci --no-audit
       - run: npm run build
       - run: pipx install "poetry>=1.1.12,<2"
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version-file: pyproject.toml
           cache: 'poetry'
