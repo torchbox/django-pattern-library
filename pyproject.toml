@@ -32,7 +32,7 @@ packages = [
     { include = "pattern_library" },
 ]
 include = [
-    'pattern_library/static/pattern_library/dist/bundle.js',
+    'pattern_library/static/pattern_library/dist/main.js',
 ]
 exclude = [
     'pattern_library/static/pattern_library/src/**/*',

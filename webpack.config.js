@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const staticDir = path.resolve(__dirname, 'pattern_library', 'static', 'pattern_library');
 
@@ -9,23 +10,18 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: './dist'
     },
+    plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
             {
-                test: /\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                }
+                test: /\.(js|ts)x?$/,
+                loader: 'ts-loader',
             },
             {
                 test: /\.scss$/,
                 use: [
-                    {
-                        loader: 'style-loader' // creates style nodes from JS strings
-                    },
-                    {
-                        loader: 'css-loader' // translates CSS into CommonJS
-                    },
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
                     {
                         loader: 'sass-loader', // compiles Sass to CSS
                         options: {
