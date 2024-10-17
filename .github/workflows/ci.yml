@@ -15,7 +15,7 @@ jobs:
           python-version: "3.12"
           cache: 'poetry'
       - run: pip install tox
-      - run: tox -e lint,py312-dj50
+      - run: tox -e lint,py312-dj51
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
