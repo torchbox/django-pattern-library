@@ -15,7 +15,7 @@ jobs:
           python-version: "3.12"
           cache: 'poetry'
       - run: pip install tox
-      - run: tox -e lint,py312-dj50
+      - run: tox -e lint,py312-dj51
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
@@ -26,14 +26,12 @@ jobs:
           # Test with all supported Django versions, for all compatible Python versions.
           # See https://docs.djangoproject.com/en/dev/faq/install/#what-python-version-can-i-use-with-django for the official matrix.
           # Additionally test on Django’s main branch with the most recent Python version.
-          - python: "3.8"
-            toxenv: py38-dj32,py38-dj42
           - python: "3.9"
-            toxenv: py39-dj32,py39-dj42
+            toxenv: py39-dj42
           - python: "3.10"
-            toxenv: py310-dj32,py310-dj42,py310-dj50,py310-djmain
+            toxenv: py310-dj42,py310-dj50,py311-dj51,py310-djmain
           - python: "3.11"
-            toxenv: py311-dj42,py311-dj50,py311-djmain
+            toxenv: py311-dj42,py311-dj50,py311-dj51,py311-djmain
           - python: "3.12"
             toxenv: py312-dj42,py312-djmain
     steps:
