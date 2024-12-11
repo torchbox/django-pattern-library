@@ -9,6 +9,7 @@ Here are other projects that are related to django-pattern-library, and may be r
 - [django-component-tags](https://github.com/syse-i/django-component-tags) – Create advanced HTML components using Django Tags.
 - [slippers](https://github.com/mixxorz/slippers) – Reusable components for Django, without writing a single line of Python.
 - (Jinja only, incompatible but interesting) [JinjaX](https://jinjax.scaletti.dev/) – Write server-side components as single Jinja template files. Use them as HTML tags without doing any importing.
+- [django-viewcomponent](https://github.com/rails-inspire-django/django-viewcomponent) - Build reusable components in Django, inspired by Rails ViewComponent, the components built by django-viewcomponent can be used in both Django template or Python code.
 
 ## Alternatives
 
@@ -16,6 +17,7 @@ Here are other projects that are related to django-pattern-library, and may be r
 - [Pattern Lab](http://patternlab.io/) – PHP or Node pattern library, from which this project is heavily inspired.
 - [Astrum](http://astrum.nodividestudio.com/) – Similar to Pattern Lab, Node based.
 - [rikki-patterns](https://github.com/springload/rikki-patterns) – Experimental Django-friendly pattern library generator, for Jinja2 and Nunjucks templates
+- [django-lookbook](https://github.com/rails-inspire-django/django-lookbook) - Empower your Django development with this pluggable app for creating a robust component library. Includes preview system, documentation engine, and parameter editor for building modular UI effortlessly.
 
 
 ## Pattern libraries based on Django
