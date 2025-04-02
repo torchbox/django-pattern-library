@@ -12,10 +12,10 @@ jobs:
       - run: pipx install "poetry>=1.1.12,<2"
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.13"
           cache: 'poetry'
       - run: pip install tox
-      - run: tox -e lint,py312-dj51
+      - run: tox -e lint,py313-dj51
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
@@ -29,11 +29,13 @@ jobs:
           - python: "3.9"
             toxenv: py39-dj42
           - python: "3.10"
-            toxenv: py310-dj42,py310-dj50,py311-dj51,py310-djmain
+            toxenv: py310-dj42,py310-dj50,py310-dj51,py310-djmain
           - python: "3.11"
             toxenv: py311-dj42,py311-dj50,py311-dj51,py311-djmain
           - python: "3.12"
             toxenv: py312-dj42,py312-djmain
+          - python: "3.13"
+            toxenv: py313-dj42,py312-djmain
     steps:
       - uses: actions/checkout@v4
       - run: pipx install "poetry>=1.1.12,<2"
