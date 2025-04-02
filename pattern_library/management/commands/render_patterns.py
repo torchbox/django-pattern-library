@@ -7,9 +7,8 @@ from django.test.client import RequestFactory
 from pattern_library import get_base_template_names, get_pattern_base_template_name
 from pattern_library.utils import (
     get_pattern_context,
-    get_pattern_templates,
-    get_template_ancestors,
     render_pattern,
+    get_renderer,
 )
 
 
@@ -44,7 +43,8 @@ class Command(BaseCommand):
         self.wrap_fragments = options["wrap_fragments"]
         self.output_dir = options["output_dir"]
 
-        templates = get_pattern_templates()
+        renderer = get_renderer()
+        templates = renderer.get_pattern_templates()
 
         factory = RequestFactory()
         request = factory.get("/")
@@ -106,7 +106,8 @@ class Command(BaseCommand):
         if not self.wrap_fragments:
             return rendered_pattern
 
-        pattern_template_ancestors = get_template_ancestors(
+        renderer = get_renderer()
+        pattern_template_ancestors = renderer.get_template_ancestors(
             pattern_template_name,
             context=get_pattern_context(pattern_template_name),
         )

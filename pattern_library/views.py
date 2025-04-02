@@ -15,11 +15,10 @@ from pattern_library.utils import (
     get_pattern_config_str,
     get_pattern_context,
     get_pattern_markdown,
-    get_pattern_templates,
     get_sections,
-    get_template_ancestors,
     is_pattern,
     render_pattern,
+    get_renderer,
 )
 
 
@@ -52,7 +51,8 @@ class IndexView(TemplateView):
 
     def get(self, request, pattern_template_name=None):
         # Get all pattern templates
-        templates = get_pattern_templates()
+        renderer = get_renderer()
+        templates = renderer.get_pattern_templates()
 
         if pattern_template_name is None:
             # Just display the first pattern if a specific one isn't requested
@@ -67,7 +67,7 @@ class IndexView(TemplateView):
         context = self.get_context_data()
         context["pattern_templates"] = templates
         context["pattern_template_name"] = pattern_template_name
-        context["pattern_source"] = escape(template.template.source)
+        context["pattern_source"] = renderer.get_pattern_source(template)
         context["pattern_config"] = escape(
             get_pattern_config_str(pattern_template_name)
         )
@@ -83,7 +83,8 @@ class RenderPatternView(TemplateView):
 
     @method_decorator(xframe_options_sameorigin)
     def get(self, request, pattern_template_name=None):
-        pattern_template_ancestors = get_template_ancestors(
+        renderer = get_renderer()
+        pattern_template_ancestors = renderer.get_template_ancestors(
             pattern_template_name,
             context=get_pattern_context(self.kwargs["pattern_template_name"]),
         )
