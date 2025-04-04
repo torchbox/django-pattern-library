@@ -1,5 +1,27 @@
 # Changelog
 
+## [Unreleased]
+
+## [1.3.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.3.0) - 2024-12-11
+
+### Added
+
+- Add support for Django 5.1 ([#251](https://github.com/torchbox/django-pattern-library/pull/251))
+
+### Removed
+
+- Drop support for Python 3.8 ([#251](https://github.com/torchbox/django-pattern-library/pull/251))
+- Drop support for Django 4.1 ([#242](https://github.com/torchbox/django-pattern-library/pull/242))
+
+### Documentation
+
+- Note requirement for `.md` extension for pattern documentation files ([#248](https://github.com/torchbox/django-pattern-library/pull/248))
+- Mention complementary package django-viewcomponent, and django-lookbook as an alternative. ([#250](https://github.com/torchbox/django-pattern-library/pull/250))
+
+### Maintenance
+
+- Test with Python 3.12 ([#242](https://github.com/torchbox/django-pattern-library/pull/242))
+
 ## [1.2.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.2.0) - 2024-01-16
 
 ### Added

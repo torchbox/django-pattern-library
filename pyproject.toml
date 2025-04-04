@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-pattern-library"
-version = "1.2.0"
+version = "1.3.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 authors = [
     "Ben Dickinson <ben.dickinson@torchbox.com>",
@@ -17,15 +17,14 @@ classifiers = [
     "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Framework :: Django",
-    "Framework :: Django :: 3.2",
-    "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
     "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
 ]
 packages = [
     { include = "pattern_library" },
@@ -43,8 +42,8 @@ exclude = [
 "Issues" = "https://github.com/torchbox/django-pattern-library/issues"
 
 [tool.poetry.dependencies]
-python = "^3.8"
-Django = ">=3.2,<5.1"
+python = "^3.9"
+Django = ">=4.2,<5.2"
 PyYAML = ">=5.1,<7.0"
 Markdown = "^3.5.1"
 
