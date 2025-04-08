@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [1.5.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.5.0) - 2025-04-08
+
+### Added
+
+- Add experimental Jinja support ([#180](https://github.com/torchbox/django-pattern-library/discussions/180), [#247](https://github.com/torchbox/django-pattern-library/pull/247), [#254](https://github.com/torchbox/django-pattern-library/pull/254)). Thank you to [@gone](https://github.com/gone), [@luord](https://github.com/luord), [@edcohen08](https://github.com/edcohen08), [@maribedran](https://github.com/maribedran), [@CuriousLearner](https://github.com/CuriousLearner)!
+
 ## [1.4.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.1) - 2025-04-08
 
 ### Fixed
