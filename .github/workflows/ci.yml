@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pipx install "poetry>=1.1.12,<2"
+      - run: pipx install "poetry>=2.1.2,<3"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
@@ -38,7 +38,7 @@ jobs:
             toxenv: py313-dj42,py313-dj52,py312-djmain
     steps:
       - uses: actions/checkout@v4
-      - run: pipx install "poetry>=1.1.12,<2"
+      - run: pipx install "poetry>=2.1.2,<3"
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -64,7 +64,7 @@ jobs:
       - if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-audit
       - run: npm run build
-      - run: pipx install "poetry>=1.1.12,<2"
+      - run: pipx install "poetry>=2.1.2,<3"
       - uses: actions/setup-python@v5
         with:
           python-version-file: pyproject.toml
