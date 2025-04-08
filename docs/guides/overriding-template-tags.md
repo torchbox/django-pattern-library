@@ -1,17 +1,17 @@
 # Overriding template tags
 
-The package overrides the following Django tags:
+The package overrides Django’s `extends` and `include` tags, implementing custom behaviour for these tags only when rendering in the pattern library. It falls back to Django's standard behaviour on all other cases. This makes it possible to define fake template contexts once and then have it reused everywhere a template partial is included.
 
-- `{% extends %}`
-- `{% include %}`
+---
 
-It's required to allow us to define fake template context and override other template tags in YAML files.
-This package uses custom behaviour for these tags only when rendering pattern library and falls back to Django's standard behaviour on all other cases.
-
-The override process has two parts:
+We can also override other template tags in YAML files. The override process has two parts:
 
 1. Override your template tag with a mock implementation
 2. Define fake result for your tag in a YAML file
+
+!!! warning "No Jinja support"
+
+    Overriding arbitrary template tags or functions is currently unsupported for Jinja templates.
 
 ## Providing a default value for template tags
 

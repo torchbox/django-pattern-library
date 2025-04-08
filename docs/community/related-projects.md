@@ -16,9 +16,8 @@ Here are other projects that are related to django-pattern-library, and may be r
 - [Storybook](https://storybook.js.org/), and in particular [Storybook for Server](https://github.com/storybookjs/storybook/tree/master/app/server) – Storybook integration with server-rendered UI components.
 - [Pattern Lab](http://patternlab.io/) – PHP or Node pattern library, from which this project is heavily inspired.
 - [Astrum](http://astrum.nodividestudio.com/) – Similar to Pattern Lab, Node based.
-- [rikki-patterns](https://github.com/springload/rikki-patterns) – Experimental Django-friendly pattern library generator, for Jinja2 and Nunjucks templates
+- [rikki-patterns](https://github.com/springload/rikki-patterns) – Experimental Django-friendly pattern library generator, for Jinja and Nunjucks templates
 - [django-lookbook](https://github.com/rails-inspire-django/django-lookbook) - Empower your Django development with this pluggable app for creating a robust component library. Includes preview system, documentation engine, and parameter editor for building modular UI effortlessly.
-
 
 ## Pattern libraries based on Django
 
