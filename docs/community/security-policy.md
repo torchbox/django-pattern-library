@@ -8,4 +8,4 @@ This project doesn’t have formal support targets for non-latest versions. Back
 
 ### Reporting a vulnerability
 
-To report a vulnerability, please contact any one of the named authors in the package’s [pyproject.toml](https://github.com/torchbox/django-pattern-library/blob/main/pyproject.toml).
+To report a vulnerability, please contact any one of the [maintainers listed on PyPI](https://pypi.org/project/django-pattern-library/).

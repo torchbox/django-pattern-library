@@ -2,7 +2,6 @@
 
 This document contains information for anyone wishing to contribute to the project.
 
-
 ## Installation
 
 The repo includes a simple test application that can be run to develop the pattern library itself. Give it a try by [opening django-pattern-library in Gitpod](https://gitpod.io/#https://github.com/torchbox/django-pattern-library), or follow the instructions below for a local setup.
@@ -150,4 +149,4 @@ On the `main` branch:
 
    Verify that the pattern library is working as you expect it to on your local build.
 
-8. Upload the latest version to PyPI (requires credentials, ask someone named in `pyproject.toml` authors): `poetry publish`
+8. Upload the latest version to PyPI (requires credentials, ask someone named in the [maintainers listed on PyPI](https://pypi.org/project/django-pattern-library/)): `poetry publish`
