@@ -9,8 +9,9 @@ The [django-pattern-library](https://pypi.org/project/django-pattern-library/) p
 - Create reusable patterns by creating Django templates files as usual.
 - All patterns automatically show up in the pattern library’s interface.
 - Define data as YAML files for the templates to render with the relevant Django context.
-- Override Django templates tags as needed to mock the template’s dependencies.
+- Override Django Templates tags as needed to mock the template’s dependencies.
 - Document your patterns with Markdown.
+- Experimental: support for Jinja templates.
 
 Here is a screenshot of the pattern library in action:
 
@@ -45,4 +46,3 @@ To learn more about how this package can be used, have a look at our talk:
 [Reusable UI components: A journey from React to Wagtail](https://www.youtube.com/watch?v=isrOufI7TKc)
 
 [![Reusable UI components: A journey from React to Wagtail](images/pattern-library-talk-youtube.webp)](https://www.youtube.com/watch?v=isrOufI7TKc)
-
