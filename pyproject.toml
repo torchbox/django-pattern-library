@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-pattern-library"
-version = "1.4.0"
+version = "1.4.1"
 description = "A module for Django that allows to build pattern libraries for your projects."
 authors = [
     "Thibaud Colas <thibaud.colas@torchbox.com>",

@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [1.4.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.1) - 2025-04-08
+
+### Fixed
+
+- Include static files in wheel build of the package
+
 ## [1.4.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.0) - 2025-04-08
 
 ### Added
