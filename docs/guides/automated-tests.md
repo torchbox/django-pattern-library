@@ -100,7 +100,7 @@ Here is a practical example of combining [Pa11y](https://pa11y.org/) and django-
 
 ```yaml
 static:
-  image: node:16
+  image: node:22
   stage: build
   script:
     - npm ci
@@ -182,7 +182,10 @@ let urls = [];
 // In CI mode, retrieve the URLs to test from dpl-rendered-patterns.
 if (process.env.CI) {
   const list = path.join(__dirname, "dpl-rendered-patterns", "dpl-list.txt");
-  const patterns = fs.readFileSync(list, "utf-8").split("\n").filter((p) => p);
+  const patterns = fs
+    .readFileSync(list, "utf-8")
+    .split("\n")
+    .filter((p) => p);
 
   urls = patterns.map((p) => `${origin}/${p.replace("patterns/", "")}`);
 }

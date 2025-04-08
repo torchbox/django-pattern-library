@@ -16,7 +16,7 @@ services:
 
   frontend:
     command: npm start
-    image: node:16
+    image: node:23
     user: node
     volumes:
       - type: bind
