@@ -1,4 +1,5 @@
 from django.apps import apps
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.template.context_processors import csrf
 from django.template.defaultfilters import (
     cut,
@@ -9,13 +10,11 @@ from django.template.defaultfilters import (
     truncatewords,
     urlencode,
 )
-from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import reverse
 
 from jinja2 import Environment
 
 from pattern_library.monkey_utils import override_jinja_tags
-
 
 if apps.is_installed("pattern_library"):
     override_jinja_tags()
