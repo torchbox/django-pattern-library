@@ -1,5 +1,4 @@
 import os
-from pattern_library.monkey_utils import override_jinja_tags
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
