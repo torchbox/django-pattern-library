@@ -24,6 +24,8 @@
 
 ## [1.4.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.0) - 2025-04-08
 
+Yanked from PyPI as its wheel was missing the pattern library’s static files.
+
 ### Added
 
 - Add support for Django 5.2 ([#253](https://github.com/torchbox/django-pattern-library/issues/253))
