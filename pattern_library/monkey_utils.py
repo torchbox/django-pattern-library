@@ -126,7 +126,7 @@ jinja_visit_Extends = None
 
 def override_jinja_tags():
     """
-    Overrides jinja extends and include tags for use in your pattern library.
+    Experimental. Overrides jinja extends and include tags for use in your pattern library.
     Call it in your settings to override tags
     """
     global jinja_visit_Extends
@@ -136,7 +136,7 @@ def override_jinja_tags():
     except ModuleNotFoundError:
         ModuleNotFoundError("install jinja2 to override jinja tags")
 
-    from .loader_tags import template_new_context, visit_extends
+    from pattern_library.loader_tags import template_new_context, visit_extends
 
     jinja_visit_Extends = JinjaCodeGenerator.visit_Extends
     JinjaTemplate.new_context = template_new_context

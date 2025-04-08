@@ -1,0 +1,5 @@
+context:
+  search_query: test query
+  search_results:
+    - title: First result
+    - title: Second result

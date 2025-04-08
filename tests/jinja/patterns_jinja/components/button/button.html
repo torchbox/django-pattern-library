@@ -1,0 +1,3 @@
+<a href="{% if target_url %}{{ target_url }}{% else %}{{ pageurl(target_page) }}{% endif %}" class="button">
+    {% if label %}{{ label }}{% else %}{{ target_page.title }}{% endif %}
+</a>

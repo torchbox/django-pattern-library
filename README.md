@@ -13,8 +13,9 @@ This package automates the maintenance of UI pattern libraries or styleguides fo
 - Create reusable patterns by creating Django templates files as usual.
 - All patterns automatically show up in the pattern library’s interface.
 - Define data as YAML files for the templates to render with the relevant Django context.
-- Override Django templates tags as needed to mock the template’s dependencies.
+- Override Django Templates tags as needed to mock the template’s dependencies.
 - Document your patterns with Markdown.
+- Experimental: support for Jinja templates.
 
 ## Why you need this
 
