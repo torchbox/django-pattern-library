@@ -44,7 +44,7 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = ">=4.2,<6.0"
+Django = ">=4.2"
 PyYAML = ">=5.1,<7.0"
 Markdown = "^3.1"
 

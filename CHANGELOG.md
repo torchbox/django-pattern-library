@@ -2,12 +2,16 @@
 
 ## [Unreleased]
 
-## [1.4.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.0) - 2025-04-02
+## [1.4.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.0) - 2025-04-08
 
 ### Added
 
 - Add support for Django 5.2 ([#253](https://github.com/torchbox/django-pattern-library/issues/253))
 - Add emoji favicon to avoid favicon.ico requests from the browser
+
+### Removed
+
+- Remove Django `<6.0` dependency upper bound, allowing installs of arbitrary future Django versions
 
 ## [1.3.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.3.0) - 2024-12-11
 
