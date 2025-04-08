@@ -1,0 +1,34 @@
+{% extends "patterns_jinja/base_jinja.html" %}
+
+{% block content %}
+    <h1>{% if search_query %}Search results for “{{ search_query }}”{% else %}Search{% endif %}</h1>
+
+    {% if search_results %}
+        {% with count=paginator.count %}
+            {{ count }} result{{ count|pluralize }} found.
+        {% endwith %}
+
+        {% for result in search_results %}
+            <h4>{{ result.title }}</h4>
+        {% endfor %}
+
+        {% if paginator.num_pages > 1 %}
+            <nav aria-label="Pagination">
+                <ul>
+                    {% if search_results.has_previous %}
+                        <li><a href="#page={{ search_results.previous_page_number() }}{% if search_query %}&amp;query={{ search_query|urlencode }}{% endif %}">previous</a></li>
+                    {% endif %}
+
+                    <li>{{ search_results.number }}/{{ paginator.num_pages }}</li>
+
+                    {% if search_results.has_next %}
+                        <li><a href="#page={{ search_results.next_page_number() }}{% if search_query %}&amp;query={{ search_query|urlencode }}{% endif %}">next</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+
+    {% elif search_query %}
+        No results found.
+    {% endif %}
+{% endblock %}

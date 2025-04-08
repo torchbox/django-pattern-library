@@ -1,0 +1,7 @@
+context:
+    variable_include: non-patterns/variable_include.html
+
+tags:
+  error_tag:
+    include:
+      template_name: 'non-patterns/include.html'

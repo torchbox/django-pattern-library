@@ -1,0 +1,5 @@
+name: Pretty name for test molecule
+
+context:
+  atom_var: 'atom_var value from test_molecule.yaml'
+  utf8_test_var: '你好，世界'

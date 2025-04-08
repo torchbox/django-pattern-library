@@ -1,10 +1,10 @@
-{% extends 'patterns/base_page.html' %}
+{% extends 'patterns_jinja/base_page_jinja.html' %}
 
 {% block content %}
 <h1>{{ page.title }}</h1>
 {{ page.body }}
 
-{% include "patterns/molecules/accordion/accordion.html" %}
+{% include "patterns_jinja/components/accordion/accordion.html" %}
 
 {% if is_pattern_library %}
 <p>is_pattern_library = {{ is_pattern_library }}</p>
