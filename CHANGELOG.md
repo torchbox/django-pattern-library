@@ -8,6 +8,14 @@
 
 - Add experimental Jinja support ([#180](https://github.com/torchbox/django-pattern-library/discussions/180), [#247](https://github.com/torchbox/django-pattern-library/pull/247), [#254](https://github.com/torchbox/django-pattern-library/pull/254)). Thank you to [@gone](https://github.com/gone), [@luord](https://github.com/luord), [@edcohen08](https://github.com/edcohen08), [@maribedran](https://github.com/maribedran), [@CuriousLearner](https://github.com/CuriousLearner)!
 
+### Maintenance
+
+- Update front-end tooling dependencies to latest versions
+
+### Documentation
+
+- Update Complementary packages list with recent options ([django-bird](https://github.com/joshuadavidthomas/django-bird), [dj-angles](https://github.com/adamghill/dj-angles), [django-cotton](https://github.com/wrabit/django-cotton))
+
 ## [1.4.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.1) - 2025-04-08
 
 ### Fixed
