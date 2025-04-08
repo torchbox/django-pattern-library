@@ -58,10 +58,10 @@ flake8 = {version = "^7.0", python = ">=3.8.1,<4.0"}
 isort = "^5.10.1"
 mkdocs = "^1.1.2"
 mkdocs-material = "^5.5.14"
-pymdown-extensions = "^8.0"
+pymdown-extensions = "^10.0"
 mkdocs-git-revision-date-plugin = "^0.3.1"
 mkdocs-redirects = "^1.0.3"
-black = "^22.3.0"
+black = "^25.1.0"
 
 [tool.isort]
 known_first_party = "pattern_library"
