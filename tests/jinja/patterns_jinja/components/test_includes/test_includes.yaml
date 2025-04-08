@@ -1,7 +1,8 @@
 context:
-    variable_include: non-patterns/variable_include.html
+  variable_include: non-patterns/variable_include.html
 
+# TODO: Unsupported override with Jinja
 tags:
   error_tag:
     include:
-      template_name: 'non-patterns/include.html'
+      template_name: "non-patterns/include.html"

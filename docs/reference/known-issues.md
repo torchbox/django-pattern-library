@@ -70,7 +70,7 @@ There is experimental support, excluding overrides of arbitrary tags, functions,
 
 ### Jinja2 support
 
-🎉 This is now addressed as of v1.4.0, though with only experimental support, and no capability to override tags, functions, filters (see above).
+🎉 This is now addressed as of v1.5.0, though with only experimental support, and no capability to override tags, functions, filters (see above).
 
 ### No way to specify objects that have attributes and support iteration
 
