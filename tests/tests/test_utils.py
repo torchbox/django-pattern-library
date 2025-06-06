@@ -1,17 +1,12 @@
 import os
-from unittest import mock
 
-import yaml
 from django.conf import settings
 from django.test import SimpleTestCase, override_settings
-from yaml.constructor import ConstructorError
 
 from pattern_library.utils import (
-    get_pattern_config,
     get_pattern_config_str,
     get_renderer,
     get_template_dirs,
-    PatternLibraryLoader,
 )
 
 
@@ -126,31 +121,3 @@ class TestGetPatternConfigStr(SimpleTestCase):
 
         self.assertNotEqual(result, "")
         self.assertIn("atom_var value from test_atom.yml", result)
-
-    @mock.patch("pattern_library.utils.get_pattern_config_str")
-    def test_custom_yaml_tag_error_if_unregistered(self, get_pattern_config_str):
-        get_pattern_config_str.return_value = "context:\n  atom_var: !customtag"
-
-        self.assertRaises(
-            ConstructorError,
-            get_pattern_config,
-            "patterns/atoms/test_custom_yaml_tag/test_custom_yaml_tag.html",
-        )
-
-    @mock.patch("pattern_library.utils.get_pattern_config_str")
-    def test_custom_yaml_tag(self, get_pattern_config_str):
-        get_pattern_config_str.return_value = "context:\n  atom_var: !customtag"
-        yaml.add_constructor(
-            "!customtag",
-            lambda loader, node: 42,
-            Loader=PatternLibraryLoader,
-        )
-        # PyYAML's API doesn't have a remove_constructor() function so we do
-        # that manually to avoid leaving things on the loader after the test
-        # is finished.
-        self.addCleanup(PatternLibraryLoader.yaml_constructors.pop, "!customtag")
-
-        self.assertEqual(
-            get_pattern_config("mocked.html"),
-            {"context": {"atom_var": 42}},
-        )
