@@ -22,6 +22,11 @@ from pattern_library import (
 from pattern_library.context_modifiers import registry
 from pattern_library.exceptions import TemplateIsNotPattern
 
+# Define our own yaml loader so we can register constructors on it without
+# polluting the original loader from the library.
+class PatternLibraryLoader(yaml.FullLoader):
+    pass
+
 
 def path_to_section():
     section_config = get_sections()
@@ -100,7 +105,7 @@ def get_pattern_config_str(template_name):
 def get_pattern_config(template_name):
     config_str = get_pattern_config_str(template_name)
     if config_str:
-        return yaml.load(config_str, Loader=yaml.FullLoader)
+        return yaml.load(config_str, Loader=PatternLibraryLoader)
     return {}
 
 
