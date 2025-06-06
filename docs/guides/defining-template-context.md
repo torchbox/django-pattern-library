@@ -100,9 +100,9 @@ def add_page_images(context, request):
     Image = get_image_model()
     if "page" in context:
         if "hero_image" in context["page"]:
-            context["hero_image"] = Image.objects.all().order("?").first()
+            context["hero_image"] = Image.objects.all().order_by("?").first()
         if "main_image" in context["page"]:
-            context["main_image"] = Image.objects.all().order("?").first()
+            context["main_image"] = Image.objects.all().order_by("?").first()
 
 
 @register_context_modifier
