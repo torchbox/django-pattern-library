@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 .body {
     display: -ms-grid;
     display: grid;

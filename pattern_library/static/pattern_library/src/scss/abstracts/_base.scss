@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 *,
 *::before,
 *::after {
@@ -50,10 +52,29 @@ a {
     background: #f1f1f1;
 }
 
-.is-hidden {
-    @include hidden();
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    clip: rect(1px, 1px, 1px, 1px);
 }
 
-.sr-only {
-    @include hidden();
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }

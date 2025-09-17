@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "../config" as *;
+
 .tabbed-content {
     &__list {
         list-style: none;
@@ -12,11 +15,11 @@
         text-align: center;
 
         > a {
-            color: lighten(#000, 30%);
+            color: color.adjust(#000, $lightness: 30%);
             padding: 12px 0;
             display: block;
             width: 100%;
-            background-color: lighten($color-primary, 30%);
+            background-color: color.adjust($color-primary, $lightness: 30%);
             text-decoration: none;
             transition: color 0.25s ease, background-color 0.25s ease;
 
@@ -34,7 +37,8 @@
         }
 
         &:not(:last-child) {
-            border-right: 1px solid lighten($color-primary, 20%);
+            border-right: 1px solid
+                color.adjust($color-primary, $lightness: 20%);
         }
     }
 

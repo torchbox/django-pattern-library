@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pipx install "poetry>=1.1.12,<2"
+      - run: pipx install "poetry>=2.1.2,<3"
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-          cache: 'poetry'
+          python-version: "3.13"
+          cache: "poetry"
       - run: pip install tox
-      - run: tox -e lint,py312-dj51
+      - run: tox -e lint,py313-dj51
   test_compatibility:
     needs: test
     runs-on: ubuntu-latest
@@ -29,14 +29,16 @@ jobs:
           - python: "3.9"
             toxenv: py39-dj42
           - python: "3.10"
-            toxenv: py310-dj42,py310-dj50,py311-dj51,py310-djmain
+            toxenv: py310-dj42,py310-dj51,py310-dj52
           - python: "3.11"
-            toxenv: py311-dj42,py311-dj50,py311-dj51,py311-djmain
+            toxenv: py311-dj42,py311-dj51,py311-dj52
           - python: "3.12"
-            toxenv: py312-dj42,py312-djmain
+            toxenv: py312-dj42,py312-dj52
+          - python: "3.13"
+            toxenv: py313-dj42,py313-dj52,py312-djmain
     steps:
       - uses: actions/checkout@v4
-      - run: pipx install "poetry>=1.1.12,<2"
+      - run: pipx install "poetry>=2.1.2,<3"
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -52,7 +54,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       - id: node-cache
         uses: actions/cache@v3
         with:
@@ -62,11 +64,11 @@ jobs:
       - if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-audit
       - run: npm run build
-      - run: pipx install "poetry>=1.1.12,<2"
+      - run: pipx install "poetry>=2.1.2,<3"
       - uses: actions/setup-python@v5
         with:
           python-version-file: pyproject.toml
-          cache: 'poetry'
+          cache: "poetry"
       - run: poetry install
       - run: poetry run django-admin runserver --settings=tests.settings.production --pythonpath=. &
       # Docs website build.

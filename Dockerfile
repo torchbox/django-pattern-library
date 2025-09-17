@@ -13,7 +13,7 @@ ENV PATH=/venv/bin:/home/dpl/.local/bin:$PATH \
 
 USER dpl
 
-RUN pip install --user "poetry>=1.1.12,<2" && \
+RUN pip install --user "poetry>=2.1.2,<3" && \
     python -m venv /venv/
 
 COPY pyproject.toml ./

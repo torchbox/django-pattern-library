@@ -24,6 +24,7 @@ context:
     - 2
     - 3
 # Mapping from tag names to tag overrides.
+# Currently unsupported for Jinja templates.
 tags:
   error_tag:
     include:
@@ -135,12 +136,22 @@ PATTERN_LIBRARY = {
 
 ### `override_tag`
 
-This function tells the pattern library which Django tags to override, and optionally supports providing a default value. See [Overriding template tags](../guides/overriding-template-tags.md) for more information.
+This function tells the pattern library which Django Templates tags to override, and optionally supports providing a default value. See [Overriding template tags](../guides/overriding-template-tags.md) for more information.
 
 ```python
 from pattern_library.monkey_utils import override_tag
 
 override_tag(register, 'a_tag_name', default_html="https://example.com/")
+```
+
+### `override_jinja_tags`
+
+🚧 Experimental. Optionally override `extends` and `include` in Jinja templates, so context for partials can be defined once and reused everywhere. See [Overriding template tags](../guides/overriding-template-tags.md). Call this in your Django settings file or at the top level of the file defining your Jinja environment.
+
+```python
+from pattern_library.monkey_utils import override_jinja_tags
+
+override_jinja_tags()
 ```
 
 ## `register_context_modifier`

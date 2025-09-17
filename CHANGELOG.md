@@ -1,5 +1,60 @@
 # Changelog
 
+## [Unreleased]
+
+## [1.5.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.5.0) - 2025-04-08
+
+### Added
+
+- Add experimental Jinja support ([#180](https://github.com/torchbox/django-pattern-library/discussions/180), [#247](https://github.com/torchbox/django-pattern-library/pull/247), [#254](https://github.com/torchbox/django-pattern-library/pull/254)). Thank you to [@gone](https://github.com/gone), [@luord](https://github.com/luord), [@edcohen08](https://github.com/edcohen08), [@maribedran](https://github.com/maribedran), [@CuriousLearner](https://github.com/CuriousLearner)!
+
+### Maintenance
+
+- Update front-end tooling dependencies to latest versions
+
+### Documentation
+
+- Update Complementary packages list with recent options ([django-bird](https://github.com/joshuadavidthomas/django-bird), [dj-angles](https://github.com/adamghill/dj-angles), [django-cotton](https://github.com/wrabit/django-cotton))
+
+## [1.4.1](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.1) - 2025-04-08
+
+### Fixed
+
+- Include static files in wheel build of the package
+
+## [1.4.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.4.0) - 2025-04-08
+
+Yanked from PyPI as its wheel was missing the pattern library’s static files.
+
+### Added
+
+- Add support for Django 5.2 ([#253](https://github.com/torchbox/django-pattern-library/issues/253))
+- Add emoji favicon to avoid favicon.ico requests from the browser
+
+### Removed
+
+- Remove Django `<6.0` dependency upper bound, allowing installs of arbitrary future Django versions
+
+## [1.3.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.3.0) - 2024-12-11
+
+### Added
+
+- Add support for Django 5.1 ([#251](https://github.com/torchbox/django-pattern-library/pull/251))
+
+### Removed
+
+- Drop support for Python 3.8 ([#251](https://github.com/torchbox/django-pattern-library/pull/251))
+- Drop support for Django 4.1 ([#242](https://github.com/torchbox/django-pattern-library/pull/242))
+
+### Documentation
+
+- Note requirement for `.md` extension for pattern documentation files ([#248](https://github.com/torchbox/django-pattern-library/pull/248))
+- Mention complementary package django-viewcomponent, and django-lookbook as an alternative. ([#250](https://github.com/torchbox/django-pattern-library/pull/250))
+
+### Maintenance
+
+- Test with Python 3.12 ([#242](https://github.com/torchbox/django-pattern-library/pull/242))
+
 ## [1.2.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.2.0) - 2024-01-16
 
 ### Added

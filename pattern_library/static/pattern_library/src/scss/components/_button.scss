@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 .button {
     &--resize {
         border: 2px solid $light-grey;

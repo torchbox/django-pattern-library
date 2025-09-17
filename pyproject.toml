@@ -1,9 +1,8 @@
 [tool.poetry]
 name = "django-pattern-library"
-version = "1.2.0"
+version = "1.5.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 authors = [
-    "Ben Dickinson <ben.dickinson@torchbox.com>",
     "Thibaud Colas <thibaud.colas@torchbox.com>",
 ]
 license = "BSD-3-Clause"
@@ -21,16 +20,21 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Framework :: Django",
     "Framework :: Django :: 4.2",
     "Framework :: Django :: 5.0",
     "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
 ]
 packages = [
     { include = "pattern_library" },
 ]
 include = [
-    'pattern_library/static/pattern_library/dist/bundle.js',
+    { path = "pattern_library/static/pattern_library/dist/bundle.js", format = [
+        "sdist",
+        "wheel",
+    ] },
 ]
 exclude = [
     'pattern_library/static/pattern_library/src/**/*',
@@ -43,7 +47,7 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = ">=4.2,<5.2"
+Django = ">=4.2"
 PyYAML = ">=5.1,<7.0"
 Markdown = "^3.1"
 
@@ -54,10 +58,10 @@ flake8 = {version = "^7.0", python = ">=3.8.1,<4.0"}
 isort = "^5.10.1"
 mkdocs = "^1.1.2"
 mkdocs-material = "^5.5.14"
-pymdown-extensions = "^8.0"
+pymdown-extensions = "^10.0"
 mkdocs-git-revision-date-plugin = "^0.3.1"
 mkdocs-redirects = "^1.0.3"
-black = "^22.3.0"
+black = "^25.1.0"
 
 [tool.isort]
 known_first_party = "pattern_library"

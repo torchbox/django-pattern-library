@@ -150,3 +150,51 @@ def do_include(parser, token):
         extra_context=namemap,
         isolated_context=isolated_context,
     )
+
+
+def visit_extends(self, node, frame):
+    """This method overrides the jinja extends tag
+    Is called as part of the compiler CodeGenerator
+    and adds a line to use the template_new_context as
+    part of the runtime render to pull in the dpl context
+    Handles visiting extends
+    """
+    from .monkey_utils import jinja_visit_Extends
+
+    jinja_visit_Extends(self, node, frame)
+    # addition to update the context with dpl context
+    # calls the template_new_context method below when
+    # invoked at runtime
+    self.writeline(
+        "parent_template.new_context(context.get_all(), True,"
+        f" {self.dump_local_context(frame)})"
+    )
+
+
+def template_new_context(
+    self,
+    vars=None,
+    shared=False,
+    locals=None,
+):
+    """This method overrides the jinja include tag
+    Is called as part of Template.render by jinja2 and is updated
+    to pull in the dpl context
+    Create a new :class:`Context` for this template.  The vars
+    provided will be passed to the template.  Per default the globals
+    are added to the context.  If shared is set to `True` the data
+    is passed as is to the context without adding the globals.
+
+    `locals` can be a dict of local variables for internal usage.
+    """
+    from jinja2.runtime import new_context
+
+    if is_pattern_library_context(vars or {}) and (
+        pattern_context := get_pattern_context(self.name)
+    ):
+        for k, v in pattern_context.items():
+            vars.setdefault(k, v)
+
+    return new_context(
+        self.environment, self.name, self.blocks, vars, shared, self.globals, locals
+    )

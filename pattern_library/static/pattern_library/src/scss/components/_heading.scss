@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 .heading {
     &--iframe-size {
         color: $mid-grey;
@@ -19,7 +21,7 @@
         pointer-events: none;
 
         .iframe-open & {
-            animation-delay: .2s;
+            animation-delay: 0.2s;
             animation-name: fadeInOut;
             animation-iteration-count: 1;
             animation-timing-function: ease-in;

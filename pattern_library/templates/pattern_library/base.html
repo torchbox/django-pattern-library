@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Django pattern library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♻️</text></svg>"/>
     <script type="text/javascript" src="{% static 'pattern_library/dist/bundle.js' %}"></script>
 </head>
 
@@ -23,7 +24,7 @@
     </header>
     <aside class="sidebar">
         <div class="sidebar__inner">
-            <label for="js-pattern-search-input" class="is-hidden">Search pattern library</label>
+            <label for="js-pattern-search-input" class="sr-only">Search pattern library</label>
             <input type="text" class="sidebar__search" id="js-pattern-search-input" placeholder="Search library...">
             <div class="sidebar__search-results" id="js-pattern-search-results-container"></div>
             <nav class="sidebar__nav" id="sidebar-nav">

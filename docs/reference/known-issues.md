@@ -4,7 +4,7 @@ django-pattern-library has a few known limitations due to its design, which are 
 
 ## Overriding filters is not supported
 
-See [#114](https://github.com/torchbox/django-pattern-library/issues/114). PRs welcome!
+See [#114](https://github.com/torchbox/django-pattern-library/issues/114) for Django Templates. PRs welcome!
 
 ## Can’t override context in a child template
 
@@ -62,11 +62,15 @@ See [#138](https://github.com/torchbox/django-pattern-library/issues/138). For e
 
 This can’t be mocked for all usage of `include_block`.
 
-## Jinja2 support
+## Jinja2 overrides
 
-Or lack thereof! If you’re interested in this, please share your thoughts with us on [#180](https://github.com/torchbox/django-pattern-library/discussions/180).
+There is experimental support, excluding overrides of arbitrary tags, functions, and filters. If you’re interested in this, please share your thoughts with us on [#180](https://github.com/torchbox/django-pattern-library/discussions/180).
 
 ## Past limitations
+
+### Jinja2 support
+
+🎉 This is now addressed as of v1.5.0, though with only experimental support, and no capability to override tags, functions, filters (see above).
 
 ### No way to specify objects that have attributes and support iteration
 

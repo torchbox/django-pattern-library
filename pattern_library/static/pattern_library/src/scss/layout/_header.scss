@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 .header {
     background-color: $color-primary;
     display: flex;

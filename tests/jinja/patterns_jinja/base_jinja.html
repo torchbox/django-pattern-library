@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}Fragment{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="{{ static('main.css') }}">
+    </head>
+    <body>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <script src="{{ static('main.js') }}"></script>
+    </body>
+</html>

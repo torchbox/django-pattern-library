@@ -10,7 +10,7 @@ tasks:
   # initialise and install the python part of the app by installing poetry
   # and the python dependencies
   - init: |
-      pip install "poetry>=1.1.12,<2"
+      pip install "poetry>=2.1.2,<3"
       poetry install
       gp sync-done python
     # Start the server for testing

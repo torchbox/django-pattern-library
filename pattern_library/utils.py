@@ -8,6 +8,7 @@ from django.template.context import Context
 from django.template.loader import get_template, render_to_string
 from django.template.loader_tags import ExtendsNode
 from django.template.loaders.app_directories import get_app_template_dirs
+from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
 import markdown
@@ -77,77 +78,6 @@ def get_template_dirs():
     template_app_dirs = get_app_template_dirs("templates")
     template_dirs += template_app_dirs
     return template_dirs
-
-
-def get_pattern_templates():
-    templates = base_dict()
-    template_dirs = get_template_dirs()
-
-    for lookup_dir in template_dirs:
-        for root, dirs, files in os.walk(lookup_dir, topdown=True):
-            # Ignore folders without files
-            if not files:
-                continue
-
-            base_path = os.path.relpath(root, lookup_dir)
-            section, path = section_for(base_path)
-
-            # It has no section, ignore it
-            if not section:
-                continue
-
-            found_templates = []
-            for current_file in files:
-                pattern_path = os.path.join(root, current_file)
-                pattern_path = os.path.relpath(pattern_path, lookup_dir)
-
-                if is_pattern(pattern_path):
-                    template = get_template(pattern_path)
-                    pattern_config = get_pattern_config(pattern_path)
-                    pattern_name = pattern_config.get("name")
-                    pattern_filename = os.path.relpath(
-                        template.origin.template_name,
-                        base_path,
-                    )
-                    if pattern_name:
-                        template.pattern_name = pattern_name
-                    else:
-                        template.pattern_name = pattern_filename
-
-                    template.pattern_filename = pattern_filename
-
-                    found_templates.append(template)
-
-            if found_templates:
-                lookup_dir_relpath = os.path.relpath(root, lookup_dir)
-                sub_folders = os.path.relpath(lookup_dir_relpath, path)
-                templates_to_store = templates
-                for folder in [section, *sub_folders.split(os.sep)]:
-                    try:
-                        templates_to_store = templates_to_store["template_groups"][
-                            folder
-                        ]
-                    except KeyError:
-                        templates_to_store["template_groups"][folder] = base_dict()
-                        templates_to_store = templates_to_store["template_groups"][
-                            folder
-                        ]
-
-                templates_to_store["templates_stored"].extend(found_templates)
-
-    # Order the templates alphabetically
-    for templates_objs in templates["template_groups"].values():
-        templates_objs["template_groups"] = order_dict(
-            templates_objs["template_groups"]
-        )
-
-    # Order the top level by the sections
-    section_order = [section for section, _ in get_sections()]
-    templates["template_groups"] = order_dict(
-        templates["template_groups"], key_sort=lambda key: section_order.index(key)
-    )
-
-    return templates
 
 
 def get_pattern_config_str(template_name):
@@ -227,27 +157,163 @@ def render_pattern(request, template_name, allow_non_patterns=False, config=None
     return render_to_string(template_name, request=request, context=context)
 
 
-def get_template_ancestors(template_name, context=None, ancestors=None):
-    """
-    Returns a list of template names, starting with provided name
-    and followed by the names of any templates that extends until
-    the most extended template is reached.
-    """
-    if ancestors is None:
-        ancestors = [template_name]
+def get_renderer():
+    return TemplateRenderer
 
-    if context is None:
-        context = Context()
 
-    pattern_template = get_template(template_name)
+class TemplateRenderer:
+    @classmethod
+    def get_pattern_templates(cls):
+        templates = base_dict()
+        template_dirs = get_template_dirs()
 
-    for node in pattern_template.template.nodelist:
-        if isinstance(node, ExtendsNode):
-            parent_template_name = node.parent_name.resolve(context)
+        for lookup_dir in template_dirs:
+            for root, dirs, files in os.walk(lookup_dir, topdown=True):
+                # Ignore folders without files
+                if not files:
+                    continue
+
+                base_path = os.path.relpath(root, lookup_dir)
+                section, path = section_for(base_path)
+
+                # It has no section, ignore it
+                if not section:
+                    continue
+
+                found_templates = []
+                for current_file in files:
+                    pattern_path = os.path.join(root, current_file)
+                    pattern_path = os.path.relpath(pattern_path, lookup_dir)
+
+                    if is_pattern(pattern_path):
+                        template = get_template(pattern_path)
+                        pattern_config = get_pattern_config(pattern_path)
+                        pattern_name = pattern_config.get("name")
+                        pattern_filename = os.path.relpath(
+                            template.origin.template_name,
+                            base_path,
+                        )
+                        if pattern_name:
+                            template.pattern_name = pattern_name
+                        else:
+                            template.pattern_name = pattern_filename
+
+                        template.pattern_filename = pattern_filename
+
+                        found_templates.append(template)
+
+                if found_templates:
+                    lookup_dir_relpath = os.path.relpath(root, lookup_dir)
+                    sub_folders = os.path.relpath(lookup_dir_relpath, path)
+                    templates_to_store = templates
+                    for folder in [section, *sub_folders.split(os.sep)]:
+                        try:
+                            templates_to_store = templates_to_store["template_groups"][
+                                folder
+                            ]
+                        except KeyError:
+                            templates_to_store["template_groups"][folder] = base_dict()
+
+                            templates_to_store = templates_to_store["template_groups"][
+                                folder
+                            ]
+
+                    templates_to_store["templates_stored"].extend(found_templates)
+
+        # Order the templates alphabetically
+        for templates_objs in templates["template_groups"].values():
+            templates_objs["template_groups"] = order_dict(
+                templates_objs["template_groups"]
+            )
+
+        # Order the top level by the sections
+        section_order = [section for section, _ in get_sections()]
+        templates["template_groups"] = order_dict(
+            templates["template_groups"], key_sort=lambda key: section_order.index(key)
+        )
+
+        return templates
+
+    @classmethod
+    def get_pattern_source(cls, template):
+        return cls._get_engine(template).get_pattern_source(template)
+
+    @classmethod
+    def get_template_ancestors(cls, template_name, context=None):
+        template = get_template(template_name)
+        return cls._get_engine(template).get_template_ancestors(
+            template_name, context=context
+        )
+
+    @classmethod
+    def _get_engine(cls, template):
+        if "jinja" in str(type(template)).lower():
+            return JinjaTemplateRenderer
+        return DTLTemplateRenderer
+
+
+class DTLTemplateRenderer:
+    @staticmethod
+    def get_pattern_source(template):
+        return escape(template.template.source)
+
+    @classmethod
+    def get_template_ancestors(cls, template_name, context=None, ancestors=None):
+        """
+        Returns a list of template names, starting with provided name
+        and followed by the names of any templates that extends until
+        the most extended template is reached.
+        """
+        if ancestors is None:
+            ancestors = [template_name]
+
+        if context is None:
+            context = Context()
+
+        pattern_template = get_template(template_name)
+
+        for node in pattern_template.template.nodelist:
+            if isinstance(node, ExtendsNode):
+                parent_template_name = node.parent_name.resolve(context)
+                ancestors.append(parent_template_name)
+                cls.get_template_ancestors(
+                    parent_template_name, context=context, ancestors=ancestors
+                )
+                break
+
+        return ancestors
+
+
+class JinjaTemplateRenderer:
+    @staticmethod
+    def get_pattern_source(template):
+        with open(template.template.filename) as f:
+            source = escape(f.read())
+        return source
+
+    @classmethod
+    def get_template_ancestors(cls, template_name, context=None, ancestors=None):
+        """
+        Returns a list of template names, starting with provided name
+        and followed by the names of any templates that extends until
+        the most extended template is reached.
+        """
+        from jinja2.nodes import Extends
+
+        if ancestors is None:
+            ancestors = [template_name]
+
+        if context is None:
+            context = Context()
+
+        pattern_template = get_template(template_name)
+        environment = pattern_template.template.environment
+        nodelist = environment.parse(pattern_template.template.name)
+        parent_template_name = nodelist.find(Extends)
+        if parent_template_name:
             ancestors.append(parent_template_name)
-            get_template_ancestors(
+            cls.get_template_ancestors(
                 parent_template_name, context=context, ancestors=ancestors
             )
-            break
 
-    return ancestors
+        return ancestors

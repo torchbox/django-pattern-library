@@ -33,7 +33,6 @@ atom_template = "patterns/atoms/test_atom/test_atom.html"
 
 
 class ContextModifierTestCase(SimpleTestCase):
-
     maxDiff = None
 
     def setUp(self):
