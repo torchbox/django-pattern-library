@@ -1,7 +1,7 @@
 @use "../config" as *;
 
 .header {
-    background-color: $color-primary;
+    background-color: var(--color-primary);
     display: flex;
     align-items: center;
     height: 45px;
@@ -19,7 +19,7 @@
         margin-left: 15px;
 
         &::after {
-            content: $site-title;
+            content: var(--site-title);
         }
 
         @media only screen and (min-width: 600px) {

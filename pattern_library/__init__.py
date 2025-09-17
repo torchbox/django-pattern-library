@@ -35,6 +35,11 @@ DEFAULT_SETTINGS = {
         ("templates", ["patterns/templates"]),
         ("pages", ["patterns/pages"]),
     ),
+    # CUSTOM_CSS allows users to override pattern library styles by providing a path to a CSS file
+    # (relative to STATIC_URL) that contains CSS custom properties. This file will be included
+    # after the main bundle to override default styles.
+    # Example: "css/pattern-library-custom.css"
+    "CUSTOM_CSS": None,
 }
 
 

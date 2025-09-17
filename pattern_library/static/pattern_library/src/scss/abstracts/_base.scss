@@ -9,7 +9,7 @@
 html,
 body {
     margin: 0;
-    font-family: $family-primary;
+    font-family: var(--family-primary);
     height: 100%;
 }
 
