@@ -40,6 +40,8 @@ DEFAULT_SETTINGS = {
     # after the main bundle to override default styles.
     # Example: "css/pattern-library-custom.css"
     "CUSTOM_CSS": None,
+    # SITE_TITLE allows users to customize the pattern library title displayed in the header
+    "SITE_TITLE": "Django Pattern Library",
 }
 
 

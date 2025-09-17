@@ -17,10 +17,8 @@
         letter-spacing: 1px;
         font-size: 16px;
         margin-left: 15px;
-
-        &::after {
-            content: var(--site-title);
-        }
+        margin-top: 0;
+        margin-bottom: 0;
 
         @media only screen and (min-width: 600px) {
             font-size: 22px;

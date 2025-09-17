@@ -2,7 +2,6 @@ from django import template
 from django.utils.safestring import mark_safe
 from django.templatetags.static import static
 from pattern_library import get_setting
-import os
 
 register = template.Library()
 
@@ -10,11 +9,9 @@ register = template.Library()
 @register.simple_tag
 def pattern_library_custom_css():
     """
-    Include custom CSS file for pattern library customization.
+    Include custom CSS for pattern library customization.
 
-    This tag reads the CUSTOM_CSS setting from PATTERN_LIBRARY and includes
-    the CSS file as a <link> tag. The CSS file should contain CSS custom properties
-    that override the default pattern library styles.
+    This tag optionally includes an external CSS file for additional customization.
 
     Usage in templates:
         {% load pattern_library_tags %}
@@ -24,23 +21,28 @@ def pattern_library_custom_css():
         PATTERN_LIBRARY = {
             "CUSTOM_CSS": "css/pattern-library-custom.css"  # relative to STATIC_URL
         }
-
-    Example custom CSS file content:
-        :root {
-            --color-primary: #ff6b6b;
-            --family-primary: 'Custom Font', sans-serif;
-            --site-title: 'My Custom Library';
-        }
     """
+    css_content = []
+
+    # Include external CSS file if specified
     custom_css_path = get_setting('CUSTOM_CSS')
+    if custom_css_path:
+        try:
+            css_url = static(custom_css_path)
+            css_content.append(f'<link rel="stylesheet" type="text/css" href="{css_url}">')
+        except Exception:
+            pass  # If static file handling fails, just skip the external file
 
-    if not custom_css_path:
-        return ''
+    return mark_safe('\n'.join(css_content))
 
-    # Generate static URL for the CSS file
-    try:
-        css_url = static(custom_css_path)
-        return mark_safe(f'<link rel="stylesheet" type="text/css" href="{css_url}">')
-    except Exception:
-        # If static file handling fails, return empty string
-        return ''
+
+@register.simple_tag
+def pattern_library_site_title():
+    """
+    Get the site title for the pattern library.
+
+    Usage in templates:
+        {% load pattern_library_tags %}
+        {% pattern_library_site_title %}
+    """
+    return get_setting('SITE_TITLE')
