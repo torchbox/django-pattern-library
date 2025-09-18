@@ -1,7 +1,14 @@
-// Overwrite the title, main colour and font family here
-$site-title: 'Django Pattern Library';
-$color-primary: #34b2b2;
-$family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+// Configuration with support for runtime customization via CSS custom properties
+
+// Default SCSS variables for compile-time usage (needed for Sass functions)
+$color-primary: #34b2b2 !default;
+$family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !default;
+
+// CSS Custom Properties for runtime customization
+html, :root {
+  --color-primary: #{$color-primary};
+  --family-primary: #{$family-primary};
+}
 
 // $color--primary + $family--primary are in _config.scss
 $white: #fff;
