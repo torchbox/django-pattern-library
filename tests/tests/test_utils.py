@@ -65,13 +65,13 @@ class TestGetTemplateDirs(SimpleTestCase):
         ]
     )
     def test_get_template_dirs_app_dirs(self):
-        self.assertListEqual(
-            self.get_relative_template_dirs(),
-            [
+        self.assertEqual(
+            set(self.get_relative_template_dirs()),
+            {
                 "django/contrib/auth",
                 "dpl/pattern_library",
                 "dpl/tests",
-            ],
+            },
         )
 
     @override_settings(
@@ -90,15 +90,40 @@ class TestGetTemplateDirs(SimpleTestCase):
         ]
     )
     def test_get_template_dirs_list_dirs(self):
-        self.assertListEqual(
-            self.get_relative_template_dirs(),
-            [
+        self.assertEqual(
+            set(self.get_relative_template_dirs()),
+            {
                 "dpl/tests/test_one",
                 "dpl/tests/test_two",
                 "django/contrib/auth",
                 "dpl/pattern_library",
                 "dpl/tests",
-            ],
+            },
+        )
+
+    @override_settings(
+        TEMPLATES=[
+            {
+                "BACKEND": "django.template.backends.django.DjangoTemplates",
+                "APP_DIRS": True,
+                "DIRS": [os.path.join(settings.BASE_DIR, "test_one", "templates")],
+            },
+            {
+                "BACKEND": "django.template.backends.jinja2.Jinja2",
+                "APP_DIRS": True,
+                "DIRS": [os.path.join(settings.BASE_DIR, "test_one", "templates")],
+            },
+        ]
+    )
+    def test_get_template_dirs_with_two_engines(self):
+        self.assertEqual(
+            set(self.get_relative_template_dirs()),
+            {
+                "dpl/tests/test_one",
+                "django/contrib/auth",
+                "dpl/pattern_library",
+                "dpl/tests",
+            },
         )
 
 
