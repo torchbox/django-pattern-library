@@ -70,7 +70,7 @@
         &:hover,
         &.is-active {
             background: $white;
-            border-left: 5px solid $color-primary;
+            border-left: 5px solid var(--color-primary);
         }
     }
 }
