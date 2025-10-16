@@ -1,6 +1,7 @@
 import operator
 import os
 import re
+from pathlib import Path
 
 from django.conf import settings
 from django.template import TemplateDoesNotExist
@@ -75,9 +76,11 @@ def get_template_dirs():
     template_dirs = [
         d for engines in settings.TEMPLATES for d in engines.get("DIRS", [])
     ]
+    template_dirs_paths = [Path(d).absolute() for d in template_dirs]
     template_app_dirs = get_app_template_dirs("templates")
-    template_dirs += template_app_dirs
-    return template_dirs
+    # Use set to avoid duplicates in case more than one engine is used and
+    # both find the same dirs
+    return list(set(template_dirs_paths).union(set(template_app_dirs)))
 
 
 def get_pattern_config_str(template_name):

@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Avoid duplicating templates when more than one template engine is set up
+
+
 ## [1.5.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.5.0) - 2025-04-08
 
 ### Added
