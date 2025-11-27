@@ -100,7 +100,7 @@ Here is a practical example of combining [Pa11y](https://pa11y.org/) and django-
 
 ```yaml
 static:
-  image: node:22
+  image: node:24
   stage: build
   script:
     - npm ci
