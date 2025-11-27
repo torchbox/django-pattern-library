@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Removed
+
+- Drop support for Python 3.9
+
 ## [1.5.0](https://github.com/torchbox/django-pattern-library/releases/tag/v1.5.0) - 2025-04-08
 
 ### Added
