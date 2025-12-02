@@ -25,14 +25,14 @@
 
             &:hover {
                 color: #000;
-                background-color: $color-primary;
+                background-color: var(--color-primary);
             }
         }
 
         &--active {
             > a {
                 color: #000;
-                background-color: $color-primary;
+                background-color: var(--color-primary);
             }
         }
 

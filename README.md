@@ -64,3 +64,7 @@ To try out the latest features before a release, we also create builds from ever
 View the full list of [contributors](https://github.com/torchbox/django-pattern-library/graphs/contributors). [BSD](https://github.com/torchbox/django-pattern-library/blob/main/LICENSE) licensed.
 
 Project logo from [FxEmoji](https://github.com/mozilla/fxemoji). Documentation website built with [MkDocs](https://www.mkdocs.org/), and hosted in [GitHub Pages](https://pages.github.com/).
+
+## GitHub releases
+
+Note: if making a release on GitHub, please make sure to 1. build locally (`poetry build`) , and 2. include the 2 build files (*.tar.gz and *.whl) as a part of the GitHub release.
