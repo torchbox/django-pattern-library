@@ -15,7 +15,7 @@
         text-align: center;
 
         > a {
-            color: color.adjust(#000, $lightness: 30%);
+            color: color.adjust($black, $lightness: 30%);
             padding: 12px 0;
             display: block;
             width: 100%;
@@ -26,14 +26,14 @@
                 background-color 0.25s ease;
 
             &:hover {
-                color: #000;
+                color: $black;
                 background-color: $color-primary;
             }
         }
 
         &--active {
             > a {
-                color: #000;
+                color: $black;
                 background-color: $color-primary;
             }
         }

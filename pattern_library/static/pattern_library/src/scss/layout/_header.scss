@@ -5,9 +5,6 @@
     display: flex;
     align-items: center;
     height: 45px;
-    -ms-grid-column: 1;
-    -ms-grid-row: 1;
-    -ms-grid-column-span: 2;
     grid-column: 1 / span 2;
 
     &__title {

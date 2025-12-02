@@ -1,14 +1,10 @@
 @use '../config' as *;
 
 .body {
-    display: -ms-grid;
     display: grid;
-    -ms-grid-columns: $sidebar-width 1fr;
-    -ms-grid-rows: 45px 1fr;
     grid-template-columns: $sidebar-width 1fr;
 
     &.nav-closed {
-        -ms-grid-columns: 0 1fr;
         grid-template-columns: 0 1fr;
     }
 

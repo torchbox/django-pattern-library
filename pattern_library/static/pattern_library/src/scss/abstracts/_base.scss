@@ -25,7 +25,7 @@ h6 {
 }
 
 a {
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     color: $link-color;
 }
 
@@ -58,7 +58,7 @@ a {
     height: 1px;
     overflow: hidden;
     opacity: 0;
-    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: rect(1px, 1px, 1px, 1px);
 }
 
 @keyframes fadeInOut {
