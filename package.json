@@ -1,34 +1,37 @@
 {
-    "name": "django-pattern-library",
-    "version": "0.1.0",
-    "private": true,
-    "license": "BSD-3-Clause",
-    "browserslist": [
-        "> 1% and last 2 versions",
-        "Firefox ESR",
-        "ios_saf 14",
-        "safari 14",
-        "not ie 11",
-        "not ie_mob 11",
-        "not android 4.4.3-4.4.4",
-        "not OperaMini all"
-    ],
-    "scripts": {
-        "start": "webpack --mode development --watch",
-        "build": "webpack --mode production"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.26.10",
-        "@babel/preset-env": "^7.26.9",
-        "babel-loader": "^10.0.0",
-        "css-loader": "^7.1.2",
-        "sass": "^1.86.3",
-        "sass-loader": "^16.0.5",
-        "style-loader": "^4.0.0",
-        "webpack": "^5.99.2",
-        "webpack-cli": "^6.0.1"
-    },
-    "dependencies": {
-        "highlight.js": "^11.11.1"
-    }
+  "name": "django-pattern-library",
+  "version": "0.1.0",
+  "private": true,
+  "license": "BSD-3-Clause",
+  "browserslist": [
+    "> 1% and last 2 versions",
+    "Firefox ESR",
+    "ios_saf 14",
+    "safari 14",
+    "not ie 11",
+    "not ie_mob 11",
+    "not android 4.4.3-4.4.4",
+    "not OperaMini all"
+  ],
+  "scripts": {
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "lint": "prettier --check '**/?(.)*.{md,css,scss,js,json,yaml,yml}'",
+    "format": "prettier --write '**/?(.)*.{md,css,scss,js,json,yaml,yml}'"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "prettier": "^3.7.3",
+    "sass": "^1.86.3",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.2",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1"
+  }
 }
