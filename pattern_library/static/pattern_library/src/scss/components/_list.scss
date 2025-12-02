@@ -1,4 +1,4 @@
-@use "../config" as *;
+@use '../config' as *;
 
 .list {
     list-style: none;
@@ -63,7 +63,10 @@
         display: block;
         font-size: inherit;
         border-left: 5px solid $off-white;
-        transition: background, border, 0.15s ease-in-out;
+        transition:
+            background,
+            border,
+            0.15s ease-in-out;
         padding: 10px 20px 10px 30px;
         margin: 0 -20px 0 -35px;
 

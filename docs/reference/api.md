@@ -28,7 +28,7 @@ context:
 tags:
   error_tag:
     include:
-      template_name: "non-patterns/include.html"
+      template_name: 'non-patterns/include.html'
 ```
 
 ## Templates

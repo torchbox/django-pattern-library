@@ -18,7 +18,7 @@ If you have a `some_page.html`, `some_page.yaml`, and `include_me.html`, `includ
 context:
   page:
     pk: 1
-    title: "my title"
+    title: 'my title'
 ```
 
 and `include_me.yaml` with something like:
@@ -26,7 +26,7 @@ and `include_me.yaml` with something like:
 ```yaml
 context:
   page:
-    title: "Title from include"
+    title: 'Title from include'
 ```
 
 `Title from include` will appear on both patterns. It's impossible to override single key in `some_page.html`

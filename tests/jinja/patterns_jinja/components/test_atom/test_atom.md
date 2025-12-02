@@ -2,7 +2,7 @@
 
 **bold text**
 
-*italic text*
+_italic text_
 
 ## Here's a heading 2
 

@@ -12,7 +12,6 @@ You may also consider using the [`render_patterns` command](../reference/api.md#
 
 Patterns support defining a custom `name` in YAML, as well as rendering fully-fledged documentation in Markdown. Create a file next to the template to document it, ensuring the filename has a `.md` extension (e.g., `call_to_action.md`):
 
-
 ```markdown
 This template can be used in different places. In streamfield block
 or directly in a page template. To use this template pass `call_to_action` into context.

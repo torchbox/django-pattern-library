@@ -9,6 +9,6 @@
 ```yaml
 tags:
   footernav:
-    "":
-      template_name: "patterns/molecules/navigation/footernav.html"
+    '':
+      template_name: 'patterns/molecules/navigation/footernav.html'
 ```

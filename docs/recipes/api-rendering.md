@@ -17,9 +17,7 @@ echo '{"template_name": "patterns/molecules/button/button.html", "config": {"con
 The response will be the pattern’s rendered HTML:
 
 ```html
-<a href="/hello-api" class="button">
-    API
-</a>
+<a href="/hello-api" class="button"> API </a>
 ```
 
 Note compared to iframe rendering, this API always renders the pattern’s HTML standalone, never within a base template.

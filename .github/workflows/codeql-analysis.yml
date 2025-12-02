@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: 'CodeQL'
 
 on:
   push:
@@ -17,7 +17,7 @@ on:
       - '**/*.html'
       - '**/*.scss'
   schedule:
-    - cron: "28 20 * * 5"
+    - cron: '28 20 * * 5'
 
 jobs:
   analyze:
@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["javascript", "python"]
+        language: ['javascript', 'python']
 
     steps:
       - uses: actions/checkout@v3

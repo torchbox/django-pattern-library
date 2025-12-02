@@ -139,15 +139,15 @@ Our `yaml` will similar to this:
 ```yaml
 # Override template tags
 tags:
-    # Name of the template tag we are overriding
-    image:
-        # Arguments of the template tag
-        # Override {% image avatar fill-200x200 %}
-        avatar fill-200x200:
-            template_name: "patterns/atoms/images/image.html"
-        # Override {% image avatar fill-200x400 %}
-        avatar fill-200x400:
-            template_name: "patterns/atoms/images/image.html"
+  # Name of the template tag we are overriding
+  image:
+    # Arguments of the template tag
+    # Override {% image avatar fill-200x200 %}
+    avatar fill-200x200:
+      template_name: 'patterns/atoms/images/image.html'
+    # Override {% image avatar fill-200x400 %}
+    avatar fill-200x400:
+      template_name: 'patterns/atoms/images/image.html'
 
 # Override context, if needed
 ```
@@ -170,16 +170,15 @@ of different sizes.
 
 There are two approaches for this problem:
 
-*   Create a template for every image size you need. It can be a template
-    that you will be only using for pattern library: no production use.
-    This is a good option, when you want define a fake result for a template
-    tag that renders a big piece of HTML code.
-    Also it's useful when the template tag renders some other pattern,
-    which is a common situation.
-*   For tags that render something small like `<img>` tag,
-    there is an alternative option: you can define raw data
-    in your `yaml` file
-
+- Create a template for every image size you need. It can be a template
+  that you will be only using for pattern library: no production use.
+  This is a good option, when you want define a fake result for a template
+  tag that renders a big piece of HTML code.
+  Also it's useful when the template tag renders some other pattern,
+  which is a common situation.
+- For tags that render something small like `<img>` tag,
+  there is an alternative option: you can define raw data
+  in your `yaml` file
 
 ### Return raw data
 
@@ -188,17 +187,17 @@ Let's update our `yaml` to use raw data:
 ```yaml
 # Override template tags
 tags:
-    # Name of the template tag we are overriding
-    image:
-        # Arguments of the template tag
-        # Override {% image avatar fill-200x200 %}
-        avatar fill-200x200:
-            raw: >
-                <img src="https://source.unsplash.com/200x200?ocean" width="200" height="200" alt="">
-        # Override {% image avatar fill-200x400 %}
-        avatar fill-200x400:
-            raw: >
-                <img src="https://source.unsplash.com/200x400?ocean" width="200" height="400" alt="">
+  # Name of the template tag we are overriding
+  image:
+    # Arguments of the template tag
+    # Override {% image avatar fill-200x200 %}
+    avatar fill-200x200:
+      raw: >
+        <img src="https://source.unsplash.com/200x200?ocean" width="200" height="200" alt="">
+    # Override {% image avatar fill-200x400 %}
+    avatar fill-200x400:
+      raw: >
+        <img src="https://source.unsplash.com/200x400?ocean" width="200" height="400" alt="">
 
 # Override context, if needed
 ```
@@ -228,12 +227,12 @@ We can define our `yaml` like this:
 
 ```yaml
 tags:
-    image:
-        # Override {% image avatar fill-200x200 as avatar_thumbnail %}
-        avatar fill-200x200 as avatar_thumbnail:
-            raw:
-                file: "/path/to/avatar/file"
-                url: "https://source.unsplash.com/200x200?ocean"
+  image:
+    # Override {% image avatar fill-200x200 as avatar_thumbnail %}
+    avatar fill-200x200 as avatar_thumbnail:
+      raw:
+        file: '/path/to/avatar/file'
+        url: 'https://source.unsplash.com/200x200?ocean'
 ```
 
 Note that the example above will only work if our `image` is a
@@ -243,13 +242,13 @@ variable name explicitly like this:
 
 ```yaml
 tags:
-    image:
-        # Override {% image avatar fill-200x200 as avatar_thumbnail %}
-        avatar fill-200x200 as avatar_thumbnail:
-            target_var: avatar_thumbnail
-            raw:
-                file: "/path/to/avatar/file"
-                url: "https://source.unsplash.com/200x200?ocean"
+  image:
+    # Override {% image avatar fill-200x200 as avatar_thumbnail %}
+    avatar fill-200x200 as avatar_thumbnail:
+      target_var: avatar_thumbnail
+      raw:
+        file: '/path/to/avatar/file'
+        url: 'https://source.unsplash.com/200x200?ocean'
 ```
 
 Note the `target_var` field.

@@ -1,4 +1,4 @@
-export default function() {
+export default function () {
     let i;
     let tabItem = document.querySelectorAll('.tabbed-content__heading');
 
@@ -26,6 +26,6 @@ export default function() {
     }
 
     for (i = 0; i < tabItem.length; i++) {
-        tabItem[i].addEventListener('click', tabs)
+        tabItem[i].addEventListener('click', tabs);
     }
 }

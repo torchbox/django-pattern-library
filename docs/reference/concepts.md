@@ -21,4 +21,3 @@ In contrast to fragments, pages are patterns that include everything they need t
 Any template in that list — or that extends a template in that list — is considered a page and will be displayed as-is when rendered in the pattern library.
 
 It is common practice for page templates to extend the pattern base template to avoid duplicate references to stylesheets and Javascript bundles. Again, [an example](https://github.com/torchbox/django-pattern-library/blob/main/tests/templates/patterns/base_page.html) of this can be seen in the tests.
-

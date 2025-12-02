@@ -1,4 +1,4 @@
-export default function() {
+export default function () {
     if (location.pathname.includes('/pattern/')) {
         // split url to match {{ template.origin.template_name }}
         const id = location.pathname.split('/pattern/')[1];
@@ -12,7 +12,8 @@ export default function() {
         const parentCategory = currentPattern.closest('ul');
         const parentCategoryHeading = parentCategory.previousElementSibling;
         const grandParentCategory = parentCategoryHeading.closest('ul');
-        const grandParentCategoryHeading = grandParentCategory.previousElementSibling;
+        const grandParentCategoryHeading =
+            grandParentCategory.previousElementSibling;
 
         parentCategory.classList.add('is-open');
         parentCategoryHeading.classList.add('is-open');

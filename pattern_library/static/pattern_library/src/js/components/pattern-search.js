@@ -1,10 +1,12 @@
-export default function() {
+export default function () {
     const searchBox = document.getElementById('js-pattern-search-input');
     const patternList = [...document.querySelectorAll('.list__item-link')];
     const patternListContainer = document.getElementById('sidebar-nav');
-    const searchResultsContainer = document.getElementById('js-pattern-search-results-container')
+    const searchResultsContainer = document.getElementById(
+        'js-pattern-search-results-container',
+    );
 
-    searchBox.addEventListener('keyup', e => {
+    searchBox.addEventListener('keyup', (e) => {
         let searchValue = e.target.value.toLowerCase();
 
         // Clear if input value is empty
@@ -15,7 +17,6 @@ export default function() {
 
         // On enter key
         if (e.keyCode == 13 && searchValue != '') {
-
             // Clear results list and hide pattern list
             searchResultsContainer.innerHTML = '';
             patternListContainer.classList.add('sidebar__nav--inactive');
@@ -27,8 +28,13 @@ export default function() {
 
             // Populate search results
             if (matchedValues.length) {
-                matchedValues.forEach(item => {
-                    searchResultsContainer.innerHTML += '<a href="' + item.getAttribute("href") +'">' + item.textContent + '</a>';
+                matchedValues.forEach((item) => {
+                    searchResultsContainer.innerHTML +=
+                        '<a href="' +
+                        item.getAttribute('href') +
+                        '">' +
+                        item.textContent +
+                        '</a>';
                 });
             } else {
                 searchResultsContainer.innerHTML = 'No results found.';

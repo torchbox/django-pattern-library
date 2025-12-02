@@ -4,7 +4,8 @@ export function toggleNavItems() {
     categoryButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
             e.target.classList.toggle('is-open');
-            for (const element of e.target.closest('.js-list-item').childNodes) {
+            for (const element of e.target.closest('.js-list-item')
+                .childNodes) {
                 if (element.nodeName === 'UL') {
                     element.classList.toggle('is-open');
                 }

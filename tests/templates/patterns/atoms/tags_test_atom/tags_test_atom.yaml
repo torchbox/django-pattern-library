@@ -8,9 +8,9 @@ tags:
       raw: 0
   default_html_tag:
     page.url:
-      raw: "example"
+      raw: 'example'
     page.child.url:
-      raw: "another_example"
+      raw: 'another_example'
     # None handled by default html value.
   default_html_tag_falsey:
     empty_string:

@@ -76,13 +76,13 @@ Here is an example Pa11y configuration:
 ```js
 module.exports = {
   defaults: {
-    standard: "WCAG2AAA",
-    runners: ["axe"],
+    standard: 'WCAG2AAA',
+    runners: ['axe'],
   },
 
   urls: [
-    "https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/molecules/accordion/accordion.html",
-    "https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/pages/people/person_page.html",
+    'https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/molecules/accordion/accordion.html',
+    'https://torchbox.github.io/django-pattern-library/dpl-rendered-patterns/pages/people/person_page.html',
   ],
 };
 ```
@@ -106,7 +106,7 @@ static:
     - npm ci
     - npm run build:prod
   artifacts:
-    name: "static-$CI_JOB_ID"
+    name: 'static-$CI_JOB_ID'
     paths:
       - ./demosite/static_compiled
     expire_in: 30 mins
@@ -131,7 +131,7 @@ test_python:
     - python manage.py render_patterns --wrap-fragment 2>&1 >/dev/null | tee dpl-list.txt
     - mv dpl-list.txt dpl-rendered-patterns && cp -R static dpl-rendered-patterns/static && mv dpl-rendered-patterns ../dpl-rendered-patterns
   artifacts:
-    name: "test_patterns-$CI_JOB_ID"
+    name: 'test_patterns-$CI_JOB_ID'
     paths:
       - ./dpl-rendered-patterns
     expire_in: 30 mins
@@ -161,44 +161,44 @@ pa11y:
 Here is the `pa11y.config.js`, which will determine what to test based on the output of `render_patterns`, as listed in the `dpl-list.txt` file:
 
 ```js
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
 const defaults = {
   chromeLaunchConfig: {
     // Needed to run Pa11y in GitLab CI.
-    args: ["--no-sandbox"],
+    args: ['--no-sandbox'],
   },
-  standard: "WCAG2AA",
-  runners: ["axe"],
+  standard: 'WCAG2AA',
+  runners: ['axe'],
 };
 
 // Assume we run tests over a live django-pattern-library instance, unless TEST_ORIGIN is set;
-const local = "http://localhost:8000/pattern-library/render-pattern/patterns";
+const local = 'http://localhost:8000/pattern-library/render-pattern/patterns';
 const origin = process.env.TEST_ORIGIN || local;
 
 let urls = [];
 
 // In CI mode, retrieve the URLs to test from dpl-rendered-patterns.
 if (process.env.CI) {
-  const list = path.join(__dirname, "dpl-rendered-patterns", "dpl-list.txt");
+  const list = path.join(__dirname, 'dpl-rendered-patterns', 'dpl-list.txt');
   const patterns = fs
-    .readFileSync(list, "utf-8")
-    .split("\n")
+    .readFileSync(list, 'utf-8')
+    .split('\n')
     .filter((p) => p);
 
-  urls = patterns.map((p) => `${origin}/${p.replace("patterns/", "")}`);
+  urls = patterns.map((p) => `${origin}/${p.replace('patterns/', '')}`);
 }
 
 // Convert the list of URLs to configuration objects.
 urls = [...new Set(urls)].map((url) => {
   const config = {
     url,
-    screenCapture: `dpl-rendered-patterns/${url.replace(origin, "")}.png`,
+    screenCapture: `dpl-rendered-patterns/${url.replace(origin, '')}.png`,
   };
 
-  if (url.endsWith("tab-nav-item.html")) {
-    config.ignore = [...defaults.ignore, "aria-required-parent"];
+  if (url.endsWith('tab-nav-item.html')) {
+    config.ignore = [...defaults.ignore, 'aria-required-parent'];
   }
 
   return config;

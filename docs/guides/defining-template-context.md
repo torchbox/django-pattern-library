@@ -16,8 +16,8 @@ The `big_red_button.yaml` can be something like this:
 
 ```yaml
 context:
-    button_link: https://example.com/
-    button_text: Example link
+  button_link: https://example.com/
+  button_text: Example link
 ```
 
 In the same way you can provide context in more complex templates. Here is
@@ -46,14 +46,14 @@ You might define a YAML file similar to this to provide fake data:
 name: My example pattern
 
 context:
-    items_title: Related pages
-    my_objects:
-        exists: true  # simulate `QuerySet`'s `exists` method
-        all:          # simulate `QuerySet`'s `all` method
-            - title: Page 1
-              link: /page1
-            - title: Page 2
-              link: /page2
+  items_title: Related pages
+  my_objects:
+    exists: true # simulate `QuerySet`'s `exists` method
+    all: # simulate `QuerySet`'s `all` method
+      - title: Page 1
+        link: /page1
+      - title: Page 2
+        link: /page2
 ```
 
 You can define a list or a dict or anything that [`PyYAML`](http://pyyaml.org/wiki/PyYAMLDocumentation) allows you to create in YAML format without creating a custom objects.

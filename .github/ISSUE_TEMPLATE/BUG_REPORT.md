@@ -1,9 +1,9 @@
 ---
-name: "🐞 Bug Report"
+name: '🐞 Bug Report'
 about: Create a report to help us improve
-title: ""
-labels: "type:Bug"
-assignees: ""
+title: ''
+labels: 'type:Bug'
+assignees: ''
 ---
 
 Found a bug? Please fill out the sections below. 👍

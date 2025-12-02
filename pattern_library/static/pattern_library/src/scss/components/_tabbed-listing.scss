@@ -1,5 +1,5 @@
-@use "sass:color";
-@use "../config" as *;
+@use 'sass:color';
+@use '../config' as *;
 
 .tabbed-content {
     &__list {
@@ -21,7 +21,9 @@
             width: 100%;
             background-color: color.adjust($color-primary, $lightness: 30%);
             text-decoration: none;
-            transition: color 0.25s ease, background-color 0.25s ease;
+            transition:
+                color 0.25s ease,
+                background-color 0.25s ease;
 
             &:hover {
                 color: #000;
