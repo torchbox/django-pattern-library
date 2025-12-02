@@ -54,6 +54,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: npm ci --no-audit
+      - run: npm run lint || true
       - run: npm run build
       - run: pipx install "poetry>=2.1.2,<3"
       - uses: actions/setup-python@v5
