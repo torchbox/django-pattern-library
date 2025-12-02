@@ -100,9 +100,9 @@ def add_page_images(context, request):
     Image = get_image_model()
     if "page" in context:
         if "hero_image" in context["page"]:
-            context["hero_image"] = Image.objects.all().order("?").first()
+            context["hero_image"] = Image.objects.all().order_by("?").first()
         if "main_image" in context["page"]:
-            context["main_image"] = Image.objects.all().order("?").first()
+            context["main_image"] = Image.objects.all().order_by("?").first()
 
 
 @register_context_modifier
@@ -202,4 +202,78 @@ def add_total(context, request):
         second_num = context.get('second_number', 0)
         third_num = context.get('third_number', 0)
         context['total'] = first_num + second_num + third_num
+```
+
+## Extending the YAML syntax
+
+You can also take advantage of YAML's local tags in order to insert full-fledged Python objects into your mocked contexts.
+
+To do so, decorate a function that returns the object you want with `@register_yaml_tag` like so:
+
+```python
+# myproject/core/pattern_contexts.py
+
+from pattern_library.yaml import register_yaml_tag
+from wagtail.images import get_image_model
+
+@register_yaml_tag
+def testimage():
+    """
+    Return a random Image instance.
+    """
+    Image = get_image_model()
+    return Image.objects.order_by("?").first()
+```
+
+Once the custom YAML tag is registered, you can use it by adding the `!` prefix:
+
+```yaml
+context:
+  object_list:
+    - title: First item
+      image: !testimage
+    - title: Second item
+      image: !testimage
+```
+
+### Registering a tag under a different name
+
+The `@register_yaml_tag` decorator will use the name of the decorated function as the tag name automatically.
+
+You can specify a different name by passing `name=...` when registering the function:
+
+```python
+@register_yaml_tag("testimage")
+def get_random_image():
+    ...
+```
+
+
+### Passing arguments to custom tags
+
+It's possible to create custom tags that take arguments.
+
+```python
+@register_yaml_tag
+def testimage(collection):
+    """
+    Return a random Image instance from the given collection.
+    """
+    Image = get_image_model()
+    images = Image.objects.filter(collection__name=collection)
+    return images.order_by("?").first()
+```
+
+You can then specify arguments positionally using YAML's list syntax:
+```yaml
+context:
+  test_image: !testimage
+    - pattern_library
+```
+
+Alternatively you can specify keyword arguments using YAML's dictionary syntax:
+```yaml
+context:
+  test_image: !testimage
+    collection: pattern_library
 ```
