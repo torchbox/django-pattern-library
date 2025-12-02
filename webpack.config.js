@@ -1,13 +1,8 @@
-const path = require('path');
+import path from 'path';
 
-const staticDir = path.resolve(
-    __dirname,
-    'pattern_library',
-    'static',
-    'pattern_library',
-);
+const staticDir = path.resolve('pattern_library', 'static', 'pattern_library');
 
-module.exports = {
+export default {
     entry: path.join(staticDir, 'src', 'js', 'app.js'),
     output: {
         path: path.join(staticDir, 'dist'),
