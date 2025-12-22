@@ -8,29 +8,28 @@ readme = "README.md"
 repository = "https://github.com/torchbox/django-pattern-library"
 documentation = "https://torchbox.github.io/django-pattern-library/"
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
-    "Environment :: Web Environment",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: BSD License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
-    "Framework :: Django",
-    "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0",
-    "Framework :: Django :: 5.1",
-    "Framework :: Django :: 5.2",
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Web Environment",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Framework :: Django",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5.2",
+  "Framework :: Django :: 6.0",
 ]
 packages = [{ include = "pattern_library" }]
 include = [
-    { path = "pattern_library/static/pattern_library/dist/bundle.js", format = [
-        "sdist",
-        "wheel",
-    ] },
+  { path = "pattern_library/static/pattern_library/dist/bundle.js", format = [
+    "sdist",
+    "wheel",
+  ] },
 ]
 exclude = ['pattern_library/static/pattern_library/src/**/*']
 
@@ -45,7 +44,7 @@ Django = ">=4.2"
 PyYAML = ">=5.1,<7.0"
 Markdown = "^3.1"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 beautifulsoup4 = "^4.8"
 coverage = "^7.4"
 flake8 = { version = "^7.0", python = ">=3.8.1,<4.0" }

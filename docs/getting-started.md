@@ -17,7 +17,7 @@ poetry add --dev django-pattern-library
 
 We support:
 
-- Django 4.2, 5.0, 5.1
+- Django 4.2, 5.2, 6.0
 - Python 3.10, 3.11, 3.12, 3.13, 3.14
 - Django Templates and Jinja (experimental)
 - Modern “evergreen” desktop and mobile browsers
