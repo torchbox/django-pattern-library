@@ -21,6 +21,7 @@ from pattern_library import (
 )
 from pattern_library.context_modifiers import registry
 from pattern_library.exceptions import TemplateIsNotPattern
+from pattern_library.yaml import PatternLibraryLoader
 
 
 def path_to_section():
@@ -100,7 +101,7 @@ def get_pattern_config_str(template_name):
 def get_pattern_config(template_name):
     config_str = get_pattern_config_str(template_name)
     if config_str:
-        return yaml.load(config_str, Loader=yaml.FullLoader)
+        return yaml.load(config_str, Loader=PatternLibraryLoader)
     return {}
 
 

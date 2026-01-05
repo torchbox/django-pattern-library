@@ -11,6 +11,7 @@
 ### Added
 
 - Add experimental Jinja support ([#180](https://github.com/torchbox/django-pattern-library/discussions/180), [#247](https://github.com/torchbox/django-pattern-library/pull/247), [#254](https://github.com/torchbox/django-pattern-library/pull/254)). Thank you to [@gone](https://github.com/gone), [@luord](https://github.com/luord), [@edcohen08](https://github.com/edcohen08), [@maribedran](https://github.com/maribedran), [@CuriousLearner](https://github.com/CuriousLearner)!
+- Add a `register_yaml_tag` decorator to make use of custom YAML tags in contexts ([#260](https://github.com/torchbox/django-pattern-library/pull/260)).
 
 ### Maintenance
 
