@@ -35,7 +35,7 @@ jobs:
           - python: '3.13'
             toxenv: py313-dj42,py313-dj52,py313-dj60
           - python: '3.14'
-            toxenv: py314-dj42,py314-dj52,py314-djmain
+            toxenv: py314-dj52,py314-djmain
     steps:
       - uses: actions/checkout@v6
       - run: pipx install "poetry>=2.1.2,<3"
