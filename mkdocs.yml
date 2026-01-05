@@ -12,6 +12,7 @@ theme:
     primary: indigo
   logo: images/logo.svg
   favicon: images/favicon.png
+  custom_dir: docs/overrides
 markdown_extensions:
   - codehilite
   - admonition
