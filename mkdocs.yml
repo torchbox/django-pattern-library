@@ -1,6 +1,6 @@
 site_name: django-pattern-library
 repo_url: https://github.com/torchbox/django-pattern-library
-site_url:
+site_url: https://torchbox.github.io/django-pattern-library/
 edit_uri: edit/main/docs/
 
 repo_name: django-pattern-library
@@ -30,6 +30,21 @@ plugins:
   - redirects:
       redirect_maps:
         'reference/related-projects.md': 'community/related-projects.md'
+  - llmstxt-md:
+      enable_markdown_urls: true
+      enable_llms_txt: true
+      enable_llms_full: true
+      enable_copy_button: false
+      sections:
+        'Getting started':
+          - index.md
+          - getting-started.md
+        'Guides':
+          - guides/*.md
+        'Recipes':
+          - recipes/*.md
+        'Reference':
+          - reference/*.md
 nav:
   - 'Home': 'index.md'
   - 'Getting started': 'getting-started.md'
