@@ -54,7 +54,7 @@ class TestGetTemplateDirs(SimpleTestCase):
         """Make paths relative with a predefined root so we can use them in assertions."""
         base = os.path.dirname(settings.BASE_DIR)
         dirs = get_template_dirs()
-        return ["/".join(str(d).replace(base, "dpl").split("/")[-4:-1]) for d in dirs]
+        return ["/".join(str(d).replace(base, "dpl").split("/")[-4:]) for d in dirs]
 
     @override_settings(
         TEMPLATES=[
@@ -68,9 +68,28 @@ class TestGetTemplateDirs(SimpleTestCase):
         self.assertListEqual(
             self.get_relative_template_dirs(),
             [
-                "django/contrib/auth",
-                "dpl/pattern_library",
-                "dpl/tests",
+                "django/contrib/auth/templates",
+                "dpl/pattern_library/templates",
+                "dpl/tests/templates",
+            ],
+        )
+
+    @override_settings(
+        TEMPLATES=[
+            {
+                "BACKEND": "django.template.backends.jinja2.Jinja2",
+                "APP_DIRS": True,
+                "OPTIONS": {
+                    "environment": "tests.jinja2.environment",
+                },
+            },
+        ]
+    )
+    def test_get_template_dirs_jinja_app_dirs(self):
+        self.assertListEqual(
+            self.get_relative_template_dirs(),
+            [
+                "dpl/tests/jinja2",
             ],
         )
 
@@ -93,11 +112,11 @@ class TestGetTemplateDirs(SimpleTestCase):
         self.assertListEqual(
             self.get_relative_template_dirs(),
             [
-                "dpl/tests/test_one",
-                "dpl/tests/test_two",
-                "django/contrib/auth",
-                "dpl/pattern_library",
-                "dpl/tests",
+                "dpl/tests/test_one/templates",
+                "django/contrib/auth/templates",
+                "dpl/pattern_library/templates",
+                "dpl/tests/templates",
+                "dpl/tests/test_two/templates",
             ],
         )
 
