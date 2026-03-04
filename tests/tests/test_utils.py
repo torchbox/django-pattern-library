@@ -113,10 +113,10 @@ class TestGetTemplateDirs(SimpleTestCase):
             self.get_relative_template_dirs(),
             [
                 "dpl/tests/test_one/templates",
-                "dpl/tests/test_two/templates",
                 "django/contrib/auth/templates",
                 "dpl/pattern_library/templates",
                 "dpl/tests/templates",
+                "dpl/tests/test_two/templates",
             ],
         )
 

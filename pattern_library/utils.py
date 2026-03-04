@@ -72,11 +72,10 @@ def order_dict(dictionary, key_sort=None):
 
 
 def get_template_dirs():
-    template_dirs = [
-        d for engines in settings.TEMPLATES for d in engines.get("DIRS", [])
-    ]
-    template_app_dirs = get_app_template_dirs("templates")
-    template_dirs += template_app_dirs
+    from django.template import engines
+    template_dirs = []
+    for engine in engines.all():
+        template_dirs.extend(engine.template_dirs)
     return template_dirs
 
 
