@@ -39,7 +39,7 @@
 
             <div class="tabbed-content__tabs">
                 <div id="tab-1" class="tabbed-content__item tabbed-content__item--active">
-                    <div class="md">{{ pattern_markdown|safe }}</div>
+                    {% if pattern_markdown %}<div class="md">{{ pattern_markdown|safe }}</div>{% else %}<div class="md">No template doc available.</div>{% endif %}
                 </div>
 
                 <div id="tab-2" class="tabbed-content__item">
