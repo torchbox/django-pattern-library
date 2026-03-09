@@ -31,8 +31,8 @@
     "sass": "^1.86.3",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
-    "stylelint": "^16.26.1",
-    "stylelint-config-torchbox": "^4.0.0",
+    "stylelint": "^17.4.0",
+    "stylelint-config-torchbox": "^5.0.0",
     "webpack": "^5.99.2",
     "webpack-cli": "^6.0.1"
   },
