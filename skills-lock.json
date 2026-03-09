@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "upgrading-stylelint": {
+      "source": "torchbox/stylelint-config-torchbox",
+      "sourceType": "github",
+      "computedHash": "75e2800e8fb4f29ed9478cba24e27dd509ffd8ecd8f1e704e54b292af592a2f4"
+    }
+  }
+}
