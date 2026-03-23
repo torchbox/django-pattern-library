@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♻️</text></svg>"/>
     <script type="text/javascript" src="{% static 'pattern_library/dist/bundle.js' %}"></script>
+    {% block custom_extra_js %}
+    {% endblock %}
+    {% block custom_extra_css %}
+    {% endblock %}
 </head>
 
 <body class="body">
@@ -40,9 +44,13 @@
                         {% include "pattern_library/pattern_group.html" with groups=pattern_templates.template_groups %}
                     </li>
                     {% endfor %}
+                    {% block custom_nav_item %}
+                    {% endblock %}
                 </ul>
             </nav>
         </div>
+        {% block custom_sidebar_content %}
+        {% endblock %}
     </aside>
     <main class="main">
         {% block content %}{% endblock %}

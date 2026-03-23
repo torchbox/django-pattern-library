@@ -20,6 +20,9 @@
             </div>
         </div>
 
+        {% block custom_pattern_header %}
+        {% endblock %}
+
         <iframe class="iframe js-iframe is-animatable" src="{% url 'pattern_library:render_pattern' pattern_template_name=pattern_template_name %}" title="Iframe pattern"></iframe>
 
         <div class="tabbed-content">
@@ -34,6 +37,9 @@
                 <li class="tabbed-content__heading">
                     <a href="#tab-3">Template docs</a>
                 </li>
+
+                {% block custom_tab_heading %}
+                {% endblock %}
             </ul>
 
             <div class="tabbed-content__tabs">
@@ -48,6 +54,9 @@
                 <div id="tab-3" class="tabbed-content__item">
                     <div class="md">{{ pattern_markdown|safe }}</div>
                 </div>
+
+                {% block custom_tab_content %}
+                {% endblock %}
             </div>
         </div>
 
