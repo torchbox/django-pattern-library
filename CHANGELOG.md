@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add blocks to base.html and index.html to make them easier to extend ([#276](https://github.com/torchbox/django-pattern-library/issues/276))
+
 ### Removed
 
 - Drop support for Python 3.9
