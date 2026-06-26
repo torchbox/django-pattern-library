@@ -1,0 +1,74 @@
+name: Accessibility scan
+
+# Scans the live demo site (deployed to GitHub Pages) for accessibility
+# issues using GitHub's accessibility-scanner.
+#
+# The scanner uses Axe (via Playwright) to check the rendered pattern pages
+# and files GitHub issues for any findings it discovers.
+#
+# Docs: https://github.com/github/accessibility-scanner
+#
+# Setup (one-time, requires repo admin access):
+#   1. Create a fine-grained PAT with the following permissions on this repo:
+#        - contents: write
+#        - issues: write
+#        - pull-requests: write
+#        - metadata: read
+#      https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token
+#   2. Add it as a repository secret named GH_TOKEN:
+#      https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository
+#
+# Note: GitHub Actions' default GITHUB_TOKEN cannot be used here.
+
+on:
+  # Allow manual triggering from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discover pattern URLs from the demo
+        id: discover
+        run: |
+          DEMO_BASE="https://torchbox.github.io/django-pattern-library/demo"
+
+          # Fetch the demo index and extract all pattern links.
+          # We scan the /render-pattern/ endpoints (the rendered pattern HTML)
+          # rather than /pattern/ (the pattern library UI wrapper, which loads
+          # the pattern inside an iframe).
+          RENDER_URLS=$(
+            curl -sL "$DEMO_BASE/" |
+              grep -oE 'href="/django-pattern-library/demo/pattern/[^"]*"' |
+              sed 's/href="//; s/"$//' |
+              sed 's|/demo/pattern/|/demo/render-pattern/|' |
+              sort -u |
+              sed 's|^|https://torchbox.github.io|'
+          )
+
+          # Build the URL list, including the index page (pattern library UI itself).
+          {
+            echo "urls<<EOF"
+            echo "$DEMO_BASE/"
+            echo "$RENDER_URLS"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Log discovered URLs
+        run: |
+          echo "The following URLs will be scanned:"
+          echo "${{ steps.discover.outputs.urls }}"
+
+      - name: Run accessibility scanner
+        uses: github/accessibility-scanner@v3
+        with:
+          urls: ${{ steps.discover.outputs.urls }}
+          repository: torchbox/django-pattern-library
+          token: ${{ secrets.GH_TOKEN }}
+          cache_key: dpl-a11y-scan.json
+          # Skip Copilot assignment — set to false if GitHub Copilot is enabled
+          # on the repo and you want AI-suggested fixes via PRs.
+          skip_copilot_assignment: true
+          # Uncomment for an initial dry run — scans and logs what would be
+          # filed without creating/closing issues or writing the cache.
+          # dry_run: true
