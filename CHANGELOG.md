@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Change the way template directories are determined to work with Jinja2 APP_DIRS deployments ([#269](https://github.com/torchbox/django-pattern-library/issues/269))
+
 ### Removed
 
 - Drop support for Python 3.9
