@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Swap position of template "docs" and "source" tabs, and make the "docs" tab the default ([#259](https://github.com/torchbox/django-pattern-library/issues/259))
+
 ### Removed
 
 - Drop support for Python 3.9
