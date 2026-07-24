@@ -41,8 +41,8 @@ exclude = ['pattern_library/static/pattern_library/src/**/*']
 [tool.poetry.dependencies]
 python = "^3.10"
 Django = ">=4.2"
-PyYAML = ">=5.1,<7.0"
-Markdown = "^3.1"
+PyYAML = ">=5.1"
+Markdown = ">=3.1"
 
 [tool.poetry.group.dev.dependencies]
 beautifulsoup4 = "^4.8"
