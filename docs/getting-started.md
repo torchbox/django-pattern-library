@@ -83,24 +83,24 @@ Still in Django settings, set the [`PATTERN_LIBRARY`](./reference/api.md#pattern
 
 ```python
 PATTERN_LIBRARY = {
-    # Groups of templates for the pattern library navigation. The keys
-    # are the group titles and the values are lists of template name prefixes that will
-    # be searched to populate the groups.
-    "SECTIONS": (
-        ("components", ["patterns/components"]),
-        ("pages", ["patterns/pages"]),
-    ),
-
-    # Configure which files to detect as templates.
-    "TEMPLATE_SUFFIX": ".html",
-
-    # Set which template components should be rendered inside of,
-    # so they may use page-level component dependencies like CSS.
+    # PATTERN_BASE_TEMPLATE_NAME is the template that fragments will be wrapped with.
+    # It should include any required CSS and JS and output
+    # `pattern_library_rendered_pattern` from context.
     "PATTERN_BASE_TEMPLATE_NAME": "patterns/base.html",
-
     # Any template in BASE_TEMPLATE_NAMES or any template that extends a template in
     # BASE_TEMPLATE_NAMES is a "page" and will be rendered as-is without being wrapped.
     "BASE_TEMPLATE_NAMES": ["patterns/base_page.html"],
+    "TEMPLATE_SUFFIX": ".html",
+    # SECTIONS controls the groups of templates that appear in the navigation. The keys
+    # are the group titles and the value are lists of template name prefixes that will
+    # be searched to populate the groups.
+    "SECTIONS": (
+        ("atoms", ["patterns/atoms"]),
+        ("molecules", ["patterns/molecules"]),
+        ("organisms", ["patterns/organisms"]),
+        ("templates", ["patterns/templates"]),
+        ("pages", ["patterns/pages"]),
+    ),
 }
 ```
 
@@ -140,7 +140,7 @@ Now let’s look at adding our first template!
 
 ## First pattern
 
-Now we’ve done all of the configuration – let’s create a UI component. We’ll use `quote-block` as an example, and place it at `patterns/components/quote_block/quote_block.html` inside one of our Django apps:
+Now we’ve done all of the configuration – let’s create a UI component. We’ll use `quote-block` as an example, and place it at `patterns/molecules/quote_block/quote_block.html` inside one of our Django apps:
 
 ```jinja2
 <blockquote class="quote-block block--spacing">
@@ -178,7 +178,7 @@ We additionally need to customize a base template, so the standalone component c
 
 ### Component data
 
-We can provide context and tags overrides for our new component by creating a `quote_block.yaml` YAML file alongside the HTML, at `patterns/components/quote_block/quote_block.yaml` in our example. You can use either `.yaml` or `.yml` as the file extension.
+We can provide context and tags overrides for our new component by creating a `quote_block.yaml` YAML file alongside the HTML, at `patterns/molecules/quote_block/quote_block.yaml` in our example. You can use either `.yaml` or `.yml` as the file extension.
 
 ```yaml
 context:
