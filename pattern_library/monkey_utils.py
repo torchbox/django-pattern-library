@@ -15,7 +15,7 @@ UNSPECIFIED = object()
 def override_tag(
     register: django.template.Library,
     name: str,
-    default_html: typing.Optional[typing.Any] = UNSPECIFIED,
+    default_html: typing.Optional[typing.Any] = None,
 ):
     """
     An utility that helps you override original tags for use in your pattern library.
@@ -95,14 +95,15 @@ def override_tag(
                                 Warning,
                             )
                         else:
-                            raise TypeError(
+                            warnings.warn(
                                 'default_html argument to override_tag must be a string (line %s in "%s")'
                                 % (trace.lineno, trace.filename)
                             )
+                            return ""
 
                     # Render provided default;
                     # if no stub data supplied.
-                    return default_html
+                    return default_html or ""
                 else:
                     logger.warning(
                         'No default or stub data defined for the "%s" tag in the "%s" template',
