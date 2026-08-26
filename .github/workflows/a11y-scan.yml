@@ -43,6 +43,9 @@ jobs:
               sed 's/href="//; s/"$//' |
               sed 's|/demo/pattern/|/demo/render-pattern/|' |
               sort -u |
+              # Only scan full pages, where accessibility can be checked with
+              # automated tools. Skips partial/component patterns.
+              grep -E '/render-pattern/patterns/pages/|/render-pattern/patterns_jinja/pages/' |
               sed 's|^|https://torchbox.github.io|'
           )
 
